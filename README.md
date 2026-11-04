@@ -159,3 +159,33 @@ To return to full SMS OTP behavior at any time:
 2. Restart the application.
 3. Configure your SMS provider (Twilio / MessageBird) or add test phone numbers under **Authentication** -> **Providers** -> **Phone** in Supabase.
 
+---
+
+## Demo Accounts (Dev / Testing Seed)
+
+To rapidly test and demo all platform personas without requiring live SMS or manual registration, a dedicated seed script is provided at `supabase/seed/demo_users.sql`.
+
+> [!CAUTION]
+> **DEV/DEMO ONLY**: Never run `supabase/seed/demo_users.sql` in production environments.
+
+### How to Run the Seed Script
+1. Open your Supabase Project Dashboard -> **SQL Editor**.
+2. Paste the contents of `supabase/seed/demo_users.sql` and click **Run**.
+3. In your local `.env` file, set `OTP_REQUIRED=false`.
+4. Launch the KaajLagbe app, enter any phone number from the table below (without `+880`), and tap **"Continue without OTP (dev mode)"**.
+
+### Seeded Persona Matrix
+
+| Role | Phone (Type in App) | Full Phone | Name | What to Demo |
+| :--- | :--- | :--- | :--- | :--- |
+| **Customer** | `1700000001` | `+8801700000001` | Rahim Uddin | Approved Customer, booking workers, posting jobs, reviews. |
+| **Customer #2** | `1700000002` | `+8801700000002` | Sadia Akter | Approved Customer #2, multi-user bookings and chat simulation. |
+| **Labour #1** | `1800000001` | `+8801800000001` | Karim Mia | Master Electrician (Score: 245.5, Active Badge), Plumber (Score: 212, Active Badge), Painter (Score: 146.5). Mirpur service area, ৳600/hr. |
+| **Labour #2** | `1800000002` | `+8801800000002` | Jamal Hossain | Cleaner (Score: 120), Gardener (Score: 205, Active Badge). Dhanmondi area, ৳400/hr. |
+| **Labour #3** | `1800000003` | `+8801800000003` | Nasir Ahmed | **Pending Verification Demo**: Moving Helper & Carpenter. Shows pending verification status screen; used to demo Admin approval flow. |
+| **Admin** | `1900000001` | `+8801900000001` | KaajLagbe Admin | **Admin Web Portal**: Dedicated admin account for logging into the Flutter Web Admin Panel (`lib/admin_main.dart`), reviewing NIDs, and approving/rejecting verifications. |
+
+> [!NOTE]
+> The Admin account (`1900000001`) is specifically intended for the Flutter Web Admin Panel built in Phase 3 Task 3.4.
+
+
