@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/constants/app_constants.dart';
+import '../../../../core/localization/locale_provider.dart';
+import '../../../../core/presentation/widgets/language_toggle_button.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/utils/number_formatter.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../../domain/user_profile.dart';
 import '../auth_providers.dart';
 
@@ -21,9 +25,8 @@ class ProfileSettingsScreen extends ConsumerStatefulWidget {
 }
 
 class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
-  bool _isBengali = true;
-
   Future<void> _showEditNameDialog() async {
+    final l10n = AppLocalizations.of(context)!;
     final controller = TextEditingController(text: widget.profile.fullName ?? '');
     final formKey = GlobalKey<FormState>();
 
@@ -33,21 +36,21 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
         return AlertDialog(
           backgroundColor: AppColors.surface,
           title: Text(
-            'নাম পরিবর্তন করুন / Edit Name',
+            l10n.editName,
             style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold),
           ),
           content: Form(
             key: formKey,
             child: TextFormField(
               controller: controller,
-              decoration: const InputDecoration(
-                hintText: 'পূর্ণ নাম লিখুন / Full name',
+              decoration: InputDecoration(
+                hintText: l10n.editNameHint,
                 filled: true,
                 fillColor: AppColors.background,
               ),
               validator: (val) {
                 if (val == null || val.trim().isEmpty) {
-                  return 'নাম খালি রাখা যাবে না / Name cannot be empty';
+                  return l10n.nameCannotBeEmpty;
                 }
                 return null;
               },
@@ -56,7 +59,7 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('বাতিল / Cancel'),
+              child: Text(l10n.cancel),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -72,7 +75,7 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
                   ref.invalidate(currentUserProfileProvider);
                 }
               },
-              child: const Text('সংরক্ষণ করুন / Save'),
+              child: Text(l10n.save),
             ),
           ],
         );
@@ -81,18 +84,28 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
   }
 
   void _handleSimulateAvatarChange() {
+    final l10n = AppLocalizations.of(context)!;
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('অ্যাভাটার ছবি পরিবর্তনের ক্যামেরা ডায়ালগ খোলা হয়েছে'),
+      SnackBar(
+        content: Text(l10n.changePhoto),
         backgroundColor: AppColors.secondary,
-        duration: Duration(seconds: 1),
+        duration: const Duration(seconds: 1),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final currentLocale = ref.watch(localeProvider);
+    final isBangla = currentLocale.languageCode == 'bn';
     final profile = widget.profile;
+
+    final roleBadgeText = profile.role == UserRole.labour
+        ? l10n.labourRoleBadge
+        : profile.role == UserRole.admin
+            ? 'ADMIN'
+            : l10n.customerRoleBadge;
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -123,29 +136,10 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
             ),
           ],
         ),
-        actions: [
-          Container(
-            margin: const EdgeInsets.only(right: 12),
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-            decoration: BoxDecoration(
-              color: AppColors.background,
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: AppColors.outline),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Icon(Icons.location_on_rounded, size: 14, color: AppColors.secondary),
-                const SizedBox(width: 4),
-                Text(
-                  'মিরপুর ১০, ঢাকা',
-                  style: AppTextStyles.labelSmall.copyWith(
-                    color: AppColors.onSurface,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
-            ),
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 12.0),
+            child: Center(child: LanguageTogglePill()),
           ),
         ],
       ),
@@ -155,7 +149,7 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // 1. Profile Overview Card
+              // 1. User Hero & Verification Header Card
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
@@ -174,9 +168,8 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
                 child: Column(
                   children: [
                     Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Avatar with Camera Edit Icon
+                        // Avatar Lockup
                         Stack(
                           alignment: Alignment.bottomRight,
                           children: [
@@ -187,13 +180,10 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
                                   ? NetworkImage(profile.avatarUrl!)
                                   : null,
                               child: profile.avatarUrl == null
-                                  ? Text(
-                                      (profile.fullName?.isNotEmpty ?? false)
-                                          ? profile.fullName![0].toUpperCase()
-                                          : 'U',
-                                      style: AppTextStyles.headlineLarge.copyWith(
-                                        color: AppColors.primary,
-                                      ),
+                                  ? const Icon(
+                                      Icons.person_rounded,
+                                      size: 36,
+                                      color: AppColors.primary,
                                     )
                                   : null,
                             ),
@@ -228,7 +218,7 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
                                 children: [
                                   Flexible(
                                     child: Text(
-                                      profile.fullName ?? 'গ্রাহক / Customer',
+                                      profile.fullName ?? roleBadgeText,
                                       style: AppTextStyles.headlineSmall.copyWith(
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -258,7 +248,7 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
                                           ),
                                           const SizedBox(width: 2),
                                           Text(
-                                            'এডিট',
+                                            l10n.otpEditNumber,
                                             style: AppTextStyles.labelSmall.copyWith(
                                               color: AppColors.primary,
                                               fontWeight: FontWeight.bold,
@@ -296,7 +286,7 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 child: Text(
-                                  'রোল: ${profile.role.name.toUpperCase()}',
+                                  roleBadgeText,
                                   style: AppTextStyles.labelSmall.copyWith(
                                     color: AppColors.textMuted,
                                     fontWeight: FontWeight.w700,
@@ -339,14 +329,14 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'জাতীয় পরিচয়পত্র যাচাইকৃত',
+                                  l10n.nidVerifiedBadge,
                                   style: AppTextStyles.labelMedium.copyWith(
                                     color: AppColors.secondary,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 Text(
-                                  'NID Verified Citizen • সর্বোচ্চ নিরাপত্তা স্তর',
+                                  l10n.nidVerifiedSub,
                                   style: AppTextStyles.labelSmall.copyWith(
                                     color: AppColors.textMuted,
                                     fontSize: 10,
@@ -369,15 +359,15 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
 
               const SizedBox(height: 16),
 
-              // 2. Quick Stats Bento Row
+              // 2. Quick Stats Bento Row with Localized Numerals
               Row(
                 children: [
                   Expanded(
                     child: _buildBentoCard(
                       icon: Icons.task_alt_rounded,
                       iconColor: AppColors.primary,
-                      title: '০টি',
-                      label: 'মোট বুকিং',
+                      title: NumberFormatter.formatNumber(0, languageCode: currentLocale.languageCode),
+                      label: l10n.totalBookings,
                     ),
                   ),
                   const SizedBox(width: 8),
@@ -385,8 +375,8 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
                     child: _buildBentoCard(
                       icon: Icons.location_on_rounded,
                       iconColor: AppColors.secondary,
-                      title: '১টি',
-                      label: 'সেভ করা ঠিকানা',
+                      title: NumberFormatter.formatNumber(1, languageCode: currentLocale.languageCode),
+                      label: l10n.savedAddresses,
                     ),
                   ),
                   const SizedBox(width: 8),
@@ -394,8 +384,8 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
                     child: _buildBentoCard(
                       icon: Icons.account_balance_wallet_rounded,
                       iconColor: AppColors.tertiary,
-                      title: '৳০',
-                      label: 'ব্যালেন্স',
+                      title: NumberFormatter.formatCurrency(0, languageCode: currentLocale.languageCode),
+                      label: l10n.balance,
                     ),
                   ),
                 ],
@@ -403,8 +393,8 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
 
               const SizedBox(height: 20),
 
-              // 3. Section: অ্যাকাউন্ট ও ঠিকানা (Account & Places)
-              _buildSectionHeader('অ্যাকাউন্ট ও ঠিকানা', 'Account & Places'),
+              // 3. Section: Account & Places
+              _buildSectionHeader(l10n.accountAndPlacesSection),
               const SizedBox(height: 8),
               Container(
                 decoration: BoxDecoration(
@@ -417,16 +407,16 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
                     _buildSettingsRow(
                       icon: Icons.pin_drop_rounded,
                       iconColor: AppColors.primary,
-                      title: 'সংরক্ষিত ঠিকানাসমূহ',
-                      subtitle: 'বাসা: মিরপুর ১০, ঢাকা',
+                      title: l10n.savedAddressesTitle,
+                      subtitle: l10n.savedAddressesSub,
                       onTap: () {},
                     ),
                     const Divider(height: 1, color: AppColors.outline),
                     _buildSettingsRow(
                       icon: Icons.credit_card_rounded,
                       iconColor: AppColors.secondary,
-                      title: 'পেমেন্ট মেথড ও লেনদেন হিস্ট্রি',
-                      subtitle: 'বিকাশ / নগদ / কার্ড',
+                      title: l10n.paymentMethodsTitle,
+                      subtitle: l10n.paymentMethodsSub,
                       onTap: () {},
                     ),
                   ],
@@ -435,8 +425,8 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
 
               const SizedBox(height: 20),
 
-              // 4. Section: নিরাপত্তা ও নীতি (Safety & Policy)
-              _buildSectionHeader('নিরাপত্তা ও নীতি', 'Safety & Controls'),
+              // 4. Section: Safety & Policy with Interactive Language Picker
+              _buildSectionHeader(l10n.safetyAndPolicySection),
               const SizedBox(height: 8),
               Container(
                 decoration: BoxDecoration(
@@ -449,8 +439,8 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
                     _buildSettingsRow(
                       icon: Icons.emergency_rounded,
                       iconColor: AppColors.error,
-                      title: 'জরুরি যোগাযোগ ও নিরাপত্তা সেন্টার',
-                      subtitle: 'জরুরি হেল্পলাইন ও লাইভ ট্র্যাকিং',
+                      title: l10n.emergencyContactTitle,
+                      subtitle: l10n.emergencyContactSub,
                       onTap: () {},
                     ),
                     const Divider(height: 1, color: AppColors.outline),
@@ -479,13 +469,13 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'ভাষা পরিবর্তন',
+                                    l10n.changeLanguageTitle,
                                     style: AppTextStyles.labelLarge.copyWith(
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                   Text(
-                                    'অ্যাপের ভাষা নির্বাচন করুন',
+                                    l10n.changeLanguageSub,
                                     style: AppTextStyles.labelSmall.copyWith(
                                       color: AppColors.textMuted,
                                     ),
@@ -505,40 +495,40 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 GestureDetector(
-                                  onTap: () => setState(() => _isBengali = true),
+                                  onTap: () => ref.read(localeProvider.notifier).setLocale(const Locale('bn')),
                                   child: Container(
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 10,
                                       vertical: 4,
                                     ),
                                     decoration: BoxDecoration(
-                                      color: _isBengali ? AppColors.primary : Colors.transparent,
+                                      color: isBangla ? AppColors.primary : Colors.transparent,
                                       borderRadius: BorderRadius.circular(16),
                                     ),
                                     child: Text(
                                       'বাংলা',
                                       style: AppTextStyles.labelSmall.copyWith(
-                                        color: _isBengali ? Colors.white : AppColors.textMuted,
+                                        color: isBangla ? Colors.white : AppColors.textMuted,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                   ),
                                 ),
                                 GestureDetector(
-                                  onTap: () => setState(() => _isBengali = false),
+                                  onTap: () => ref.read(localeProvider.notifier).setLocale(const Locale('en')),
                                   child: Container(
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 10,
                                       vertical: 4,
                                     ),
                                     decoration: BoxDecoration(
-                                      color: !_isBengali ? AppColors.primary : Colors.transparent,
+                                      color: !isBangla ? AppColors.primary : Colors.transparent,
                                       borderRadius: BorderRadius.circular(16),
                                     ),
                                     child: Text(
-                                      'ENG',
+                                      'English',
                                       style: AppTextStyles.labelSmall.copyWith(
-                                        color: !_isBengali ? Colors.white : AppColors.textMuted,
+                                        color: !isBangla ? Colors.white : AppColors.textMuted,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -554,8 +544,8 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
                     _buildSettingsRow(
                       icon: Icons.policy_rounded,
                       iconColor: AppColors.onSurface,
-                      title: 'গোপনীয়তা ও টার্মস অব সার্ভিস',
-                      subtitle: 'ব্যবহারকারীর তথ্য সুরক্ষা নীতি',
+                      title: l10n.privacyAndTermsTitle,
+                      subtitle: l10n.privacyAndTermsSub,
                       onTap: () {},
                     ),
                   ],
@@ -564,8 +554,8 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
 
               const SizedBox(height: 20),
 
-              // 5. Section: সহায়তা ও অভিযোগ (Help & Support)
-              _buildSectionHeader('সহায়তা ও অভিযোগ', 'Help & Disputes'),
+              // 5. Section: Help & Support
+              _buildSectionHeader(l10n.helpAndSupportSection),
               const SizedBox(height: 8),
               Container(
                 decoration: BoxDecoration(
@@ -578,16 +568,16 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
                     _buildSettingsRow(
                       icon: Icons.support_agent_rounded,
                       iconColor: AppColors.secondary,
-                      title: 'হেল্প সেন্টার ও কাস্টমার কেয়ার',
-                      subtitle: 'হটলাইন ১৬৪২০ অথবা লাইভ চ্যাট (২৪/৭)',
+                      title: l10n.helpCenterTitle,
+                      subtitle: l10n.helpCenterSub,
                       onTap: () {},
                     ),
                     const Divider(height: 1, color: AppColors.outline),
                     _buildSettingsRow(
                       icon: Icons.report_problem_rounded,
                       iconColor: AppColors.tertiary,
-                      title: 'আমার বিরোধ ও অভিযোগের স্ট্যাটাস',
-                      subtitle: 'সক্রিয় বিরোধসমূহ ট্র্যাকিং',
+                      title: l10n.disputesTitle,
+                      subtitle: l10n.disputesSub,
                       onTap: () {},
                     ),
                   ],
@@ -603,7 +593,7 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
                 child: OutlinedButton.icon(
                   icon: const Icon(Icons.logout_rounded, color: AppColors.primary),
                   label: Text(
-                    'লগআউট (Log Out)',
+                    l10n.signOut,
                     style: AppTextStyles.labelLarge.copyWith(
                       color: AppColors.primary,
                       fontWeight: FontWeight.bold,
@@ -637,7 +627,7 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      'সর্বস্বত্ব সংরক্ষিত © ২০২৬ কাজলাগবে বাংলাদেশ',
+                      '© 2026 KaajLagbe Bangladesh',
                       style: AppTextStyles.bodySmall.copyWith(
                         color: AppColors.textMuted,
                         fontSize: 10,
@@ -698,19 +688,10 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
     );
   }
 
-  Widget _buildSectionHeader(String title, String subtitle) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          title,
-          style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold),
-        ),
-        Text(
-          subtitle,
-          style: AppTextStyles.labelSmall.copyWith(color: AppColors.textMuted),
-        ),
-      ],
+  Widget _buildSectionHeader(String title) {
+    return Text(
+      title,
+      style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold),
     );
   }
 

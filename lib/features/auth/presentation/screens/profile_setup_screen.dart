@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/constants/app_constants.dart';
+import '../../../../core/presentation/widgets/language_toggle_button.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../auth_providers.dart';
 
 /// Profile Setup Screen allowing new users to set their Full Name and Avatar
@@ -33,10 +35,11 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
   }
 
   Future<void> _handleSaveProfile() async {
+    final l10n = AppLocalizations.of(context)!;
     final name = _nameController.text.trim();
     if (name.isEmpty) {
       setState(() {
-        _errorMessage = 'আপনার পূর্ণ নাম লিখুন / Please enter your full name';
+        _errorMessage = l10n.fullNameErrorEmpty;
       });
       return;
     }
@@ -59,12 +62,13 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
       Navigator.of(context).popUntil((route) => route.isFirst);
     } else {
       setState(() {
-        _errorMessage = 'প্রোফাইল সংরক্ষণ ব্যর্থ হয়েছে। ইন্টারনেট সংযোগ পরীক্ষা করুন।';
+        _errorMessage = l10n.profileUpdateError;
       });
     }
   }
 
   void _simulateAvatarPick() {
+    final l10n = AppLocalizations.of(context)!;
     // Generates a high-quality initial placeholder avatar URL
     final name = _nameController.text.trim();
     final seed = name.isNotEmpty ? Uri.encodeComponent(name) : 'KaajLagbeUser';
@@ -72,18 +76,23 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
       _avatarUrl = 'https://api.dicebear.com/7.x/initials/png?seed=$seed';
     });
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('অ্যাভাটার যুক্ত করা হয়েছে / Avatar selected'),
+      SnackBar(
+        content: Text(l10n.avatarSelected),
         backgroundColor: AppColors.secondary,
-        duration: Duration(seconds: 1),
+        duration: const Duration(seconds: 1),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final authState = ref.watch(authControllerProvider);
     final isLoading = authState.isLoading;
+
+    final roleLabel = widget.selectedRole == UserRole.labour
+        ? l10n.labourRoleBadge
+        : l10n.customerRoleBadge;
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -93,18 +102,10 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Top Bar
+              // Top Bar with Language Toggle
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const SizedBox(width: 40),
-                  Text(
-                    'প্রোফাইল সেটআপ',
-                    style: AppTextStyles.headlineSmall.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.onSurface,
-                    ),
-                  ),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
@@ -114,7 +115,7 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Text(
-                      widget.selectedRole == UserRole.labour ? 'কর্মী' : 'গ্রাহক',
+                      roleLabel,
                       style: AppTextStyles.labelSmall.copyWith(
                         color: widget.selectedRole == UserRole.labour
                             ? AppColors.secondary
@@ -123,6 +124,14 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                       ),
                     ),
                   ),
+                  Text(
+                    l10n.profileSetupTitle,
+                    style: AppTextStyles.headlineSmall.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.onSurface,
+                    ),
+                  ),
+                  const LanguageTogglePill(),
                 ],
               ),
 
@@ -188,7 +197,7 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
 
               TextButton.icon(
                 icon: const Icon(Icons.add_photo_alternate_rounded, size: 16),
-                label: const Text('ছবি আপলোড করুন / Change Photo'),
+                label: Text(_avatarUrl == null ? l10n.uploadPhoto : l10n.changePhoto),
                 onPressed: _simulateAvatarPick,
               ),
 
@@ -207,7 +216,7 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'আপনার পূর্ণ নাম (NID অনুযায়ী) *',
+                      l10n.fullNameLabel,
                       style: AppTextStyles.labelLarge.copyWith(
                         fontWeight: FontWeight.bold,
                         color: AppColors.onSurface,
@@ -215,7 +224,7 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'Full Name as in National Identity Card',
+                      l10n.fullNameHint,
                       style: AppTextStyles.labelSmall.copyWith(
                         color: AppColors.textMuted,
                       ),
@@ -226,7 +235,7 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                       focusNode: _focusNode,
                       style: AppTextStyles.titleMedium,
                       decoration: InputDecoration(
-                        hintText: 'যেমন: Tanvir Ahmed',
+                        hintText: l10n.fullNameHint,
                         filled: true,
                         fillColor: AppColors.background,
                         border: OutlineInputBorder(
@@ -301,7 +310,7 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'সম্পূর্ণ করুন / Complete Profile',
+                              l10n.saveAndContinue,
                               style: AppTextStyles.labelLarge.copyWith(
                                 color: AppColors.onPrimary,
                                 fontWeight: FontWeight.bold,

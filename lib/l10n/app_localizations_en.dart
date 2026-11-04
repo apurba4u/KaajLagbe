@@ -442,6 +442,37 @@ class AppLocalizationsEn extends AppLocalizations {
   String get refreshingStatus => 'Checking latest account status...';
 
   @override
+  String get verificationProgress => 'Verification Progress';
+
+  @override
+  String get progressStepPhone => 'Mobile Number & OTP Verification';
+
+  @override
+  String get progressStepPhoneSub => 'Completed successfully';
+
+  @override
+  String get progressStepReview => 'Admin Review & NID Approval';
+
+  @override
+  String get progressStepReviewSub => 'Admin team reviewing documents (12-24h)';
+
+  @override
+  String get progressStepAccess => 'Marketplace Access';
+
+  @override
+  String get progressStepAccessSub => 'Unlocked upon verification approval';
+
+  @override
+  String get marketplaceProtectionTitle => 'Marketplace Protection Policy';
+
+  @override
+  String get marketplaceProtectionSubtitle =>
+      'Unapproved or suspended accounts are restricted from booking or accepting jobs.';
+
+  @override
+  String get checkStatusAction => 'Check Status';
+
+  @override
   String get homeTitle => 'Home';
 
   @override

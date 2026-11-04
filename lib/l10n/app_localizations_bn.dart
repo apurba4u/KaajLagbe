@@ -442,6 +442,38 @@ class AppLocalizationsBn extends AppLocalizations {
       'অ্যাকাউন্টের সর্বশেষ অবস্থা যাচাই করা হচ্ছে...';
 
   @override
+  String get verificationProgress => 'যাচাইকরণ অগ্রগতি';
+
+  @override
+  String get progressStepPhone => 'মোবাইল নম্বর ও ওটিপি যাচাই';
+
+  @override
+  String get progressStepPhoneSub => 'সফলভাবে সম্পন্ন হয়েছে';
+
+  @override
+  String get progressStepReview => 'প্রশাসনিক পর্যালোচনা ও NID অনুমোদন';
+
+  @override
+  String get progressStepReviewSub =>
+      'অ্যাডমিন টিম নথিপত্র পরীক্ষা করছে (১২-২৪ ঘণ্টা)';
+
+  @override
+  String get progressStepAccess => 'মার্কেটপ্লেস প্রবেশাধিকার';
+
+  @override
+  String get progressStepAccessSub => 'অনুমোদনের পর সম্পূর্ণ সেবা উন্মুক্ত হবে';
+
+  @override
+  String get marketplaceProtectionTitle => 'মার্কেটপ্লেস সুরক্ষা নীতি';
+
+  @override
+  String get marketplaceProtectionSubtitle =>
+      'অননুমোদিত বা স্থগিত অ্যাকাউন্ট দ্বারা সেবা অনুসন্ধান, কর্মী বুকিং বা কাজ গ্রহণ সম্পূর্ণ ব্লক রাখা হয়।';
+
+  @override
+  String get checkStatusAction => 'স্ট্যাটাস রিফ্রেশ করুন';
+
+  @override
   String get homeTitle => 'হোম';
 
   @override

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/constants/app_constants.dart';
+import '../../../../core/presentation/widgets/language_toggle_button.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../auth_providers.dart';
 
 /// Screen displayed when a user's account is in a non-approved state
@@ -18,7 +20,8 @@ class AccountStatusScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final statusConfig = _getStatusConfig(status);
+    final l10n = AppLocalizations.of(context)!;
+    final statusConfig = _getStatusConfig(status, l10n);
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -26,22 +29,24 @@ class AccountStatusScreen extends ConsumerWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
+          const Center(child: LanguageTogglePill()),
+          const SizedBox(width: 8),
           IconButton(
-            tooltip: 'রিফ্রেশ / Check Status',
+            tooltip: l10n.refreshStatus,
             icon: const Icon(Icons.refresh_rounded, color: AppColors.onSurface),
             onPressed: () {
               ref.invalidate(currentUserProfileProvider);
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('অ্যাকাউন্টের সর্বশেষ অবস্থা যাচাই করা হচ্ছে...'),
-                  duration: Duration(seconds: 1),
+                SnackBar(
+                  content: Text(l10n.refreshingStatus),
+                  duration: const Duration(seconds: 1),
                   backgroundColor: AppColors.secondary,
                 ),
               );
             },
           ),
           IconButton(
-            tooltip: 'লগআউট / Sign Out',
+            tooltip: l10n.signOut,
             icon: const Icon(Icons.logout_rounded, color: AppColors.onSurface),
             onPressed: () async {
               await ref.read(authControllerProvider.notifier).signOut();
@@ -122,7 +127,7 @@ class AccountStatusScreen extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'যাচাইকরণ অগ্রগতি / Verification Progress',
+                        l10n.verificationProgress,
                         style: AppTextStyles.labelLarge.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
@@ -131,20 +136,20 @@ class AccountStatusScreen extends ConsumerWidget {
                       _buildProgressStep(
                         isCompleted: true,
                         isInProgress: false,
-                        title: 'মোবাইল নম্বর ও ওটিপি যাচাই',
-                        subtitle: 'সফলভাবে সম্পন্ন হয়েছে',
+                        title: l10n.progressStepPhone,
+                        subtitle: l10n.progressStepPhoneSub,
                       ),
                       _buildProgressStep(
                         isCompleted: false,
                         isInProgress: true,
-                        title: 'প্রশাসনিক পর্যালোচনা ও NID অনুমোদন',
-                        subtitle: 'অ্যাডমিন টিম নথিপত্র পরীক্ষা করছে (২৪-৪৮ ঘণ্টা)',
+                        title: l10n.progressStepReview,
+                        subtitle: l10n.progressStepReviewSub,
                       ),
                       _buildProgressStep(
                         isCompleted: false,
                         isInProgress: false,
-                        title: 'মার্কেটপ্লেস প্রবেশাধিকার',
-                        subtitle: 'অনুমোদনের পর সম্পূর্ণ সেবা উন্মুক্ত হবে',
+                        title: l10n.progressStepAccess,
+                        subtitle: l10n.progressStepAccessSub,
                         isLast: true,
                       ),
                     ],
@@ -176,7 +181,7 @@ class AccountStatusScreen extends ConsumerWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'মার্কেটপ্লেস সুরক্ষা নীতি',
+                            l10n.marketplaceProtectionTitle,
                             style: AppTextStyles.labelMedium.copyWith(
                               fontWeight: FontWeight.bold,
                               color: AppColors.onSurface,
@@ -184,7 +189,7 @@ class AccountStatusScreen extends ConsumerWidget {
                           ),
                           const SizedBox(height: 2),
                           Text(
-                            'অননুমোদিত বা স্থগিত অ্যাকাউন্ট দ্বারা সেবা অনুসন্ধান, কর্মী বুকিং বা কাজ গ্রহণ সম্পূর্ণ ব্লক রাখা হয়।',
+                            l10n.marketplaceProtectionSubtitle,
                             style: AppTextStyles.bodySmall.copyWith(
                               color: AppColors.textMuted,
                             ),
@@ -204,7 +209,7 @@ class AccountStatusScreen extends ConsumerWidget {
                 height: 48,
                 child: ElevatedButton.icon(
                   icon: const Icon(Icons.refresh_rounded),
-                  label: const Text('স্ট্যাটাস রিফ্রেশ করুন / Check Status'),
+                  label: Text(l10n.checkStatusAction),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primary,
                     foregroundColor: AppColors.onPrimary,
@@ -225,7 +230,7 @@ class AccountStatusScreen extends ConsumerWidget {
                 height: 48,
                 child: OutlinedButton.icon(
                   icon: const Icon(Icons.logout_rounded, color: AppColors.onSurface),
-                  label: const Text('লগআউট / Sign Out'),
+                  label: Text(l10n.signOut),
                   style: OutlinedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -237,15 +242,6 @@ class AccountStatusScreen extends ConsumerWidget {
                   },
                 ),
               ),
-
-              const SizedBox(height: 24),
-
-              Text(
-                'সাহায্য প্রয়োজন? হটলাইন ১৬৪২০ অথবা support@kaajlagbe.com',
-                style: AppTextStyles.labelSmall.copyWith(color: AppColors.textMuted),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 16),
             ],
           ),
         ),
@@ -253,56 +249,56 @@ class AccountStatusScreen extends ConsumerWidget {
     );
   }
 
-  static Widget _buildProgressStep({
+  Widget _buildProgressStep({
     required bool isCompleted,
     required bool isInProgress,
     required String title,
     required String subtitle,
     bool isLast = false,
   }) {
+    final circleColor = isCompleted
+        ? AppColors.secondary
+        : isInProgress
+            ? AppColors.primary
+            : AppColors.outline;
+
+    final circleIcon = isCompleted
+        ? Icons.check_rounded
+        : isInProgress
+            ? Icons.sync_rounded
+            : Icons.circle_outlined;
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Column(
           children: [
             Container(
-              width: 22,
-              height: 22,
+              width: 24,
+              height: 24,
               decoration: BoxDecoration(
-                shape: BoxShape.circle,
                 color: isCompleted
                     ? AppColors.secondary
                     : isInProgress
-                        ? AppColors.tertiary
-                        : AppColors.background,
-                border: Border.all(
-                  color: isCompleted
-                      ? AppColors.secondary
-                      : isInProgress
-                          ? AppColors.tertiary
-                          : AppColors.outline,
-                  width: 2,
-                ),
+                        ? AppColors.primaryContainer.withValues(alpha: 0.5)
+                        : AppColors.surface,
+                shape: BoxShape.circle,
+                border: Border.all(color: circleColor, width: 2),
               ),
-              child: Center(
-                child: isCompleted
-                    ? const Icon(Icons.check, size: 14, color: Colors.white)
+              child: Icon(
+                circleIcon,
+                size: 14,
+                color: isCompleted
+                    ? Colors.white
                     : isInProgress
-                        ? Container(
-                            width: 8,
-                            height: 8,
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                              shape: BoxShape.circle,
-                            ),
-                          )
-                        : null,
+                        ? AppColors.primary
+                        : AppColors.textMuted,
               ),
             ),
             if (!isLast)
               Container(
                 width: 2,
-                height: 28,
+                height: 36,
                 color: isCompleted ? AppColors.secondary : AppColors.outline,
               ),
           ],
@@ -316,18 +312,17 @@ class AccountStatusScreen extends ConsumerWidget {
                 title,
                 style: AppTextStyles.labelMedium.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: AppColors.onSurface,
+                  color: isInProgress ? AppColors.primary : AppColors.onSurface,
                 ),
               ),
-              const SizedBox(height: 1),
+              const SizedBox(height: 2),
               Text(
                 subtitle,
                 style: AppTextStyles.bodySmall.copyWith(
                   color: AppColors.textMuted,
-                  fontSize: 11,
                 ),
               ),
-              if (!isLast) const SizedBox(height: 12),
+              if (!isLast) const SizedBox(height: 14),
             ],
           ),
         ),
@@ -335,75 +330,71 @@ class AccountStatusScreen extends ConsumerWidget {
     );
   }
 
-  static _StatusConfig _getStatusConfig(AccountStatus status) {
+  _StatusDisplayConfig _getStatusConfig(AccountStatus status, AppLocalizations l10n) {
     switch (status) {
       case AccountStatus.pendingVerification:
-        return _StatusConfig(
-          title: 'যাচাইকরণ প্রক্রিয়াধীন / Under Verification',
-          message:
-              'আপনার জাতীয় পরিচয়পত্র ও অ্যাকাউন্ট তথ্য আমাদের প্রশাসনিক টিম যাচাই করছে। সাধারণ কার্যদিবসে ২৪-৪৮ ঘণ্টার মধ্যে অনুমোদন নিশ্চিত করা হবে।',
+        return _StatusDisplayConfig(
+          title: l10n.statusPendingTitle,
+          message: l10n.statusPendingDescription,
           icon: Icons.hourglass_top_rounded,
           iconColor: AppColors.tertiary,
-          badgeBg: AppColors.ratingChipBg,
           borderColor: AppColors.tertiary,
-        );
-      case AccountStatus.rejected:
-        return _StatusConfig(
-          title: 'আবেদন প্রত্যাখ্যাত / Verification Rejected',
-          message:
-              'প্রদত্ত তথ্যে গরমিল বা অস্পষ্ট নথির কারণে আপনার অ্যাকাউন্ট যাচাইকরণ গ্রহণ করা সম্ভব হয়নি। সহায়তার জন্য হেল্প ডেস্কে যোগাযোগ করুন।',
-          icon: Icons.cancel_outlined,
-          iconColor: AppColors.error,
-          badgeBg: AppColors.errorContainer,
-          borderColor: AppColors.error,
-        );
-      case AccountStatus.suspended:
-        return _StatusConfig(
-          title: 'অ্যাকাউন্ট সাময়িক স্থগিত / Suspended',
-          message:
-              'প্ল্যাটফর্মের নীতিমালার সুরক্ষায় আপনার অ্যাকাউন্ট সাময়িকভাবে স্থগিত রাখা হয়েছে। পুনরায় সক্রিয় করতে অ্যাডমিনের সাথে যোগাযোগ করুন।',
-          icon: Icons.warning_amber_rounded,
-          iconColor: AppColors.tertiary,
-          badgeBg: AppColors.tertiaryContainer,
-          borderColor: AppColors.tertiary,
-        );
-      case AccountStatus.permanentlyBanned:
-        return _StatusConfig(
-          title: 'অ্যাকাউন্ট স্থায়ীভাবে নিষিদ্ধ / Banned',
-          message:
-              'গুরুতর নীতিমালা লঙ্ঘনের কারণে আপনার অ্যাকাউন্ট স্থায়ীভাবে নিষিদ্ধ করা হয়েছে। এই অ্যাকাউন্ট দ্বারা আর কোনো কার্যক্রম চালানো যাবে না।',
-          icon: Icons.block_rounded,
-          iconColor: AppColors.error,
-          badgeBg: AppColors.errorContainer,
-          borderColor: AppColors.error,
+          badgeBg: AppColors.tertiaryContainer.withValues(alpha: 0.3),
         );
       case AccountStatus.approved:
-        return _StatusConfig(
-          title: 'অনুমোদিত / Approved',
-          message: 'আপনার অ্যাকাউন্ট সম্পূর্ণ সক্রিয়।',
-          icon: Icons.verified_user_rounded,
+        return _StatusDisplayConfig(
+          title: l10n.statusApprovedTitle,
+          message: l10n.statusApprovedDescription,
+          icon: Icons.check_circle_rounded,
           iconColor: AppColors.secondary,
-          badgeBg: AppColors.verifiedChipBg,
           borderColor: AppColors.secondary,
+          badgeBg: AppColors.secondaryContainer.withValues(alpha: 0.3),
+        );
+      case AccountStatus.rejected:
+        return _StatusDisplayConfig(
+          title: l10n.statusRejectedTitle,
+          message: l10n.statusRejectedDescription,
+          icon: Icons.cancel_rounded,
+          iconColor: AppColors.error,
+          borderColor: AppColors.error,
+          badgeBg: AppColors.errorContainer.withValues(alpha: 0.3),
+        );
+      case AccountStatus.suspended:
+        return _StatusDisplayConfig(
+          title: l10n.statusSuspendedTitle,
+          message: l10n.statusSuspendedDescription,
+          icon: Icons.warning_rounded,
+          iconColor: AppColors.error,
+          borderColor: AppColors.error,
+          badgeBg: AppColors.errorContainer.withValues(alpha: 0.3),
+        );
+      case AccountStatus.permanentlyBanned:
+        return _StatusDisplayConfig(
+          title: l10n.statusBannedTitle,
+          message: l10n.statusBannedDescription,
+          icon: Icons.block_rounded,
+          iconColor: AppColors.error,
+          borderColor: AppColors.error,
+          badgeBg: AppColors.errorContainer.withValues(alpha: 0.3),
         );
     }
   }
 }
 
-class _StatusConfig {
+class _StatusDisplayConfig {
   final String title;
   final String message;
   final IconData icon;
   final Color iconColor;
-  final Color badgeBg;
   final Color borderColor;
+  final Color badgeBg;
 
-  _StatusConfig({
+  _StatusDisplayConfig({
     required this.title,
     required this.message,
     required this.icon,
     required this.iconColor,
-    required this.badgeBg,
     required this.borderColor,
+    required this.badgeBg,
   });
 }

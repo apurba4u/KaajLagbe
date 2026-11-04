@@ -914,6 +914,66 @@ abstract class AppLocalizations {
   /// **'অ্যাকাউন্টের সর্বশেষ অবস্থা যাচাই করা হচ্ছে...'**
   String get refreshingStatus;
 
+  /// No description provided for @verificationProgress.
+  ///
+  /// In bn, this message translates to:
+  /// **'যাচাইকরণ অগ্রগতি'**
+  String get verificationProgress;
+
+  /// No description provided for @progressStepPhone.
+  ///
+  /// In bn, this message translates to:
+  /// **'মোবাইল নম্বর ও ওটিপি যাচাই'**
+  String get progressStepPhone;
+
+  /// No description provided for @progressStepPhoneSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'সফলভাবে সম্পন্ন হয়েছে'**
+  String get progressStepPhoneSub;
+
+  /// No description provided for @progressStepReview.
+  ///
+  /// In bn, this message translates to:
+  /// **'প্রশাসনিক পর্যালোচনা ও NID অনুমোদন'**
+  String get progressStepReview;
+
+  /// No description provided for @progressStepReviewSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'অ্যাডমিন টিম নথিপত্র পরীক্ষা করছে (১২-২৪ ঘণ্টা)'**
+  String get progressStepReviewSub;
+
+  /// No description provided for @progressStepAccess.
+  ///
+  /// In bn, this message translates to:
+  /// **'মার্কেটপ্লেস প্রবেশাধিকার'**
+  String get progressStepAccess;
+
+  /// No description provided for @progressStepAccessSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'অনুমোদনের পর সম্পূর্ণ সেবা উন্মুক্ত হবে'**
+  String get progressStepAccessSub;
+
+  /// No description provided for @marketplaceProtectionTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'মার্কেটপ্লেস সুরক্ষা নীতি'**
+  String get marketplaceProtectionTitle;
+
+  /// No description provided for @marketplaceProtectionSubtitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'অননুমোদিত বা স্থগিত অ্যাকাউন্ট দ্বারা সেবা অনুসন্ধান, কর্মী বুকিং বা কাজ গ্রহণ সম্পূর্ণ ব্লক রাখা হয়।'**
+  String get marketplaceProtectionSubtitle;
+
+  /// No description provided for @checkStatusAction.
+  ///
+  /// In bn, this message translates to:
+  /// **'স্ট্যাটাস রিফ্রেশ করুন'**
+  String get checkStatusAction;
+
   /// No description provided for @homeTitle.
   ///
   /// In bn, this message translates to:

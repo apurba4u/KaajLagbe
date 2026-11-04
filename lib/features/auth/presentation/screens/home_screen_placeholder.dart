@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/constants/app_constants.dart';
+import '../../../../core/presentation/widgets/language_toggle_button.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../../domain/user_profile.dart';
 import '../auth_providers.dart';
 import 'profile_settings_screen.dart';
@@ -18,6 +20,10 @@ class HomeScreenPlaceholder extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
+    final displayName = profile.fullName ??
+        (profile.role == UserRole.labour ? l10n.labourRoleBadge : l10n.customerRoleBadge);
+
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
@@ -39,8 +45,10 @@ class HomeScreenPlaceholder extends ConsumerWidget {
           ],
         ),
         actions: [
+          const Center(child: LanguageTogglePill()),
+          const SizedBox(width: 4),
           IconButton(
-            tooltip: 'Profile & Settings',
+            tooltip: l10n.profileSettingsTitle,
             icon: const Icon(Icons.person_rounded, color: AppColors.onSurface),
             onPressed: () {
               Navigator.of(context).push(
@@ -51,7 +59,7 @@ class HomeScreenPlaceholder extends ConsumerWidget {
             },
           ),
           IconButton(
-            tooltip: 'Sign Out',
+            tooltip: l10n.signOut,
             icon: const Icon(Icons.logout_rounded, color: AppColors.onSurface),
             onPressed: () async {
               await ref.read(authControllerProvider.notifier).signOut();
@@ -99,13 +107,10 @@ class HomeScreenPlaceholder extends ConsumerWidget {
                             ? NetworkImage(profile.avatarUrl!)
                             : null,
                         child: profile.avatarUrl == null
-                            ? Text(
-                                (profile.fullName?.isNotEmpty ?? false)
-                                    ? profile.fullName![0].toUpperCase()
-                                    : 'U',
-                                style: AppTextStyles.headlineMedium.copyWith(
-                                  color: AppColors.primary,
-                                ),
+                            ? const Icon(
+                                Icons.person_rounded,
+                                size: 32,
+                                color: AppColors.primary,
                               )
                             : null,
                       ),
@@ -114,60 +119,30 @@ class HomeScreenPlaceholder extends ConsumerWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
-                              children: [
-                                Flexible(
-                                  child: Text(
-                                    profile.fullName ?? 'KaajLagbe Member',
-                                    style: AppTextStyles.titleMedium,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ),
-                                const SizedBox(width: 6),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                                  decoration: BoxDecoration(
-                                    color: AppColors.verifiedChipBg,
-                                    borderRadius: BorderRadius.circular(6),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      const Icon(
-                                        Icons.verified_rounded,
-                                        size: 12,
-                                        color: AppColors.secondary,
-                                      ),
-                                      const SizedBox(width: 2),
-                                      Text(
-                                        'Approved',
-                                        style: AppTextStyles.labelSmall.copyWith(
-                                          color: AppColors.secondary,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
+                            Text(
+                              l10n.welcomeUser(displayName),
+                              style: AppTextStyles.titleMedium.copyWith(
+                                fontWeight: FontWeight.bold,
+                              ),
+                              overflow: TextOverflow.ellipsis,
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              profile.phone ?? 'No phone attached',
-                              style: AppTextStyles.bodySmall,
-                            ),
-                            const SizedBox(height: 2),
-                            Text(
-                              'Role: ${profile.role.name.toUpperCase()} • Settings >',
+                              profile.role == UserRole.labour
+                                  ? l10n.labourRoleBadge
+                                  : l10n.customerRoleBadge,
                               style: AppTextStyles.labelSmall.copyWith(
-                                color: AppColors.primary,
-                                fontWeight: FontWeight.w600,
+                                color: AppColors.secondary,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ],
                         ),
                       ),
-                      const Icon(Icons.chevron_right_rounded, color: AppColors.textMuted),
+                      const Icon(
+                        Icons.chevron_right_rounded,
+                        color: AppColors.textMuted,
+                      ),
                     ],
                   ),
                 ),
@@ -175,36 +150,37 @@ class HomeScreenPlaceholder extends ConsumerWidget {
 
               const SizedBox(height: 24),
 
-              // Marketplace Placeholder Notice
+              // Placeholder Marketplace Info Card
               Container(
                 width: double.infinity,
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   color: AppColors.surface,
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(color: AppColors.outline),
                 ),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        const Icon(Icons.explore_rounded, color: AppColors.primary),
-                        const SizedBox(width: 8),
-                        Text(
-                          profile.isLabour
-                              ? 'Labour Job Dashboard'
-                              : 'Marketplace Service Discovery',
-                          style: AppTextStyles.headlineSmall,
-                        ),
-                      ],
+                    Icon(
+                      profile.role == UserRole.labour
+                          ? Icons.work_history_rounded
+                          : Icons.engineering_rounded,
+                      size: 48,
+                      color: AppColors.primary,
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                      l10n.homeTitle,
+                      style: AppTextStyles.headlineSmall.copyWith(fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      profile.isLabour
-                          ? 'Your account is verified and ready. You will receive booking requests from customers in your area once marketplace jobs are published.'
-                          : 'Discover certified electricians, plumbers, cleaners, and technicians across Dhaka. Full search and booking will be enabled in Phase 4.',
+                      profile.role == UserRole.labour
+                          ? l10n.homePlaceholderLabour
+                          : l10n.homePlaceholderCustomer,
                       style: AppTextStyles.bodyMedium.copyWith(color: AppColors.textMuted),
+                      textAlign: TextAlign.center,
                     ),
                   ],
                 ),
