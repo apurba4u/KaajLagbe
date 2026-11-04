@@ -1,0 +1,122 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:kaajlagbe/features/auth/domain/auth_repository.dart';
+import 'package:kaajlagbe/features/auth/presentation/auth_providers.dart';
+import 'package:kaajlagbe/features/auth/presentation/screens/otp_verification_screen.dart';
+import 'package:kaajlagbe/features/auth/presentation/screens/phone_login_screen.dart';
+
+class MockAuthRepository extends Mock implements AuthRepository {}
+
+void main() {
+  late MockAuthRepository mockAuthRepository;
+
+  setUp(() {
+    mockAuthRepository = MockAuthRepository();
+  });
+
+  Widget createTestWidget(Widget child) {
+    return ProviderScope(
+      overrides: [
+        authRepositoryProvider.overrideWithValue(mockAuthRepository),
+      ],
+      child: MaterialApp(
+        home: child,
+      ),
+    );
+  }
+
+  group('PhoneLoginScreen Tests', () {
+    testWidgets('Renders phone input, +880 prefix and Send OTP button', (tester) async {
+      await tester.pumpWidget(createTestWidget(const PhoneLoginScreen()));
+      await tester.pumpAndSettle();
+
+      expect(find.text('+880'), findsOneWidget);
+      expect(find.text('ওটিপি পাঠান / Send OTP'), findsOneWidget);
+      expect(find.byType(TextField), findsOneWidget);
+    });
+
+    testWidgets('Displays error message when invalid phone number is submitted', (tester) async {
+      await tester.pumpWidget(createTestWidget(const PhoneLoginScreen()));
+      await tester.pumpAndSettle();
+
+      // Enter short/invalid number
+      await tester.enterText(find.byType(TextField), '1234');
+      await tester.tap(find.text('ওটিপি পাঠান / Send OTP'));
+      await tester.pumpAndSettle();
+
+      expect(find.textContaining('সঠিক ১০-সংখ্যার নম্বর দিন'), findsOneWidget);
+    });
+
+    testWidgets('Triggers sendOtp and navigates to OtpVerificationScreen on valid phone', (tester) async {
+      when(() => mockAuthRepository.signInWithOtp(
+            phone: any(named: 'phone'),
+            data: any(named: 'data'),
+          )).thenAnswer((_) async {});
+
+      await tester.pumpWidget(createTestWidget(const PhoneLoginScreen()));
+      await tester.pumpAndSettle();
+
+      await tester.enterText(find.byType(TextField), '1712345678');
+      await tester.tap(find.text('ওটিপি পাঠান / Send OTP'));
+      await tester.pumpAndSettle();
+
+      verify(() => mockAuthRepository.signInWithOtp(
+            phone: '+8801712345678',
+            data: any(named: 'data'),
+          )).called(1);
+
+      expect(find.byType(OtpVerificationScreen), findsOneWidget);
+      expect(find.text('+8801712345678'), findsOneWidget);
+    });
+  });
+
+  group('OtpVerificationScreen Tests', () {
+    testWidgets('Displays phone number, countdown timer and 6 boxes', (tester) async {
+      await tester.pumpWidget(
+        createTestWidget(const OtpVerificationScreen(phone: '+8801712345678')),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.text('+8801712345678'), findsOneWidget);
+      expect(find.textContaining('পুনরায় কোড পাঠান'), findsOneWidget);
+      expect(find.text('যাচাই করুন ও এগিয়ে যান'), findsOneWidget);
+    });
+
+    testWidgets('Submits verifyOtp when 6 digits are entered', (tester) async {
+      final mockAuthResponse = AuthResponse(
+        session: Session(
+          accessToken: 'token-abc',
+          tokenType: 'bearer',
+          user: User(
+            id: 'u-abc',
+            appMetadata: {},
+            userMetadata: {},
+            aud: 'authenticated',
+            createdAt: '2026-11-04T00:00:00Z',
+          ),
+        ),
+      );
+
+      when(() => mockAuthRepository.verifyOtp(
+            phone: any(named: 'phone'),
+            token: any(named: 'token'),
+          )).thenAnswer((_) async => mockAuthResponse);
+
+      await tester.pumpWidget(
+        createTestWidget(const OtpVerificationScreen(phone: '+8801712345678')),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.enterText(find.byType(TextField), '123456');
+      await tester.pumpAndSettle();
+
+      verify(() => mockAuthRepository.verifyOtp(
+            phone: '+8801712345678',
+            token: '123456',
+          )).called(1);
+    });
+  });
+}
