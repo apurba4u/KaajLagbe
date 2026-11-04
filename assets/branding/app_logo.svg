@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="coralGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF5263" />
+      <stop offset="100%" stop-color="#E83E4D" />
+    </linearGradient>
+    <filter id="subtleGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000000" flood-opacity="0.15" />
+    </filter>
+  </defs>
+
+  <!-- Squircle Base in Frozen Primary #E83E4D -->
+  <rect width="1024" height="1024" rx="224" fill="url(#coralGrad)" />
+  
+  <!-- Subtle Inset Highlight -->
+  <rect x="24" y="24" width="976" height="976" rx="200" fill="none" stroke="#FFFFFF" stroke-opacity="0.15" stroke-width="6" />
+
+  <!-- White Crossed Tools (Hammer & Wrench) -->
+  <g filter="url(#subtleGlow)" fill="#FFFFFF">
+    <!-- Wrench (Tilted -45 deg) -->
+    <g transform="translate(512, 512) rotate(-45)">
+      <!-- Wrench Handle -->
+      <rect x="-36" y="-30" width="72" height="380" rx="36" />
+      <!-- Wrench Bottom Ring -->
+      <circle cx="0" cy="340" r="48" />
+      <circle cx="0" cy="340" r="22" fill="#E83E4D" />
+      <!-- Wrench Head -->
+      <path d="M-90,-160 C-90,-240 -30,-290 0,-290 C30,-290 90,-240 90,-160 C90,-110 50,-60 0,-60 C-50,-60 -90,-110 -90,-160 Z" />
+      <!-- Jaw Cutout -->
+      <polygon points="0,-130 -36,-270 36,-270" fill="#E83E4D" />
+      <circle cx="0" cy="-140" r="32" fill="#E83E4D" />
+    </g>
+
+    <!-- Hammer (Tilted +45 deg) -->
+    <g transform="translate(512, 512) rotate(45)">
+      <!-- Hammer Handle -->
+      <rect x="-32" y="-50" width="64" height="400" rx="32" />
+      <!-- Hammer Grip Ring Detail -->
+      <rect x="-36" y="250" width="72" height="18" rx="8" fill="#F8F9FA" opacity="0.6" />
+      <rect x="-36" y="285" width="72" height="18" rx="8" fill="#F8F9FA" opacity="0.6" />
+      <!-- Hammer Head -->
+      <rect x="-140" y="-210" width="280" height="96" rx="20" />
+      <!-- Hammer Face Bevel -->
+      <path d="M140,-200 L165,-190 L165,-134 L140,-124 Z" />
+      <!-- Claw Curve -->
+      <path d="M-140,-200 C-180,-190 -220,-150 -240,-90 C-210,-120 -170,-130 -140,-130 Z" />
+    </g>
+  </g>
+</svg>
