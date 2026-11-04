@@ -3,8 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../../core/config/supabase_config.dart';
 import '../../../../core/constants/app_constants.dart';
+import '../../../../core/presentation/widgets/language_toggle_button.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../auth_providers.dart';
 import 'profile_setup_screen.dart';
 
@@ -22,10 +24,12 @@ class _RoleSelectionScreenState extends ConsumerState<RoleSelectionScreen> {
   String? _errorMessage;
 
   Future<void> _handleContinue() async {
+    final l10n = AppLocalizations.of(context)!;
+
     // Admin is never selectable
     if (_selectedRole == UserRole.admin) {
       setState(() {
-        _errorMessage = 'অ্যাডমিন ভূমিকা নির্বাচনযোগ্য নয় / Admin role cannot be selected.';
+        _errorMessage = l10n.roleAdminBlockedError;
       });
       return;
     }
@@ -60,14 +64,14 @@ class _RoleSelectionScreenState extends ConsumerState<RoleSelectionScreen> {
       );
     } else {
       setState(() {
-        _errorMessage =
-            'ভূমিকা সংরক্ষণ করতে সমস্যা হয়েছে। ইন্টারনেট সংযোগ পরীক্ষা করুন।';
+        _errorMessage = l10n.roleSaveError;
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final authState = ref.watch(authControllerProvider);
     final isLoading = authState.isLoading;
 
@@ -121,21 +125,7 @@ class _RoleSelectionScreenState extends ConsumerState<RoleSelectionScreen> {
                       ),
                     ],
                   ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: AppColors.surface,
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: AppColors.outline),
-                    ),
-                    child: Text(
-                      'বাং | EN',
-                      style: AppTextStyles.labelSmall.copyWith(
-                        color: AppColors.textMuted,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
+                  const LanguageTogglePill(),
                 ],
               ),
 
@@ -161,7 +151,7 @@ class _RoleSelectionScreenState extends ConsumerState<RoleSelectionScreen> {
                     ),
                     const SizedBox(width: 4),
                     Text(
-                      'নিরাপদ ও সহজ শুরু',
+                      l10n.roleSelectionTrustBadge,
                       style: AppTextStyles.labelSmall.copyWith(
                         color: AppColors.secondary,
                         fontWeight: FontWeight.bold,
@@ -174,7 +164,7 @@ class _RoleSelectionScreenState extends ConsumerState<RoleSelectionScreen> {
               const SizedBox(height: 10),
 
               Text(
-                'আপনার ভূমিকা নির্বাচন করুন',
+                l10n.roleSelectionTitle,
                 style: AppTextStyles.headlineLarge.copyWith(
                   fontWeight: FontWeight.w800,
                   color: AppColors.onSurface,
@@ -184,15 +174,8 @@ class _RoleSelectionScreenState extends ConsumerState<RoleSelectionScreen> {
               const SizedBox(height: 4),
 
               Text(
-                'আপনি কীভাবে KaajLagbe ব্যবহার করতে চান?',
+                l10n.roleSelectionSubtitle,
                 style: AppTextStyles.bodyMedium.copyWith(
-                  color: AppColors.textMuted,
-                ),
-              ),
-
-              Text(
-                'Choose how you\'d like to use KaajLagbe',
-                style: AppTextStyles.bodySmall.copyWith(
                   color: AppColors.textMuted,
                 ),
               ),
@@ -206,13 +189,12 @@ class _RoleSelectionScreenState extends ConsumerState<RoleSelectionScreen> {
                 icon: Icons.home_repair_service_rounded,
                 iconColor: AppColors.primary,
                 iconBgColor: AppColors.primaryContainer.withValues(alpha: 0.3),
-                title: 'আমার সেবা প্রয়োজন',
-                roleBadge: 'গ্রাহক / Customer',
-                description:
-                    'বাসা বা অফিসের কাজের জন্য যাচাইকৃত ও বিশ্বস্ত কর্মী খুঁজে নিন ও বুক করুন',
-                perks: const [
-                  'যাচাইকৃত দক্ষ কর্মী',
-                  'স্বচ্ছ রেট ও সরাসরি বুকিং',
+                title: l10n.customerRoleTitle,
+                roleBadge: l10n.customerRoleBadge,
+                description: l10n.customerRoleSubtitle,
+                perks: [
+                  l10n.customerPerk1,
+                  l10n.customerPerk2,
                 ],
                 onTap: () {
                   setState(() {
@@ -230,13 +212,12 @@ class _RoleSelectionScreenState extends ConsumerState<RoleSelectionScreen> {
                 icon: Icons.engineering_rounded,
                 iconColor: AppColors.secondary,
                 iconBgColor: AppColors.secondaryContainer.withValues(alpha: 0.3),
-                title: 'আমি কাজ করতে চাই',
-                roleBadge: 'কর্মী / Labour',
-                description:
-                    'আপনার দক্ষতা যোগ করুন, সরাসরি বুকিং পান এবং আয় বৃদ্ধি করুন',
-                perks: const [
-                  'সরাসরি পেমেন্ট',
-                  'নতুন কাজের নিয়মিত সুযোগ',
+                title: l10n.labourRoleTitle,
+                roleBadge: l10n.labourRoleBadge,
+                description: l10n.labourRoleSubtitle,
+                perks: [
+                  l10n.labourPerk1,
+                  l10n.labourPerk2,
                 ],
                 onTap: () {
                   setState(() {
@@ -273,48 +254,9 @@ class _RoleSelectionScreenState extends ConsumerState<RoleSelectionScreen> {
                 ),
               ],
 
-              const SizedBox(height: 24),
-
-              // 5. Verification Assurance Card
-              Container(
-                padding: const EdgeInsets.all(14),
-                decoration: BoxDecoration(
-                  color: AppColors.surface,
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: AppColors.outline),
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                      width: 32,
-                      height: 32,
-                      decoration: BoxDecoration(
-                        color: AppColors.secondaryContainer.withValues(alpha: 0.3),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: const Icon(
-                        Icons.shield_rounded,
-                        color: AppColors.secondary,
-                        size: 18,
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: Text(
-                        'জাতীয় পরিচয়পত্র যাচাইকরণ বাধ্যতামূলক • ১০০% সুরক্ষিত প্ল্যাটফর্ম',
-                        style: AppTextStyles.labelSmall.copyWith(
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.onSurface,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
               const SizedBox(height: 28),
 
-              // 6. Continue CTA Button
+              // 5. Submit Action Button
               SizedBox(
                 width: double.infinity,
                 height: 52,
@@ -341,7 +283,7 @@ class _RoleSelectionScreenState extends ConsumerState<RoleSelectionScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'চালিয়ে যান / Continue',
+                              l10n.continueAction,
                               style: AppTextStyles.labelLarge.copyWith(
                                 color: AppColors.onPrimary,
                                 fontWeight: FontWeight.bold,
@@ -353,19 +295,7 @@ class _RoleSelectionScreenState extends ConsumerState<RoleSelectionScreen> {
                         ),
                 ),
               ),
-
-              const SizedBox(height: 12),
-
-              Center(
-                child: Text(
-                  'এগিয়ে যাওয়ার মাধ্যমে আপনি KaajLagbe-এর নিয়মাবলীতে সম্মতি জানাচ্ছেন',
-                  style: AppTextStyles.bodySmall.copyWith(
-                    color: AppColors.textMuted,
-                    fontSize: 11,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
+              const SizedBox(height: 16),
             ],
           ),
         ),
@@ -389,19 +319,20 @@ class _RoleSelectionScreenState extends ConsumerState<RoleSelectionScreen> {
       onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        padding: const EdgeInsets.all(18),
+        width: double.infinity,
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: AppColors.surface,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: isSelected ? AppColors.primary : AppColors.outline,
-            width: isSelected ? 2.0 : 1.0,
+            color: isSelected ? iconColor : AppColors.outline,
+            width: isSelected ? 2 : 1,
           ),
           boxShadow: isSelected
               ? [
                   BoxShadow(
-                    color: AppColors.primary.withValues(alpha: 0.1),
-                    blurRadius: 12,
+                    color: iconColor.withValues(alpha: 0.12),
+                    blurRadius: 16,
                     offset: const Offset(0, 4),
                   ),
                 ]
@@ -411,62 +342,61 @@ class _RoleSelectionScreenState extends ConsumerState<RoleSelectionScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  width: 48,
-                  height: 48,
-                  decoration: BoxDecoration(
-                    color: iconBgColor,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Icon(icon, color: iconColor, size: 26),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        title,
-                        style: AppTextStyles.headlineSmall.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.onSurface,
-                        ),
+                Row(
+                  children: [
+                    Container(
+                      width: 44,
+                      height: 44,
+                      decoration: BoxDecoration(
+                        color: iconBgColor,
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                      const SizedBox(height: 2),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                        decoration: BoxDecoration(
-                          color: isSelected
-                              ? AppColors.primaryContainer.withValues(alpha: 0.5)
-                              : AppColors.background,
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        child: Text(
-                          roleBadge,
-                          style: AppTextStyles.labelSmall.copyWith(
-                            color: isSelected ? AppColors.primary : AppColors.textMuted,
+                      child: Icon(icon, color: iconColor, size: 24),
+                    ),
+                    const SizedBox(width: 12),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          title,
+                          style: AppTextStyles.titleMedium.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                      ),
-                    ],
-                  ),
+                        Container(
+                          margin: const EdgeInsets.only(top: 2),
+                          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                          decoration: BoxDecoration(
+                            color: iconBgColor,
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          child: Text(
+                            roleBadge,
+                            style: AppTextStyles.labelSmall.copyWith(
+                              color: iconColor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-                // Radio indicator
                 Container(
-                  width: 24,
-                  height: 24,
+                  width: 22,
+                  height: 22,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: isSelected ? AppColors.primary : Colors.transparent,
                     border: Border.all(
-                      color: isSelected ? AppColors.primary : AppColors.outline,
+                      color: isSelected ? iconColor : AppColors.outline,
                       width: 2,
                     ),
+                    color: isSelected ? iconColor : Colors.transparent,
                   ),
                   child: isSelected
-                      ? const Icon(Icons.check, size: 16, color: Colors.white)
+                      ? const Icon(Icons.check, size: 14, color: Colors.white)
                       : null,
                 ),
               ],
@@ -475,36 +405,30 @@ class _RoleSelectionScreenState extends ConsumerState<RoleSelectionScreen> {
             Text(
               description,
               style: AppTextStyles.bodyMedium.copyWith(
-                color: AppColors.onSurfaceVariant,
+                color: AppColors.textMuted,
               ),
             ),
             const SizedBox(height: 12),
-            const Divider(height: 1, color: AppColors.outline),
-            const SizedBox(height: 10),
-            Wrap(
-              spacing: 16,
-              runSpacing: 6,
-              children: perks.map((perk) {
-                return Row(
-                  mainAxisSize: MainAxisSize.min,
+            ...perks.map((perk) {
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: Row(
                   children: [
-                    const Icon(
-                      Icons.check_circle_rounded,
-                      size: 15,
-                      color: AppColors.secondary,
-                    ),
+                    Icon(Icons.check_circle_rounded, size: 14, color: iconColor),
                     const SizedBox(width: 6),
-                    Text(
-                      perk,
-                      style: AppTextStyles.labelSmall.copyWith(
-                        color: AppColors.onSurface,
-                        fontWeight: FontWeight.w600,
+                    Expanded(
+                      child: Text(
+                        perk,
+                        style: AppTextStyles.labelSmall.copyWith(
+                          color: AppColors.onSurface,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ],
-                );
-              }).toList(),
-            ),
+                ),
+              );
+            }),
           ],
         ),
       ),

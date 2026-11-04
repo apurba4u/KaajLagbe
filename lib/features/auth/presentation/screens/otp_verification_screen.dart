@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/constants/app_constants.dart';
+import '../../../../core/localization/locale_provider.dart';
+import '../../../../core/presentation/widgets/language_toggle_button.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/utils/number_formatter.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../auth_providers.dart';
 
 /// 6-Digit OTP Verification Screen strictly adhering to Stitch design 89de646ff6aa417fb42572f01811b75f
@@ -73,10 +77,14 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
   }
 
   Future<void> _verifyOtp() async {
-    final token = _otpController.text.trim();
+    final l10n = AppLocalizations.of(context)!;
+    final rawText = _otpController.text.trim();
+    // Convert any Bengali digits to ASCII
+    final token = NumberFormatter.toAsciiDigits(rawText);
+
     if (token.length != 6) {
       setState(() {
-        _errorMessage = 'অনুগ্রহ করে সম্পূর্ণ ৬-সংখ্যার ওটিপি কোড দিন';
+        _errorMessage = l10n.otpInvalidLength;
       });
       return;
     }
@@ -95,7 +103,7 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
 
     if (response == null) {
       setState(() {
-        _errorMessage = 'ওটিপি যাচাইকরণ ব্যর্থ হয়েছে। সঠিক কোড দিন অথবা পুনরায় কোড পাঠান।';
+        _errorMessage = l10n.otpVerificationError;
       });
     } else {
       // Successfully authenticated.
@@ -106,6 +114,7 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
 
   Future<void> _resendOtp() async {
     if (!_canResend) return;
+    final l10n = AppLocalizations.of(context)!;
 
     setState(() {
       _errorMessage = null;
@@ -119,29 +128,35 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
 
     if (success) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('নতুন ওটিপি কোড পাঠানো হয়েছে / OTP sent successfully'),
+        SnackBar(
+          content: Text(l10n.otpResentSuccess),
           backgroundColor: AppColors.secondary,
         ),
       );
       _startCountdown();
     } else {
       setState(() {
-        _errorMessage = 'ওটিপি পুনরায় পাঠাতে সমস্যা হয়েছে। একটু পর চেষ্টা করুন।';
+        _errorMessage = l10n.otpResendFailed;
       });
     }
   }
 
-  String _formatTimer(int seconds) {
+  String _formatTimer(int seconds, String languageCode) {
     final minutes = seconds ~/ 60;
     final remainingSeconds = seconds % 60;
     final minStr = minutes.toString().padLeft(2, '0');
     final secStr = remainingSeconds.toString().padLeft(2, '0');
-    return '$minStr:$secStr';
+    final formatted = '$minStr:$secStr';
+    if (languageCode == 'bn') {
+      return NumberFormatter.toBengaliDigits(formatted);
+    }
+    return formatted;
   }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final currentLocale = ref.watch(localeProvider);
     final authState = ref.watch(authControllerProvider);
     final isLoading = authState.isLoading;
 
@@ -191,21 +206,7 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
                       ),
                     ],
                   ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: AppColors.surface,
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: AppColors.outline),
-                    ),
-                    child: Text(
-                      'বাং | EN',
-                      style: AppTextStyles.labelSmall.copyWith(
-                        color: AppColors.textMuted,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
+                  const LanguageTogglePill(),
                 ],
               ),
 
@@ -234,9 +235,9 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
 
               const SizedBox(height: 18),
 
-              // Headline & Bengali Subtitle
+              // Headline & Localized Subtitle
               Text(
-                'ওটিপি যাচাই করুন',
+                l10n.otpTitle,
                 style: AppTextStyles.headlineLarge.copyWith(
                   fontWeight: FontWeight.w800,
                 ),
@@ -246,7 +247,7 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
               const SizedBox(height: 8),
 
               Text(
-                'আপনার পরিচয় নিশ্চিত করতে নিচের নম্বরে একটি ৬-সংখ্যার গোপন কোড পাঠানো হয়েছে',
+                l10n.otpSubtitle(widget.phone),
                 style: AppTextStyles.bodyMedium.copyWith(
                   color: AppColors.textMuted,
                 ),
@@ -288,7 +289,7 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
                           const Icon(Icons.edit_rounded, size: 14, color: AppColors.primary),
                           const SizedBox(width: 2),
                           Text(
-                            'এডিট',
+                            l10n.otpEditNumber,
                             style: AppTextStyles.labelSmall.copyWith(
                               color: AppColors.primary,
                               fontWeight: FontWeight.bold,
@@ -305,7 +306,7 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
 
               // 3. 6-Digit Matrix Box Display
               Text(
-                '৬-সংখ্যার ওটিপি লিখুন / Enter 6-digit OTP',
+                l10n.otpInputPrompt,
                 style: AppTextStyles.labelMedium.copyWith(
                   color: AppColors.textMuted,
                 ),
@@ -316,7 +317,7 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
               Stack(
                 alignment: Alignment.center,
                 children: [
-                  // Hidden text input field for native keyboard input
+                  // Hidden text input field for keyboard input (supports Bengali & ASCII digits)
                   Opacity(
                     opacity: 0.0,
                     child: SizedBox(
@@ -327,12 +328,13 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
                         focusNode: _focusNode,
                         keyboardType: TextInputType.number,
                         inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly,
+                          FilteringTextInputFormatter.allow(RegExp(r'[0-9০-৯]')),
                           LengthLimitingTextInputFormatter(6),
                         ],
                         onChanged: (value) {
                           setState(() {});
-                          if (value.length == 6) {
+                          final clean = NumberFormatter.toAsciiDigits(value.trim());
+                          if (clean.length == 6) {
                             _verifyOtp();
                           }
                         },
@@ -430,8 +432,10 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
                   const SizedBox(width: 6),
                   Text(
                     _canResend
-                        ? 'ওটিপি পাননি?'
-                        : 'পুনরায় কোড পাঠান (${_formatTimer(_secondsRemaining)})',
+                        ? l10n.otpResendCodePrompt
+                        : l10n.otpResendIn(
+                            _formatTimer(_secondsRemaining, currentLocale.languageCode),
+                          ),
                     style: AppTextStyles.labelMedium.copyWith(
                       color: AppColors.textMuted,
                       fontWeight: FontWeight.w600,
@@ -442,7 +446,7 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
                     TextButton(
                       onPressed: isLoading ? null : _resendOtp,
                       child: Text(
-                        'এসএমএস পুনরায় পাঠান',
+                        l10n.otpResendActionSms,
                         style: AppTextStyles.labelMedium.copyWith(
                           color: AppColors.primary,
                           fontWeight: FontWeight.bold,
@@ -482,7 +486,7 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'যাচাই করুন ও এগিয়ে যান',
+                              l10n.verifyAndProceed,
                               style: AppTextStyles.labelLarge.copyWith(
                                 color: AppColors.onPrimary,
                                 fontWeight: FontWeight.bold,
@@ -518,7 +522,7 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
                         ),
                         const SizedBox(width: 6),
                         Text(
-                          '১০০% নিরাপদ যাচাইকরণ',
+                          l10n.otpSecuritySafe,
                           style: AppTextStyles.labelSmall.copyWith(
                             fontWeight: FontWeight.w700,
                             color: AppColors.onSurface,
@@ -544,7 +548,7 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
                         ),
                         const SizedBox(width: 6),
                         Text(
-                          'NID পরীক্ষিত প্লাটফর্ম',
+                          l10n.otpSecurityNid,
                           style: AppTextStyles.labelSmall.copyWith(
                             fontWeight: FontWeight.w700,
                             color: AppColors.onSurface,
