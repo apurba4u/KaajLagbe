@@ -103,5 +103,40 @@ void main() {
       expect(container.read(authControllerProvider).isLoading, isFalse);
       expect(container.read(authControllerProvider).hasError, isFalse);
     });
+
+    test('signInWithDevPhone delegates to AuthRepository and returns AuthResponse', () async {
+      final mockResponse = AuthResponse(
+        session: Session(
+          accessToken: 'test-token',
+          tokenType: 'bearer',
+          user: User(
+            id: 'dev-user-id',
+            appMetadata: {},
+            userMetadata: {},
+            aud: 'authenticated',
+            createdAt: '2026-11-04T00:00:00Z',
+          ),
+        ),
+      );
+
+      when(() => mockAuthRepository.signInWithDevPhone(
+            phone: any(named: 'phone'),
+            data: any(named: 'data'),
+          )).thenAnswer((_) async => mockResponse);
+
+      final controller = container.read(authControllerProvider.notifier);
+      final response = await controller.signInWithDevPhone(
+        phone: '+8801712345678',
+        initialRole: UserRole.labour,
+      );
+
+      expect(response, equals(mockResponse));
+      expect(container.read(authControllerProvider).isLoading, isFalse);
+      expect(container.read(authControllerProvider).hasError, isFalse);
+      verify(() => mockAuthRepository.signInWithDevPhone(
+            phone: '+8801712345678',
+            data: {'role': 'labour'},
+          )).called(1);
+    });
   });
 }

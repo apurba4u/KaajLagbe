@@ -74,6 +74,24 @@ class AuthController extends StateNotifier<AsyncValue<void>> {
     }
   }
 
+  /// Dev-only fast sign-in bypassing SMS OTP.
+  /// Hard-guarded: throws [UnsupportedError] in release mode.
+  Future<AuthResponse?> signInWithDevPhone({
+    required String phone,
+    UserRole? initialRole,
+  }) async {
+    state = const AsyncValue.loading();
+    try {
+      final meta = initialRole != null ? {'role': initialRole.value} : null;
+      final response = await _repository.signInWithDevPhone(phone: phone, data: meta);
+      state = const AsyncValue.data(null);
+      return response;
+    } catch (e, st) {
+      state = AsyncValue.error(e, st);
+      return null;
+    }
+  }
+
   /// Sign out
   Future<void> signOut() async {
     state = const AsyncValue.loading();

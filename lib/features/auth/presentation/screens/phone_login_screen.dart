@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../core/config/env_config.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
@@ -100,6 +101,39 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
     } else {
       setState(() {
         _errorMessage = 'ওটিপি পাঠাতে সমস্যা হয়েছে। ইন্টারনেট সংযোগ ও নম্বর পরীক্ষা করুন।';
+      });
+    }
+  }
+
+  Future<void> _submitDevLogin() async {
+    final rawInput = _phoneController.text.trim();
+    final cleaned = _cleanPhoneNumber(rawInput);
+    final error = _validatePhone(cleaned);
+
+    if (error != null) {
+      setState(() {
+        _errorMessage = error;
+      });
+      return;
+    }
+
+    final fullPhone = '+880$cleaned';
+
+    setState(() {
+      _errorMessage = null;
+    });
+
+    final authController = ref.read(authControllerProvider.notifier);
+    final response = await authController.signInWithDevPhone(
+      phone: fullPhone,
+      initialRole: _isWorkerIntent ? UserRole.labour : UserRole.customer,
+    );
+
+    if (!mounted) return;
+
+    if (response == null) {
+      setState(() {
+        _errorMessage = 'ডেভ মোড লগইনে সমস্যা হয়েছে। Supabase ইমেইল প্রোভাইডার চেক করুন।';
       });
     }
   }
@@ -326,6 +360,32 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    if (!EnvConfig.otpRequired) ...[
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                        margin: const EdgeInsets.only(bottom: 12),
+                        decoration: BoxDecoration(
+                          color: AppColors.tertiary.withValues(alpha: 0.1),
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: AppColors.tertiary),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(Icons.developer_mode_rounded, size: 16, color: AppColors.tertiary),
+                            const SizedBox(width: 6),
+                            Text(
+                              'DEV MODE: OTP skipped',
+                              style: AppTextStyles.labelSmall.copyWith(
+                                color: AppColors.tertiary,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                     Wrap(
                       alignment: WrapAlignment.spaceBetween,
                       crossAxisAlignment: WrapCrossAlignment.center,
@@ -527,6 +587,40 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                               ),
                       ),
                     ),
+
+                    if (!EnvConfig.otpRequired) ...[
+                      const SizedBox(height: 12),
+                      SizedBox(
+                        width: double.infinity,
+                        height: 48,
+                        child: OutlinedButton(
+                          onPressed: isLoading ? null : _submitDevLogin,
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: AppColors.primary,
+                            side: const BorderSide(color: AppColors.primary, width: 1.5),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(Icons.bolt_rounded, size: 18),
+                              const SizedBox(width: 6),
+                              Flexible(
+                                child: Text(
+                                  'Continue without OTP (dev mode)',
+                                  style: AppTextStyles.labelLarge.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
 
                     const SizedBox(height: 16),
 

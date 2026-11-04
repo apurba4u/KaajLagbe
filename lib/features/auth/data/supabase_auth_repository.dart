@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/constants/app_constants.dart';
 import '../domain/auth_repository.dart';
@@ -39,6 +40,39 @@ class SupabaseAuthRepository implements AuthRepository {
       );
       return response;
     } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<AuthResponse> signInWithDevPhone({
+    required String phone,
+    Map<String, dynamic>? data,
+  }) async {
+    if (kReleaseMode) {
+      throw UnsupportedError('Dev-mode phone login is strictly disabled in release builds.');
+    }
+    final cleanDigits = phone.replaceAll(RegExp(r'\D'), '');
+    final devEmail = 'dev_$cleanDigits@kaajlagbe.local';
+    final devPassword = 'DevKaajLagbe!$cleanDigits';
+
+    try {
+      return await _supabase.auth.signInWithPassword(
+        email: devEmail,
+        password: devPassword,
+      );
+    } on AuthException catch (e) {
+      final msg = e.message.toLowerCase();
+      if (msg.contains('invalid') || msg.contains('not found')) {
+        return await _supabase.auth.signUp(
+          email: devEmail,
+          password: devPassword,
+          data: {
+            'phone': phone,
+            ...?data,
+          },
+        );
+      }
       rethrow;
     }
   }

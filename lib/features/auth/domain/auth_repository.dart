@@ -17,6 +17,14 @@ abstract class AuthRepository {
     OtpType type = OtpType.sms,
   });
 
+  /// Dev-only password authentication using phone-derived credentials.
+  /// Bypasses SMS provider limits during local testing.
+  /// Hard-guarded: throws [UnsupportedError] in release mode.
+  Future<AuthResponse> signInWithDevPhone({
+    required String phone,
+    Map<String, dynamic>? data,
+  });
+
   /// Signs the currently authenticated user out
   Future<void> signOut();
 

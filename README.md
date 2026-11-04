@@ -124,5 +124,38 @@ To connect your local app with your live Supabase project, follow these manual s
    - Under **Authentication** -> **Providers** -> **Phone** -> **Test phone numbers**:
    - Add e.g. `+8801700000000` with OTP `123456`.
    - Add e.g. `+8801800000000` with OTP `123456`.
-4. **Confirm Avatars Storage Bucket**:
-   - Go to **Storage** -> Buckets. Verify the `avatars` bucket is marked public with 2MB limit.
+---
+
+## Re-enabling OTP & Dev Mode Fast Login
+
+During development and testing, sending real SMS OTPs can consume credits or encounter third-party rate limits. KaajLagbe provides an environment toggle with a strict compile-time release guard:
+
+### 1. The `OTP_REQUIRED` Configuration
+In `.env`:
+```env
+# Set to false to enable OTP skip in local debug builds
+OTP_REQUIRED=true
+```
+
+- **Default Value**: `true` (standard SMS OTP verification active).
+- **Release Guard (`kReleaseMode`)**: In release builds (e.g., `flutter build apk --release` or `flutter build web --release`), `EnvConfig.otpRequired` evaluates strictly to `true` regardless of `.env`. The dev-mode bypass code throws an `UnsupportedError` if invoked in release mode.
+
+### 2. How Dev-Mode Fast Login Works
+When `OTP_REQUIRED=false` in debug mode:
+1. The Phone Login screen displays a visible `DEV MODE: OTP skipped` banner.
+2. A fast-action button `Continue without OTP (dev mode)` appears below the standard OTP button.
+3. Tapping it generates a deterministic dev identity (`dev_<cleanedDigits>@kaajlagbe.local`) and authenticates via Supabase Auth without sending SMS.
+4. Supabase's `handle_new_auth_user()` database trigger extracts the phone number and metadata, auto-populating `public.users` with default `pending_verification` status and enforcing all standard Row Level Security (RLS) constraints.
+
+### 3. Supabase Requirements for Dev-Mode Fast Login
+If using `OTP_REQUIRED=false`:
+- Navigate to **Authentication** -> **Providers** -> **Email** in the Supabase Dashboard.
+- Ensure **Email provider** is **Enabled**.
+- Ensure **Confirm email** is **Disabled** (so test accounts can log in immediately).
+
+### 4. How to Re-Enable Strict SMS OTP
+To return to full SMS OTP behavior at any time:
+1. In `.env`, set `OTP_REQUIRED=true` (or remove the line to restore default `true`).
+2. Restart the application.
+3. Configure your SMS provider (Twilio / MessageBird) or add test phone numbers under **Authentication** -> **Providers** -> **Phone** in Supabase.
+

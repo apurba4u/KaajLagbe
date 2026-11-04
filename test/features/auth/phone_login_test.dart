@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -107,6 +108,45 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('Renders dev mode banner and triggers signInWithDevPhone when OTP_REQUIRED is false', (tester) async {
+      addTearDown(() {
+        dotenv.testLoad(fileInput: 'OTP_REQUIRED=true');
+      });
+      dotenv.testLoad(fileInput: 'OTP_REQUIRED=false');
+
+      when(() => mockAuthRepository.signInWithDevPhone(
+            phone: any(named: 'phone'),
+            data: any(named: 'data'),
+          )).thenAnswer((_) async => AuthResponse(
+            session: Session(
+              accessToken: 'mock-access-token',
+              tokenType: 'bearer',
+              user: User(
+                id: 'mock-dev-id',
+                appMetadata: {},
+                userMetadata: {},
+                aud: 'authenticated',
+                createdAt: '2026-11-04T00:00:00Z',
+              ),
+            ),
+          ));
+
+      await tester.pumpWidget(createTestWidget(const PhoneLoginScreen()));
+      await tester.pumpAndSettle();
+
+      expect(find.text('DEV MODE: OTP skipped'), findsOneWidget);
+      expect(find.text('Continue without OTP (dev mode)'), findsOneWidget);
+
+      await tester.enterText(find.byType(TextField), '1712345678');
+      await tester.tap(find.text('Continue without OTP (dev mode)'));
+      await tester.pumpAndSettle();
+
+      verify(() => mockAuthRepository.signInWithDevPhone(
+            phone: '+8801712345678',
+            data: any(named: 'data'),
+          )).called(1);
     });
   });
 

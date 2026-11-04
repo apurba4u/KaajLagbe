@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Application Environment Configuration
@@ -20,9 +21,14 @@ class EnvConfig {
     }
   }
 
+  static String? _getEnvVar(String key) {
+    if (!dotenv.isInitialized) return null;
+    return dotenv.maybeGet(key);
+  }
+
   /// Supabase project URL
   static String get supabaseUrl {
-    return dotenv.env['SUPABASE_URL'] ??
+    return _getEnvVar('SUPABASE_URL') ??
         const String.fromEnvironment(
           'SUPABASE_URL',
           defaultValue: 'https://placeholder.supabase.co',
@@ -31,7 +37,7 @@ class EnvConfig {
 
   /// Supabase Anon / Public Key (Safe for client apps)
   static String get supabaseAnonKey {
-    return dotenv.env['SUPABASE_ANON_KEY'] ??
+    return _getEnvVar('SUPABASE_ANON_KEY') ??
         const String.fromEnvironment(
           'SUPABASE_ANON_KEY',
           defaultValue: 'placeholder-anon-key',
@@ -40,11 +46,21 @@ class EnvConfig {
 
   /// App Environment name (development, staging, production)
   static String get appEnv {
-    return dotenv.env['APP_ENV'] ??
+    return _getEnvVar('APP_ENV') ??
         const String.fromEnvironment(
           'APP_ENV',
           defaultValue: 'development',
         );
+  }
+
+  /// Returns whether SMS OTP is required for authentication.
+  /// Hard-locked to `true` in release mode (`kReleaseMode == true`).
+  /// In debug/profile mode, can be set to `false` via OTP_REQUIRED=false in `.env`.
+  static bool get otpRequired {
+    if (kReleaseMode) return true;
+    final val = _getEnvVar('OTP_REQUIRED') ??
+        const String.fromEnvironment('OTP_REQUIRED', defaultValue: 'true');
+    return val.toLowerCase() != 'false';
   }
 
   /// Returns true if valid Supabase credentials have been configured
