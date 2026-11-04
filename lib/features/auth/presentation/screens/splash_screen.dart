@@ -37,37 +37,39 @@ class SplashScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        // 1. Top Bar: Presence & Reusable Language Toggle
+                        // 1. Top Bar: Presence & Reusable Language Toggle (Wrap for small screens)
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  l10n.splashLocationDhaka,
-                                  style: AppTextStyles.labelSmall.copyWith(
-                                    color: AppColors.textMuted,
+                            Flexible(
+                              child: Wrap(
+                                crossAxisAlignment: WrapCrossAlignment.center,
+                                spacing: 6,
+                                runSpacing: 4,
+                                children: [
+                                  Text(
+                                    l10n.splashLocationDhaka,
+                                    style: AppTextStyles.labelSmall.copyWith(
+                                      color: AppColors.textMuted,
+                                    ),
                                   ),
-                                ),
-                                const SizedBox(width: 6),
-                                Container(
-                                  width: 6,
-                                  height: 6,
-                                  decoration: const BoxDecoration(
-                                    color: AppColors.secondary,
-                                    shape: BoxShape.circle,
+                                  Container(
+                                    width: 6,
+                                    height: 6,
+                                    decoration: const BoxDecoration(
+                                      color: AppColors.secondary,
+                                      shape: BoxShape.circle,
+                                    ),
                                   ),
-                                ),
-                                const SizedBox(width: 6),
-                                Text(
-                                  l10n.splashLiveService,
-                                  style: AppTextStyles.labelSmall.copyWith(
-                                    color: AppColors.secondary,
-                                    fontWeight: FontWeight.w700,
+                                  Text(
+                                    l10n.splashLiveService,
+                                    style: AppTextStyles.labelSmall.copyWith(
+                                      color: AppColors.secondary,
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                             const LanguageTogglePill(),
                           ],
@@ -152,11 +154,14 @@ class SplashScreen extends StatelessWidget {
                                 color: AppColors.secondary,
                               ),
                               const SizedBox(width: 6),
-                              Text(
-                                l10n.splashVerifiedProsTagline,
-                                style: AppTextStyles.labelMedium.copyWith(
-                                  color: AppColors.secondary,
-                                  fontWeight: FontWeight.w700,
+                              Flexible(
+                                child: Text(
+                                  l10n.splashVerifiedProsTagline,
+                                  style: AppTextStyles.labelMedium.copyWith(
+                                    color: AppColors.secondary,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                  textAlign: TextAlign.center,
                                 ),
                               ),
                             ],

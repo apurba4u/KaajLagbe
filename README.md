@@ -188,4 +188,22 @@ To rapidly test and demo all platform personas without requiring live SMS or man
 > [!NOTE]
 > The Admin account (`1900000001`) is specifically intended for the Flutter Web Admin Panel built in Phase 3 Task 3.4.
 
+---
+
+## Localization (Bangla & English)
+
+KaajLagbe features complete, first-class bilingual localization (Bangla default, `bn`, and English, `en`).
+
+### Core Rules for Developers
+1. **Mandatory Dual-ARB Updates**: Every new user-facing string (labels, buttons, validation errors, dialogs, banners) MUST be added to BOTH `lib/l10n/app_bn.arb` and `lib/l10n/app_en.arb`. Never hardcode user-facing strings in UI widgets.
+2. **Never Mix Languages**: Bilingual slash labels (such as "ওটিপি পাঠান / Send OTP") are strictly forbidden. Use `AppLocalizations.of(context)!.sendOtp` so the UI cleanly renders in the selected language.
+3. **Brand Name Immutability**: The brand name **KaajLagbe** must always remain in English across both languages.
+4. **Numeral & Currency Formatting**:
+   - In Bangla mode, display numbers (scores, timers, countdowns, badges) use Bengali numerals (`০-৯`).
+   - Currency is formatted with the Bangladeshi Taka symbol `৳` (e.g. `৳ ৬০০`).
+   - Phone and OTP input fields accept both Bengali (`০-৯`) and ASCII (`0-9`) characters and normalize them to ASCII before submitting to Supabase.
+5. **Shared Language Toggle**: Use the reusable `LanguageTogglePill` (`lib/core/presentation/widgets/language_toggle_button.dart`) in top app bars, or the interactive language selector in Profile & Settings. Both immediately update the app-wide `localeProvider` and persist the choice in `shared_preferences`.
+6. **Font Fallback**: All typography uses `AppTextStyles` configured with GoogleFonts Plus Jakarta Sans and graceful fallbacks for Bengali glyphs (`Noto Sans Bengali`, `Hind Siliguri`, `sans-serif`).
+
+
 

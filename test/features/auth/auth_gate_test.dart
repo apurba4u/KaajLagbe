@@ -12,6 +12,7 @@ import 'package:kaajlagbe/features/auth/presentation/screens/account_status_scre
 import 'package:kaajlagbe/features/auth/presentation/screens/auth_gate.dart';
 import 'package:kaajlagbe/features/auth/presentation/screens/home_screen_placeholder.dart';
 import 'package:kaajlagbe/features/auth/presentation/screens/phone_login_screen.dart';
+import 'package:kaajlagbe/l10n/app_localizations.dart';
 
 class MockAuthRepository extends Mock implements AuthRepository {}
 class MockUser extends Mock implements User {}
@@ -37,6 +38,9 @@ void main() {
         currentUserProfileProvider.overrideWith((ref) => Stream.value(profile)),
       ],
       child: const MaterialApp(
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        locale: Locale('bn'),
         home: AuthGate(),
       ),
     );
@@ -77,7 +81,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.byType(HomeScreenPlaceholder), findsOneWidget);
-    expect(find.text('Habibur Rahman'), findsOneWidget);
+    expect(find.textContaining('Habibur Rahman'), findsOneWidget);
   });
 
   testWidgets('Authenticated pending labour is routed to AccountStatusScreen', (tester) async {
