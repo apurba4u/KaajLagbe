@@ -133,68 +133,73 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                       FocusScope.of(context).unfocus();
                     },
                   ),
-                  Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                        decoration: BoxDecoration(
-                          color: AppColors.surface,
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color: AppColors.outline),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Icon(
-                              Icons.support_agent_rounded,
-                              size: 16,
-                              color: AppColors.textMuted,
-                            ),
-                            const SizedBox(width: 4),
-                            Text(
-                              'হেল্প',
-                              style: AppTextStyles.labelSmall.copyWith(
-                                color: AppColors.textMuted,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                        decoration: BoxDecoration(
-                          color: AppColors.surface,
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color: AppColors.outline),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              'বাং',
-                              style: AppTextStyles.labelSmall.copyWith(
-                                color: AppColors.primary,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              ' / ',
-                              style: AppTextStyles.labelSmall.copyWith(
-                                color: AppColors.outline,
-                              ),
-                            ),
-                            Text(
-                              'EN',
-                              style: AppTextStyles.labelSmall.copyWith(
+                  Flexible(
+                    child: Wrap(
+                      alignment: WrapAlignment.end,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      spacing: 8,
+                      runSpacing: 4,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                          decoration: BoxDecoration(
+                            color: AppColors.surface,
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(color: AppColors.outline),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(
+                                Icons.support_agent_rounded,
+                                size: 16,
                                 color: AppColors.textMuted,
                               ),
-                            ),
-                          ],
+                              const SizedBox(width: 4),
+                              Text(
+                                'হেল্প',
+                                style: AppTextStyles.labelSmall.copyWith(
+                                  color: AppColors.textMuted,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                          decoration: BoxDecoration(
+                            color: AppColors.surface,
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(color: AppColors.outline),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'বাং',
+                                style: AppTextStyles.labelSmall.copyWith(
+                                  color: AppColors.primary,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                ' / ',
+                                style: AppTextStyles.labelSmall.copyWith(
+                                  color: AppColors.outline,
+                                ),
+                              ),
+                              Text(
+                                'EN',
+                                style: AppTextStyles.labelSmall.copyWith(
+                                  color: AppColors.textMuted,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -236,8 +241,11 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
 
               const SizedBox(height: 12),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              Wrap(
+                alignment: WrapAlignment.center,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                spacing: 6,
+                runSpacing: 4,
                 children: [
                   Text(
                     AppConstants.appName,
@@ -246,7 +254,6 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                       fontWeight: FontWeight.w800,
                     ),
                   ),
-                  const SizedBox(width: 6),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                     decoration: BoxDecoration(
@@ -319,8 +326,11 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    Wrap(
+                      alignment: WrapAlignment.spaceBetween,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      spacing: 8,
+                      runSpacing: 4,
                       children: [
                         Text(
                           'মোবাইল নম্বর *',
@@ -499,12 +509,16 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                               )
                             : Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Text(
-                                    'ওটিপি পাঠান / Send OTP',
-                                    style: AppTextStyles.labelLarge.copyWith(
-                                      color: AppColors.onPrimary,
-                                      fontWeight: FontWeight.bold,
+                                  Flexible(
+                                    child: Text(
+                                      'ওটিপি পাঠান / Send OTP',
+                                      style: AppTextStyles.labelLarge.copyWith(
+                                        color: AppColors.onPrimary,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      overflow: TextOverflow.ellipsis,
                                     ),
                                   ),
                                   const SizedBox(width: 8),
@@ -524,8 +538,9 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                             _isWorkerIntent = !_isWorkerIntent;
                           });
                         },
-                        child: Row(
+                        child: Column(
                           mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
                               _isWorkerIntent
@@ -534,19 +549,30 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                               style: AppTextStyles.bodySmall.copyWith(
                                 color: AppColors.textMuted,
                               ),
+                              textAlign: TextAlign.center,
                             ),
-                            const SizedBox(width: 4),
-                            Text(
-                              _isWorkerIntent ? 'গ্রাহক লগইন' : 'শ্রমিক হিসেবে যুক্ত হন',
-                              style: AppTextStyles.labelSmall.copyWith(
-                                color: AppColors.primary,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const Icon(
-                              Icons.chevron_right_rounded,
-                              size: 16,
-                              color: AppColors.primary,
+                            const SizedBox(height: 4),
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    _isWorkerIntent ? 'গ্রাহক লগইন' : 'শ্রমিক হিসেবে যুক্ত হন',
+                                    style: AppTextStyles.labelSmall.copyWith(
+                                      color: AppColors.primary,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                                const SizedBox(width: 2),
+                                const Icon(
+                                  Icons.chevron_right_rounded,
+                                  size: 16,
+                                  color: AppColors.primary,
+                                ),
+                              ],
                             ),
                           ],
                         ),

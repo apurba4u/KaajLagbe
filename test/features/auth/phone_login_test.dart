@@ -71,6 +71,43 @@ void main() {
       expect(find.byType(OtpVerificationScreen), findsOneWidget);
       expect(find.text('+8801712345678'), findsOneWidget);
     });
+
+    testWidgets('Does not overflow at 320x640 with textScaler 1.3 in both customer and worker mode', (tester) async {
+      tester.view.physicalSize = const Size(320, 640);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(() {
+        tester.view.resetPhysicalSize();
+        tester.view.resetDevicePixelRatio();
+      });
+
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            authRepositoryProvider.overrideWithValue(mockAuthRepository),
+          ],
+          child: const MaterialApp(
+            home: MediaQuery(
+              data: MediaQueryData(
+                size: Size(320, 640),
+                textScaler: TextScaler.linear(1.3),
+              ),
+              child: PhoneLoginScreen(),
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(tester.takeException(), isNull);
+
+      // Toggle to worker intent
+      final toggleFinder = find.byType(TextButton).last;
+      await tester.ensureVisible(toggleFinder);
+      await tester.tap(toggleFinder);
+      await tester.pumpAndSettle();
+
+      expect(tester.takeException(), isNull);
+    });
   });
 
   group('OtpVerificationScreen Tests', () {
