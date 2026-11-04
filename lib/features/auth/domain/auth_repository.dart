@@ -47,5 +47,12 @@ abstract class AuthRepository {
     required String userId,
     required UserRole role,
   });
+
+  /// Uploads avatar image bytes to the 'avatars' storage bucket and updates public.users
+  Future<String> uploadAvatar({
+    required String userId,
+    required List<int> bytes,
+    required String fileExtension,
+  });
 }
 

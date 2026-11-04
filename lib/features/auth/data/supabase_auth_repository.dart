@@ -130,5 +130,26 @@ class SupabaseAuthRepository implements AuthRepository {
       }).eq('id', userId);
     }
   }
+
+  @override
+  Future<String> uploadAvatar({
+    required String userId,
+    required List<int> bytes,
+    required String fileExtension,
+  }) async {
+    try {
+      final path = '$userId/avatar.$fileExtension';
+      await _supabase.storage.from('avatars').uploadBinary(
+            path,
+            bytes as dynamic,
+            fileOptions: const FileOptions(upsert: true),
+          );
+      final publicUrl = _supabase.storage.from('avatars').getPublicUrl(path);
+      await updateProfile(userId: userId, avatarUrl: publicUrl);
+      return publicUrl;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
 

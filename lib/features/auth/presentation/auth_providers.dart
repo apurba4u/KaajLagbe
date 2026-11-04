@@ -132,6 +132,35 @@ class AuthController extends StateNotifier<AsyncValue<void>> {
       return false;
     }
   }
+
+  /// Upload avatar image bytes to Supabase Storage and link URL to profile
+  Future<String?> uploadAvatar({
+    required List<int> bytes,
+    String fileExtension = 'png',
+  }) async {
+    final user = _ref.read(currentAuthUserProvider);
+    if (user == null) {
+      state = AsyncValue.error(
+        StateError('User must be authenticated to upload avatar'),
+        StackTrace.current,
+      );
+      return null;
+    }
+
+    state = const AsyncValue.loading();
+    try {
+      final publicUrl = await _repository.uploadAvatar(
+        userId: user.id,
+        bytes: bytes,
+        fileExtension: fileExtension,
+      );
+      state = const AsyncValue.data(null);
+      return publicUrl;
+    } catch (e, st) {
+      state = AsyncValue.error(e, st);
+      return null;
+    }
+  }
 }
 
 /// Provider for the AuthController

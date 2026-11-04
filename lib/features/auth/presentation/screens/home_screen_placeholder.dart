@@ -5,6 +5,7 @@ import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../domain/user_profile.dart';
 import '../auth_providers.dart';
+import 'profile_settings_screen.dart';
 
 /// Placeholder Home Screen displayed for Approved users until Phase 4 (Marketplace Discovery)
 class HomeScreenPlaceholder extends ConsumerWidget {
@@ -39,6 +40,17 @@ class HomeScreenPlaceholder extends ConsumerWidget {
         ),
         actions: [
           IconButton(
+            tooltip: 'Profile & Settings',
+            icon: const Icon(Icons.person_rounded, color: AppColors.onSurface),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => ProfileSettingsScreen(profile: profile),
+                ),
+              );
+            },
+          ),
+          IconButton(
             tooltip: 'Sign Out',
             icon: const Icon(Icons.logout_rounded, color: AppColors.onSurface),
             onPressed: () async {
@@ -53,100 +65,111 @@ class HomeScreenPlaceholder extends ConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // User Greeting Banner
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: AppColors.surface,
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: AppColors.outline),
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.onSurface.withValues(alpha: 0.04),
-                      blurRadius: 16,
-                      offset: const Offset(0, 4),
+              // User Greeting Banner (Tappable to open Profile & Settings)
+              InkWell(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => ProfileSettingsScreen(profile: profile),
                     ),
-                  ],
-                ),
-                child: Row(
-                  children: [
-                    CircleAvatar(
-                      radius: 28,
-                      backgroundColor: AppColors.primaryContainer,
-                      backgroundImage: profile.avatarUrl != null
-                          ? NetworkImage(profile.avatarUrl!)
-                          : null,
-                      child: profile.avatarUrl == null
-                          ? Text(
-                              (profile.fullName?.isNotEmpty ?? false)
-                                  ? profile.fullName![0].toUpperCase()
-                                  : 'U',
-                              style: AppTextStyles.headlineMedium.copyWith(
-                                color: AppColors.primary,
-                              ),
-                            )
-                          : null,
-                    ),
-                    const SizedBox(width: 14),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Flexible(
-                                child: Text(
-                                  profile.fullName ?? 'KaajLagbe Member',
-                                  style: AppTextStyles.titleMedium,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                              const SizedBox(width: 6),
-                              Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                                decoration: BoxDecoration(
-                                  color: AppColors.verifiedChipBg,
-                                  borderRadius: BorderRadius.circular(6),
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    const Icon(
-                                      Icons.verified_rounded,
-                                      size: 12,
-                                      color: AppColors.secondary,
-                                    ),
-                                    const SizedBox(width: 2),
-                                    Text(
-                                      'Approved',
-                                      style: AppTextStyles.labelSmall.copyWith(
-                                        color: AppColors.secondary,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            profile.phone ?? 'No phone attached',
-                            style: AppTextStyles.bodySmall,
-                          ),
-                          const SizedBox(height: 2),
-                          Text(
-                            'Role: ${profile.role.name.toUpperCase()}',
-                            style: AppTextStyles.labelSmall.copyWith(
-                              color: AppColors.textMuted,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ],
+                  );
+                },
+                borderRadius: BorderRadius.circular(16),
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: AppColors.surface,
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: AppColors.outline),
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.onSurface.withValues(alpha: 0.04),
+                        blurRadius: 16,
+                        offset: const Offset(0, 4),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        radius: 28,
+                        backgroundColor: AppColors.primaryContainer,
+                        backgroundImage: profile.avatarUrl != null
+                            ? NetworkImage(profile.avatarUrl!)
+                            : null,
+                        child: profile.avatarUrl == null
+                            ? Text(
+                                (profile.fullName?.isNotEmpty ?? false)
+                                    ? profile.fullName![0].toUpperCase()
+                                    : 'U',
+                                style: AppTextStyles.headlineMedium.copyWith(
+                                  color: AppColors.primary,
+                                ),
+                              )
+                            : null,
+                      ),
+                      const SizedBox(width: 14),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    profile.fullName ?? 'KaajLagbe Member',
+                                    style: AppTextStyles.titleMedium,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                                const SizedBox(width: 6),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                                  decoration: BoxDecoration(
+                                    color: AppColors.verifiedChipBg,
+                                    borderRadius: BorderRadius.circular(6),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const Icon(
+                                        Icons.verified_rounded,
+                                        size: 12,
+                                        color: AppColors.secondary,
+                                      ),
+                                      const SizedBox(width: 2),
+                                      Text(
+                                        'Approved',
+                                        style: AppTextStyles.labelSmall.copyWith(
+                                          color: AppColors.secondary,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              profile.phone ?? 'No phone attached',
+                              style: AppTextStyles.bodySmall,
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              'Role: ${profile.role.name.toUpperCase()} • Settings >',
+                              style: AppTextStyles.labelSmall.copyWith(
+                                color: AppColors.primary,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const Icon(Icons.chevron_right_rounded, color: AppColors.textMuted),
+                    ],
+                  ),
                 ),
               ),
 
