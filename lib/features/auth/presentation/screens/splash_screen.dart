@@ -194,18 +194,22 @@ class SplashScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            _buildMetricChip(
-                              icon: Icons.check_circle_rounded,
-                              iconColor: AppColors.secondary,
-                              title: '100% NID',
-                              subtitle: 'Verified Identity',
+                            Expanded(
+                              child: _buildMetricChip(
+                                icon: Icons.check_circle_rounded,
+                                iconColor: AppColors.secondary,
+                                title: '100% NID',
+                                subtitle: 'Verified Identity',
+                              ),
                             ),
                             const SizedBox(width: 12),
-                            _buildMetricChip(
-                              icon: Icons.bolt_rounded,
-                              iconColor: AppColors.primary,
-                              title: '15 Mins',
-                              subtitle: 'Fast Response',
+                            Expanded(
+                              child: _buildMetricChip(
+                                icon: Icons.bolt_rounded,
+                                iconColor: AppColors.primary,
+                                title: '15 Mins',
+                                subtitle: 'Fast Response',
+                              ),
                             ),
                           ],
                         ),
@@ -308,7 +312,6 @@ class SplashScreen extends StatelessWidget {
     required String subtitle,
   }) {
     return Container(
-      width: 140,
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
         color: AppColors.surface,
@@ -319,14 +322,18 @@ class SplashScreen extends StatelessWidget {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Icon(icon, size: 16, color: iconColor),
               const SizedBox(width: 4),
-              Text(
-                title,
-                style: AppTextStyles.labelMedium.copyWith(
-                  fontWeight: FontWeight.w800,
-                  color: iconColor,
+              Flexible(
+                child: Text(
+                  title,
+                  style: AppTextStyles.labelMedium.copyWith(
+                    fontWeight: FontWeight.w800,
+                    color: iconColor,
+                  ),
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ],
@@ -338,6 +345,8 @@ class SplashScreen extends StatelessWidget {
               color: AppColors.textMuted,
               fontWeight: FontWeight.w500,
             ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),
