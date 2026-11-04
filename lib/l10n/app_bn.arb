@@ -1,0 +1,114 @@
+{
+  "@@locale": "bn",
+  "appName": "KaajLagbe",
+  "verified": "ভেরিফাইড",
+  "help": "হেল্প",
+  "language": "ভাষা",
+  "bangla": "বাং",
+  "english": "EN",
+  "loading": "লোড হচ্ছে...",
+  "continueAction": "এগিয়ে যান",
+  "save": "সংরক্ষণ করুন",
+  "cancel": "বাতিল",
+  "retry": "আবার চেষ্টা করুন",
+  "signOut": "লগআউট",
+  "currencySymbol": "৳",
+  "devModeOtpSkipped": "DEV MODE: OTP skipped",
+  "continueWithoutOtp": "Continue without OTP (dev mode)",
+
+  "splashTagline": "দক্ষ ও বিশ্বস্ত শ্রমিকের সবচেয়ে নির্ভরযোগ্য মার্কেটপ্লেস",
+  "splashActionGetStarted": "সেবা শুরু করুন",
+  "splashVerifiedPros": "১০০% ভেরিফাইড কারিগর",
+  "splashSecurePayments": "নিরাপদ লেনদেন",
+
+  "loginWelcome": "স্বাগতম!",
+  "loginSubtitle": "লগইন বা রেজিস্ট্রেশন করতে আপনার মোবাইল নম্বর দিন",
+  "phoneNumberLabel": "মোবাইল নম্বর *",
+  "phoneNumberHint": "17XXXXXXXX",
+  "phoneHelperText": "আমরা এই নম্বরে একটি ৬-সংখ্যার ওটিপি কোড পাঠাব",
+  "sendOtp": "ওটিপি পাঠান",
+  "workerTogglePromptCustomer": "দক্ষ কাজের কারিগর বা টেকনিশিয়ান?",
+  "workerToggleActionWorker": "শ্রমিক হিসেবে যুক্ত হন",
+  "workerTogglePromptWorker": "গ্রাহক হিসেবে সেবা নিতে চান?",
+  "workerToggleActionCustomer": "গ্রাহক লগইন",
+  "phoneErrorEmpty": "মোবাইল নম্বর লিখুন",
+  "phoneErrorInvalidPrefix": "বাংলাদেশি নম্বর ১ দিয়ে শুরু হতে হবে (যেমন: 17XXXXXXXX)",
+  "phoneErrorInvalidLength": "সঠিক ১০-সংখ্যার নম্বর দিন (যেমন: 17XXXXXXXX)",
+  "otpSendError": "ওটিপি পাঠাতে সমস্যা হয়েছে। ইন্টারনেট সংযোগ ও নম্বর পরীক্ষা করুন।",
+  "devLoginError": "ডেভ মোড লগইনে সমস্যা হয়েছে। Supabase ইমেইল প্রোভাইডার চেক করুন।",
+  "trustSecurityTitle": "সুরক্ষিত ও নির্ভরযোগ্য সেবা",
+  "trustSecuritySubtitle": "সকল শ্রমিকের জাতীয় পরিচয়পত্র ও কাজের দক্ষতা যাচাইকৃত",
+
+  "otpTitle": "ওটিপি যাচাইকরণ",
+  "otpSubtitle": "{phone} নম্বরে পাঠানো ৬-সংখ্যার কোডটি প্রবেশ করুন",
+  "@otpSubtitle": {
+    "placeholders": {
+      "phone": { "type": "String" }
+    }
+  },
+  "otpResendIn": "পুনরায় কোড পাঠান ({seconds} সেকেন্ড)",
+  "@otpResendIn": {
+    "placeholders": {
+      "seconds": { "type": "String" }
+    }
+  },
+  "otpResendAction": "কোড পাননি? পুনরায় পাঠান",
+  "verifyAndProceed": "যাচাই করুন ও এগিয়ে যান",
+  "changeNumber": "নম্বর পরিবর্তন করুন",
+  "otpInvalidLength": "সম্পূর্ণ ৬-সংখ্যার ওটিপি কোড দিন",
+  "otpVerificationError": "ভুল ওটিপি কোড অথবা কোডের মেয়াদ শেষ হয়েছে।",
+  "otpResentSuccess": "নতুন ওটিপি কোড পাঠানো হয়েছে।",
+
+  "roleSelectionTitle": "আপনি কীভাবে ব্যবহার করতে চান?",
+  "roleSelectionSubtitle": "আপনার প্রয়োজনীয় ভূমিকা নির্বাচন করুন",
+  "customerRoleTitle": "আমি সেবা নিতে চাই",
+  "customerRoleSubtitle": "ইলেকট্রিশিয়ান, প্লাম্বার, পেইন্টারসহ দক্ষ শ্রমিক খুঁজুন ও তাৎক্ষণিক বুকিং করুন",
+  "customerRoleBadge": "গ্রাহক",
+  "labourRoleTitle": "আমি কাজ করতে চাই",
+  "labourRoleSubtitle": "দক্ষতা অনুযায়ী কাজের অনুরোধ গ্রহণ করুন, কাজ শেষ করে আয় বাড়ান",
+  "labourRoleBadge": "শ্রমিক",
+  "selectRoleError": "অনুগ্রহ করে একটি ভূমিকা নির্বাচন করুন",
+
+  "profileSetupTitle": "আপনার প্রোফাইল সাজান",
+  "profileSetupSubtitle": "সঠিক তথ্য দিলে সেবা পেতে ও দিতে সুবিধা হবে",
+  "fullNameLabel": "আপনার পূর্ণ নাম *",
+  "fullNameHint": "জাতীয় পরিচয়পত্র অনুযায়ী নাম",
+  "fullNameErrorEmpty": "আপনার পূর্ণ নাম লিখুন",
+  "fullNameErrorTooShort": "নাম কমপক্ষে ৩ অক্ষরের হতে হবে",
+  "uploadPhoto": "ছবি আপলোড করুন",
+  "changePhoto": "ছবি পরিবর্তন",
+  "profileSettingsTitle": "প্রোফাইল ও সেটিংস",
+  "accountInfo": "অ্যাকাউন্টের তথ্য",
+  "appSettings": "অ্যাপ সেটিংস",
+  "themeMode": "থিম মোড",
+  "notifications": "নোটিফিকেশন",
+  "privacyPolicy": "গোপনীয়তা নীতি",
+  "termsOfService": "ব্যবহারের শর্তাবলী",
+  "profileUpdateSuccess": "প্রোফাইল সফলভাবে আপডেট হয়েছে",
+  "profileUpdateError": "প্রোফাইল সংরক্ষণে সমস্যা হয়েছে",
+
+  "statusPendingTitle": "যাচাইকরণ প্রক্রিয়াধীন",
+  "statusPendingDescription": "আপনার পরিচয়পত্র ও তথ্যাদি আমাদের অ্যাডমিন টিম যাচাই করছে। সাধারণতঃ ১২-২৪ ঘণ্টার মধ্যে যাচাই সম্পন্ন হয়।",
+  "statusApprovedTitle": "অ্যাকাউন্ট অনুমোদিত",
+  "statusApprovedDescription": "আপনার অ্যাকাউন্ট সক্রিয় রয়েছে।",
+  "statusRejectedTitle": "যাচাইকরণ বাতিল হয়েছে",
+  "statusRejectedDescription": "আপনার প্রদানকৃত তথ্যে ত্রুটির কারণে আবেদনটি অনুমোদিত হয়নি।",
+  "statusSuspendedTitle": "অ্যাকাউন্ট স্থগিত",
+  "statusSuspendedDescription": "নিয়ম লঙ্ঘনের কারণে আপনার অ্যাকাউন্টটি সাময়িকভাবে স্থগিত করা হয়েছে।",
+  "statusBannedTitle": "স্থায়ীভাবে নিষিদ্ধ",
+  "statusBannedDescription": "গুরুতর নীতিমালা লঙ্ঘনের কারণে এই অ্যাকাউন্টটি স্থায়ীভাবে নিষ্ক্রিয় করা হয়েছে।",
+  "rejectionReasonLabel": "বাতিল করার কারণ:",
+  "resubmitVerification": "পুনরায় যাচাইয়ের আবেদন করুন",
+  "contactSupport": "সাপোর্টে যোগাযোগ করুন",
+
+  "homeTitle": "হোম",
+  "welcomeUser": "স্বাগতম, {name}",
+  "@welcomeUser": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "homePlaceholderCustomer": "গ্রাহক মার্কেটপ্লেস ও শ্রমিক খোঁজার পৃষ্ঠা শীঘ্রই আসছে।",
+  "homePlaceholderLabour": "শ্রমিক ড্যাশবোর্ড ও কাজের তালিকা শীঘ্রই আসছে।"
+}
+

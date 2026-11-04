@@ -3,9 +3,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'app_colors.dart';
 
 /// KaajLagbe Stitch Design System "Kinetic Trust" Frozen Typography.
-/// Font Family: Plus Jakarta Sans with support for Bengali glyphs and BDT (৳) currency.
+/// Font Family: Plus Jakarta Sans with seamless fallback for Bengali glyphs (Noto Sans Bengali)
+/// and BDT (৳) currency figures.
 class AppTextStyles {
   AppTextStyles._();
+
+  static const List<String> _bengaliFallbacks = [
+    'Noto Sans Bengali',
+    'Hind Siliguri',
+    'sans-serif',
+  ];
 
   static TextStyle displayLarge = GoogleFonts.plusJakartaSans(
     fontSize: 32,
@@ -13,7 +20,7 @@ class AppTextStyles {
     height: 40 / 32,
     letterSpacing: -0.64, // -0.02em
     color: AppColors.onSurface,
-  );
+  ).copyWith(fontFamilyFallback: _bengaliFallbacks);
 
   static TextStyle headlineLarge = GoogleFonts.plusJakartaSans(
     fontSize: 24,
@@ -21,7 +28,7 @@ class AppTextStyles {
     height: 32 / 24,
     letterSpacing: -0.24, // -0.01em
     color: AppColors.onSurface,
-  );
+  ).copyWith(fontFamilyFallback: _bengaliFallbacks);
 
   static TextStyle headlineMedium = GoogleFonts.plusJakartaSans(
     fontSize: 20,
@@ -29,7 +36,7 @@ class AppTextStyles {
     height: 28 / 20,
     letterSpacing: -0.20, // -0.01em
     color: AppColors.onSurface,
-  );
+  ).copyWith(fontFamilyFallback: _bengaliFallbacks);
 
   static TextStyle headlineSmall = GoogleFonts.plusJakartaSans(
     fontSize: 18,
@@ -37,7 +44,7 @@ class AppTextStyles {
     height: 24 / 18,
     letterSpacing: 0,
     color: AppColors.onSurface,
-  );
+  ).copyWith(fontFamilyFallback: _bengaliFallbacks);
 
   static TextStyle titleMedium = GoogleFonts.plusJakartaSans(
     fontSize: 16,
@@ -45,7 +52,7 @@ class AppTextStyles {
     height: 22 / 16,
     letterSpacing: 0,
     color: AppColors.onSurface,
-  );
+  ).copyWith(fontFamilyFallback: _bengaliFallbacks);
 
   static TextStyle bodyLarge = GoogleFonts.plusJakartaSans(
     fontSize: 16,
@@ -53,7 +60,7 @@ class AppTextStyles {
     height: 24 / 16,
     letterSpacing: 0,
     color: AppColors.onSurface,
-  );
+  ).copyWith(fontFamilyFallback: _bengaliFallbacks);
 
   static TextStyle bodyMedium = GoogleFonts.plusJakartaSans(
     fontSize: 14,
@@ -61,7 +68,7 @@ class AppTextStyles {
     height: 20 / 14,
     letterSpacing: 0,
     color: AppColors.onSurface,
-  );
+  ).copyWith(fontFamilyFallback: _bengaliFallbacks);
 
   static TextStyle bodySmall = GoogleFonts.plusJakartaSans(
     fontSize: 12,
@@ -69,7 +76,7 @@ class AppTextStyles {
     height: 16 / 12,
     letterSpacing: 0,
     color: AppColors.onSurfaceVariant,
-  );
+  ).copyWith(fontFamilyFallback: _bengaliFallbacks);
 
   static TextStyle labelLarge = GoogleFonts.plusJakartaSans(
     fontSize: 14,
@@ -77,7 +84,7 @@ class AppTextStyles {
     height: 20 / 14,
     letterSpacing: 0.14, // 0.01em
     color: AppColors.onSurface,
-  );
+  ).copyWith(fontFamilyFallback: _bengaliFallbacks);
 
   static TextStyle labelMedium = GoogleFonts.plusJakartaSans(
     fontSize: 12,
@@ -85,7 +92,7 @@ class AppTextStyles {
     height: 16 / 12,
     letterSpacing: 0.24, // 0.02em
     color: AppColors.onSurface,
-  );
+  ).copyWith(fontFamilyFallback: _bengaliFallbacks);
 
   static TextStyle labelSmall = GoogleFonts.plusJakartaSans(
     fontSize: 10,
@@ -93,7 +100,7 @@ class AppTextStyles {
     height: 14 / 10,
     letterSpacing: 0.40, // 0.04em
     color: AppColors.onSurface,
-  );
+  ).copyWith(fontFamilyFallback: _bengaliFallbacks);
 
   /// Currency display specifically styled for BDT (৳) figures
   static TextStyle currencyDisplay = GoogleFonts.plusJakartaSans(
@@ -102,5 +109,5 @@ class AppTextStyles {
     height: 28 / 22,
     letterSpacing: -0.22, // -0.01em
     color: AppColors.onSurface,
-  );
+  ).copyWith(fontFamilyFallback: _bengaliFallbacks);
 }

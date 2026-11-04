@@ -10,6 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   cupertino_icons: ^1.0.8
 
   # State Management
@@ -31,6 +33,7 @@ dependencies:
   # Maps
   flutter_map: ^7.0.2
   latlong2: ^0.9.1
+  shared_preferences: ^2.5.6
 
 dev_dependencies:
   flutter_test:
@@ -42,6 +45,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true
   assets:
     - .env
     - assets/branding/
