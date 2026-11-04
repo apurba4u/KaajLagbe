@@ -68,6 +68,36 @@ class AppLocalizationsBn extends AppLocalizations {
   String get splashSecurePayments => 'নিরাপদ লেনদেন';
 
   @override
+  String get splashConnecting => 'দক্ষ কারিগর যুক্ত করা হচ্ছে...';
+
+  @override
+  String get splashLocationDhaka => 'ঢাকা';
+
+  @override
+  String get splashLiveService => 'সরাসরি সেবা';
+
+  @override
+  String get splashVerifiedProsTagline => 'বিশ্বস্ত শ্রম ও দক্ষ কর্মী সেবা';
+
+  @override
+  String get splashMetricNid => '১০০% এনআইডি';
+
+  @override
+  String get splashMetricNidSub => 'পরিচয় যাচাইকৃত';
+
+  @override
+  String get splashMetricFast => '১৫ মিনিট';
+
+  @override
+  String get splashMetricFastSub => 'দ্রুত সাড়া';
+
+  @override
+  String get splashFooterTitle => '১০০% ভেরিফাইড কারিগর • স্বচ্ছ মূল্য';
+
+  @override
+  String get splashFooterSubtitle => 'জাতীয় পরিচয়পত্র ও কাজের মান যাচাইকৃত';
+
+  @override
   String get loginWelcome => 'স্বাগতম!';
 
   @override
@@ -103,7 +133,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get phoneErrorInvalidPrefix =>
-      'বাংলাদেশি নম্বর ১ দিয়ে শুরু হতে হবে (যেমন: 17XXXXXXXX)';
+      'বাংলাদেশি নম্বর ১ দিয়ে শুরু হতে হবে (যেমন: 17XXXXXXXX)';
 
   @override
   String get phoneErrorInvalidLength =>
@@ -111,18 +141,29 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get otpSendError =>
-      'ওটিপি পাঠাতে সমস্যা হয়েছে। ইন্টারনেট সংযোগ ও নম্বর পরীক্ষা করুন।';
+      'ওটিপি পাঠাতে সমস্যা হয়েছে। ইন্টারনেট সংযোগ ও নম্বর পরীক্ষা করুন।';
 
   @override
   String get devLoginError =>
-      'ডেভ মোড লগইনে সমস্যা হয়েছে। Supabase ইমেইল প্রোভাইডার চেক করুন।';
+      'ডেভ মোড লগইনে সমস্যা হয়েছে। Supabase ইমেইল প্রোভাইডার চেক করুন।';
 
   @override
   String get trustSecurityTitle => 'সুরক্ষিত ও নির্ভরযোগ্য সেবা';
 
   @override
   String get trustSecuritySubtitle =>
-      'সকল শ্রমিকের জাতীয় পরিচয়পত্র ও কাজের দক্ষতা যাচাইকৃত';
+      'সকল শ্রমিকের জাতীয় পরিচয়পত্র ও কাজের দক্ষতা যাচাইকৃত';
+
+  @override
+  String get termsAgreementText =>
+      'এগিয়ে যাওয়ার মাধ্যমে আপনি KaajLagbe-এর নিয়ম ও শর্তাবলী এবং গোপনীয়তা নীতি মেনে নিচ্ছেন।';
+
+  @override
+  String get phoneSecurityBannerTitle => 'যাচাইকৃত ও নিরাপদ প্ল্যাটফর্ম';
+
+  @override
+  String get phoneSecurityBannerSubtitle =>
+      '১০০% জাতীয় পরিচয়পত্র (NID) যাচাইকৃত প্ল্যাটফর্ম';
 
   @override
   String get otpTitle => 'ওটিপি যাচাইকরণ';
@@ -134,14 +175,14 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String otpResendIn(String seconds) {
-    return 'পুনরায় কোড পাঠান ($seconds সেকেন্ড)';
+    return 'পুনরায় কোড পাঠান ($seconds সেকেন্ড)';
   }
 
   @override
-  String get otpResendAction => 'কোড পাননি? পুনরায় পাঠান';
+  String get otpResendAction => 'কোড পাননি? পুনরায় পাঠান';
 
   @override
-  String get verifyAndProceed => 'যাচাই করুন ও এগিয়ে যান';
+  String get verifyAndProceed => 'যাচাই করুন ও এগিয়ে যান';
 
   @override
   String get changeNumber => 'নম্বর পরিবর্তন করুন';
@@ -151,39 +192,83 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get otpVerificationError =>
-      'ভুল ওটিপি কোড অথবা কোডের মেয়াদ শেষ হয়েছে।';
+      'ভুল ওটিপি কোড অথবা কোডের মেয়াদ শেষ হয়েছে।';
 
   @override
-  String get otpResentSuccess => 'নতুন ওটিপি কোড পাঠানো হয়েছে।';
+  String get otpResentSuccess => 'নতুন ওটিপি কোড পাঠানো হয়েছে।';
 
   @override
-  String get roleSelectionTitle => 'আপনি কীভাবে ব্যবহার করতে চান?';
+  String get otpEditNumber => 'এডিট';
 
   @override
-  String get roleSelectionSubtitle => 'আপনার প্রয়োজনীয় ভূমিকা নির্বাচন করুন';
+  String get otpInputPrompt => '৬-সংখ্যার ওটিপি লিখুন';
 
   @override
-  String get customerRoleTitle => 'আমি সেবা নিতে চাই';
+  String get otpResendCodePrompt => 'ওটিপি পাননি?';
+
+  @override
+  String get otpResendActionSms => 'এসএমএস পুনরায় পাঠান';
+
+  @override
+  String get otpResendFailed =>
+      'ওটিপি পুনরায় পাঠাতে সমস্যা হয়েছে। একটু পর চেষ্টা করুন।';
+
+  @override
+  String get otpSecuritySafe => '১০০% নিরাপদ যাচাইকরণ';
+
+  @override
+  String get otpSecurityNid => 'NID পরীক্ষিত প্ল্যাটফর্ম';
+
+  @override
+  String get roleSelectionTitle => 'আপনার ভূমিকা নির্বাচন করুন';
+
+  @override
+  String get roleSelectionSubtitle => 'আপনি কীভাবে KaajLagbe ব্যবহার করতে চান?';
+
+  @override
+  String get roleSelectionTrustBadge => 'নিরাপদ ও সহজ শুরু';
+
+  @override
+  String get customerRoleTitle => 'আমার সেবা প্রয়োজন';
 
   @override
   String get customerRoleSubtitle =>
-      'ইলেকট্রিশিয়ান, প্লাম্বার, পেইন্টারসহ দক্ষ শ্রমিক খুঁজুন ও তাৎক্ষণিক বুকিং করুন';
+      'বাসা বা অফিসের কাজের জন্য যাচাইকৃত ও বিশ্বস্ত কর্মী খুঁজে নিন ও বুক করুন';
 
   @override
   String get customerRoleBadge => 'গ্রাহক';
+
+  @override
+  String get customerPerk1 => 'যাচাইকৃত দক্ষ কর্মী';
+
+  @override
+  String get customerPerk2 => 'স্বচ্ছ রেট ও সরাসরি বুকিং';
 
   @override
   String get labourRoleTitle => 'আমি কাজ করতে চাই';
 
   @override
   String get labourRoleSubtitle =>
-      'দক্ষতা অনুযায়ী কাজের অনুরোধ গ্রহণ করুন, কাজ শেষ করে আয় বাড়ান';
+      'আপনার দক্ষতা যোগ করুন, সরাসরি বুকিং পান এবং আয় বৃদ্ধি করুন';
 
   @override
-  String get labourRoleBadge => 'শ্রমিক';
+  String get labourRoleBadge => 'কর্মী';
+
+  @override
+  String get labourPerk1 => 'সরাসরি পেমেন্ট';
+
+  @override
+  String get labourPerk2 => 'নতুন কাজের নিয়মিত সুযোগ';
 
   @override
   String get selectRoleError => 'অনুগ্রহ করে একটি ভূমিকা নির্বাচন করুন';
+
+  @override
+  String get roleAdminBlockedError => 'অ্যাডমিন ভূমিকা নির্বাচনযোগ্য নয়';
+
+  @override
+  String get roleSaveError =>
+      'ভূমিকা সংরক্ষণ করতে সমস্যা হয়েছে। ইন্টারনেট সংযোগ পরীক্ষা করুন।';
 
   @override
   String get profileSetupTitle => 'আপনার প্রোফাইল সাজান';
@@ -211,6 +296,12 @@ class AppLocalizationsBn extends AppLocalizations {
   String get changePhoto => 'ছবি পরিবর্তন';
 
   @override
+  String get avatarSelected => 'অ্যাভাটার যুক্ত করা হয়েছে';
+
+  @override
+  String get saveAndContinue => 'সংরক্ষণ করুন ও এগিয়ে যান';
+
+  @override
   String get profileSettingsTitle => 'প্রোফাইল ও সেটিংস';
 
   @override
@@ -220,65 +311,135 @@ class AppLocalizationsBn extends AppLocalizations {
   String get appSettings => 'অ্যাপ সেটিংস';
 
   @override
-  String get themeMode => 'থিম মোড';
+  String get editName => 'নাম পরিবর্তন করুন';
 
   @override
-  String get notifications => 'নোটিফিকেশন';
+  String get editNameHint => 'পূর্ণ নাম লিখুন';
 
   @override
-  String get privacyPolicy => 'গোপনীয়তা নীতি';
+  String get nameCannotBeEmpty => 'নাম খালি রাখা যাবে না';
 
   @override
-  String get termsOfService => 'ব্যবহারের শর্তাবলী';
+  String get nidVerifiedBadge => 'জাতীয় পরিচয়পত্র যাচাইকৃত';
 
   @override
-  String get profileUpdateSuccess => 'প্রোফাইল সফলভাবে আপডেট হয়েছে';
+  String get nidVerifiedSub => 'NID Verified Citizen • সর্বোচ্চ নিরাপত্তা স্তর';
 
   @override
-  String get profileUpdateError => 'প্রোফাইল সংরক্ষণে সমস্যা হয়েছে';
+  String get totalBookings => 'মোট বুকিং';
 
   @override
-  String get statusPendingTitle => 'যাচাইকরণ প্রক্রিয়াধীন';
+  String get savedAddresses => 'সেভ করা ঠিকানা';
+
+  @override
+  String get balance => 'ব্যালেন্স';
+
+  @override
+  String get accountAndPlacesSection => 'অ্যাকাউন্ট ও ঠিকানা';
+
+  @override
+  String get savedAddressesTitle => 'সংরক্ষিত ঠিকানাসমূহ';
+
+  @override
+  String get savedAddressesSub => 'বাসা: মিরপুর ১০, ঢাকা';
+
+  @override
+  String get paymentMethodsTitle => 'পেমেন্ট মেথড ও লেনদেন হিস্ট্রি';
+
+  @override
+  String get paymentMethodsSub => 'বিকাশ / নগদ / কার্ড';
+
+  @override
+  String get safetyAndPolicySection => 'নিরাপত্তা ও নীতি';
+
+  @override
+  String get emergencyContactTitle => 'জরুরি যোগাযোগ ও নিরাপত্তা সেন্টার';
+
+  @override
+  String get emergencyContactSub => 'জরুরি হেল্পলাইন ও লাইভ ট্র্যাকিং';
+
+  @override
+  String get changeLanguageTitle => 'ভাষা পরিবর্তন';
+
+  @override
+  String get changeLanguageSub => 'অ্যাপের ভাষা নির্বাচন করুন';
+
+  @override
+  String get privacyAndTermsTitle => 'গোপনীয়তা ও টার্মস অব সার্ভিস';
+
+  @override
+  String get privacyAndTermsSub => 'ব্যবহারকারীর তথ্য সুরক্ষা নীতি';
+
+  @override
+  String get helpAndSupportSection => 'সহায়তা ও অভিযোগ';
+
+  @override
+  String get helpCenterTitle => 'হেল্প সেন্টার ও কাস্টমার কেয়ার';
+
+  @override
+  String get helpCenterSub => 'হটলাইন ১৬৪২০ অথবা লাইভ চ্যাট (২৪/৭)';
+
+  @override
+  String get disputesTitle => 'আমার বিরোধ ও অভিযোগের স্ট্যাটাস';
+
+  @override
+  String get disputesSub => 'সক্রিয় বিরোধসমূহ ট্র্যাকিং';
+
+  @override
+  String get profileUpdateSuccess => 'প্রোফাইল সফলভাবে আপডেট হয়েছে';
+
+  @override
+  String get profileUpdateError => 'প্রোফাইল সংরক্ষণে সমস্যা হয়েছে';
+
+  @override
+  String get statusPendingTitle => 'যাচাইকরণ প্রক্রিয়াধীন';
 
   @override
   String get statusPendingDescription =>
-      'আপনার পরিচয়পত্র ও তথ্যাদি আমাদের অ্যাডমিন টিম যাচাই করছে। সাধারণতঃ ১২-২৪ ঘণ্টার মধ্যে যাচাই সম্পন্ন হয়।';
+      'আপনার পরিচয়পত্র ও তথ্যাদি আমাদের অ্যাডমিন টিম যাচাই করছে। সাধারণত ১২-২৪ ঘণ্টার মধ্যে যাচাই সম্পন্ন হয়।';
 
   @override
   String get statusApprovedTitle => 'অ্যাকাউন্ট অনুমোদিত';
 
   @override
-  String get statusApprovedDescription => 'আপনার অ্যাকাউন্ট সক্রিয় রয়েছে।';
+  String get statusApprovedDescription => 'আপনার অ্যাকাউন্ট সক্রিয় রয়েছে।';
 
   @override
-  String get statusRejectedTitle => 'যাচাইকরণ বাতিল হয়েছে';
+  String get statusRejectedTitle => 'যাচাইকরণ বাতিল হয়েছে';
 
   @override
   String get statusRejectedDescription =>
-      'আপনার প্রদানকৃত তথ্যে ত্রুটির কারণে আবেদনটি অনুমোদিত হয়নি।';
+      'আপনার প্রদানকৃত তথ্যে ত্রুটির কারণে আবেদনটি অনুমোদিত হয়নি।';
 
   @override
   String get statusSuspendedTitle => 'অ্যাকাউন্ট স্থগিত';
 
   @override
   String get statusSuspendedDescription =>
-      'নিয়ম লঙ্ঘনের কারণে আপনার অ্যাকাউন্টটি সাময়িকভাবে স্থগিত করা হয়েছে।';
+      'নিয়ম লঙ্ঘনের কারণে আপনার অ্যাকাউন্টটি সাময়িকভাবে স্থগিত করা হয়েছে।';
 
   @override
-  String get statusBannedTitle => 'স্থায়ীভাবে নিষিদ্ধ';
+  String get statusBannedTitle => 'স্থায়ীভাবে নিষিদ্ধ';
 
   @override
   String get statusBannedDescription =>
-      'গুরুতর নীতিমালা লঙ্ঘনের কারণে এই অ্যাকাউন্টটি স্থায়ীভাবে নিষ্ক্রিয় করা হয়েছে।';
+      'গুরুতর নীতিমালা লঙ্ঘনের কারণে এই অ্যাকাউন্টটি স্থায়ীভাবে নিষ্ক্রিয় করা হয়েছে।';
 
   @override
   String get rejectionReasonLabel => 'বাতিল করার কারণ:';
 
   @override
-  String get resubmitVerification => 'পুনরায় যাচাইয়ের আবেদন করুন';
+  String get resubmitVerification => 'পুনরায় যাচাইয়ের আবেদন করুন';
 
   @override
   String get contactSupport => 'সাপোর্টে যোগাযোগ করুন';
+
+  @override
+  String get refreshStatus => 'রিফ্রেশ';
+
+  @override
+  String get refreshingStatus =>
+      'অ্যাকাউন্টের সর্বশেষ অবস্থা যাচাই করা হচ্ছে...';
 
   @override
   String get homeTitle => 'হোম';
@@ -295,4 +456,7 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get homePlaceholderLabour =>
       'শ্রমিক ড্যাশবোর্ড ও কাজের তালিকা শীঘ্রই আসছে।';
+
+  @override
+  String get profileAndSettings => 'প্রোফাইল ও সেটিংস';
 }

@@ -212,6 +212,66 @@ abstract class AppLocalizations {
   /// **'নিরাপদ লেনদেন'**
   String get splashSecurePayments;
 
+  /// No description provided for @splashConnecting.
+  ///
+  /// In bn, this message translates to:
+  /// **'দক্ষ কারিগর যুক্ত করা হচ্ছে...'**
+  String get splashConnecting;
+
+  /// No description provided for @splashLocationDhaka.
+  ///
+  /// In bn, this message translates to:
+  /// **'ঢাকা'**
+  String get splashLocationDhaka;
+
+  /// No description provided for @splashLiveService.
+  ///
+  /// In bn, this message translates to:
+  /// **'সরাসরি সেবা'**
+  String get splashLiveService;
+
+  /// No description provided for @splashVerifiedProsTagline.
+  ///
+  /// In bn, this message translates to:
+  /// **'বিশ্বস্ত শ্রম ও দক্ষ কর্মী সেবা'**
+  String get splashVerifiedProsTagline;
+
+  /// No description provided for @splashMetricNid.
+  ///
+  /// In bn, this message translates to:
+  /// **'১০০% এনআইডি'**
+  String get splashMetricNid;
+
+  /// No description provided for @splashMetricNidSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'পরিচয় যাচাইকৃত'**
+  String get splashMetricNidSub;
+
+  /// No description provided for @splashMetricFast.
+  ///
+  /// In bn, this message translates to:
+  /// **'১৫ মিনিট'**
+  String get splashMetricFast;
+
+  /// No description provided for @splashMetricFastSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'দ্রুত সাড়া'**
+  String get splashMetricFastSub;
+
+  /// No description provided for @splashFooterTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'১০০% ভেরিফাইড কারিগর • স্বচ্ছ মূল্য'**
+  String get splashFooterTitle;
+
+  /// No description provided for @splashFooterSubtitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'জাতীয় পরিচয়পত্র ও কাজের মান যাচাইকৃত'**
+  String get splashFooterSubtitle;
+
   /// No description provided for @loginWelcome.
   ///
   /// In bn, this message translates to:
@@ -281,7 +341,7 @@ abstract class AppLocalizations {
   /// No description provided for @phoneErrorInvalidPrefix.
   ///
   /// In bn, this message translates to:
-  /// **'বাংলাদেশি নম্বর ১ দিয়ে শুরু হতে হবে (যেমন: 17XXXXXXXX)'**
+  /// **'বাংলাদেশি নম্বর ১ দিয়ে শুরু হতে হবে (যেমন: 17XXXXXXXX)'**
   String get phoneErrorInvalidPrefix;
 
   /// No description provided for @phoneErrorInvalidLength.
@@ -293,13 +353,13 @@ abstract class AppLocalizations {
   /// No description provided for @otpSendError.
   ///
   /// In bn, this message translates to:
-  /// **'ওটিপি পাঠাতে সমস্যা হয়েছে। ইন্টারনেট সংযোগ ও নম্বর পরীক্ষা করুন।'**
+  /// **'ওটিপি পাঠাতে সমস্যা হয়েছে। ইন্টারনেট সংযোগ ও নম্বর পরীক্ষা করুন।'**
   String get otpSendError;
 
   /// No description provided for @devLoginError.
   ///
   /// In bn, this message translates to:
-  /// **'ডেভ মোড লগইনে সমস্যা হয়েছে। Supabase ইমেইল প্রোভাইডার চেক করুন।'**
+  /// **'ডেভ মোড লগইনে সমস্যা হয়েছে। Supabase ইমেইল প্রোভাইডার চেক করুন।'**
   String get devLoginError;
 
   /// No description provided for @trustSecurityTitle.
@@ -311,8 +371,26 @@ abstract class AppLocalizations {
   /// No description provided for @trustSecuritySubtitle.
   ///
   /// In bn, this message translates to:
-  /// **'সকল শ্রমিকের জাতীয় পরিচয়পত্র ও কাজের দক্ষতা যাচাইকৃত'**
+  /// **'সকল শ্রমিকের জাতীয় পরিচয়পত্র ও কাজের দক্ষতা যাচাইকৃত'**
   String get trustSecuritySubtitle;
+
+  /// No description provided for @termsAgreementText.
+  ///
+  /// In bn, this message translates to:
+  /// **'এগিয়ে যাওয়ার মাধ্যমে আপনি KaajLagbe-এর নিয়ম ও শর্তাবলী এবং গোপনীয়তা নীতি মেনে নিচ্ছেন।'**
+  String get termsAgreementText;
+
+  /// No description provided for @phoneSecurityBannerTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'যাচাইকৃত ও নিরাপদ প্ল্যাটফর্ম'**
+  String get phoneSecurityBannerTitle;
+
+  /// No description provided for @phoneSecurityBannerSubtitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'১০০% জাতীয় পরিচয়পত্র (NID) যাচাইকৃত প্ল্যাটফর্ম'**
+  String get phoneSecurityBannerSubtitle;
 
   /// No description provided for @otpTitle.
   ///
@@ -329,19 +407,19 @@ abstract class AppLocalizations {
   /// No description provided for @otpResendIn.
   ///
   /// In bn, this message translates to:
-  /// **'পুনরায় কোড পাঠান ({seconds} সেকেন্ড)'**
+  /// **'পুনরায় কোড পাঠান ({seconds} সেকেন্ড)'**
   String otpResendIn(String seconds);
 
   /// No description provided for @otpResendAction.
   ///
   /// In bn, this message translates to:
-  /// **'কোড পাননি? পুনরায় পাঠান'**
+  /// **'কোড পাননি? পুনরায় পাঠান'**
   String get otpResendAction;
 
   /// No description provided for @verifyAndProceed.
   ///
   /// In bn, this message translates to:
-  /// **'যাচাই করুন ও এগিয়ে যান'**
+  /// **'যাচাই করুন ও এগিয়ে যান'**
   String get verifyAndProceed;
 
   /// No description provided for @changeNumber.
@@ -359,37 +437,85 @@ abstract class AppLocalizations {
   /// No description provided for @otpVerificationError.
   ///
   /// In bn, this message translates to:
-  /// **'ভুল ওটিপি কোড অথবা কোডের মেয়াদ শেষ হয়েছে।'**
+  /// **'ভুল ওটিপি কোড অথবা কোডের মেয়াদ শেষ হয়েছে।'**
   String get otpVerificationError;
 
   /// No description provided for @otpResentSuccess.
   ///
   /// In bn, this message translates to:
-  /// **'নতুন ওটিপি কোড পাঠানো হয়েছে।'**
+  /// **'নতুন ওটিপি কোড পাঠানো হয়েছে।'**
   String get otpResentSuccess;
+
+  /// No description provided for @otpEditNumber.
+  ///
+  /// In bn, this message translates to:
+  /// **'এডিট'**
+  String get otpEditNumber;
+
+  /// No description provided for @otpInputPrompt.
+  ///
+  /// In bn, this message translates to:
+  /// **'৬-সংখ্যার ওটিপি লিখুন'**
+  String get otpInputPrompt;
+
+  /// No description provided for @otpResendCodePrompt.
+  ///
+  /// In bn, this message translates to:
+  /// **'ওটিপি পাননি?'**
+  String get otpResendCodePrompt;
+
+  /// No description provided for @otpResendActionSms.
+  ///
+  /// In bn, this message translates to:
+  /// **'এসএমএস পুনরায় পাঠান'**
+  String get otpResendActionSms;
+
+  /// No description provided for @otpResendFailed.
+  ///
+  /// In bn, this message translates to:
+  /// **'ওটিপি পুনরায় পাঠাতে সমস্যা হয়েছে। একটু পর চেষ্টা করুন।'**
+  String get otpResendFailed;
+
+  /// No description provided for @otpSecuritySafe.
+  ///
+  /// In bn, this message translates to:
+  /// **'১০০% নিরাপদ যাচাইকরণ'**
+  String get otpSecuritySafe;
+
+  /// No description provided for @otpSecurityNid.
+  ///
+  /// In bn, this message translates to:
+  /// **'NID পরীক্ষিত প্ল্যাটফর্ম'**
+  String get otpSecurityNid;
 
   /// No description provided for @roleSelectionTitle.
   ///
   /// In bn, this message translates to:
-  /// **'আপনি কীভাবে ব্যবহার করতে চান?'**
+  /// **'আপনার ভূমিকা নির্বাচন করুন'**
   String get roleSelectionTitle;
 
   /// No description provided for @roleSelectionSubtitle.
   ///
   /// In bn, this message translates to:
-  /// **'আপনার প্রয়োজনীয় ভূমিকা নির্বাচন করুন'**
+  /// **'আপনি কীভাবে KaajLagbe ব্যবহার করতে চান?'**
   String get roleSelectionSubtitle;
+
+  /// No description provided for @roleSelectionTrustBadge.
+  ///
+  /// In bn, this message translates to:
+  /// **'নিরাপদ ও সহজ শুরু'**
+  String get roleSelectionTrustBadge;
 
   /// No description provided for @customerRoleTitle.
   ///
   /// In bn, this message translates to:
-  /// **'আমি সেবা নিতে চাই'**
+  /// **'আমার সেবা প্রয়োজন'**
   String get customerRoleTitle;
 
   /// No description provided for @customerRoleSubtitle.
   ///
   /// In bn, this message translates to:
-  /// **'ইলেকট্রিশিয়ান, প্লাম্বার, পেইন্টারসহ দক্ষ শ্রমিক খুঁজুন ও তাৎক্ষণিক বুকিং করুন'**
+  /// **'বাসা বা অফিসের কাজের জন্য যাচাইকৃত ও বিশ্বস্ত কর্মী খুঁজে নিন ও বুক করুন'**
   String get customerRoleSubtitle;
 
   /// No description provided for @customerRoleBadge.
@@ -397,6 +523,18 @@ abstract class AppLocalizations {
   /// In bn, this message translates to:
   /// **'গ্রাহক'**
   String get customerRoleBadge;
+
+  /// No description provided for @customerPerk1.
+  ///
+  /// In bn, this message translates to:
+  /// **'যাচাইকৃত দক্ষ কর্মী'**
+  String get customerPerk1;
+
+  /// No description provided for @customerPerk2.
+  ///
+  /// In bn, this message translates to:
+  /// **'স্বচ্ছ রেট ও সরাসরি বুকিং'**
+  String get customerPerk2;
 
   /// No description provided for @labourRoleTitle.
   ///
@@ -407,20 +545,44 @@ abstract class AppLocalizations {
   /// No description provided for @labourRoleSubtitle.
   ///
   /// In bn, this message translates to:
-  /// **'দক্ষতা অনুযায়ী কাজের অনুরোধ গ্রহণ করুন, কাজ শেষ করে আয় বাড়ান'**
+  /// **'আপনার দক্ষতা যোগ করুন, সরাসরি বুকিং পান এবং আয় বৃদ্ধি করুন'**
   String get labourRoleSubtitle;
 
   /// No description provided for @labourRoleBadge.
   ///
   /// In bn, this message translates to:
-  /// **'শ্রমিক'**
+  /// **'কর্মী'**
   String get labourRoleBadge;
+
+  /// No description provided for @labourPerk1.
+  ///
+  /// In bn, this message translates to:
+  /// **'সরাসরি পেমেন্ট'**
+  String get labourPerk1;
+
+  /// No description provided for @labourPerk2.
+  ///
+  /// In bn, this message translates to:
+  /// **'নতুন কাজের নিয়মিত সুযোগ'**
+  String get labourPerk2;
 
   /// No description provided for @selectRoleError.
   ///
   /// In bn, this message translates to:
   /// **'অনুগ্রহ করে একটি ভূমিকা নির্বাচন করুন'**
   String get selectRoleError;
+
+  /// No description provided for @roleAdminBlockedError.
+  ///
+  /// In bn, this message translates to:
+  /// **'অ্যাডমিন ভূমিকা নির্বাচনযোগ্য নয়'**
+  String get roleAdminBlockedError;
+
+  /// No description provided for @roleSaveError.
+  ///
+  /// In bn, this message translates to:
+  /// **'ভূমিকা সংরক্ষণ করতে সমস্যা হয়েছে। ইন্টারনেট সংযোগ পরীক্ষা করুন।'**
+  String get roleSaveError;
 
   /// No description provided for @profileSetupTitle.
   ///
@@ -470,6 +632,18 @@ abstract class AppLocalizations {
   /// **'ছবি পরিবর্তন'**
   String get changePhoto;
 
+  /// No description provided for @avatarSelected.
+  ///
+  /// In bn, this message translates to:
+  /// **'অ্যাভাটার যুক্ত করা হয়েছে'**
+  String get avatarSelected;
+
+  /// No description provided for @saveAndContinue.
+  ///
+  /// In bn, this message translates to:
+  /// **'সংরক্ষণ করুন ও এগিয়ে যান'**
+  String get saveAndContinue;
+
   /// No description provided for @profileSettingsTitle.
   ///
   /// In bn, this message translates to:
@@ -488,52 +662,178 @@ abstract class AppLocalizations {
   /// **'অ্যাপ সেটিংস'**
   String get appSettings;
 
-  /// No description provided for @themeMode.
+  /// No description provided for @editName.
   ///
   /// In bn, this message translates to:
-  /// **'থিম মোড'**
-  String get themeMode;
+  /// **'নাম পরিবর্তন করুন'**
+  String get editName;
 
-  /// No description provided for @notifications.
+  /// No description provided for @editNameHint.
   ///
   /// In bn, this message translates to:
-  /// **'নোটিফিকেশন'**
-  String get notifications;
+  /// **'পূর্ণ নাম লিখুন'**
+  String get editNameHint;
 
-  /// No description provided for @privacyPolicy.
+  /// No description provided for @nameCannotBeEmpty.
   ///
   /// In bn, this message translates to:
-  /// **'গোপনীয়তা নীতি'**
-  String get privacyPolicy;
+  /// **'নাম খালি রাখা যাবে না'**
+  String get nameCannotBeEmpty;
 
-  /// No description provided for @termsOfService.
+  /// No description provided for @nidVerifiedBadge.
   ///
   /// In bn, this message translates to:
-  /// **'ব্যবহারের শর্তাবলী'**
-  String get termsOfService;
+  /// **'জাতীয় পরিচয়পত্র যাচাইকৃত'**
+  String get nidVerifiedBadge;
+
+  /// No description provided for @nidVerifiedSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'NID Verified Citizen • সর্বোচ্চ নিরাপত্তা স্তর'**
+  String get nidVerifiedSub;
+
+  /// No description provided for @totalBookings.
+  ///
+  /// In bn, this message translates to:
+  /// **'মোট বুকিং'**
+  String get totalBookings;
+
+  /// No description provided for @savedAddresses.
+  ///
+  /// In bn, this message translates to:
+  /// **'সেভ করা ঠিকানা'**
+  String get savedAddresses;
+
+  /// No description provided for @balance.
+  ///
+  /// In bn, this message translates to:
+  /// **'ব্যালেন্স'**
+  String get balance;
+
+  /// No description provided for @accountAndPlacesSection.
+  ///
+  /// In bn, this message translates to:
+  /// **'অ্যাকাউন্ট ও ঠিকানা'**
+  String get accountAndPlacesSection;
+
+  /// No description provided for @savedAddressesTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'সংরক্ষিত ঠিকানাসমূহ'**
+  String get savedAddressesTitle;
+
+  /// No description provided for @savedAddressesSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'বাসা: মিরপুর ১০, ঢাকা'**
+  String get savedAddressesSub;
+
+  /// No description provided for @paymentMethodsTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'পেমেন্ট মেথড ও লেনদেন হিস্ট্রি'**
+  String get paymentMethodsTitle;
+
+  /// No description provided for @paymentMethodsSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'বিকাশ / নগদ / কার্ড'**
+  String get paymentMethodsSub;
+
+  /// No description provided for @safetyAndPolicySection.
+  ///
+  /// In bn, this message translates to:
+  /// **'নিরাপত্তা ও নীতি'**
+  String get safetyAndPolicySection;
+
+  /// No description provided for @emergencyContactTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'জরুরি যোগাযোগ ও নিরাপত্তা সেন্টার'**
+  String get emergencyContactTitle;
+
+  /// No description provided for @emergencyContactSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'জরুরি হেল্পলাইন ও লাইভ ট্র্যাকিং'**
+  String get emergencyContactSub;
+
+  /// No description provided for @changeLanguageTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'ভাষা পরিবর্তন'**
+  String get changeLanguageTitle;
+
+  /// No description provided for @changeLanguageSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'অ্যাপের ভাষা নির্বাচন করুন'**
+  String get changeLanguageSub;
+
+  /// No description provided for @privacyAndTermsTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'গোপনীয়তা ও টার্মস অব সার্ভিস'**
+  String get privacyAndTermsTitle;
+
+  /// No description provided for @privacyAndTermsSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'ব্যবহারকারীর তথ্য সুরক্ষা নীতি'**
+  String get privacyAndTermsSub;
+
+  /// No description provided for @helpAndSupportSection.
+  ///
+  /// In bn, this message translates to:
+  /// **'সহায়তা ও অভিযোগ'**
+  String get helpAndSupportSection;
+
+  /// No description provided for @helpCenterTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'হেল্প সেন্টার ও কাস্টমার কেয়ার'**
+  String get helpCenterTitle;
+
+  /// No description provided for @helpCenterSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'হটলাইন ১৬৪২০ অথবা লাইভ চ্যাট (২৪/৭)'**
+  String get helpCenterSub;
+
+  /// No description provided for @disputesTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'আমার বিরোধ ও অভিযোগের স্ট্যাটাস'**
+  String get disputesTitle;
+
+  /// No description provided for @disputesSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'সক্রিয় বিরোধসমূহ ট্র্যাকিং'**
+  String get disputesSub;
 
   /// No description provided for @profileUpdateSuccess.
   ///
   /// In bn, this message translates to:
-  /// **'প্রোফাইল সফলভাবে আপডেট হয়েছে'**
+  /// **'প্রোফাইল সফলভাবে আপডেট হয়েছে'**
   String get profileUpdateSuccess;
 
   /// No description provided for @profileUpdateError.
   ///
   /// In bn, this message translates to:
-  /// **'প্রোফাইল সংরক্ষণে সমস্যা হয়েছে'**
+  /// **'প্রোফাইল সংরক্ষণে সমস্যা হয়েছে'**
   String get profileUpdateError;
 
   /// No description provided for @statusPendingTitle.
   ///
   /// In bn, this message translates to:
-  /// **'যাচাইকরণ প্রক্রিয়াধীন'**
+  /// **'যাচাইকরণ প্রক্রিয়াধীন'**
   String get statusPendingTitle;
 
   /// No description provided for @statusPendingDescription.
   ///
   /// In bn, this message translates to:
-  /// **'আপনার পরিচয়পত্র ও তথ্যাদি আমাদের অ্যাডমিন টিম যাচাই করছে। সাধারণতঃ ১২-২৪ ঘণ্টার মধ্যে যাচাই সম্পন্ন হয়।'**
+  /// **'আপনার পরিচয়পত্র ও তথ্যাদি আমাদের অ্যাডমিন টিম যাচাই করছে। সাধারণত ১২-২৪ ঘণ্টার মধ্যে যাচাই সম্পন্ন হয়।'**
   String get statusPendingDescription;
 
   /// No description provided for @statusApprovedTitle.
@@ -545,19 +845,19 @@ abstract class AppLocalizations {
   /// No description provided for @statusApprovedDescription.
   ///
   /// In bn, this message translates to:
-  /// **'আপনার অ্যাকাউন্ট সক্রিয় রয়েছে।'**
+  /// **'আপনার অ্যাকাউন্ট সক্রিয় রয়েছে।'**
   String get statusApprovedDescription;
 
   /// No description provided for @statusRejectedTitle.
   ///
   /// In bn, this message translates to:
-  /// **'যাচাইকরণ বাতিল হয়েছে'**
+  /// **'যাচাইকরণ বাতিল হয়েছে'**
   String get statusRejectedTitle;
 
   /// No description provided for @statusRejectedDescription.
   ///
   /// In bn, this message translates to:
-  /// **'আপনার প্রদানকৃত তথ্যে ত্রুটির কারণে আবেদনটি অনুমোদিত হয়নি।'**
+  /// **'আপনার প্রদানকৃত তথ্যে ত্রুটির কারণে আবেদনটি অনুমোদিত হয়নি।'**
   String get statusRejectedDescription;
 
   /// No description provided for @statusSuspendedTitle.
@@ -569,19 +869,19 @@ abstract class AppLocalizations {
   /// No description provided for @statusSuspendedDescription.
   ///
   /// In bn, this message translates to:
-  /// **'নিয়ম লঙ্ঘনের কারণে আপনার অ্যাকাউন্টটি সাময়িকভাবে স্থগিত করা হয়েছে।'**
+  /// **'নিয়ম লঙ্ঘনের কারণে আপনার অ্যাকাউন্টটি সাময়িকভাবে স্থগিত করা হয়েছে।'**
   String get statusSuspendedDescription;
 
   /// No description provided for @statusBannedTitle.
   ///
   /// In bn, this message translates to:
-  /// **'স্থায়ীভাবে নিষিদ্ধ'**
+  /// **'স্থায়ীভাবে নিষিদ্ধ'**
   String get statusBannedTitle;
 
   /// No description provided for @statusBannedDescription.
   ///
   /// In bn, this message translates to:
-  /// **'গুরুতর নীতিমালা লঙ্ঘনের কারণে এই অ্যাকাউন্টটি স্থায়ীভাবে নিষ্ক্রিয় করা হয়েছে।'**
+  /// **'গুরুতর নীতিমালা লঙ্ঘনের কারণে এই অ্যাকাউন্টটি স্থায়ীভাবে নিষ্ক্রিয় করা হয়েছে।'**
   String get statusBannedDescription;
 
   /// No description provided for @rejectionReasonLabel.
@@ -593,7 +893,7 @@ abstract class AppLocalizations {
   /// No description provided for @resubmitVerification.
   ///
   /// In bn, this message translates to:
-  /// **'পুনরায় যাচাইয়ের আবেদন করুন'**
+  /// **'পুনরায় যাচাইয়ের আবেদন করুন'**
   String get resubmitVerification;
 
   /// No description provided for @contactSupport.
@@ -601,6 +901,18 @@ abstract class AppLocalizations {
   /// In bn, this message translates to:
   /// **'সাপোর্টে যোগাযোগ করুন'**
   String get contactSupport;
+
+  /// No description provided for @refreshStatus.
+  ///
+  /// In bn, this message translates to:
+  /// **'রিফ্রেশ'**
+  String get refreshStatus;
+
+  /// No description provided for @refreshingStatus.
+  ///
+  /// In bn, this message translates to:
+  /// **'অ্যাকাউন্টের সর্বশেষ অবস্থা যাচাই করা হচ্ছে...'**
+  String get refreshingStatus;
 
   /// No description provided for @homeTitle.
   ///
@@ -625,6 +937,12 @@ abstract class AppLocalizations {
   /// In bn, this message translates to:
   /// **'শ্রমিক ড্যাশবোর্ড ও কাজের তালিকা শীঘ্রই আসছে।'**
   String get homePlaceholderLabour;
+
+  /// No description provided for @profileAndSettings.
+  ///
+  /// In bn, this message translates to:
+  /// **'প্রোফাইল ও সেটিংস'**
+  String get profileAndSettings;
 }
 
 class _AppLocalizationsDelegate

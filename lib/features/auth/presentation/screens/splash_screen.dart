@@ -1,22 +1,27 @@
 import 'package:flutter/material.dart';
 import '../../../../core/constants/app_constants.dart';
+import '../../../../core/presentation/widgets/language_toggle_button.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../../l10n/app_localizations.dart';
 
 /// High-fidelity Mobile Splash Screen matching Stitch project 4425920303127488102
 /// screen 7a4f55ca4234427fb8f643fc12ed915c with frozen Kinetic Trust tokens.
 class SplashScreen extends StatelessWidget {
   final bool showProgress;
-  final String statusText;
+  final String? statusText;
 
   const SplashScreen({
     super.key,
     this.showProgress = true,
-    this.statusText = 'Connecting verified pros...',
+    this.statusText,
   });
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final displayStatus = statusText ?? l10n.splashConnecting;
+
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
@@ -32,7 +37,7 @@ class SplashScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        // 1. Top Bar: Presence & Language Indicator
+                        // 1. Top Bar: Presence & Reusable Language Toggle
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -40,7 +45,7 @@ class SplashScreen extends StatelessWidget {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Text(
-                                  'Dhaka',
+                                  l10n.splashLocationDhaka,
                                   style: AppTextStyles.labelSmall.copyWith(
                                     color: AppColors.textMuted,
                                   ),
@@ -56,7 +61,7 @@ class SplashScreen extends StatelessWidget {
                                 ),
                                 const SizedBox(width: 6),
                                 Text(
-                                  'Live Service',
+                                  l10n.splashLiveService,
                                   style: AppTextStyles.labelSmall.copyWith(
                                     color: AppColors.secondary,
                                     fontWeight: FontWeight.w700,
@@ -64,38 +69,7 @@ class SplashScreen extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                              decoration: BoxDecoration(
-                                color: AppColors.surface,
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: AppColors.outline),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(
-                                    'বাং',
-                                    style: AppTextStyles.labelSmall.copyWith(
-                                      color: AppColors.primary,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Text(
-                                    ' / ',
-                                    style: AppTextStyles.labelSmall.copyWith(
-                                      color: AppColors.outline,
-                                    ),
-                                  ),
-                                  Text(
-                                    'EN',
-                                    style: AppTextStyles.labelSmall.copyWith(
-                                      color: AppColors.textMuted,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                            const LanguageTogglePill(),
                           ],
                         ),
 
@@ -136,7 +110,7 @@ class SplashScreen extends StatelessWidget {
 
                         const SizedBox(height: 18),
 
-                        // App Name
+                        // App Name (Always "KaajLagbe")
                         Text(
                           AppConstants.appName,
                           style: AppTextStyles.displayLarge.copyWith(
@@ -147,13 +121,14 @@ class SplashScreen extends StatelessWidget {
 
                         const SizedBox(height: 6),
 
-                        // Bengali Tagline
+                        // Localized Tagline
                         Text(
-                          'বিশ্বস্ত শ্রম ও দক্ষ কর্মী সেবা',
+                          l10n.splashTagline,
                           style: AppTextStyles.headlineSmall.copyWith(
                             color: AppColors.onSurface,
                             fontWeight: FontWeight.w700,
                           ),
+                          textAlign: TextAlign.center,
                         ),
 
                         const SizedBox(height: 12),
@@ -178,7 +153,7 @@ class SplashScreen extends StatelessWidget {
                               ),
                               const SizedBox(width: 6),
                               Text(
-                                'Verified Labour & Skilled Services',
+                                l10n.splashVerifiedProsTagline,
                                 style: AppTextStyles.labelMedium.copyWith(
                                   color: AppColors.secondary,
                                   fontWeight: FontWeight.w700,
@@ -198,8 +173,8 @@ class SplashScreen extends StatelessWidget {
                               child: _buildMetricChip(
                                 icon: Icons.check_circle_rounded,
                                 iconColor: AppColors.secondary,
-                                title: '100% NID',
-                                subtitle: 'Verified Identity',
+                                title: l10n.splashMetricNid,
+                                subtitle: l10n.splashMetricNidSub,
                               ),
                             ),
                             const SizedBox(width: 12),
@@ -207,8 +182,8 @@ class SplashScreen extends StatelessWidget {
                               child: _buildMetricChip(
                                 icon: Icons.bolt_rounded,
                                 iconColor: AppColors.primary,
-                                title: '15 Mins',
-                                subtitle: 'Fast Response',
+                                title: l10n.splashMetricFast,
+                                subtitle: l10n.splashMetricFastSub,
                               ),
                             ),
                           ],
@@ -231,6 +206,7 @@ class SplashScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 8),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Container(
@@ -242,10 +218,13 @@ class SplashScreen extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(width: 6),
-                              Text(
-                                statusText,
-                                style: AppTextStyles.labelSmall.copyWith(
-                                  color: AppColors.textMuted,
+                              Flexible(
+                                child: Text(
+                                  displayStatus,
+                                  style: AppTextStyles.labelSmall.copyWith(
+                                    color: AppColors.textMuted,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ),
                             ],
@@ -273,21 +252,25 @@ class SplashScreen extends StatelessWidget {
                                     color: AppColors.secondary,
                                   ),
                                   const SizedBox(width: 6),
-                                  Text(
-                                    '100% Verified Workers • Transparent Pricing',
-                                    style: AppTextStyles.labelMedium.copyWith(
-                                      fontWeight: FontWeight.w700,
-                                      color: AppColors.onSurface,
+                                  Flexible(
+                                    child: Text(
+                                      l10n.splashFooterTitle,
+                                      style: AppTextStyles.labelMedium.copyWith(
+                                        fontWeight: FontWeight.w700,
+                                        color: AppColors.onSurface,
+                                      ),
+                                      textAlign: TextAlign.center,
                                     ),
                                   ),
                                 ],
                               ),
                               const SizedBox(height: 6),
                               Text(
-                                'National ID Checked • Trade Tested Reviews',
+                                l10n.splashFooterSubtitle,
                                 style: AppTextStyles.bodySmall.copyWith(
                                   color: AppColors.textMuted,
                                 ),
+                                textAlign: TextAlign.center,
                               ),
                             ],
                           ),
@@ -353,4 +336,3 @@ class SplashScreen extends StatelessWidget {
     );
   }
 }
-

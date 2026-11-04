@@ -3,8 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/config/env_config.dart';
 import '../../../../core/constants/app_constants.dart';
+import '../../../../core/presentation/widgets/language_toggle_button.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/utils/number_formatter.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../auth_providers.dart';
 import 'otp_verification_screen.dart';
 
@@ -44,8 +47,10 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
   }
 
   String _cleanPhoneNumber(String input) {
+    // Convert Bengali digits (০-৯) to ASCII (0-9)
+    final ascii = NumberFormatter.toAsciiDigits(input);
     // Strip non-digits
-    var digits = input.replaceAll(RegExp(r'\D'), '');
+    var digits = ascii.replaceAll(RegExp(r'\D'), '');
     // If user enters leading 0 (e.g. 01712345678), remove it
     if (digits.startsWith('0')) {
       digits = digits.substring(1);
@@ -53,23 +58,24 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
     return digits;
   }
 
-  String? _validatePhone(String cleaned) {
+  String? _validatePhone(String cleaned, AppLocalizations l10n) {
     if (cleaned.isEmpty) {
-      return 'মোবাইল নম্বর লিখুন / Please enter phone number';
+      return l10n.phoneErrorEmpty;
     }
     if (!cleaned.startsWith('1')) {
-      return 'বাংলাদেশি নম্বর ১ দিয়ে শুরু হতে হবে (যেমন: 17XXXXXXXX)';
+      return l10n.phoneErrorInvalidPrefix;
     }
     if (cleaned.length != 10) {
-      return 'সঠিক ১০-সংখ্যার নম্বর দিন (যেমন: 17XXXXXXXX)';
+      return l10n.phoneErrorInvalidLength;
     }
     return null;
   }
 
   Future<void> _submitPhone() async {
+    final l10n = AppLocalizations.of(context)!;
     final rawInput = _phoneController.text.trim();
     final cleaned = _cleanPhoneNumber(rawInput);
-    final error = _validatePhone(cleaned);
+    final error = _validatePhone(cleaned, l10n);
 
     if (error != null) {
       setState(() {
@@ -100,15 +106,16 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
       );
     } else {
       setState(() {
-        _errorMessage = 'ওটিপি পাঠাতে সমস্যা হয়েছে। ইন্টারনেট সংযোগ ও নম্বর পরীক্ষা করুন।';
+        _errorMessage = l10n.otpSendError;
       });
     }
   }
 
   Future<void> _submitDevLogin() async {
+    final l10n = AppLocalizations.of(context)!;
     final rawInput = _phoneController.text.trim();
     final cleaned = _cleanPhoneNumber(rawInput);
-    final error = _validatePhone(cleaned);
+    final error = _validatePhone(cleaned, l10n);
 
     if (error != null) {
       setState(() {
@@ -133,13 +140,14 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
 
     if (response == null) {
       setState(() {
-        _errorMessage = 'ডেভ মোড লগইনে সমস্যা হয়েছে। Supabase ইমেইল প্রোভাইডার চেক করুন।';
+        _errorMessage = l10n.devLoginError;
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final authState = ref.watch(authControllerProvider);
     final isLoading = authState.isLoading;
 
@@ -163,7 +171,6 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                       side: const BorderSide(color: AppColors.outline),
                     ),
                     onPressed: () {
-                      // Minimize or close focus
                       FocusScope.of(context).unfocus();
                     },
                   ),
@@ -191,7 +198,7 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                               ),
                               const SizedBox(width: 4),
                               Text(
-                                'হেল্প',
+                                l10n.help,
                                 style: AppTextStyles.labelSmall.copyWith(
                                   color: AppColors.textMuted,
                                   fontWeight: FontWeight.w600,
@@ -200,38 +207,7 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                             ],
                           ),
                         ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                          decoration: BoxDecoration(
-                            color: AppColors.surface,
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(color: AppColors.outline),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                'বাং',
-                                style: AppTextStyles.labelSmall.copyWith(
-                                  color: AppColors.primary,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                ' / ',
-                                style: AppTextStyles.labelSmall.copyWith(
-                                  color: AppColors.outline,
-                                ),
-                              ),
-                              Text(
-                                'EN',
-                                style: AppTextStyles.labelSmall.copyWith(
-                                  color: AppColors.textMuted,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        const LanguageTogglePill(),
                       ],
                     ),
                   ),
@@ -307,7 +283,7 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                         ),
                         const SizedBox(width: 2),
                         Text(
-                          'ভেরিফাইড',
+                          l10n.verified,
                           style: AppTextStyles.labelSmall.copyWith(
                             color: AppColors.secondary,
                             fontWeight: FontWeight.bold,
@@ -322,7 +298,7 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
               const SizedBox(height: 12),
 
               Text(
-                'স্বাগতম!',
+                l10n.loginWelcome,
                 style: AppTextStyles.headlineLarge.copyWith(
                   fontWeight: FontWeight.w800,
                   color: AppColors.onSurface,
@@ -332,7 +308,7 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
               const SizedBox(height: 6),
 
               Text(
-                'লগইন বা রেজিস্ট্রেশন করতে আপনার মোবাইল নম্বর দিন',
+                l10n.loginSubtitle,
                 style: AppTextStyles.bodyMedium.copyWith(
                   color: AppColors.textMuted,
                 ),
@@ -375,37 +351,27 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                           children: [
                             const Icon(Icons.developer_mode_rounded, size: 16, color: AppColors.tertiary),
                             const SizedBox(width: 6),
-                            Text(
-                              'DEV MODE: OTP skipped',
-                              style: AppTextStyles.labelSmall.copyWith(
-                                color: AppColors.tertiary,
-                                fontWeight: FontWeight.bold,
+                            Flexible(
+                              child: Text(
+                                l10n.devModeOtpSkipped,
+                                style: AppTextStyles.labelSmall.copyWith(
+                                  color: AppColors.tertiary,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ),
                           ],
                         ),
                       ),
                     ],
-                    Wrap(
-                      alignment: WrapAlignment.spaceBetween,
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      spacing: 8,
-                      runSpacing: 4,
-                      children: [
-                        Text(
-                          'মোবাইল নম্বর *',
-                          style: AppTextStyles.labelLarge.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.onSurface,
-                          ),
-                        ),
-                        Text(
-                          'Phone Number',
-                          style: AppTextStyles.labelSmall.copyWith(
-                            color: AppColors.textMuted,
-                          ),
-                        ),
-                      ],
+
+                    Text(
+                      l10n.phoneNumberLabel,
+                      style: AppTextStyles.labelLarge.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.onSurface,
+                      ),
                     ),
 
                     const SizedBox(height: 8),
@@ -470,25 +436,25 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
 
                           const SizedBox(width: 8),
 
-                          // Text Input
+                          // Text Input: accepts both ASCII & Bengali digits
                           Expanded(
                             child: TextField(
                               controller: _phoneController,
                               focusNode: _focusNode,
                               keyboardType: TextInputType.phone,
                               inputFormatters: [
-                                FilteringTextInputFormatter.digitsOnly,
+                                FilteringTextInputFormatter.allow(RegExp(r'[0-9০-৯]')),
                                 LengthLimitingTextInputFormatter(11),
                               ],
                               style: AppTextStyles.titleMedium.copyWith(
                                 fontWeight: FontWeight.bold,
                                 letterSpacing: 1.2,
                               ),
-                              decoration: const InputDecoration(
-                                hintText: '17XXXXXXXX',
+                              decoration: InputDecoration(
+                                hintText: l10n.phoneNumberHint,
                                 border: InputBorder.none,
                                 isDense: true,
-                                contentPadding: EdgeInsets.symmetric(vertical: 14),
+                                contentPadding: const EdgeInsets.symmetric(vertical: 14),
                               ),
                               onSubmitted: (_) => _submitPhone(),
                             ),
@@ -533,7 +499,7 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                         const SizedBox(width: 6),
                         Expanded(
                           child: Text(
-                            'আমরা এই নম্বরে একটি ৬-সংখ্যার ওটিপি কোড পাঠাব',
+                            l10n.phoneHelperText,
                             style: AppTextStyles.bodySmall.copyWith(
                               color: AppColors.textMuted,
                             ),
@@ -573,7 +539,7 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                                 children: [
                                   Flexible(
                                     child: Text(
-                                      'ওটিপি পাঠান / Send OTP',
+                                      l10n.sendOtp,
                                       style: AppTextStyles.labelLarge.copyWith(
                                         color: AppColors.onPrimary,
                                         fontWeight: FontWeight.bold,
@@ -609,7 +575,7 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                               const SizedBox(width: 6),
                               Flexible(
                                 child: Text(
-                                  'Continue without OTP (dev mode)',
+                                  l10n.continueWithoutOtp,
                                   style: AppTextStyles.labelLarge.copyWith(
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -638,8 +604,8 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                           children: [
                             Text(
                               _isWorkerIntent
-                                  ? 'গ্রাহক হিসেবে সেবা নিতে চান?'
-                                  : 'দক্ষ কাজের কারিগর বা টেকনিশিয়ান?',
+                                  ? l10n.workerTogglePromptWorker
+                                  : l10n.workerTogglePromptCustomer,
                               style: AppTextStyles.bodySmall.copyWith(
                                 color: AppColors.textMuted,
                               ),
@@ -652,7 +618,9 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                               children: [
                                 Flexible(
                                   child: Text(
-                                    _isWorkerIntent ? 'গ্রাহক লগইন' : 'শ্রমিক হিসেবে যুক্ত হন',
+                                    _isWorkerIntent
+                                        ? l10n.workerToggleActionCustomer
+                                        : l10n.workerToggleActionWorker,
                                     style: AppTextStyles.labelSmall.copyWith(
                                       color: AppColors.primary,
                                       fontWeight: FontWeight.bold,
@@ -707,7 +675,7 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'যাচাইকৃত ও নিরাপদ প্ল্যাটফর্ম',
+                            l10n.phoneSecurityBannerTitle,
                             style: AppTextStyles.labelMedium.copyWith(
                               fontWeight: FontWeight.bold,
                               color: AppColors.onSurface,
@@ -715,7 +683,7 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                           ),
                           const SizedBox(height: 2),
                           Text(
-                            '১০০% জাতীয় পরিচয়পত্র (NID) যাচাইকৃত প্ল্যাটফর্ম',
+                            l10n.phoneSecurityBannerSubtitle,
                             style: AppTextStyles.bodySmall.copyWith(
                               color: AppColors.textMuted,
                             ),
@@ -730,7 +698,7 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
               const SizedBox(height: 16),
 
               Text(
-                'এগিয়ে যাওয়ার মাধ্যমে আপনি KaajLagbe-এর নিয়ম ও শর্তাবলী এবং গোপনীয়তা নীতি মেনে নিচ্ছেন।',
+                l10n.termsAgreementText,
                 style: AppTextStyles.bodySmall.copyWith(
                   color: AppColors.textMuted,
                   fontSize: 11,

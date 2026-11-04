@@ -67,6 +67,37 @@ class AppLocalizationsEn extends AppLocalizations {
   String get splashSecurePayments => 'Secure Payments';
 
   @override
+  String get splashConnecting => 'Connecting verified pros...';
+
+  @override
+  String get splashLocationDhaka => 'Dhaka';
+
+  @override
+  String get splashLiveService => 'Live Service';
+
+  @override
+  String get splashVerifiedProsTagline => 'Verified Labour & Skilled Services';
+
+  @override
+  String get splashMetricNid => '100% NID';
+
+  @override
+  String get splashMetricNidSub => 'Verified Identity';
+
+  @override
+  String get splashMetricFast => '15 Mins';
+
+  @override
+  String get splashMetricFastSub => 'Fast Response';
+
+  @override
+  String get splashFooterTitle => '100% Verified Workers • Transparent Pricing';
+
+  @override
+  String get splashFooterSubtitle =>
+      'National ID Checked • Trade Tested Reviews';
+
+  @override
   String get loginWelcome => 'Welcome!';
 
   @override
@@ -125,6 +156,17 @@ class AppLocalizationsEn extends AppLocalizations {
       'All workers are verified with National ID and proven skills';
 
   @override
+  String get termsAgreementText =>
+      'By proceeding, you agree to KaajLagbe\'s Terms & Conditions and Privacy Policy.';
+
+  @override
+  String get phoneSecurityBannerTitle => 'Verified & Secure Platform';
+
+  @override
+  String get phoneSecurityBannerSubtitle =>
+      '100% National ID (NID) Verified Platform';
+
+  @override
   String get otpTitle => 'OTP Verification';
 
   @override
@@ -157,33 +199,76 @@ class AppLocalizationsEn extends AppLocalizations {
   String get otpResentSuccess => 'A new OTP code has been sent.';
 
   @override
-  String get roleSelectionTitle => 'How would you like to use KaajLagbe?';
+  String get otpEditNumber => 'Edit';
 
   @override
-  String get roleSelectionSubtitle => 'Select your primary role to continue';
+  String get otpInputPrompt => 'Enter 6-digit OTP';
+
+  @override
+  String get otpResendCodePrompt => 'Didn\'t receive code?';
+
+  @override
+  String get otpResendActionSms => 'Resend SMS';
+
+  @override
+  String get otpResendFailed => 'Failed to resend OTP. Please try again later.';
+
+  @override
+  String get otpSecuritySafe => '100% Secure Verification';
+
+  @override
+  String get otpSecurityNid => 'NID Tested Platform';
+
+  @override
+  String get roleSelectionTitle => 'Select Your Role';
+
+  @override
+  String get roleSelectionSubtitle => 'How would you like to use KaajLagbe?';
+
+  @override
+  String get roleSelectionTrustBadge => 'Safe & Simple Start';
 
   @override
   String get customerRoleTitle => 'I need work done';
 
   @override
   String get customerRoleSubtitle =>
-      'Find and book verified electricians, plumbers, painters and more';
+      'Find and book verified, trusted workers for home or office jobs';
 
   @override
   String get customerRoleBadge => 'Customer';
+
+  @override
+  String get customerPerk1 => 'Verified Skilled Workers';
+
+  @override
+  String get customerPerk2 => 'Transparent Rates & Direct Booking';
 
   @override
   String get labourRoleTitle => 'I want to work';
 
   @override
   String get labourRoleSubtitle =>
-      'Receive booking requests matching your skills and grow your earnings';
+      'Add your skills, get direct bookings, and grow your income';
 
   @override
   String get labourRoleBadge => 'Labour';
 
   @override
+  String get labourPerk1 => 'Direct Payment';
+
+  @override
+  String get labourPerk2 => 'Regular Work Opportunities';
+
+  @override
   String get selectRoleError => 'Please select a role to continue';
+
+  @override
+  String get roleAdminBlockedError => 'Admin role cannot be selected';
+
+  @override
+  String get roleSaveError =>
+      'Failed to save role. Please check your network connection.';
 
   @override
   String get profileSetupTitle => 'Set Up Your Profile';
@@ -211,6 +296,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get changePhoto => 'Change Photo';
 
   @override
+  String get avatarSelected => 'Avatar selected';
+
+  @override
+  String get saveAndContinue => 'Save & Continue';
+
+  @override
   String get profileSettingsTitle => 'Profile & Settings';
 
   @override
@@ -220,16 +311,79 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appSettings => 'App Settings';
 
   @override
-  String get themeMode => 'Theme Mode';
+  String get editName => 'Edit Name';
 
   @override
-  String get notifications => 'Notifications';
+  String get editNameHint => 'Enter full name';
 
   @override
-  String get privacyPolicy => 'Privacy Policy';
+  String get nameCannotBeEmpty => 'Name cannot be empty';
 
   @override
-  String get termsOfService => 'Terms of Service';
+  String get nidVerifiedBadge => 'National ID Verified';
+
+  @override
+  String get nidVerifiedSub => 'NID Verified Citizen • Highest Security Level';
+
+  @override
+  String get totalBookings => 'Total Bookings';
+
+  @override
+  String get savedAddresses => 'Saved Addresses';
+
+  @override
+  String get balance => 'Balance';
+
+  @override
+  String get accountAndPlacesSection => 'Account & Places';
+
+  @override
+  String get savedAddressesTitle => 'Saved Addresses';
+
+  @override
+  String get savedAddressesSub => 'Home: Mirpur 10, Dhaka';
+
+  @override
+  String get paymentMethodsTitle => 'Payment Methods & History';
+
+  @override
+  String get paymentMethodsSub => 'bKash / Nagad / Card';
+
+  @override
+  String get safetyAndPolicySection => 'Safety & Controls';
+
+  @override
+  String get emergencyContactTitle => 'Emergency Contact & Safety';
+
+  @override
+  String get emergencyContactSub => 'Emergency Helpline & Tracking';
+
+  @override
+  String get changeLanguageTitle => 'Change Language';
+
+  @override
+  String get changeLanguageSub => 'Select application language';
+
+  @override
+  String get privacyAndTermsTitle => 'Privacy & Terms of Service';
+
+  @override
+  String get privacyAndTermsSub => 'User data protection policy';
+
+  @override
+  String get helpAndSupportSection => 'Help & Support';
+
+  @override
+  String get helpCenterTitle => 'Help Center & Support';
+
+  @override
+  String get helpCenterSub => 'Hotline 16420 or Live Chat (24/7)';
+
+  @override
+  String get disputesTitle => 'Disputes & Complaints Status';
+
+  @override
+  String get disputesSub => 'Active disputes tracking';
 
   @override
   String get profileUpdateSuccess => 'Profile updated successfully';
@@ -282,6 +436,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get contactSupport => 'Contact Support';
 
   @override
+  String get refreshStatus => 'Refresh';
+
+  @override
+  String get refreshingStatus => 'Checking latest account status...';
+
+  @override
   String get homeTitle => 'Home';
 
   @override
@@ -296,4 +456,7 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get homePlaceholderLabour =>
       'Labour dashboard and job queue coming soon.';
+
+  @override
+  String get profileAndSettings => 'Profile & Settings';
 }

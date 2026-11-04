@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:kaajlagbe/features/auth/domain/auth_repository.dart';
 import 'package:kaajlagbe/features/auth/presentation/auth_providers.dart';
 import 'package:kaajlagbe/features/auth/presentation/screens/otp_verification_screen.dart';
 import 'package:kaajlagbe/features/auth/presentation/screens/phone_login_screen.dart';
+import 'package:kaajlagbe/l10n/app_localizations.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class MockAuthRepository extends Mock implements AuthRepository {}
 
@@ -18,25 +19,37 @@ void main() {
     mockAuthRepository = MockAuthRepository();
   });
 
-  Widget createTestWidget(Widget child) {
+  Widget createTestWidget(Widget child, {Locale locale = const Locale('bn')}) {
     return ProviderScope(
       overrides: [
         authRepositoryProvider.overrideWithValue(mockAuthRepository),
       ],
       child: MaterialApp(
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        locale: locale,
         home: child,
       ),
     );
   }
 
   group('PhoneLoginScreen Tests', () {
-    testWidgets('Renders phone input, +880 prefix and Send OTP button', (tester) async {
-      await tester.pumpWidget(createTestWidget(const PhoneLoginScreen()));
+    testWidgets('Renders phone input, +880 prefix and Send OTP button in Bengali', (tester) async {
+      await tester.pumpWidget(createTestWidget(const PhoneLoginScreen(), locale: const Locale('bn')));
       await tester.pumpAndSettle();
 
       expect(find.text('+880'), findsOneWidget);
-      expect(find.text('ওটিপি পাঠান / Send OTP'), findsOneWidget);
+      expect(find.text('ওটিপি পাঠান'), findsOneWidget);
       expect(find.byType(TextField), findsOneWidget);
+    });
+
+    testWidgets('Renders in English when English locale is provided', (tester) async {
+      await tester.pumpWidget(createTestWidget(const PhoneLoginScreen(), locale: const Locale('en')));
+      await tester.pumpAndSettle();
+
+      expect(find.text('+880'), findsOneWidget);
+      expect(find.text('Send OTP'), findsOneWidget);
+      expect(find.text('Welcome!'), findsOneWidget);
     });
 
     testWidgets('Displays error message when invalid phone number is submitted', (tester) async {
@@ -45,10 +58,33 @@ void main() {
 
       // Enter short/invalid number
       await tester.enterText(find.byType(TextField), '1234');
-      await tester.tap(find.text('ওটিপি পাঠান / Send OTP'));
+      await tester.tap(find.text('ওটিপি পাঠান'));
       await tester.pumpAndSettle();
 
       expect(find.textContaining('সঠিক ১০-সংখ্যার নম্বর দিন'), findsOneWidget);
+    });
+
+    testWidgets('Accepts Bengali numerals and normalizes to ASCII for sendOtp', (tester) async {
+      when(() => mockAuthRepository.signInWithOtp(
+            phone: any(named: 'phone'),
+            data: any(named: 'data'),
+          )).thenAnswer((_) async {});
+
+      await tester.pumpWidget(createTestWidget(const PhoneLoginScreen()));
+      await tester.pumpAndSettle();
+
+      // Enter Bengali numerals: ১৭১২৩৪৫৬৭৮
+      await tester.enterText(find.byType(TextField), '১৭১২৩৪৫৬৭৮');
+      await tester.tap(find.text('ওটিপি পাঠান'));
+      await tester.pumpAndSettle();
+
+      verify(() => mockAuthRepository.signInWithOtp(
+            phone: '+8801712345678',
+            data: any(named: 'data'),
+          )).called(1);
+
+      expect(find.byType(OtpVerificationScreen), findsOneWidget);
+      expect(find.text('+8801712345678'), findsOneWidget);
     });
 
     testWidgets('Triggers sendOtp and navigates to OtpVerificationScreen on valid phone', (tester) async {
@@ -61,7 +97,7 @@ void main() {
       await tester.pumpAndSettle();
 
       await tester.enterText(find.byType(TextField), '1712345678');
-      await tester.tap(find.text('ওটিপি পাঠান / Send OTP'));
+      await tester.tap(find.text('ওটিপি পাঠান'));
       await tester.pumpAndSettle();
 
       verify(() => mockAuthRepository.signInWithOtp(
@@ -87,6 +123,9 @@ void main() {
             authRepositoryProvider.overrideWithValue(mockAuthRepository),
           ],
           child: const MaterialApp(
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            locale: Locale('bn'),
             home: MediaQuery(
               data: MediaQueryData(
                 size: Size(320, 640),
