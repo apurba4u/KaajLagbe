@@ -116,3 +116,4 @@ class UserProfile {
     return 'UserProfile(id: $id, phone: $phone, fullName: $fullName, role: ${role.name}, accountStatus: ${accountStatus.name})';
   }
 }
+

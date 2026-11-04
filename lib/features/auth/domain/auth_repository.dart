@@ -48,3 +48,4 @@ abstract class AuthRepository {
     required UserRole role,
   });
 }
+

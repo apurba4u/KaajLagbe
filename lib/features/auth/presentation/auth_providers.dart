@@ -140,3 +140,4 @@ final authControllerProvider =
   final repository = ref.watch(authRepositoryProvider);
   return AuthController(repository, ref);
 });
+

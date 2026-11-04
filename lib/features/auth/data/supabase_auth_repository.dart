@@ -131,3 +131,4 @@ class SupabaseAuthRepository implements AuthRepository {
     }
   }
 }
+
