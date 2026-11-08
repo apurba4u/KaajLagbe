@@ -171,8 +171,19 @@ To rapidly test and demo all platform personas without requiring live SMS or man
 ### How to Run the Seed Script
 1. Open your Supabase Project Dashboard -> **SQL Editor**.
 2. Paste the contents of `supabase/seed/demo_users.sql` and click **Run**.
-3. In your local `.env` file, set `OTP_REQUIRED=false`.
-4. Launch the KaajLagbe app, enter any phone number from the table below (without `+880`), and tap **"Continue without OTP (dev mode)"**.
+3. In your local `.env` file, set `OTP_REQUIRED=false` for instant dev login, OR keep `OTP_REQUIRED=true` and configure Supabase Test Phone Numbers below.
+4. Launch the KaajLagbe app, tap any **Quick-Fill Chip** on the phone screen (or type the 10-digit number), and either tap **"Continue without OTP (dev mode)"** or tap **"Send OTP"** (entering `123456`).
+
+### Supabase Phone OTP Test Numbers Setup
+To test the real SMS OTP verification screens without consuming SMS credits or triggering carrier rate limits:
+1. Open your Supabase Project Dashboard.
+2. Navigate to **Authentication** -> **Providers** -> **Phone**.
+3. Under **Test phone numbers**, paste the following test-number mapping string:
+   ```text
+   8801700000001=123456, 8801700000002=123456, 8801800000001=123456, 8801800000002=123456, 8801800000003=123456, 8801900000001=123456
+   ```
+4. Click **Save**.
+5. Test OTP for all 6 accounts is `123456`. When verified, Supabase immediately authenticates the user into their pre-seeded profile because `auth.users.phone` is stored as `880XXXXXXXXXX` (without `+`) with `phone_confirmed_at = now()`.
 
 ### Seeded Persona Matrix
 

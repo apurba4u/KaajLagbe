@@ -356,6 +356,42 @@ abstract class AppLocalizations {
   /// **'ওটিপি পাঠাতে সমস্যা হয়েছে। ইন্টারনেট সংযোগ ও নম্বর পরীক্ষা করুন।'**
   String get otpSendError;
 
+  /// No description provided for @authErrorPhoneProviderDisabled.
+  ///
+  /// In bn, this message translates to:
+  /// **'ফোন ওটিপি প্রোভাইডার নিষ্ক্রিয়। Supabase ড্যাশবোর্ডে Phone প্রোভাইডার চালু করুন অথবা টেস্ট নম্বর ব্যবহার করুন।'**
+  String get authErrorPhoneProviderDisabled;
+
+  /// No description provided for @authErrorSmsSendFailed.
+  ///
+  /// In bn, this message translates to:
+  /// **'এসএমএস গেটওয়ে থেকে ওটিপি কোড পাঠানো যায়নি। এসএমএস প্রোভাইডার সেটিংস বা ব্যালেন্স পরীক্ষা করুন।'**
+  String get authErrorSmsSendFailed;
+
+  /// No description provided for @authErrorRateLimit.
+  ///
+  /// In bn, this message translates to:
+  /// **'নিরাপত্তার স্বার্থে ওটিপি পাঠানোর সীমা অতিক্রান্ত হয়েছে। অনুগ্রহ করে কিছুক্ষণ অপেক্ষা করে আবার চেষ্টা করুন।'**
+  String get authErrorRateLimit;
+
+  /// No description provided for @authErrorInvalidPhone.
+  ///
+  /// In bn, this message translates to:
+  /// **'মোবাইল নম্বরটি সঠিক নয়। অনুগ্রহ করে ১০-সংখ্যার সঠিক বাংলাদেশি নম্বর লিখুন (যেমন: 17XXXXXXXX)।'**
+  String get authErrorInvalidPhone;
+
+  /// No description provided for @authErrorNetworkOffline.
+  ///
+  /// In bn, this message translates to:
+  /// **'ইন্টারনেট সংযোগ পাওয়া যায়নি। আপনার মোবাইল ডাটা বা ওয়াই-ফাই সংযোগ পরীক্ষা করুন।'**
+  String get authErrorNetworkOffline;
+
+  /// No description provided for @demoQuickFillTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'ডেমো অ্যাকাউন্ট কুইক-ফিল'**
+  String get demoQuickFillTitle;
+
   /// No description provided for @devLoginError.
   ///
   /// In bn, this message translates to:

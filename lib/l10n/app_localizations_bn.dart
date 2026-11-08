@@ -144,6 +144,29 @@ class AppLocalizationsBn extends AppLocalizations {
       'ওটিপি পাঠাতে সমস্যা হয়েছে। ইন্টারনেট সংযোগ ও নম্বর পরীক্ষা করুন।';
 
   @override
+  String get authErrorPhoneProviderDisabled =>
+      'ফোন ওটিপি প্রোভাইডার নিষ্ক্রিয়। Supabase ড্যাশবোর্ডে Phone প্রোভাইডার চালু করুন অথবা টেস্ট নম্বর ব্যবহার করুন।';
+
+  @override
+  String get authErrorSmsSendFailed =>
+      'এসএমএস গেটওয়ে থেকে ওটিপি কোড পাঠানো যায়নি। এসএমএস প্রোভাইডার সেটিংস বা ব্যালেন্স পরীক্ষা করুন।';
+
+  @override
+  String get authErrorRateLimit =>
+      'নিরাপত্তার স্বার্থে ওটিপি পাঠানোর সীমা অতিক্রান্ত হয়েছে। অনুগ্রহ করে কিছুক্ষণ অপেক্ষা করে আবার চেষ্টা করুন।';
+
+  @override
+  String get authErrorInvalidPhone =>
+      'মোবাইল নম্বরটি সঠিক নয়। অনুগ্রহ করে ১০-সংখ্যার সঠিক বাংলাদেশি নম্বর লিখুন (যেমন: 17XXXXXXXX)।';
+
+  @override
+  String get authErrorNetworkOffline =>
+      'ইন্টারনেট সংযোগ পাওয়া যায়নি। আপনার মোবাইল ডাটা বা ওয়াই-ফাই সংযোগ পরীক্ষা করুন।';
+
+  @override
+  String get demoQuickFillTitle => 'ডেমো অ্যাকাউন্ট কুইক-ফিল';
+
+  @override
   String get devLoginError =>
       'ডেভ মোড লগইনে সমস্যা হয়েছে। Supabase ইমেইল প্রোভাইডার চেক করুন।';
 

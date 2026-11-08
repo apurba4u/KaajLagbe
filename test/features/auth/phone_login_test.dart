@@ -187,6 +187,79 @@ void main() {
             data: any(named: 'data'),
           )).called(1);
     });
+
+    testWidgets('Renders quick-fill chips in dev mode and populates phone field when tapped', (tester) async {
+      addTearDown(() {
+        dotenv.testLoad(fileInput: 'OTP_REQUIRED=true');
+      });
+      dotenv.testLoad(fileInput: 'OTP_REQUIRED=false');
+
+      await tester.pumpWidget(createTestWidget(const PhoneLoginScreen()));
+      await tester.pumpAndSettle();
+
+      expect(find.text('ডেমো অ্যাকাউন্ট কুইক-ফিল'), findsOneWidget);
+      expect(find.text('Rahim'), findsOneWidget);
+      expect(find.text('Sadia'), findsOneWidget);
+      expect(find.text('Karim'), findsOneWidget);
+      expect(find.text('Jamal'), findsOneWidget);
+      expect(find.text('Nasir'), findsOneWidget);
+      expect(find.text('Admin'), findsOneWidget);
+
+      // Tap Rahim
+      final rahimChip = find.widgetWithText(ActionChip, 'Rahim');
+      await tester.ensureVisible(rahimChip);
+      await tester.tap(rahimChip);
+      await tester.pumpAndSettle();
+
+      final textField = tester.widget<TextField>(find.byType(TextField));
+      expect(textField.controller?.text, '1700000001');
+
+      // Tap Karim (Labour)
+      final karimChip = find.widgetWithText(ActionChip, 'Karim');
+      await tester.ensureVisible(karimChip);
+      await tester.tap(karimChip);
+      await tester.pumpAndSettle();
+
+      final textFieldKarim = tester.widget<TextField>(find.byType(TextField));
+      expect(textFieldKarim.controller?.text, '1800000001');
+    });
+
+    testWidgets('Displays specific localized error when AuthException occurs during OTP send', (tester) async {
+      when(() => mockAuthRepository.signInWithOtp(
+            phone: any(named: 'phone'),
+            data: any(named: 'data'),
+          )).thenThrow(
+        const AuthException('For security purposes, you can only request this once every 60 seconds',
+            statusCode: '429', code: 'over_sms_send_rate_limit'),
+      );
+
+      await tester.pumpWidget(createTestWidget(const PhoneLoginScreen()));
+      await tester.pumpAndSettle();
+
+      await tester.enterText(find.byType(TextField), '1712345678');
+      await tester.tap(find.text('ওটিপি পাঠান'));
+      await tester.pumpAndSettle();
+
+      expect(find.textContaining('সীমা অতিক্রান্ত হয়েছে'), findsOneWidget);
+    });
+
+    testWidgets('Displays phone provider disabled error when Supabase Phone provider is off', (tester) async {
+      when(() => mockAuthRepository.signInWithOtp(
+            phone: any(named: 'phone'),
+            data: any(named: 'data'),
+          )).thenThrow(
+        const AuthException('Phone provider is disabled for this project', code: 'phone_provider_disabled'),
+      );
+
+      await tester.pumpWidget(createTestWidget(const PhoneLoginScreen()));
+      await tester.pumpAndSettle();
+
+      await tester.enterText(find.byType(TextField), '1712345678');
+      await tester.tap(find.text('ওটিপি পাঠান'));
+      await tester.pumpAndSettle();
+
+      expect(find.textContaining('ফোন ওটিপি প্রোভাইডার নিষ্ক্রিয়'), findsOneWidget);
+    });
   });
 
   group('OtpVerificationScreen Tests', () {

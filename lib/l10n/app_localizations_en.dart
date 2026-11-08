@@ -145,6 +145,29 @@ class AppLocalizationsEn extends AppLocalizations {
       'Failed to send OTP. Please check your network and number.';
 
   @override
+  String get authErrorPhoneProviderDisabled =>
+      'Phone OTP provider is disabled. Please enable the Phone provider in the Supabase Dashboard or use test numbers.';
+
+  @override
+  String get authErrorSmsSendFailed =>
+      'Failed to send SMS OTP. Please check your SMS provider configuration or balance.';
+
+  @override
+  String get authErrorRateLimit =>
+      'Too many requests. For security purposes, please wait a moment before requesting another code.';
+
+  @override
+  String get authErrorInvalidPhone =>
+      'Invalid phone number format. Please enter a valid 10-digit Bangladeshi mobile number (e.g. 17XXXXXXXX).';
+
+  @override
+  String get authErrorNetworkOffline =>
+      'No internet connection detected. Please check your network and try again.';
+
+  @override
+  String get demoQuickFillTitle => 'Demo Accounts Quick-Fill';
+
+  @override
   String get devLoginError =>
       'Dev login failed. Check Supabase email provider settings.';
 

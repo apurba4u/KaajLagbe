@@ -7,6 +7,7 @@ import '../../../../core/localization/locale_provider.dart';
 import '../../../../core/presentation/widgets/language_toggle_button.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/utils/auth_error_resolver.dart';
 import '../../../../core/utils/number_formatter.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../auth_providers.dart';
@@ -135,8 +136,11 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
       );
       _startCountdown();
     } else {
+      final authError = ref.read(authControllerProvider).error;
       setState(() {
-        _errorMessage = l10n.otpResendFailed;
+        _errorMessage = authError != null
+            ? AuthErrorResolver.resolveOtpErrorMessage(authError, l10n)
+            : l10n.otpResendFailed;
       });
     }
   }

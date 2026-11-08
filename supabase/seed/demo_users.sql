@@ -1,18 +1,19 @@
 -- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 -- DEV/DEMO ONLY - NEVER RUN THIS SCRIPT ON PRODUCTION!
 -- Description: Seeds 6 deterministic test accounts with known phone-derived
---              credentials matching SupabaseAuthRepository.signInWithDevPhone.
+--              credentials matching SupabaseAuthRepository.signInWithDevPhone
+--              and Supabase Phone OTP test numbers (880XXXXXXXXXX=123456).
 -- Safe to re-run multiple times (idempotent).
 --
--- Password for all demo accounts follows the deterministic pattern:
+-- Credentials for all demo accounts:
+--   Phone:    880XXXXXXXXXX (without '+', confirmed for test OTP)
+--   Test OTP: 123456 (configured in Supabase Phone Provider)
 --   Email:    dev_<digits>@kaajlagbe.local
 --   Password: DevKaajLagbe!<digits>
--- where <digits> is the 13-digit E.164 number without '+' (e.g., 8801700000001).
 -- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 do $$
 declare
-  v_crypt_func text;
   v_customer1_id uuid := '00000000-0000-0000-0000-000000000001'::uuid;
   v_customer2_id uuid := '00000000-0000-0000-0000-000000000002'::uuid;
   v_labour1_id   uuid := '00000000-0000-0000-0000-000000000003'::uuid;
@@ -37,13 +38,12 @@ begin
   select id into v_skill_carpenter   from public.skills where name = 'Carpenter';
   select id into v_skill_moving      from public.skills where name = 'Moving Helper';
 
-  -- Helper closure logic for upserting an auth user
   -- ---------------------------------------------------------------------------
-  -- 1. CUSTOMER #1: Rahim Uddin (01700000001 -> +8801700000001)
+  -- 1. CUSTOMER #1: Rahim Uddin (01700000001 -> 8801700000001)
   -- ---------------------------------------------------------------------------
   insert into auth.users (
     id, instance_id, aud, role, email, encrypted_password,
-    email_confirmed_at, phone, raw_app_meta_data, raw_user_meta_data,
+    email_confirmed_at, phone, phone_confirmed_at, raw_app_meta_data, raw_user_meta_data,
     created_at, updated_at
   ) values (
     v_customer1_id,
@@ -53,13 +53,16 @@ begin
     'dev_8801700000001@kaajlagbe.local',
     extensions.crypt('DevKaajLagbe!8801700000001', extensions.gen_salt('bf')),
     now(),
-    '+8801700000001',
-    '{"provider": "email", "providers": ["email"]}'::jsonb,
-    '{"full_name": "Rahim Uddin", "role": "customer", "phone": "+8801700000001"}'::jsonb,
+    '8801700000001',
+    now(),
+    '{"provider": "phone", "providers": ["email", "phone"]}'::jsonb,
+    '{"full_name": "Rahim Uddin", "role": "customer", "phone": "8801700000001"}'::jsonb,
     now(), now()
   ) on conflict (id) do update set
+    phone = '8801700000001',
+    phone_confirmed_at = now(),
     encrypted_password = extensions.crypt('DevKaajLagbe!8801700000001', extensions.gen_salt('bf')),
-    raw_user_meta_data = '{"full_name": "Rahim Uddin", "role": "customer", "phone": "+8801700000001"}'::jsonb,
+    raw_user_meta_data = '{"full_name": "Rahim Uddin", "role": "customer", "phone": "8801700000001"}'::jsonb,
     email_confirmed_at = now();
 
   insert into auth.identities (id, user_id, identity_data, provider, provider_id, last_sign_in_at, created_at, updated_at)
@@ -89,11 +92,11 @@ begin
   );
 
   -- ---------------------------------------------------------------------------
-  -- 2. CUSTOMER #2: Sadia Akter (01700000002 -> +8801700000002)
+  -- 2. CUSTOMER #2: Sadia Akter (01700000002 -> 8801700000002)
   -- ---------------------------------------------------------------------------
   insert into auth.users (
     id, instance_id, aud, role, email, encrypted_password,
-    email_confirmed_at, phone, raw_app_meta_data, raw_user_meta_data,
+    email_confirmed_at, phone, phone_confirmed_at, raw_app_meta_data, raw_user_meta_data,
     created_at, updated_at
   ) values (
     v_customer2_id,
@@ -103,13 +106,16 @@ begin
     'dev_8801700000002@kaajlagbe.local',
     extensions.crypt('DevKaajLagbe!8801700000002', extensions.gen_salt('bf')),
     now(),
-    '+8801700000002',
-    '{"provider": "email", "providers": ["email"]}'::jsonb,
-    '{"full_name": "Sadia Akter", "role": "customer", "phone": "+8801700000002"}'::jsonb,
+    '8801700000002',
+    now(),
+    '{"provider": "phone", "providers": ["email", "phone"]}'::jsonb,
+    '{"full_name": "Sadia Akter", "role": "customer", "phone": "8801700000002"}'::jsonb,
     now(), now()
   ) on conflict (id) do update set
+    phone = '8801700000002',
+    phone_confirmed_at = now(),
     encrypted_password = extensions.crypt('DevKaajLagbe!8801700000002', extensions.gen_salt('bf')),
-    raw_user_meta_data = '{"full_name": "Sadia Akter", "role": "customer", "phone": "+8801700000002"}'::jsonb,
+    raw_user_meta_data = '{"full_name": "Sadia Akter", "role": "customer", "phone": "8801700000002"}'::jsonb,
     email_confirmed_at = now();
 
   insert into auth.identities (id, user_id, identity_data, provider, provider_id, last_sign_in_at, created_at, updated_at)
@@ -128,11 +134,11 @@ begin
   where id = v_customer2_id;
 
   -- ---------------------------------------------------------------------------
-  -- 3. LABOUR #1: Karim Mia (01800000001 -> +8801800000001) [Electrician Master]
+  -- 3. LABOUR #1: Karim Mia (01800000001 -> 8801800000001) [Electrician Master]
   -- ---------------------------------------------------------------------------
   insert into auth.users (
     id, instance_id, aud, role, email, encrypted_password,
-    email_confirmed_at, phone, raw_app_meta_data, raw_user_meta_data,
+    email_confirmed_at, phone, phone_confirmed_at, raw_app_meta_data, raw_user_meta_data,
     created_at, updated_at
   ) values (
     v_labour1_id,
@@ -142,13 +148,16 @@ begin
     'dev_8801800000001@kaajlagbe.local',
     extensions.crypt('DevKaajLagbe!8801800000001', extensions.gen_salt('bf')),
     now(),
-    '+8801800000001',
-    '{"provider": "email", "providers": ["email"]}'::jsonb,
-    '{"full_name": "Karim Mia", "role": "labour", "phone": "+8801800000001"}'::jsonb,
+    '8801800000001',
+    now(),
+    '{"provider": "phone", "providers": ["email", "phone"]}'::jsonb,
+    '{"full_name": "Karim Mia", "role": "labour", "phone": "8801800000001"}'::jsonb,
     now(), now()
   ) on conflict (id) do update set
+    phone = '8801800000001',
+    phone_confirmed_at = now(),
     encrypted_password = extensions.crypt('DevKaajLagbe!8801800000001', extensions.gen_salt('bf')),
-    raw_user_meta_data = '{"full_name": "Karim Mia", "role": "labour", "phone": "+8801800000001"}'::jsonb,
+    raw_user_meta_data = '{"full_name": "Karim Mia", "role": "labour", "phone": "8801800000001"}'::jsonb,
     email_confirmed_at = now();
 
   insert into auth.identities (id, user_id, identity_data, provider, provider_id, last_sign_in_at, created_at, updated_at)
@@ -206,11 +215,11 @@ begin
   end if;
 
   -- ---------------------------------------------------------------------------
-  -- 4. LABOUR #2: Jamal Hossain (01800000002 -> +8801800000002) [Cleaner & Gardener]
+  -- 4. LABOUR #2: Jamal Hossain (01800000002 -> 8801800000002) [Cleaner & Gardener]
   -- ---------------------------------------------------------------------------
   insert into auth.users (
     id, instance_id, aud, role, email, encrypted_password,
-    email_confirmed_at, phone, raw_app_meta_data, raw_user_meta_data,
+    email_confirmed_at, phone, phone_confirmed_at, raw_app_meta_data, raw_user_meta_data,
     created_at, updated_at
   ) values (
     v_labour2_id,
@@ -220,13 +229,16 @@ begin
     'dev_8801800000002@kaajlagbe.local',
     extensions.crypt('DevKaajLagbe!8801800000002', extensions.gen_salt('bf')),
     now(),
-    '+8801800000002',
-    '{"provider": "email", "providers": ["email"]}'::jsonb,
-    '{"full_name": "Jamal Hossain", "role": "labour", "phone": "+8801800000002"}'::jsonb,
+    '8801800000002',
+    now(),
+    '{"provider": "phone", "providers": ["email", "phone"]}'::jsonb,
+    '{"full_name": "Jamal Hossain", "role": "labour", "phone": "8801800000002"}'::jsonb,
     now(), now()
   ) on conflict (id) do update set
+    phone = '8801800000002',
+    phone_confirmed_at = now(),
     encrypted_password = extensions.crypt('DevKaajLagbe!8801800000002', extensions.gen_salt('bf')),
-    raw_user_meta_data = '{"full_name": "Jamal Hossain", "role": "labour", "phone": "+8801800000002"}'::jsonb,
+    raw_user_meta_data = '{"full_name": "Jamal Hossain", "role": "labour", "phone": "8801800000002"}'::jsonb,
     email_confirmed_at = now();
 
   insert into auth.identities (id, user_id, identity_data, provider, provider_id, last_sign_in_at, created_at, updated_at)
@@ -280,11 +292,11 @@ begin
   end if;
 
   -- ---------------------------------------------------------------------------
-  -- 5. LABOUR #3: Nasir Ahmed (01800000003 -> +8801800000003) [Pending Admin Review Demo]
+  -- 5. LABOUR #3: Nasir Ahmed (01800000003 -> 8801800000003) [Pending Admin Review Demo]
   -- ---------------------------------------------------------------------------
   insert into auth.users (
     id, instance_id, aud, role, email, encrypted_password,
-    email_confirmed_at, phone, raw_app_meta_data, raw_user_meta_data,
+    email_confirmed_at, phone, phone_confirmed_at, raw_app_meta_data, raw_user_meta_data,
     created_at, updated_at
   ) values (
     v_labour3_id,
@@ -294,13 +306,16 @@ begin
     'dev_8801800000003@kaajlagbe.local',
     extensions.crypt('DevKaajLagbe!8801800000003', extensions.gen_salt('bf')),
     now(),
-    '+8801800000003',
-    '{"provider": "email", "providers": ["email"]}'::jsonb,
-    '{"full_name": "Nasir Ahmed", "role": "labour", "phone": "+8801800000003"}'::jsonb,
+    '8801800000003',
+    now(),
+    '{"provider": "phone", "providers": ["email", "phone"]}'::jsonb,
+    '{"full_name": "Nasir Ahmed", "role": "labour", "phone": "8801800000003"}'::jsonb,
     now(), now()
   ) on conflict (id) do update set
+    phone = '8801800000003',
+    phone_confirmed_at = now(),
     encrypted_password = extensions.crypt('DevKaajLagbe!8801800000003', extensions.gen_salt('bf')),
-    raw_user_meta_data = '{"full_name": "Nasir Ahmed", "role": "labour", "phone": "+8801800000003"}'::jsonb,
+    raw_user_meta_data = '{"full_name": "Nasir Ahmed", "role": "labour", "phone": "8801800000003"}'::jsonb,
     email_confirmed_at = now();
 
   insert into auth.identities (id, user_id, identity_data, provider, provider_id, last_sign_in_at, created_at, updated_at)
@@ -353,11 +368,11 @@ begin
   end if;
 
   -- ---------------------------------------------------------------------------
-  -- 6. ADMIN: KaajLagbe Admin (01900000001 -> +8801900000001) [Admin Web Portal]
+  -- 6. ADMIN: KaajLagbe Admin (01900000001 -> 8801900000001) [Admin Web Portal]
   -- ---------------------------------------------------------------------------
   insert into auth.users (
     id, instance_id, aud, role, email, encrypted_password,
-    email_confirmed_at, phone, raw_app_meta_data, raw_user_meta_data,
+    email_confirmed_at, phone, phone_confirmed_at, raw_app_meta_data, raw_user_meta_data,
     created_at, updated_at
   ) values (
     v_admin_id,
@@ -367,13 +382,16 @@ begin
     'dev_8801900000001@kaajlagbe.local',
     extensions.crypt('DevKaajLagbe!8801900000001', extensions.gen_salt('bf')),
     now(),
-    '+8801900000001',
-    '{"provider": "email", "providers": ["email"]}'::jsonb,
-    '{"full_name": "KaajLagbe Admin", "role": "admin", "phone": "+8801900000001"}'::jsonb,
+    '8801900000001',
+    now(),
+    '{"provider": "phone", "providers": ["email", "phone"]}'::jsonb,
+    '{"full_name": "KaajLagbe Admin", "role": "admin", "phone": "8801900000001"}'::jsonb,
     now(), now()
   ) on conflict (id) do update set
+    phone = '8801900000001',
+    phone_confirmed_at = now(),
     encrypted_password = extensions.crypt('DevKaajLagbe!8801900000001', extensions.gen_salt('bf')),
-    raw_user_meta_data = '{"full_name": "KaajLagbe Admin", "role": "admin", "phone": "+8801900000001"}'::jsonb,
+    raw_user_meta_data = '{"full_name": "KaajLagbe Admin", "role": "admin", "phone": "8801900000001"}'::jsonb,
     email_confirmed_at = now();
 
   insert into auth.identities (id, user_id, identity_data, provider, provider_id, last_sign_in_at, created_at, updated_at)

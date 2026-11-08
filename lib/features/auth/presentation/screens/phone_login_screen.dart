@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,6 +7,7 @@ import '../../../../core/constants/app_constants.dart';
 import '../../../../core/presentation/widgets/language_toggle_button.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/utils/auth_error_resolver.dart';
 import '../../../../core/utils/number_formatter.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../auth_providers.dart';
@@ -105,8 +107,11 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
         ),
       );
     } else {
+      final authError = ref.read(authControllerProvider).error;
       setState(() {
-        _errorMessage = l10n.otpSendError;
+        _errorMessage = authError != null
+            ? AuthErrorResolver.resolveOtpErrorMessage(authError, l10n)
+            : l10n.otpSendError;
       });
     }
   }
@@ -588,6 +593,30 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                       ),
                     ],
 
+                    if (!kReleaseMode && !EnvConfig.otpRequired) ...[
+                      const SizedBox(height: 14),
+                      Text(
+                        l10n.demoQuickFillTitle,
+                        style: AppTextStyles.labelSmall.copyWith(
+                          color: AppColors.onSurfaceVariant,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Wrap(
+                        spacing: 8,
+                        runSpacing: 8,
+                        children: [
+                          _buildDemoChip(name: 'Rahim', role: 'Customer', phone: '1700000001', isWorker: false),
+                          _buildDemoChip(name: 'Sadia', role: 'Customer', phone: '1700000002', isWorker: false),
+                          _buildDemoChip(name: 'Karim', role: 'Labour', phone: '1800000001', isWorker: true),
+                          _buildDemoChip(name: 'Jamal', role: 'Labour', phone: '1800000002', isWorker: true),
+                          _buildDemoChip(name: 'Nasir', role: 'Pending', phone: '1800000003', isWorker: true),
+                          _buildDemoChip(name: 'Admin', role: 'Admin', phone: '1900000001', isWorker: false),
+                        ],
+                      ),
+                    ],
+
                     const SizedBox(height: 16),
 
                     // Worker registration toggle
@@ -709,6 +738,58 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildDemoChip({
+    required String name,
+    required String role,
+    required String phone,
+    required bool isWorker,
+  }) {
+    final isSelected = _phoneController.text == phone;
+    return ActionChip(
+      avatar: Icon(
+        isWorker ? Icons.handyman_rounded : Icons.person_rounded,
+        size: 14,
+        color: isSelected ? AppColors.primary : AppColors.onSurfaceVariant,
+      ),
+      label: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(name),
+          const SizedBox(width: 4),
+          Text(
+            '($role)',
+            style: AppTextStyles.labelSmall.copyWith(
+              fontSize: 10,
+              color: isSelected ? AppColors.primary : AppColors.textMuted,
+            ),
+          ),
+        ],
+      ),
+      labelStyle: AppTextStyles.labelSmall.copyWith(
+        color: isSelected ? AppColors.primary : AppColors.onSurface,
+        fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
+      ),
+      backgroundColor: isSelected
+          ? AppColors.primary.withValues(alpha: 0.08)
+          : AppColors.background,
+      side: BorderSide(
+        color: isSelected ? AppColors.primary : AppColors.outline.withValues(alpha: 0.6),
+        width: isSelected ? 1.5 : 1.0,
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+      onPressed: () {
+        setState(() {
+          _phoneController.text = phone;
+          _isWorkerIntent = isWorker;
+          _errorMessage = null;
+        });
+      },
     );
   }
 }
