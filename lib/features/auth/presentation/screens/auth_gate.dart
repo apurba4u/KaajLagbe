@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../core/config/env_config.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../preview/presentation/screens/design_preview_hub_screen.dart';
 import '../auth_providers.dart';
 import 'account_status_screen.dart';
 import 'home_screen_placeholder.dart';
@@ -16,6 +18,11 @@ class AuthGate extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // Design Preview Mode: bypass all authentication and route to the Hub
+    if (EnvConfig.designPreview) {
+      return const DesignPreviewHubScreen();
+    }
+
     final session = ref.watch(currentSessionProvider);
     final user = ref.watch(currentAuthUserProvider);
 

@@ -63,6 +63,20 @@ class EnvConfig {
     return val.toLowerCase() != 'false';
   }
 
+  /// Optional test override for unit and widget tests
+  static bool? testDesignPreviewOverride;
+
+  /// Returns whether Design Preview Mode is enabled.
+  /// Hard-locked to `false` in release mode (`kReleaseMode == true`).
+  /// In debug/profile mode, can be enabled via DESIGN_PREVIEW=true in `.env` or dart-define.
+  static bool get designPreview {
+    if (kReleaseMode) return false;
+    if (testDesignPreviewOverride != null) return testDesignPreviewOverride!;
+    final val = _getEnvVar('DESIGN_PREVIEW') ??
+        const String.fromEnvironment('DESIGN_PREVIEW', defaultValue: 'false');
+    return val.toLowerCase() == 'true';
+  }
+
   /// Returns true if valid Supabase credentials have been configured
   static bool get hasValidSupabaseCredentials {
     return supabaseUrl.isNotEmpty &&

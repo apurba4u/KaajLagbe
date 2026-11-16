@@ -216,5 +216,43 @@ KaajLagbe features complete, first-class bilingual localization (Bangla default,
 5. **Shared Language Toggle**: Use the reusable `LanguageTogglePill` (`lib/core/presentation/widgets/language_toggle_button.dart`) in top app bars, or the interactive language selector in Profile & Settings. Both immediately update the app-wide `localeProvider` and persist the choice in `shared_preferences`.
 6. **Font Fallback**: All typography uses `AppTextStyles` configured with GoogleFonts Plus Jakarta Sans and graceful fallbacks for Bengali glyphs (`Noto Sans Bengali`, `Hind Siliguri`, `sans-serif`).
 
+---
+
+## Design Preview Mode
+
+KaajLagbe includes a flag-controlled **Design Preview Mode** that allows reviewers, designers, and developers to explore all built screens, user personas, and status variants without going through SMS OTP or requiring a Supabase backend.
+
+### Key Capabilities
+- **Auth Bypass**: When enabled, the app skips login and directly opens the **Design Preview Hub**.
+- **Role & Persona Switcher**: Switch on the fly between **Customer** (Rahim, Sadia), **Labour** (Karim, Jamal, Nasir), and **Admin** personas.
+- **In-Memory Data**: All repositories (Auth, Labour, Verification) use deterministic in-memory mock data matching `supabase/seed/demo_users.sql` with zero Supabase network requests.
+- **Document Verification States**: Direct preview of unsubmitted, pending review, approved, and rejected National ID verification states.
+- **Floating Hub Navigation**: Every previewed screen displays a persistent floating **Hub** button to quickly return to the screen index.
+- **Production Guard**: Hard-locked to `false` in release builds (`kReleaseMode == true`).
+
+### How to Run in Design Preview Mode
+
+**Option 1: Via `.env` file**
+1. In your local `.env` file, set:
+   ```env
+   DESIGN_PREVIEW=true
+   ```
+2. Launch the app normally:
+   ```bash
+   flutter run
+   ```
+
+**Option 2: Via Command-line `--dart-define`**
+```bash
+flutter run --dart-define=DESIGN_PREVIEW=true
+```
+
+### Returning to Normal Authentication Mode
+To re-enable standard SMS OTP phone login:
+```env
+DESIGN_PREVIEW=false
+```
+
+
 
 

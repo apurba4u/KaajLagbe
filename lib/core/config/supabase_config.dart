@@ -5,6 +5,18 @@ import 'env_config.dart';
 /// Initializes the Supabase client safely with environment variables.
 Future<void> initializeSupabase() async {
   await EnvConfig.init();
+  if (EnvConfig.designPreview) {
+    // In design preview mode, try initialization if credentials exist, but never fail
+    if (EnvConfig.hasValidSupabaseCredentials) {
+      try {
+        await Supabase.initialize(
+          url: EnvConfig.supabaseUrl,
+          anonKey: EnvConfig.supabaseAnonKey, // ignore: deprecated_member_use
+        );
+      } catch (_) {}
+    }
+    return;
+  }
   if (EnvConfig.hasValidSupabaseCredentials) {
     await Supabase.initialize(
       url: EnvConfig.supabaseUrl,
