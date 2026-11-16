@@ -34,6 +34,13 @@ final currentUserProfileProvider = StreamProvider<UserProfile?>((ref) {
   return repo.watchUserProfile(user.id);
 });
 
+/// Streams a specific user's public profile by [userId]
+final userProfileProvider =
+    StreamProvider.family<UserProfile?, String>((ref, userId) {
+  final repo = ref.watch(authRepositoryProvider);
+  return repo.watchUserProfile(userId);
+});
+
 /// Controller managing async authentication actions and UI loading states
 class AuthController extends StateNotifier<AsyncValue<void>> {
   final AuthRepository _repository;

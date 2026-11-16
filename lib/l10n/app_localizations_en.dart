@@ -390,6 +390,37 @@ class AppLocalizationsEn extends AppLocalizations {
   String get verifiedWorkerBadge => 'Verified Worker';
 
   @override
+  String get reviewsTitle => 'Customer Reviews';
+
+  @override
+  String get safetyGuaranteeTitle => 'KaajLagbe 100% Safety Guarantee';
+
+  @override
+  String get safetyGuaranteeDesc =>
+      'Identity verification ensures work quality and safe payment protection with instant rework support.';
+
+  @override
+  String get readyForBooking => 'Ready for booking today';
+
+  @override
+  String get ratesAndPackagesTitle => 'Rates & Charges';
+
+  @override
+  String get transparentRatesBadge => 'Transparent Rates';
+
+  @override
+  String get policeRecordClear => 'Police Record: Clear';
+
+  @override
+  String get punctualityScore => '99% On-Time';
+
+  @override
+  String get kaajLagbeProBadge => 'KaajLagbe Pro';
+
+  @override
+  String get bookingComingSoon => 'Booking workflow starts in Phase 5';
+
+  @override
   String get trustSecurityTitle => 'Secure & Reliable Service';
 
   @override

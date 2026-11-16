@@ -9,6 +9,7 @@ import '../../../../core/utils/number_formatter.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../verification/presentation/screens/identity_verification_screen.dart';
 import '../../../labour/presentation/screens/labour_profile_setup_screen.dart';
+import '../../../labour/presentation/screens/labour_profile_view_screen.dart';
 import '../../domain/user_profile.dart';
 import '../auth_providers.dart';
 
@@ -456,6 +457,22 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) => const LabourProfileSetupScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                      const Divider(height: 1, color: AppColors.outline),
+                      _buildSettingsRow(
+                        icon: Icons.visibility_rounded,
+                        iconColor: AppColors.secondary,
+                        title: l10n.labourProfileViewTitle,
+                        subtitle: l10n.trustSecuritySubtitle,
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => LabourProfileViewScreen(
+                                workerId: profile.id,
+                              ),
                             ),
                           );
                         },

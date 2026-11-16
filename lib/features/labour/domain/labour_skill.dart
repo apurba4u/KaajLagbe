@@ -64,3 +64,4 @@ class LabourSkill {
     return skillName ?? '';
   }
 }
+

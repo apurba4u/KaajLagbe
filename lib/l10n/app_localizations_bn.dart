@@ -386,6 +386,37 @@ class AppLocalizationsBn extends AppLocalizations {
   String get verifiedWorkerBadge => 'যাচাইকৃত শ্রমিক';
 
   @override
+  String get reviewsTitle => 'গ্রাহকদের মূল্যবান মতামত';
+
+  @override
+  String get safetyGuaranteeTitle => 'কাজলাগবে শতভাগ নিরাপত্তা গ্যারান্টি';
+
+  @override
+  String get safetyGuaranteeDesc =>
+      'আইডেন্টিটি ভেরিফিকেশন কাজের সর্বোচ্চ মান ও নিরাপদ ডিজিটাল লেনদেন নিশ্চিত করে।';
+
+  @override
+  String get readyForBooking => 'আজ বুকিংয়ের জন্য প্রস্তুত';
+
+  @override
+  String get ratesAndPackagesTitle => 'সেবামূল্য ও চার্জ কাঠামো';
+
+  @override
+  String get transparentRatesBadge => 'স্বচ্ছ রেট';
+
+  @override
+  String get policeRecordClear => 'পুলিশ রেকর্ড: ক্লিয়ার';
+
+  @override
+  String get punctualityScore => '৯৯% সময়ানুবর্তিতা';
+
+  @override
+  String get kaajLagbeProBadge => 'কাজলাগবে প্রো';
+
+  @override
+  String get bookingComingSoon => 'বুকিং প্রক্রিয়া ফেজ ৫-এ চালু হবে';
+
+  @override
   String get trustSecurityTitle => 'সুরক্ষিত ও নির্ভরযোগ্য সেবা';
 
   @override

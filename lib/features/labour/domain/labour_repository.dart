@@ -35,3 +35,4 @@ abstract class LabourRepository {
     required List<String> selectedSkillIds,
   });
 }
+

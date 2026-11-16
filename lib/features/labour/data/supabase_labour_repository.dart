@@ -119,3 +119,4 @@ class SupabaseLabourRepository implements LabourRepository {
     }
   }
 }
+

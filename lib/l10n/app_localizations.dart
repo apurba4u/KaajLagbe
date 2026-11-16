@@ -818,6 +818,66 @@ abstract class AppLocalizations {
   /// **'যাচাইকৃত শ্রমিক'**
   String get verifiedWorkerBadge;
 
+  /// No description provided for @reviewsTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'গ্রাহকদের মূল্যবান মতামত'**
+  String get reviewsTitle;
+
+  /// No description provided for @safetyGuaranteeTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজলাগবে শতভাগ নিরাপত্তা গ্যারান্টি'**
+  String get safetyGuaranteeTitle;
+
+  /// No description provided for @safetyGuaranteeDesc.
+  ///
+  /// In bn, this message translates to:
+  /// **'আইডেন্টিটি ভেরিফিকেশন কাজের সর্বোচ্চ মান ও নিরাপদ ডিজিটাল লেনদেন নিশ্চিত করে।'**
+  String get safetyGuaranteeDesc;
+
+  /// No description provided for @readyForBooking.
+  ///
+  /// In bn, this message translates to:
+  /// **'আজ বুকিংয়ের জন্য প্রস্তুত'**
+  String get readyForBooking;
+
+  /// No description provided for @ratesAndPackagesTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'সেবামূল্য ও চার্জ কাঠামো'**
+  String get ratesAndPackagesTitle;
+
+  /// No description provided for @transparentRatesBadge.
+  ///
+  /// In bn, this message translates to:
+  /// **'স্বচ্ছ রেট'**
+  String get transparentRatesBadge;
+
+  /// No description provided for @policeRecordClear.
+  ///
+  /// In bn, this message translates to:
+  /// **'পুলিশ রেকর্ড: ক্লিয়ার'**
+  String get policeRecordClear;
+
+  /// No description provided for @punctualityScore.
+  ///
+  /// In bn, this message translates to:
+  /// **'৯৯% সময়ানুবর্তিতা'**
+  String get punctualityScore;
+
+  /// No description provided for @kaajLagbeProBadge.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজলাগবে প্রো'**
+  String get kaajLagbeProBadge;
+
+  /// No description provided for @bookingComingSoon.
+  ///
+  /// In bn, this message translates to:
+  /// **'বুকিং প্রক্রিয়া ফেজ ৫-এ চালু হবে'**
+  String get bookingComingSoon;
+
   /// No description provided for @trustSecurityTitle.
   ///
   /// In bn, this message translates to:

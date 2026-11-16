@@ -38,3 +38,4 @@ class Skill {
     return languageCode == 'bn' ? nameBn : name;
   }
 }
+

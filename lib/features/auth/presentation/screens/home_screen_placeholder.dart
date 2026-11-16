@@ -6,6 +6,7 @@ import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../labour/presentation/screens/labour_profile_setup_screen.dart';
+import '../../../labour/presentation/screens/labour_profile_view_screen.dart';
 import '../../domain/user_profile.dart';
 import '../auth_providers.dart';
 import 'profile_settings_screen.dart';
@@ -185,21 +186,80 @@ class HomeScreenPlaceholder extends ConsumerWidget {
                     ),
                     if (profile.role == UserRole.labour) ...[
                       const SizedBox(height: 16),
+                      Wrap(
+                        spacing: 10,
+                        runSpacing: 10,
+                        alignment: WrapAlignment.center,
+                        children: [
+                          ElevatedButton.icon(
+                            key: const Key('labour_profile_setup_button'),
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => const LabourProfileSetupScreen(),
+                                ),
+                              );
+                            },
+                            icon: const Icon(Icons.handyman_rounded, size: 18),
+                            label: Text(l10n.labourProfileSetupTitle),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColors.primary,
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                          ),
+                          OutlinedButton.icon(
+                            key: const Key('labour_view_public_profile_button'),
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => LabourProfileViewScreen(
+                                    workerId: profile.id,
+                                  ),
+                                ),
+                              );
+                            },
+                            icon: const Icon(Icons.visibility_rounded, size: 18),
+                            label: Text(l10n.labourProfileViewTitle),
+                            style: OutlinedButton.styleFrom(
+                              foregroundColor: AppColors.primary,
+                              side: const BorderSide(color: AppColors.primary),
+                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ] else ...[
+                      const SizedBox(height: 16),
                       ElevatedButton.icon(
-                        key: const Key('labour_profile_setup_button'),
+                        key: const Key('customer_view_karim_button'),
                         onPressed: () {
+                          // Karim Mia's deterministic demo ID
+                          const karimId = '00000000-0000-0000-0000-000000000003';
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => const LabourProfileSetupScreen(),
+                              builder: (context) => const LabourProfileViewScreen(
+                                workerId: karimId,
+                              ),
                             ),
                           );
                         },
-                        icon: const Icon(Icons.handyman_rounded, size: 18),
-                        label: Text(l10n.labourProfileSetupTitle),
+                        icon: const Icon(Icons.person_search_rounded, size: 18),
+                        label: Text(
+                          Localizations.localeOf(context).languageCode == 'bn'
+                              ? 'যাচাইকৃত কর্মী দেখুন (করিম মিঞা)'
+                              : 'View Verified Worker (Karim Mia)',
+                        ),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.primary,
                           foregroundColor: Colors.white,
-                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),
