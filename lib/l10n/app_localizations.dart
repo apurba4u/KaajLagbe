@@ -398,6 +398,174 @@ abstract class AppLocalizations {
   /// **'ডেভ মোড লগইনে সমস্যা হয়েছে। Supabase ইমেইল প্রোভাইডার চেক করুন।'**
   String get devLoginError;
 
+  /// No description provided for @identityVerificationTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'জাতীয় পরিচয়পত্র যাচাই'**
+  String get identityVerificationTitle;
+
+  /// No description provided for @identityVerificationSubtitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'বুকিং সুবিধা ও বিশ্বস্ততা বৃদ্ধির জন্য জাতীয় পরিচয়পত্র বা পাসপোর্ট যাচাই করুন'**
+  String get identityVerificationSubtitle;
+
+  /// No description provided for @docTypeLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'ডকুমেন্টের ধরন'**
+  String get docTypeLabel;
+
+  /// No description provided for @docTypeNid.
+  ///
+  /// In bn, this message translates to:
+  /// **'জাতীয় পরিচয়পত্র'**
+  String get docTypeNid;
+
+  /// No description provided for @docTypePassport.
+  ///
+  /// In bn, this message translates to:
+  /// **'পাসপোর্ট'**
+  String get docTypePassport;
+
+  /// No description provided for @docNumberLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'ডকুমেন্ট নম্বর'**
+  String get docNumberLabel;
+
+  /// No description provided for @docNumberPlaceholder.
+  ///
+  /// In bn, this message translates to:
+  /// **'১০ বা ১৭ সংখ্যার নম্বর লিখুন'**
+  String get docNumberPlaceholder;
+
+  /// No description provided for @docNumberPassportPlaceholder.
+  ///
+  /// In bn, this message translates to:
+  /// **'পাসপোর্ট নম্বর লিখুন'**
+  String get docNumberPassportPlaceholder;
+
+  /// No description provided for @uploadPhotosTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'ডকুমেন্টের ছবি আপলোড'**
+  String get uploadPhotosTitle;
+
+  /// No description provided for @uploadFrontPhoto.
+  ///
+  /// In bn, this message translates to:
+  /// **'সামনের পাতার ছবি'**
+  String get uploadFrontPhoto;
+
+  /// No description provided for @uploadFrontPhotoSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'নাম, জন্ম তারিখ ও ছবি স্পষ্ট হতে হবে'**
+  String get uploadFrontPhotoSub;
+
+  /// No description provided for @uploadBackPhoto.
+  ///
+  /// In bn, this message translates to:
+  /// **'পেছনের পাতার ছবি'**
+  String get uploadBackPhoto;
+
+  /// No description provided for @uploadBackPhotoSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'ঠিকানা ও বারকোড পরিষ্কার রাখুন'**
+  String get uploadBackPhotoSub;
+
+  /// No description provided for @uploadSelfie.
+  ///
+  /// In bn, this message translates to:
+  /// **'ডকুমেন্টসহ সেলফি'**
+  String get uploadSelfie;
+
+  /// No description provided for @uploadSelfieSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'চেহারা ও কার্ডের লেখা স্পষ্ট রাখুন'**
+  String get uploadSelfieSub;
+
+  /// No description provided for @privacyTrustNotice.
+  ///
+  /// In bn, this message translates to:
+  /// **'আপনার তথ্য সম্পূর্ণ সুরক্ষিত ও এনক্রিপ্টেড। শুধুমাত্র পরিচয় যাচাইকরণের কাজে ব্যবহৃত হয়।'**
+  String get privacyTrustNotice;
+
+  /// No description provided for @submitVerification.
+  ///
+  /// In bn, this message translates to:
+  /// **'যাচাইয়ের জন্য জমা দিন'**
+  String get submitVerification;
+
+  /// No description provided for @verificationStatusNotSubmitted.
+  ///
+  /// In bn, this message translates to:
+  /// **'এখনও জমা দেওয়া হয়নি'**
+  String get verificationStatusNotSubmitted;
+
+  /// No description provided for @verificationStatusPending.
+  ///
+  /// In bn, this message translates to:
+  /// **'যাচাই প্রক্রিয়াধীন (১-৪ ঘণ্টা)'**
+  String get verificationStatusPending;
+
+  /// No description provided for @verificationStatusApproved.
+  ///
+  /// In bn, this message translates to:
+  /// **'পরিচয়পত্র অনুমোদিত'**
+  String get verificationStatusApproved;
+
+  /// No description provided for @verificationStatusRejected.
+  ///
+  /// In bn, this message translates to:
+  /// **'যাচাইকরণ প্রত্যাখ্যাত হয়েছে'**
+  String get verificationStatusRejected;
+
+  /// No description provided for @verificationSubmittedSuccess.
+  ///
+  /// In bn, this message translates to:
+  /// **'পরিচয়পত্র সফলভাবে জমা দেওয়া হয়েছে। পর্যালোচনার পর জানানো হবে।'**
+  String get verificationSubmittedSuccess;
+
+  /// No description provided for @selectFileAction.
+  ///
+  /// In bn, this message translates to:
+  /// **'ছবি তুলুন বা ফাইল নির্বাচন করুন'**
+  String get selectFileAction;
+
+  /// No description provided for @fileSelected.
+  ///
+  /// In bn, this message translates to:
+  /// **'ছবি নির্বাচিত হয়েছে'**
+  String get fileSelected;
+
+  /// No description provided for @fileRequiredError.
+  ///
+  /// In bn, this message translates to:
+  /// **'সবগুলো প্রয়োজনীয় ছবি আপলোড করুন'**
+  String get fileRequiredError;
+
+  /// No description provided for @docNumberRequiredError.
+  ///
+  /// In bn, this message translates to:
+  /// **'সঠিক ডকুমেন্ট নম্বর দিন'**
+  String get docNumberRequiredError;
+
+  /// No description provided for @viewOrSubmitVerification.
+  ///
+  /// In bn, this message translates to:
+  /// **'পরিচয়পত্র যাচাইকরণে যান'**
+  String get viewOrSubmitVerification;
+
+  /// No description provided for @identityVerificationNav.
+  ///
+  /// In bn, this message translates to:
+  /// **'জাতীয় পরিচয়পত্র যাচাই'**
+  String get identityVerificationNav;
+
   /// No description provided for @trustSecurityTitle.
   ///
   /// In bn, this message translates to:

@@ -171,6 +171,93 @@ class AppLocalizationsBn extends AppLocalizations {
       'ডেভ মোড লগইনে সমস্যা হয়েছে। Supabase ইমেইল প্রোভাইডার চেক করুন।';
 
   @override
+  String get identityVerificationTitle => 'জাতীয় পরিচয়পত্র যাচাই';
+
+  @override
+  String get identityVerificationSubtitle =>
+      'বুকিং সুবিধা ও বিশ্বস্ততা বৃদ্ধির জন্য জাতীয় পরিচয়পত্র বা পাসপোর্ট যাচাই করুন';
+
+  @override
+  String get docTypeLabel => 'ডকুমেন্টের ধরন';
+
+  @override
+  String get docTypeNid => 'জাতীয় পরিচয়পত্র';
+
+  @override
+  String get docTypePassport => 'পাসপোর্ট';
+
+  @override
+  String get docNumberLabel => 'ডকুমেন্ট নম্বর';
+
+  @override
+  String get docNumberPlaceholder => '১০ বা ১৭ সংখ্যার নম্বর লিখুন';
+
+  @override
+  String get docNumberPassportPlaceholder => 'পাসপোর্ট নম্বর লিখুন';
+
+  @override
+  String get uploadPhotosTitle => 'ডকুমেন্টের ছবি আপলোড';
+
+  @override
+  String get uploadFrontPhoto => 'সামনের পাতার ছবি';
+
+  @override
+  String get uploadFrontPhotoSub => 'নাম, জন্ম তারিখ ও ছবি স্পষ্ট হতে হবে';
+
+  @override
+  String get uploadBackPhoto => 'পেছনের পাতার ছবি';
+
+  @override
+  String get uploadBackPhotoSub => 'ঠিকানা ও বারকোড পরিষ্কার রাখুন';
+
+  @override
+  String get uploadSelfie => 'ডকুমেন্টসহ সেলফি';
+
+  @override
+  String get uploadSelfieSub => 'চেহারা ও কার্ডের লেখা স্পষ্ট রাখুন';
+
+  @override
+  String get privacyTrustNotice =>
+      'আপনার তথ্য সম্পূর্ণ সুরক্ষিত ও এনক্রিপ্টেড। শুধুমাত্র পরিচয় যাচাইকরণের কাজে ব্যবহৃত হয়।';
+
+  @override
+  String get submitVerification => 'যাচাইয়ের জন্য জমা দিন';
+
+  @override
+  String get verificationStatusNotSubmitted => 'এখনও জমা দেওয়া হয়নি';
+
+  @override
+  String get verificationStatusPending => 'যাচাই প্রক্রিয়াধীন (১-৪ ঘণ্টা)';
+
+  @override
+  String get verificationStatusApproved => 'পরিচয়পত্র অনুমোদিত';
+
+  @override
+  String get verificationStatusRejected => 'যাচাইকরণ প্রত্যাখ্যাত হয়েছে';
+
+  @override
+  String get verificationSubmittedSuccess =>
+      'পরিচয়পত্র সফলভাবে জমা দেওয়া হয়েছে। পর্যালোচনার পর জানানো হবে।';
+
+  @override
+  String get selectFileAction => 'ছবি তুলুন বা ফাইল নির্বাচন করুন';
+
+  @override
+  String get fileSelected => 'ছবি নির্বাচিত হয়েছে';
+
+  @override
+  String get fileRequiredError => 'সবগুলো প্রয়োজনীয় ছবি আপলোড করুন';
+
+  @override
+  String get docNumberRequiredError => 'সঠিক ডকুমেন্ট নম্বর দিন';
+
+  @override
+  String get viewOrSubmitVerification => 'পরিচয়পত্র যাচাইকরণে যান';
+
+  @override
+  String get identityVerificationNav => 'জাতীয় পরিচয়পত্র যাচাই';
+
+  @override
   String get trustSecurityTitle => 'সুরক্ষিত ও নির্ভরযোগ্য সেবা';
 
   @override

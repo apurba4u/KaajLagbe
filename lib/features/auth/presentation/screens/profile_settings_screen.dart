@@ -7,6 +7,7 @@ import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/utils/number_formatter.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../verification/presentation/screens/identity_verification_screen.dart';
 import '../../domain/user_profile.dart';
 import '../auth_providers.dart';
 
@@ -302,55 +303,65 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
                     const SizedBox(height: 12),
 
                     // NID Verification Shield Banner
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                      decoration: BoxDecoration(
-                        color: AppColors.secondaryContainer.withValues(alpha: 0.3),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 28,
-                            height: 28,
-                            decoration: const BoxDecoration(
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const IdentityVerificationScreen(),
+                          ),
+                        );
+                      },
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                        decoration: BoxDecoration(
+                          color: AppColors.secondaryContainer.withValues(alpha: 0.3),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 28,
+                              height: 28,
+                              decoration: const BoxDecoration(
+                                color: AppColors.secondary,
+                                shape: BoxShape.circle,
+                              ),
+                              child: const Icon(
+                                Icons.verified_user_rounded,
+                                size: 16,
+                                color: Colors.white,
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    l10n.nidVerifiedBadge,
+                                    style: AppTextStyles.labelMedium.copyWith(
+                                      color: AppColors.secondary,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    l10n.nidVerifiedSub,
+                                    style: AppTextStyles.labelSmall.copyWith(
+                                      color: AppColors.textMuted,
+                                      fontSize: 10,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const Icon(
+                              Icons.chevron_right_rounded,
+                              size: 18,
                               color: AppColors.secondary,
-                              shape: BoxShape.circle,
                             ),
-                            child: const Icon(
-                              Icons.verified_user_rounded,
-                              size: 16,
-                              color: Colors.white,
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  l10n.nidVerifiedBadge,
-                                  style: AppTextStyles.labelMedium.copyWith(
-                                    color: AppColors.secondary,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  l10n.nidVerifiedSub,
-                                  style: AppTextStyles.labelSmall.copyWith(
-                                    color: AppColors.textMuted,
-                                    fontSize: 10,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const Icon(
-                            Icons.chevron_right_rounded,
-                            size: 18,
-                            color: AppColors.secondary,
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ],

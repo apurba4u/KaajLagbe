@@ -5,6 +5,7 @@ import '../../../../core/presentation/widgets/language_toggle_button.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../verification/presentation/screens/identity_verification_screen.dart';
 import '../auth_providers.dart';
 
 /// Screen displayed when a user's account is in a non-approved state
@@ -204,23 +205,66 @@ class AccountStatusScreen extends ConsumerWidget {
               const SizedBox(height: 32),
 
               // Action Buttons
+              if (status == AccountStatus.pendingVerification ||
+                  status == AccountStatus.rejected) ...[
+                SizedBox(
+                  width: double.infinity,
+                  height: 48,
+                  child: ElevatedButton.icon(
+                    icon: const Icon(Icons.verified_user_rounded),
+                    label: Text(l10n.viewOrSubmitVerification),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primary,
+                      foregroundColor: AppColors.onPrimary,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const IdentityVerificationScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(height: 12),
+              ],
+
               SizedBox(
                 width: double.infinity,
                 height: 48,
-                child: ElevatedButton.icon(
-                  icon: const Icon(Icons.refresh_rounded),
-                  label: Text(l10n.checkStatusAction),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primary,
-                    foregroundColor: AppColors.onPrimary,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  onPressed: () {
-                    ref.invalidate(currentUserProfileProvider);
-                  },
-                ),
+                child: (status == AccountStatus.pendingVerification ||
+                        status == AccountStatus.rejected)
+                    ? OutlinedButton.icon(
+                        icon: const Icon(Icons.refresh_rounded),
+                        label: Text(l10n.checkStatusAction),
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: AppColors.primary,
+                          side: const BorderSide(color: AppColors.primary),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                        onPressed: () {
+                          ref.invalidate(currentUserProfileProvider);
+                        },
+                      )
+                    : ElevatedButton.icon(
+                        icon: const Icon(Icons.refresh_rounded),
+                        label: Text(l10n.checkStatusAction),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: AppColors.primary,
+                          foregroundColor: AppColors.onPrimary,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                        onPressed: () {
+                          ref.invalidate(currentUserProfileProvider);
+                        },
+                      ),
               ),
 
               const SizedBox(height: 12),

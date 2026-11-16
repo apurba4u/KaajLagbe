@@ -172,6 +172,96 @@ class AppLocalizationsEn extends AppLocalizations {
       'Dev login failed. Check Supabase email provider settings.';
 
   @override
+  String get identityVerificationTitle => 'Identity Verification';
+
+  @override
+  String get identityVerificationSubtitle =>
+      'Verify your National ID or Passport to unlock bookings and build trust';
+
+  @override
+  String get docTypeLabel => 'Document Type';
+
+  @override
+  String get docTypeNid => 'National ID (NID)';
+
+  @override
+  String get docTypePassport => 'Passport';
+
+  @override
+  String get docNumberLabel => 'Document Number';
+
+  @override
+  String get docNumberPlaceholder => 'Enter 10 or 17 digit number';
+
+  @override
+  String get docNumberPassportPlaceholder => 'Enter Passport number';
+
+  @override
+  String get uploadPhotosTitle => 'Upload Document Photos';
+
+  @override
+  String get uploadFrontPhoto => 'Front Side Photo';
+
+  @override
+  String get uploadFrontPhotoSub =>
+      'Name, date of birth, and photo must be clearly visible';
+
+  @override
+  String get uploadBackPhoto => 'Back Side Photo';
+
+  @override
+  String get uploadBackPhotoSub => 'Address and barcode must be clear';
+
+  @override
+  String get uploadSelfie => 'Selfie Holding Document';
+
+  @override
+  String get uploadSelfieSub =>
+      'Ensure your face and document numbers are clear';
+
+  @override
+  String get privacyTrustNotice =>
+      'Your documents are private, encrypted, and visible only to verified compliance admins.';
+
+  @override
+  String get submitVerification => 'Submit for Verification';
+
+  @override
+  String get verificationStatusNotSubmitted => 'Not Submitted';
+
+  @override
+  String get verificationStatusPending =>
+      'Verification in Progress (1-4 hours)';
+
+  @override
+  String get verificationStatusApproved => 'Identity Approved';
+
+  @override
+  String get verificationStatusRejected => 'Verification Rejected';
+
+  @override
+  String get verificationSubmittedSuccess =>
+      'Verification documents submitted successfully. You will be notified once reviewed.';
+
+  @override
+  String get selectFileAction => 'Take photo or select file';
+
+  @override
+  String get fileSelected => 'Photo selected';
+
+  @override
+  String get fileRequiredError => 'Please upload all required photos';
+
+  @override
+  String get docNumberRequiredError => 'Please enter a valid document number';
+
+  @override
+  String get viewOrSubmitVerification => 'Go to Identity Verification';
+
+  @override
+  String get identityVerificationNav => 'Identity Verification';
+
+  @override
   String get trustSecurityTitle => 'Secure & Reliable Service';
 
   @override
