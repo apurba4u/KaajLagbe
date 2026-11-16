@@ -566,6 +566,258 @@ abstract class AppLocalizations {
   /// **'জাতীয় পরিচয়পত্র যাচাই'**
   String get identityVerificationNav;
 
+  /// No description provided for @labourProfileSetupTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'শ্রমিক প্রোফাইল সেটআপ'**
+  String get labourProfileSetupTitle;
+
+  /// No description provided for @labourProfileSetupSubtitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজের দক্ষতা, এলাকা ও পারিশ্রমিক নির্ধারণ করুন'**
+  String get labourProfileSetupSubtitle;
+
+  /// No description provided for @profilePhotoSectionTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'প্রোফাইল ছবি'**
+  String get profilePhotoSectionTitle;
+
+  /// No description provided for @profilePhotoHelperText.
+  ///
+  /// In bn, this message translates to:
+  /// **'পরিষ্কার ও প্রফেশনাল ছবি আপলোড করুন'**
+  String get profilePhotoHelperText;
+
+  /// No description provided for @skillsAndBadgesTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজের দক্ষতা ও ব্যাজ'**
+  String get skillsAndBadgesTitle;
+
+  /// No description provided for @claimedSkillLegend.
+  ///
+  /// In bn, this message translates to:
+  /// **'দাবিকৃত (যাচাই অপেক্ষমাণ)'**
+  String get claimedSkillLegend;
+
+  /// No description provided for @verifiedSkillLegend.
+  ///
+  /// In bn, this message translates to:
+  /// **'যাচাইকৃত ব্যাজ (স্কোর ≥ ২০০)'**
+  String get verifiedSkillLegend;
+
+  /// No description provided for @workDetailsTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজের বিবরণ ও পারিশ্রমিক'**
+  String get workDetailsTitle;
+
+  /// No description provided for @experienceLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজের অভিজ্ঞতা ও দক্ষতা'**
+  String get experienceLabel;
+
+  /// No description provided for @experiencePlaceholder.
+  ///
+  /// In bn, this message translates to:
+  /// **'যেমন: ৫+ বছর ধরে বাসা-বাড়ির ইলেকট্রিক ওয়্যারিং ও মেরামত...'**
+  String get experiencePlaceholder;
+
+  /// No description provided for @serviceAreaLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজের এলাকা'**
+  String get serviceAreaLabel;
+
+  /// No description provided for @serviceAreaPlaceholder.
+  ///
+  /// In bn, this message translates to:
+  /// **'যেমন: মিরপুর, ধানমন্ডি, ঢাকা'**
+  String get serviceAreaPlaceholder;
+
+  /// No description provided for @expectedWageLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'প্রত্যাশিত ঘণ্টাভিত্তিক মজুরি'**
+  String get expectedWageLabel;
+
+  /// No description provided for @expectedWagePlaceholder.
+  ///
+  /// In bn, this message translates to:
+  /// **'যেমন: ৫০০ / ঘণ্টা'**
+  String get expectedWagePlaceholder;
+
+  /// No description provided for @weeklyAvailabilityTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'সাপ্তাহিক কাজের সময়'**
+  String get weeklyAvailabilityTitle;
+
+  /// No description provided for @selectAvailableDays.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজের দিনসমূহ নির্বাচন করুন'**
+  String get selectAvailableDays;
+
+  /// No description provided for @workingHoursTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজের সময়সূচি'**
+  String get workingHoursTitle;
+
+  /// No description provided for @startTimeLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'শুরু'**
+  String get startTimeLabel;
+
+  /// No description provided for @endTimeLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'শেষ'**
+  String get endTimeLabel;
+
+  /// No description provided for @saveProfile.
+  ///
+  /// In bn, this message translates to:
+  /// **'প্রোফাইল সংরক্ষণ করুন'**
+  String get saveProfile;
+
+  /// No description provided for @profileSavedSuccess.
+  ///
+  /// In bn, this message translates to:
+  /// **'প্রোফাইল সফলভাবে সংরক্ষিত হয়েছে'**
+  String get profileSavedSuccess;
+
+  /// No description provided for @selectAtLeastOneSkill.
+  ///
+  /// In bn, this message translates to:
+  /// **'অন্তত একটি কাজের দক্ষতা নির্বাচন করুন'**
+  String get selectAtLeastOneSkill;
+
+  /// No description provided for @serviceAreaRequired.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজের এলাকা উল্লেখ করুন'**
+  String get serviceAreaRequired;
+
+  /// No description provided for @wageRequired.
+  ///
+  /// In bn, this message translates to:
+  /// **'ঘণ্টাপ্রতি পারিশ্রমিক লিখুন'**
+  String get wageRequired;
+
+  /// No description provided for @satDay.
+  ///
+  /// In bn, this message translates to:
+  /// **'শনি'**
+  String get satDay;
+
+  /// No description provided for @sunDay.
+  ///
+  /// In bn, this message translates to:
+  /// **'রবি'**
+  String get sunDay;
+
+  /// No description provided for @monDay.
+  ///
+  /// In bn, this message translates to:
+  /// **'সোম'**
+  String get monDay;
+
+  /// No description provided for @tueDay.
+  ///
+  /// In bn, this message translates to:
+  /// **'মঙ্গল'**
+  String get tueDay;
+
+  /// No description provided for @wedDay.
+  ///
+  /// In bn, this message translates to:
+  /// **'বুধ'**
+  String get wedDay;
+
+  /// No description provided for @thuDay.
+  ///
+  /// In bn, this message translates to:
+  /// **'বৃহ'**
+  String get thuDay;
+
+  /// No description provided for @friDay.
+  ///
+  /// In bn, this message translates to:
+  /// **'শুক্র'**
+  String get friDay;
+
+  /// No description provided for @labourProfileViewTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'শ্রমিক প্রোফাইল'**
+  String get labourProfileViewTitle;
+
+  /// No description provided for @activeBadge.
+  ///
+  /// In bn, this message translates to:
+  /// **'সক্রিয় ব্যাজ'**
+  String get activeBadge;
+
+  /// No description provided for @claimedSkill.
+  ///
+  /// In bn, this message translates to:
+  /// **'দাবিকৃত'**
+  String get claimedSkill;
+
+  /// No description provided for @scoreLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'স্কোর'**
+  String get scoreLabel;
+
+  /// No description provided for @hourlyRateLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'ঘণ্টাপ্রতি পারিশ্রমিক'**
+  String get hourlyRateLabel;
+
+  /// No description provided for @serviceAreaSectionTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজের এলাকা'**
+  String get serviceAreaSectionTitle;
+
+  /// No description provided for @aboutAndExperienceTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'অভিজ্ঞতা ও বিবরণ'**
+  String get aboutAndExperienceTitle;
+
+  /// No description provided for @availabilitySectionTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজের সময়সূচি'**
+  String get availabilitySectionTitle;
+
+  /// No description provided for @editProfileButton.
+  ///
+  /// In bn, this message translates to:
+  /// **'প্রোফাইল সম্পাদনা'**
+  String get editProfileButton;
+
+  /// No description provided for @bookLabourButton.
+  ///
+  /// In bn, this message translates to:
+  /// **'বুকিং দিন'**
+  String get bookLabourButton;
+
+  /// No description provided for @verifiedWorkerBadge.
+  ///
+  /// In bn, this message translates to:
+  /// **'যাচাইকৃত শ্রমিক'**
+  String get verifiedWorkerBadge;
+
   /// No description provided for @trustSecurityTitle.
   ///
   /// In bn, this message translates to:

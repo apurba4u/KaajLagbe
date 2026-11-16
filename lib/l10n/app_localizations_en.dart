@@ -262,6 +262,134 @@ class AppLocalizationsEn extends AppLocalizations {
   String get identityVerificationNav => 'Identity Verification';
 
   @override
+  String get labourProfileSetupTitle => 'Labour Profile Setup';
+
+  @override
+  String get labourProfileSetupSubtitle =>
+      'Manage your trade skills, rates and availability';
+
+  @override
+  String get profilePhotoSectionTitle => 'Profile Photo';
+
+  @override
+  String get profilePhotoHelperText => 'Upload a clear, professional photo';
+
+  @override
+  String get skillsAndBadgesTitle => 'Skills & Badges';
+
+  @override
+  String get claimedSkillLegend => 'Claimed (Not Verified)';
+
+  @override
+  String get verifiedSkillLegend => 'Verified Badge (Score ≥ 200)';
+
+  @override
+  String get workDetailsTitle => 'Work Details & Rates';
+
+  @override
+  String get experienceLabel => 'Experience & Background';
+
+  @override
+  String get experiencePlaceholder =>
+      'e.g. 5+ years in residential wiring and appliance repairs...';
+
+  @override
+  String get serviceAreaLabel => 'Service Area';
+
+  @override
+  String get serviceAreaPlaceholder => 'e.g. Mirpur, Dhanmondi, Dhaka';
+
+  @override
+  String get expectedWageLabel => 'Expected Wage per Hour';
+
+  @override
+  String get expectedWagePlaceholder => 'e.g. 500 / hr';
+
+  @override
+  String get weeklyAvailabilityTitle => 'Weekly Availability';
+
+  @override
+  String get selectAvailableDays => 'Select available days';
+
+  @override
+  String get workingHoursTitle => 'Working Hours';
+
+  @override
+  String get startTimeLabel => 'Start';
+
+  @override
+  String get endTimeLabel => 'End';
+
+  @override
+  String get saveProfile => 'Save Profile';
+
+  @override
+  String get profileSavedSuccess => 'Profile saved successfully';
+
+  @override
+  String get selectAtLeastOneSkill => 'Please select at least one skill';
+
+  @override
+  String get serviceAreaRequired => 'Please enter your service area';
+
+  @override
+  String get wageRequired => 'Please enter expected hourly wage';
+
+  @override
+  String get satDay => 'Sat';
+
+  @override
+  String get sunDay => 'Sun';
+
+  @override
+  String get monDay => 'Mon';
+
+  @override
+  String get tueDay => 'Tue';
+
+  @override
+  String get wedDay => 'Wed';
+
+  @override
+  String get thuDay => 'Thu';
+
+  @override
+  String get friDay => 'Fri';
+
+  @override
+  String get labourProfileViewTitle => 'Worker Profile';
+
+  @override
+  String get activeBadge => 'Active Badge';
+
+  @override
+  String get claimedSkill => 'Claimed';
+
+  @override
+  String get scoreLabel => 'Score';
+
+  @override
+  String get hourlyRateLabel => 'Hourly Rate';
+
+  @override
+  String get serviceAreaSectionTitle => 'Service Area';
+
+  @override
+  String get aboutAndExperienceTitle => 'Experience & About';
+
+  @override
+  String get availabilitySectionTitle => 'Availability Schedule';
+
+  @override
+  String get editProfileButton => 'Edit Profile';
+
+  @override
+  String get bookLabourButton => 'Book Worker';
+
+  @override
+  String get verifiedWorkerBadge => 'Verified Worker';
+
+  @override
   String get trustSecurityTitle => 'Secure & Reliable Service';
 
   @override

@@ -8,6 +8,7 @@ import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/utils/number_formatter.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../verification/presentation/screens/identity_verification_screen.dart';
+import '../../../labour/presentation/screens/labour_profile_setup_screen.dart';
 import '../../domain/user_profile.dart';
 import '../auth_providers.dart';
 
@@ -433,6 +434,36 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
                   ],
                 ),
               ),
+
+              if (profile.role == UserRole.labour) ...[
+                const SizedBox(height: 20),
+                _buildSectionHeader(l10n.labourProfileSetupTitle),
+                const SizedBox(height: 8),
+                Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.surface,
+                    borderRadius: BorderRadius.circular(14),
+                    border: Border.all(color: AppColors.outline),
+                  ),
+                  child: Column(
+                    children: [
+                      _buildSettingsRow(
+                        icon: Icons.handyman_rounded,
+                        iconColor: AppColors.primary,
+                        title: l10n.labourProfileSetupTitle,
+                        subtitle: l10n.labourProfileSetupSubtitle,
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const LabourProfileSetupScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
 
               const SizedBox(height: 20),
 

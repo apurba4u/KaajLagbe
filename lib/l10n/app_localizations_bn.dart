@@ -258,6 +258,134 @@ class AppLocalizationsBn extends AppLocalizations {
   String get identityVerificationNav => 'জাতীয় পরিচয়পত্র যাচাই';
 
   @override
+  String get labourProfileSetupTitle => 'শ্রমিক প্রোফাইল সেটআপ';
+
+  @override
+  String get labourProfileSetupSubtitle =>
+      'কাজের দক্ষতা, এলাকা ও পারিশ্রমিক নির্ধারণ করুন';
+
+  @override
+  String get profilePhotoSectionTitle => 'প্রোফাইল ছবি';
+
+  @override
+  String get profilePhotoHelperText => 'পরিষ্কার ও প্রফেশনাল ছবি আপলোড করুন';
+
+  @override
+  String get skillsAndBadgesTitle => 'কাজের দক্ষতা ও ব্যাজ';
+
+  @override
+  String get claimedSkillLegend => 'দাবিকৃত (যাচাই অপেক্ষমাণ)';
+
+  @override
+  String get verifiedSkillLegend => 'যাচাইকৃত ব্যাজ (স্কোর ≥ ২০০)';
+
+  @override
+  String get workDetailsTitle => 'কাজের বিবরণ ও পারিশ্রমিক';
+
+  @override
+  String get experienceLabel => 'কাজের অভিজ্ঞতা ও দক্ষতা';
+
+  @override
+  String get experiencePlaceholder =>
+      'যেমন: ৫+ বছর ধরে বাসা-বাড়ির ইলেকট্রিক ওয়্যারিং ও মেরামত...';
+
+  @override
+  String get serviceAreaLabel => 'কাজের এলাকা';
+
+  @override
+  String get serviceAreaPlaceholder => 'যেমন: মিরপুর, ধানমন্ডি, ঢাকা';
+
+  @override
+  String get expectedWageLabel => 'প্রত্যাশিত ঘণ্টাভিত্তিক মজুরি';
+
+  @override
+  String get expectedWagePlaceholder => 'যেমন: ৫০০ / ঘণ্টা';
+
+  @override
+  String get weeklyAvailabilityTitle => 'সাপ্তাহিক কাজের সময়';
+
+  @override
+  String get selectAvailableDays => 'কাজের দিনসমূহ নির্বাচন করুন';
+
+  @override
+  String get workingHoursTitle => 'কাজের সময়সূচি';
+
+  @override
+  String get startTimeLabel => 'শুরু';
+
+  @override
+  String get endTimeLabel => 'শেষ';
+
+  @override
+  String get saveProfile => 'প্রোফাইল সংরক্ষণ করুন';
+
+  @override
+  String get profileSavedSuccess => 'প্রোফাইল সফলভাবে সংরক্ষিত হয়েছে';
+
+  @override
+  String get selectAtLeastOneSkill => 'অন্তত একটি কাজের দক্ষতা নির্বাচন করুন';
+
+  @override
+  String get serviceAreaRequired => 'কাজের এলাকা উল্লেখ করুন';
+
+  @override
+  String get wageRequired => 'ঘণ্টাপ্রতি পারিশ্রমিক লিখুন';
+
+  @override
+  String get satDay => 'শনি';
+
+  @override
+  String get sunDay => 'রবি';
+
+  @override
+  String get monDay => 'সোম';
+
+  @override
+  String get tueDay => 'মঙ্গল';
+
+  @override
+  String get wedDay => 'বুধ';
+
+  @override
+  String get thuDay => 'বৃহ';
+
+  @override
+  String get friDay => 'শুক্র';
+
+  @override
+  String get labourProfileViewTitle => 'শ্রমিক প্রোফাইল';
+
+  @override
+  String get activeBadge => 'সক্রিয় ব্যাজ';
+
+  @override
+  String get claimedSkill => 'দাবিকৃত';
+
+  @override
+  String get scoreLabel => 'স্কোর';
+
+  @override
+  String get hourlyRateLabel => 'ঘণ্টাপ্রতি পারিশ্রমিক';
+
+  @override
+  String get serviceAreaSectionTitle => 'কাজের এলাকা';
+
+  @override
+  String get aboutAndExperienceTitle => 'অভিজ্ঞতা ও বিবরণ';
+
+  @override
+  String get availabilitySectionTitle => 'কাজের সময়সূচি';
+
+  @override
+  String get editProfileButton => 'প্রোফাইল সম্পাদনা';
+
+  @override
+  String get bookLabourButton => 'বুকিং দিন';
+
+  @override
+  String get verifiedWorkerBadge => 'যাচাইকৃত শ্রমিক';
+
+  @override
   String get trustSecurityTitle => 'সুরক্ষিত ও নির্ভরযোগ্য সেবা';
 
   @override
