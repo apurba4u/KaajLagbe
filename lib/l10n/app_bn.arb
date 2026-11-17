@@ -259,5 +259,141 @@
   },
   "homePlaceholderCustomer": "গ্রাহক মার্কেটপ্লেস ও শ্রমিক খোঁজার পৃষ্ঠা শীঘ্রই আসছে।",
   "homePlaceholderLabour": "শ্রমিক ড্যাশবোর্ড ও কাজের তালিকা শীঘ্রই আসছে।",
-  "profileAndSettings": "প্রোফাইল ও সেটিংস"
+  "profileAndSettings": "প্রোফাইল ও সেটিংস",
+
+  "locationMirpur": "মিরপুর ১০, ঢাকা",
+  "goodMorningUser": "শুভ সকাল, {name}! 👋",
+  "@goodMorningUser": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "customerSearchHint": "আজ কী ধরনের সাহায্য দরকার?",
+  "nidAssuranceTitle": "১০০% জাতীয় পরিচয়পত্র (NID) যাচাইকৃত",
+  "nidAssuranceSubtitle": "বিশ্বস্ত ও স্থানীয় কারিগরদের সাথে নিরাপদ সেবা নিশ্চয়তা",
+  "workerEnRoute": "কর্মী পথে আছেন (En Route)",
+  "withinMinutes": "⏱ {minutes} মিনিটের মধ্যে",
+  "@withinMinutes": {
+    "placeholders": {
+      "minutes": { "type": "String" }
+    }
+  },
+  "electricWiringFix": "ইলেকট্রিক ওয়্যারিং ও শর্ট সার্কিট ফিক্স",
+  "workerBranchMirpur": "আইডি: #KL-88219 • মিরপুর শাখা",
+  "liveTracking": "লাইভ ট্র্যাকিং",
+  "callAction": "কল করুন",
+  "emergencyDailyServices": "জরুরি ও দৈনন্দিন সেবা",
+  "callWorkerInMinutes": "ক্লিক করে কয়েক মিনিটে বিশ্বস্ত কর্মী ডাকুন",
+  "viewAll": "সব দেখুন",
+  "skillElectrician": "ইলেকট্রিশিয়ান",
+  "skillPlumber": "প্লাম্বিং",
+  "skillCleaner": "বাসা পরিষ্কার",
+  "skillAppliance": "এসি ও ফ্রিজ",
+  "skillMoving": "বাসা বদল",
+  "skillPainter": "রং মিস্ত্রি",
+  "skillCarpenter": "কাঠমিস্ত্রি",
+  "skillGeneralHelper": "দৈনিক সাহায্য",
+  "promoBannerTitle": "যেকোনো মেরামতে ৫০৳ ছাড়!",
+  "promoBannerCode": "কোড ব্যবহার করুন: {code}",
+  "@promoBannerCode": {
+    "placeholders": {
+      "code": { "type": "String" }
+    }
+  },
+  "promoOfferBadge": "অফার • প্রথম অর্ডার",
+  "topRatedWorkers": "জনপ্রিয় কর্মী",
+  "topRatedWorkersSub": "গ্রাহকদের সর্বোচ্চ রেটিং প্রাপ্ত নির্ভরযোগ্য কর্মী",
+  "availableIn30Mins": "৩০ মিনিটে এভেইলএবল",
+  "availableToday": "আজই সম্ভব",
+  "perHour": "/ঘণ্টা",
+  "viewProfileAndBook": "প্রোফাইল দেখুন ও বুক করুন",
+  "kaajLagbeSafetyTitle": "কাজলাগবে সুরক্ষা নিশ্চয়তা",
+  "safetyNidVerified": "NID ভেরিফাইড",
+  "safetyNidVerifiedSub": "প্রত্যেক কর্মীর আসল বায়োমেট্রিক ও জাতীয় পরিচয়পত্র পরীক্ষিত।",
+  "safetyTransparentRates": "স্বচ্ছ রেট কার্ড",
+  "safetyTransparentRatesSub": "কোনো গোপন চার্জ নেই, ন্যায্য মজুরি ও নির্ধারিত রেটে সরাসরি বুকিং।",
+  "safetyDisputeResolution": "দ্রুত বিরোধ নিষ্পত্তি",
+  "safetyDisputeResolutionSub": "সেবায় কোনো অসন্তোষ হলে ২৪/৭ ডেডিকেটেড সাপোর্ট টিম সাথে আছে।",
+  "safetyEasyRebooking": "সহজ রি-বুকিং",
+  "safetyEasyRebookingSub": "পছন্দের কর্মী পুনরায় নির্বাচন করুন মাত্র ১ ট্যাপে।",
+
+  "labourPanelTitle": "শ্রমিক প্যানেল",
+  "statusOnline": "অনলাইন",
+  "statusOffline": "অফলাইন",
+  "radarActiveBanner": "বর্তমানে সক্রিয় (Online & Ready for Jobs) • রাডার চালু",
+  "newJobRequestAlert": "নতুন কাজের অনুরোধ!",
+  "distanceAway": "{distance} কিমি দূরে",
+  "@distanceAway": {
+    "placeholders": {
+      "distance": { "type": "String" }
+    }
+  },
+  "plusTipsOption": "+ টিপস সুবিধা",
+  "proposedTime": "প্রস্তাবিত সময়",
+  "estimatedDuration": "কাজের সময়সীমা",
+  "declineAction": "প্রত্যাখ্যান",
+  "acceptAction": "গ্রহণ করুন",
+  "jobAcceptedMessage": "কাজটি গ্রহণ করা হয়েছে! গ্রাহককে নোটিফিকেশন পাঠানো হয়েছে।",
+  "todaysEarnings": "আজকের আয়",
+  "jobsCompletedCount": "{count}টি কাজ সম্পন্ন",
+  "@jobsCompletedCount": {
+    "placeholders": {
+      "count": { "type": "String" }
+    }
+  },
+  "pendingPayout": "পেন্ডিং পেআউট",
+  "payoutProcessing": "বিকাশ প্রসেসিং",
+  "weeklyTarget": "সাপ্তাহিক টার্গেট",
+  "targetGoal": "৳১০,০০০ লক্ষ্য",
+  "upcomingSchedule": "আসন্ন শিডিউল",
+  "tomorrowSchedule": "আগামীকাল ১০:০০",
+  "cashPayment": "নগদ প্রদান",
+  "reputationBadgesTitle": "দক্ষতা ও রেটিং ব্যাজ",
+  "masterTier": "মাস্টার টিয়ার",
+  "wiringSafetyScore": "ওয়ারিং সেফটি",
+  "onTimePerformance": "অন-টাইম সেবা",
+  "findWorkBannerTitle": "কাজ খুঁজুন",
+  "findWorkBannerSub": "মিরপুর এলাকায় ১২টি নতুন কাজ উপলব্ধ",
+  "exploreAction": "দেখুন",
+
+  "searchServiceLabel": "ট্রেড বা সেবা খুঁজুন",
+  "searchServiceHint": "ইলেকট্রিশিয়ান, প্লাম্বার ইত্যাদি খুঁজুন",
+  "radiusPillText": "মিরপুর ও ধানমণ্ডি (৪.৫ কিমি ব্যাসার্ধ)",
+  "changeAreaAction": "পরিবর্তন",
+  "filterVerifiedOnly": "যাচাইকৃত শুধু ✓",
+  "filterRatingHigh": "রেটিং ৪.৫+ ★",
+  "filterAvailableToday": "আজই সম্ভব",
+  "filterMaxRate": "সর্বোচ্চ ৳৪০০/ঘণ্টা",
+  "filterUrgent": "জরুরি সেবা (Urgent)",
+  "verifiedWorkersFound": "{count} জন যাচাইকৃত কর্মী পাওয়া গেছে",
+  "@verifiedWorkersFound": {
+    "placeholders": {
+      "count": { "type": "String" }
+    }
+  },
+  "onlineBadge": "অনলাইনে",
+  "sortPopular": "সর্ট: জনপ্রিয় ▾",
+  "successRate": "{rate}% সফল কাজ",
+  "@successRate": {
+    "placeholders": {
+      "rate": { "type": "String" }
+    }
+  },
+  "bookNowAction": "বুকিং করুন",
+  "resetFilters": "ফিল্টার রিসেট",
+  "noWorkersFoundSub": "ফিল্টার রিসেট করে আরো ৩২ জন কর্মী দেখুন",
+  "filterModalTitle": "স্মার্ট ফিল্টার ও বাজেট",
+  "maxHourlyRate": "সর্বোচ্চ ঘণ্টার রেট",
+  "trustLevelsTitle": "যাচাইকরণ মাত্রা",
+  "tradeLicenseCertified": "ট্রেড লাইসেন্স বা কারিগরি সনদপ্রাপ্ত",
+  "tradeLicenseCertifiedSub": "ভিটিটিসি বা সরকার অনুমোদিত প্রশিক্ষণ সনদ",
+  "resetAllAction": "মুছে ফেলুন (Reset)",
+  "applyFiltersAction": "ফলাফল দেখুন",
+  "previewOnlyMessage": "এই ফিচারটি পরবর্তী ফেজে কার্যকর হবে (প্রিভিউ মোড)",
+
+  "navHome": "হোম",
+  "navSearch": "অনুসন্ধান",
+  "navBookings": "বুকিং",
+  "navMessages": "মেসেজ",
+  "navProfile": "প্রোফাইল"
 }

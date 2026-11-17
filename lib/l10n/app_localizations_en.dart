@@ -762,4 +762,317 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileAndSettings => 'Profile & Settings';
+
+  @override
+  String get locationMirpur => 'Mirpur 10, Dhaka';
+
+  @override
+  String goodMorningUser(String name) {
+    return 'Good morning, $name! 👋';
+  }
+
+  @override
+  String get customerSearchHint => 'What help do you need today?';
+
+  @override
+  String get nidAssuranceTitle => '100% National ID (NID) Verified';
+
+  @override
+  String get nidAssuranceSubtitle =>
+      'Safe service guarantee with trusted local workers';
+
+  @override
+  String get workerEnRoute => 'Worker is en route';
+
+  @override
+  String withinMinutes(String minutes) {
+    return '⏱ Within $minutes mins';
+  }
+
+  @override
+  String get electricWiringFix => 'Electrical wiring & short circuit fix';
+
+  @override
+  String get workerBranchMirpur => 'ID: #KL-88219 • Mirpur Branch';
+
+  @override
+  String get liveTracking => 'Live Tracking';
+
+  @override
+  String get callAction => 'Call';
+
+  @override
+  String get emergencyDailyServices => 'Emergency & Daily Services';
+
+  @override
+  String get callWorkerInMinutes => 'Call trusted workers in minutes';
+
+  @override
+  String get viewAll => 'View All';
+
+  @override
+  String get skillElectrician => 'Electrician';
+
+  @override
+  String get skillPlumber => 'Plumbing';
+
+  @override
+  String get skillCleaner => 'House Cleaning';
+
+  @override
+  String get skillAppliance => 'Appliance Repair';
+
+  @override
+  String get skillMoving => 'Moving & Lifting';
+
+  @override
+  String get skillPainter => 'Painting';
+
+  @override
+  String get skillCarpenter => 'Carpenter';
+
+  @override
+  String get skillGeneralHelper => 'General Helper';
+
+  @override
+  String get promoBannerTitle => '৳50 off on any repair!';
+
+  @override
+  String promoBannerCode(String code) {
+    return 'Use code: $code';
+  }
+
+  @override
+  String get promoOfferBadge => 'Offer • First Booking';
+
+  @override
+  String get topRatedWorkers => 'Popular Workers';
+
+  @override
+  String get topRatedWorkersSub => 'Highest customer-rated dependable workers';
+
+  @override
+  String get availableIn30Mins => 'Available in 30 mins';
+
+  @override
+  String get availableToday => 'Available Today';
+
+  @override
+  String get perHour => '/hr';
+
+  @override
+  String get viewProfileAndBook => 'View Profile & Book';
+
+  @override
+  String get kaajLagbeSafetyTitle => 'KaajLagbe Safety Guarantee';
+
+  @override
+  String get safetyNidVerified => 'NID Verified';
+
+  @override
+  String get safetyNidVerifiedSub =>
+      'Biometrics and national ID checked for every worker';
+
+  @override
+  String get safetyTransparentRates => 'Transparent Rates';
+
+  @override
+  String get safetyTransparentRatesSub =>
+      'No hidden charges, fair wages with fixed transparent pricing';
+
+  @override
+  String get safetyDisputeResolution => 'Quick Dispute Resolution';
+
+  @override
+  String get safetyDisputeResolutionSub =>
+      '24/7 dedicated support team to resolve issues';
+
+  @override
+  String get safetyEasyRebooking => 'Easy Re-booking';
+
+  @override
+  String get safetyEasyRebookingSub =>
+      'Re-book your favorite worker in just 1 tap';
+
+  @override
+  String get labourPanelTitle => 'Worker Panel';
+
+  @override
+  String get statusOnline => 'Online';
+
+  @override
+  String get statusOffline => 'Offline';
+
+  @override
+  String get radarActiveBanner => 'Online & Ready for Jobs • Radar Active';
+
+  @override
+  String get newJobRequestAlert => 'New Job Request!';
+
+  @override
+  String distanceAway(String distance) {
+    return '$distance km away';
+  }
+
+  @override
+  String get plusTipsOption => '+ Tips Available';
+
+  @override
+  String get proposedTime => 'Proposed Time';
+
+  @override
+  String get estimatedDuration => 'Estimated Duration';
+
+  @override
+  String get declineAction => 'Decline';
+
+  @override
+  String get acceptAction => 'Accept';
+
+  @override
+  String get jobAcceptedMessage => 'Job accepted! Customer has been notified.';
+
+  @override
+  String get todaysEarnings => 'Today\'s Earnings';
+
+  @override
+  String jobsCompletedCount(String count) {
+    return '$count jobs completed';
+  }
+
+  @override
+  String get pendingPayout => 'Pending Payout';
+
+  @override
+  String get payoutProcessing => 'bKash Processing';
+
+  @override
+  String get weeklyTarget => 'Weekly Target';
+
+  @override
+  String get targetGoal => '৳10,000 Goal';
+
+  @override
+  String get upcomingSchedule => 'Upcoming Schedule';
+
+  @override
+  String get tomorrowSchedule => 'Tomorrow 10:00 AM';
+
+  @override
+  String get cashPayment => 'Cash Payment';
+
+  @override
+  String get reputationBadgesTitle => 'Skill & Rating Badges';
+
+  @override
+  String get masterTier => 'Master Tier';
+
+  @override
+  String get wiringSafetyScore => 'Wiring Safety';
+
+  @override
+  String get onTimePerformance => 'On-time Service';
+
+  @override
+  String get findWorkBannerTitle => 'Find Nearby Jobs';
+
+  @override
+  String get findWorkBannerSub => '12 new jobs available around Mirpur';
+
+  @override
+  String get exploreAction => 'Explore';
+
+  @override
+  String get searchServiceLabel => 'Search Service';
+
+  @override
+  String get searchServiceHint => 'Search electrician, plumber, etc.';
+
+  @override
+  String get radiusPillText => 'Mirpur & Dhanmondi (4.5 km radius)';
+
+  @override
+  String get changeAreaAction => 'Change';
+
+  @override
+  String get filterVerifiedOnly => 'Verified Only ✓';
+
+  @override
+  String get filterRatingHigh => 'Rating 4.5+ ★';
+
+  @override
+  String get filterAvailableToday => 'Available Today';
+
+  @override
+  String get filterMaxRate => 'Max ৳400/hr';
+
+  @override
+  String get filterUrgent => 'Urgent Service';
+
+  @override
+  String verifiedWorkersFound(String count) {
+    return '$count verified workers found';
+  }
+
+  @override
+  String get onlineBadge => 'Online';
+
+  @override
+  String get sortPopular => 'Sort: Popular ▾';
+
+  @override
+  String successRate(String rate) {
+    return '$rate% job success';
+  }
+
+  @override
+  String get bookNowAction => 'Book Now';
+
+  @override
+  String get resetFilters => 'Reset Filters';
+
+  @override
+  String get noWorkersFoundSub =>
+      'Reset filters to see all 38 available workers';
+
+  @override
+  String get filterModalTitle => 'Smart Filters & Budget';
+
+  @override
+  String get maxHourlyRate => 'Max Hourly Rate';
+
+  @override
+  String get trustLevelsTitle => 'Trust Levels';
+
+  @override
+  String get tradeLicenseCertified => 'Trade License / Certified';
+
+  @override
+  String get tradeLicenseCertifiedSub =>
+      'Govt/TTC certified technical credentials';
+
+  @override
+  String get resetAllAction => 'Reset';
+
+  @override
+  String get applyFiltersAction => 'Apply Filters';
+
+  @override
+  String get previewOnlyMessage =>
+      'This feature will be available in future phases (Preview Only)';
+
+  @override
+  String get navHome => 'Home';
+
+  @override
+  String get navSearch => 'Search';
+
+  @override
+  String get navBookings => 'Bookings';
+
+  @override
+  String get navMessages => 'Messages';
+
+  @override
+  String get navProfile => 'Profile';
 }

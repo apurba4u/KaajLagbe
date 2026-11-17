@@ -760,4 +760,320 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get profileAndSettings => 'প্রোফাইল ও সেটিংস';
+
+  @override
+  String get locationMirpur => 'মিরপুর ১০, ঢাকা';
+
+  @override
+  String goodMorningUser(String name) {
+    return 'শুভ সকাল, $name! 👋';
+  }
+
+  @override
+  String get customerSearchHint => 'আজ কী ধরনের সাহায্য দরকার?';
+
+  @override
+  String get nidAssuranceTitle => '১০০% জাতীয় পরিচয়পত্র (NID) যাচাইকৃত';
+
+  @override
+  String get nidAssuranceSubtitle =>
+      'বিশ্বস্ত ও স্থানীয় কারিগরদের সাথে নিরাপদ সেবা নিশ্চয়তা';
+
+  @override
+  String get workerEnRoute => 'কর্মী পথে আছেন (En Route)';
+
+  @override
+  String withinMinutes(String minutes) {
+    return '⏱ $minutes মিনিটের মধ্যে';
+  }
+
+  @override
+  String get electricWiringFix => 'ইলেকট্রিক ওয়্যারিং ও শর্ট সার্কিট ফিক্স';
+
+  @override
+  String get workerBranchMirpur => 'আইডি: #KL-88219 • মিরপুর শাখা';
+
+  @override
+  String get liveTracking => 'লাইভ ট্র্যাকিং';
+
+  @override
+  String get callAction => 'কল করুন';
+
+  @override
+  String get emergencyDailyServices => 'জরুরি ও দৈনন্দিন সেবা';
+
+  @override
+  String get callWorkerInMinutes =>
+      'ক্লিক করে কয়েক মিনিটে বিশ্বস্ত কর্মী ডাকুন';
+
+  @override
+  String get viewAll => 'সব দেখুন';
+
+  @override
+  String get skillElectrician => 'ইলেকট্রিশিয়ান';
+
+  @override
+  String get skillPlumber => 'প্লাম্বিং';
+
+  @override
+  String get skillCleaner => 'বাসা পরিষ্কার';
+
+  @override
+  String get skillAppliance => 'এসি ও ফ্রিজ';
+
+  @override
+  String get skillMoving => 'বাসা বদল';
+
+  @override
+  String get skillPainter => 'রং মিস্ত্রি';
+
+  @override
+  String get skillCarpenter => 'কাঠমিস্ত্রি';
+
+  @override
+  String get skillGeneralHelper => 'দৈনিক সাহায্য';
+
+  @override
+  String get promoBannerTitle => 'যেকোনো মেরামতে ৫০৳ ছাড়!';
+
+  @override
+  String promoBannerCode(String code) {
+    return 'কোড ব্যবহার করুন: $code';
+  }
+
+  @override
+  String get promoOfferBadge => 'অফার • প্রথম অর্ডার';
+
+  @override
+  String get topRatedWorkers => 'জনপ্রিয় কর্মী';
+
+  @override
+  String get topRatedWorkersSub =>
+      'গ্রাহকদের সর্বোচ্চ রেটিং প্রাপ্ত নির্ভরযোগ্য কর্মী';
+
+  @override
+  String get availableIn30Mins => '৩০ মিনিটে এভেইলএবল';
+
+  @override
+  String get availableToday => 'আজই সম্ভব';
+
+  @override
+  String get perHour => '/ঘণ্টা';
+
+  @override
+  String get viewProfileAndBook => 'প্রোফাইল দেখুন ও বুক করুন';
+
+  @override
+  String get kaajLagbeSafetyTitle => 'কাজলাগবে সুরক্ষা নিশ্চয়তা';
+
+  @override
+  String get safetyNidVerified => 'NID ভেরিফাইড';
+
+  @override
+  String get safetyNidVerifiedSub =>
+      'প্রত্যেক কর্মীর আসল বায়োমেট্রিক ও জাতীয় পরিচয়পত্র পরীক্ষিত।';
+
+  @override
+  String get safetyTransparentRates => 'স্বচ্ছ রেট কার্ড';
+
+  @override
+  String get safetyTransparentRatesSub =>
+      'কোনো গোপন চার্জ নেই, ন্যায্য মজুরি ও নির্ধারিত রেটে সরাসরি বুকিং।';
+
+  @override
+  String get safetyDisputeResolution => 'দ্রুত বিরোধ নিষ্পত্তি';
+
+  @override
+  String get safetyDisputeResolutionSub =>
+      'সেবায় কোনো অসন্তোষ হলে ২৪/৭ ডেডিকেটেড সাপোর্ট টিম সাথে আছে।';
+
+  @override
+  String get safetyEasyRebooking => 'সহজ রি-বুকিং';
+
+  @override
+  String get safetyEasyRebookingSub =>
+      'পছন্দের কর্মী পুনরায় নির্বাচন করুন মাত্র ১ ট্যাপে।';
+
+  @override
+  String get labourPanelTitle => 'শ্রমিক প্যানেল';
+
+  @override
+  String get statusOnline => 'অনলাইন';
+
+  @override
+  String get statusOffline => 'অফলাইন';
+
+  @override
+  String get radarActiveBanner =>
+      'বর্তমানে সক্রিয় (Online & Ready for Jobs) • রাডার চালু';
+
+  @override
+  String get newJobRequestAlert => 'নতুন কাজের অনুরোধ!';
+
+  @override
+  String distanceAway(String distance) {
+    return '$distance কিমি দূরে';
+  }
+
+  @override
+  String get plusTipsOption => '+ টিপস সুবিধা';
+
+  @override
+  String get proposedTime => 'প্রস্তাবিত সময়';
+
+  @override
+  String get estimatedDuration => 'কাজের সময়সীমা';
+
+  @override
+  String get declineAction => 'প্রত্যাখ্যান';
+
+  @override
+  String get acceptAction => 'গ্রহণ করুন';
+
+  @override
+  String get jobAcceptedMessage =>
+      'কাজটি গ্রহণ করা হয়েছে! গ্রাহককে নোটিফিকেশন পাঠানো হয়েছে।';
+
+  @override
+  String get todaysEarnings => 'আজকের আয়';
+
+  @override
+  String jobsCompletedCount(String count) {
+    return '$countটি কাজ সম্পন্ন';
+  }
+
+  @override
+  String get pendingPayout => 'পেন্ডিং পেআউট';
+
+  @override
+  String get payoutProcessing => 'বিকাশ প্রসেসিং';
+
+  @override
+  String get weeklyTarget => 'সাপ্তাহিক টার্গেট';
+
+  @override
+  String get targetGoal => '৳১০,০০০ লক্ষ্য';
+
+  @override
+  String get upcomingSchedule => 'আসন্ন শিডিউল';
+
+  @override
+  String get tomorrowSchedule => 'আগামীকাল ১০:০০';
+
+  @override
+  String get cashPayment => 'নগদ প্রদান';
+
+  @override
+  String get reputationBadgesTitle => 'দক্ষতা ও রেটিং ব্যাজ';
+
+  @override
+  String get masterTier => 'মাস্টার টিয়ার';
+
+  @override
+  String get wiringSafetyScore => 'ওয়ারিং সেফটি';
+
+  @override
+  String get onTimePerformance => 'অন-টাইম সেবা';
+
+  @override
+  String get findWorkBannerTitle => 'কাজ খুঁজুন';
+
+  @override
+  String get findWorkBannerSub => 'মিরপুর এলাকায় ১২টি নতুন কাজ উপলব্ধ';
+
+  @override
+  String get exploreAction => 'দেখুন';
+
+  @override
+  String get searchServiceLabel => 'ট্রেড বা সেবা খুঁজুন';
+
+  @override
+  String get searchServiceHint => 'ইলেকট্রিশিয়ান, প্লাম্বার ইত্যাদি খুঁজুন';
+
+  @override
+  String get radiusPillText => 'মিরপুর ও ধানমণ্ডি (৪.৫ কিমি ব্যাসার্ধ)';
+
+  @override
+  String get changeAreaAction => 'পরিবর্তন';
+
+  @override
+  String get filterVerifiedOnly => 'যাচাইকৃত শুধু ✓';
+
+  @override
+  String get filterRatingHigh => 'রেটিং ৪.৫+ ★';
+
+  @override
+  String get filterAvailableToday => 'আজই সম্ভব';
+
+  @override
+  String get filterMaxRate => 'সর্বোচ্চ ৳৪০০/ঘণ্টা';
+
+  @override
+  String get filterUrgent => 'জরুরি সেবা (Urgent)';
+
+  @override
+  String verifiedWorkersFound(String count) {
+    return '$count জন যাচাইকৃত কর্মী পাওয়া গেছে';
+  }
+
+  @override
+  String get onlineBadge => 'অনলাইনে';
+
+  @override
+  String get sortPopular => 'সর্ট: জনপ্রিয় ▾';
+
+  @override
+  String successRate(String rate) {
+    return '$rate% সফল কাজ';
+  }
+
+  @override
+  String get bookNowAction => 'বুকিং করুন';
+
+  @override
+  String get resetFilters => 'ফিল্টার রিসেট';
+
+  @override
+  String get noWorkersFoundSub => 'ফিল্টার রিসেট করে আরো ৩২ জন কর্মী দেখুন';
+
+  @override
+  String get filterModalTitle => 'স্মার্ট ফিল্টার ও বাজেট';
+
+  @override
+  String get maxHourlyRate => 'সর্বোচ্চ ঘণ্টার রেট';
+
+  @override
+  String get trustLevelsTitle => 'যাচাইকরণ মাত্রা';
+
+  @override
+  String get tradeLicenseCertified => 'ট্রেড লাইসেন্স বা কারিগরি সনদপ্রাপ্ত';
+
+  @override
+  String get tradeLicenseCertifiedSub =>
+      'ভিটিটিসি বা সরকার অনুমোদিত প্রশিক্ষণ সনদ';
+
+  @override
+  String get resetAllAction => 'মুছে ফেলুন (Reset)';
+
+  @override
+  String get applyFiltersAction => 'ফলাফল দেখুন';
+
+  @override
+  String get previewOnlyMessage =>
+      'এই ফিচারটি পরবর্তী ফেজে কার্যকর হবে (প্রিভিউ মোড)';
+
+  @override
+  String get navHome => 'হোম';
+
+  @override
+  String get navSearch => 'অনুসন্ধান';
+
+  @override
+  String get navBookings => 'বুকিং';
+
+  @override
+  String get navMessages => 'মেসেজ';
+
+  @override
+  String get navProfile => 'প্রোফাইল';
 }

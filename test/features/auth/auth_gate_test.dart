@@ -10,8 +10,8 @@ import 'package:kaajlagbe/features/auth/domain/user_profile.dart';
 import 'package:kaajlagbe/features/auth/presentation/auth_providers.dart';
 import 'package:kaajlagbe/features/auth/presentation/screens/account_status_screen.dart';
 import 'package:kaajlagbe/features/auth/presentation/screens/auth_gate.dart';
-import 'package:kaajlagbe/features/auth/presentation/screens/home_screen_placeholder.dart';
 import 'package:kaajlagbe/features/auth/presentation/screens/phone_login_screen.dart';
+import 'package:kaajlagbe/features/customer/presentation/screens/customer_home_screen.dart';
 import 'package:kaajlagbe/l10n/app_localizations.dart';
 
 class MockAuthRepository extends Mock implements AuthRepository {}
@@ -53,7 +53,7 @@ void main() {
     expect(find.byType(PhoneLoginScreen), findsOneWidget);
   });
 
-  testWidgets('Authenticated approved user is routed to HomeScreenPlaceholder', (tester) async {
+  testWidgets('Authenticated approved customer is routed to CustomerHomeScreen', (tester) async {
     final mockUser = MockUser();
     when(() => mockUser.id).thenReturn('u-123');
     when(() => mockUser.userMetadata).thenReturn({'role': 'customer'});
@@ -80,8 +80,8 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    expect(find.byType(HomeScreenPlaceholder), findsOneWidget);
-    expect(find.textContaining('Habibur Rahman'), findsOneWidget);
+    expect(find.byType(CustomerHomeScreen), findsOneWidget);
+    expect(find.textContaining('Habibur'), findsOneWidget);
   });
 
   testWidgets('Authenticated pending labour is routed to AccountStatusScreen', (tester) async {

@@ -9,14 +9,16 @@ import '../../../admin/presentation/screens/admin_verification_desk_screen.dart'
 import '../../../auth/domain/user_profile.dart';
 import '../../../auth/presentation/auth_providers.dart';
 import '../../../auth/presentation/screens/account_status_screen.dart';
-import '../../../auth/presentation/screens/home_screen_placeholder.dart';
 import '../../../auth/presentation/screens/otp_verification_screen.dart';
 import '../../../auth/presentation/screens/phone_login_screen.dart';
 import '../../../auth/presentation/screens/profile_settings_screen.dart';
 import '../../../auth/presentation/screens/profile_setup_screen.dart';
 import '../../../auth/presentation/screens/role_selection_screen.dart';
 import '../../../auth/presentation/screens/splash_screen.dart';
+import '../../../customer/presentation/screens/customer_home_screen.dart';
+import '../../../customer/presentation/screens/worker_search_screen.dart';
 import '../../../labour/presentation/labour_providers.dart';
+import '../../../labour/presentation/screens/labour_home_screen.dart';
 import '../../../labour/presentation/screens/labour_profile_setup_screen.dart';
 import '../../../labour/presentation/screens/labour_profile_view_screen.dart';
 import '../../../verification/presentation/screens/identity_verification_screen.dart';
@@ -218,7 +220,18 @@ class DesignPreviewHubScreen extends ConsumerWidget {
                   iconColor: AppColors.primary,
                   onTap: () => _openScreen(
                     context,
-                    HomeScreenPlaceholder(profile: activePersona),
+                    CustomerHomeScreen(profile: activePersona),
+                    overrides: commonOverrides,
+                  ),
+                ),
+                _PreviewCardItem(
+                  title: isBangla ? 'কর্মী ও ট্রেড সার্চ' : 'Worker Search & Filter',
+                  subtitle: isBangla ? 'ফিল্টার, রেট ও কর্মী তালিকা' : 'Smart filters, rates & results',
+                  icon: Icons.search_rounded,
+                  iconColor: AppColors.primary,
+                  onTap: () => _openScreen(
+                    context,
+                    const WorkerSearchScreen(),
                     overrides: commonOverrides,
                   ),
                 ),
@@ -324,7 +337,7 @@ class DesignPreviewHubScreen extends ConsumerWidget {
                   iconColor: AppColors.primary,
                   onTap: () => _openScreen(
                     context,
-                    HomeScreenPlaceholder(
+                    LabourHomeScreen(
                       profile: activePersona.role == UserRole.labour
                           ? activePersona
                           : PreviewData.karimLabour,
@@ -442,11 +455,15 @@ class DesignPreviewHubScreen extends ConsumerWidget {
               _buildCardsGrid([
                 _PreviewCardItem(
                   title: isBangla ? 'সার্চ ও ফিল্টার' : 'Search & Filter',
-                  subtitle: isBangla ? 'ফেজ ৪-এ আসছে' : 'Coming in Phase 4',
+                  subtitle: isBangla ? 'কর্মী খোঁজা ও ফিল্টারিং' : 'Worker discovery & filters UI',
                   icon: Icons.search_rounded,
-                  iconColor: AppColors.textMuted,
-                  isComingSoon: true,
-                  onTap: () => _showComingSoonSnackBar(context, 'Search & Filter (Phase 4)'),
+                  iconColor: AppColors.primary,
+                  isComingSoon: false,
+                  onTap: () => _openScreen(
+                    context,
+                    const WorkerSearchScreen(),
+                    overrides: commonOverrides,
+                  ),
                 ),
                 _PreviewCardItem(
                   title: isBangla ? 'বুকিং ওয়ার্কফ্লো' : 'Booking Workflow',

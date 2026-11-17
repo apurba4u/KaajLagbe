@@ -259,5 +259,141 @@
   },
   "homePlaceholderCustomer": "Customer marketplace and worker discovery coming soon.",
   "homePlaceholderLabour": "Labour dashboard and job queue coming soon.",
-  "profileAndSettings": "Profile & Settings"
+  "profileAndSettings": "Profile & Settings",
+
+  "locationMirpur": "Mirpur 10, Dhaka",
+  "goodMorningUser": "Good morning, {name}! 👋",
+  "@goodMorningUser": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "customerSearchHint": "What help do you need today?",
+  "nidAssuranceTitle": "100% National ID (NID) Verified",
+  "nidAssuranceSubtitle": "Safe service guarantee with trusted local workers",
+  "workerEnRoute": "Worker is en route",
+  "withinMinutes": "⏱ Within {minutes} mins",
+  "@withinMinutes": {
+    "placeholders": {
+      "minutes": { "type": "String" }
+    }
+  },
+  "electricWiringFix": "Electrical wiring & short circuit fix",
+  "workerBranchMirpur": "ID: #KL-88219 • Mirpur Branch",
+  "liveTracking": "Live Tracking",
+  "callAction": "Call",
+  "emergencyDailyServices": "Emergency & Daily Services",
+  "callWorkerInMinutes": "Call trusted workers in minutes",
+  "viewAll": "View All",
+  "skillElectrician": "Electrician",
+  "skillPlumber": "Plumbing",
+  "skillCleaner": "House Cleaning",
+  "skillAppliance": "Appliance Repair",
+  "skillMoving": "Moving & Lifting",
+  "skillPainter": "Painting",
+  "skillCarpenter": "Carpenter",
+  "skillGeneralHelper": "General Helper",
+  "promoBannerTitle": "৳50 off on any repair!",
+  "promoBannerCode": "Use code: {code}",
+  "@promoBannerCode": {
+    "placeholders": {
+      "code": { "type": "String" }
+    }
+  },
+  "promoOfferBadge": "Offer • First Booking",
+  "topRatedWorkers": "Popular Workers",
+  "topRatedWorkersSub": "Highest customer-rated dependable workers",
+  "availableIn30Mins": "Available in 30 mins",
+  "availableToday": "Available Today",
+  "perHour": "/hr",
+  "viewProfileAndBook": "View Profile & Book",
+  "kaajLagbeSafetyTitle": "KaajLagbe Safety Guarantee",
+  "safetyNidVerified": "NID Verified",
+  "safetyNidVerifiedSub": "Biometrics and national ID checked for every worker",
+  "safetyTransparentRates": "Transparent Rates",
+  "safetyTransparentRatesSub": "No hidden charges, fair wages with fixed transparent pricing",
+  "safetyDisputeResolution": "Quick Dispute Resolution",
+  "safetyDisputeResolutionSub": "24/7 dedicated support team to resolve issues",
+  "safetyEasyRebooking": "Easy Re-booking",
+  "safetyEasyRebookingSub": "Re-book your favorite worker in just 1 tap",
+
+  "labourPanelTitle": "Worker Panel",
+  "statusOnline": "Online",
+  "statusOffline": "Offline",
+  "radarActiveBanner": "Online & Ready for Jobs • Radar Active",
+  "newJobRequestAlert": "New Job Request!",
+  "distanceAway": "{distance} km away",
+  "@distanceAway": {
+    "placeholders": {
+      "distance": { "type": "String" }
+    }
+  },
+  "plusTipsOption": "+ Tips Available",
+  "proposedTime": "Proposed Time",
+  "estimatedDuration": "Estimated Duration",
+  "declineAction": "Decline",
+  "acceptAction": "Accept",
+  "jobAcceptedMessage": "Job accepted! Customer has been notified.",
+  "todaysEarnings": "Today's Earnings",
+  "jobsCompletedCount": "{count} jobs completed",
+  "@jobsCompletedCount": {
+    "placeholders": {
+      "count": { "type": "String" }
+    }
+  },
+  "pendingPayout": "Pending Payout",
+  "payoutProcessing": "bKash Processing",
+  "weeklyTarget": "Weekly Target",
+  "targetGoal": "৳10,000 Goal",
+  "upcomingSchedule": "Upcoming Schedule",
+  "tomorrowSchedule": "Tomorrow 10:00 AM",
+  "cashPayment": "Cash Payment",
+  "reputationBadgesTitle": "Skill & Rating Badges",
+  "masterTier": "Master Tier",
+  "wiringSafetyScore": "Wiring Safety",
+  "onTimePerformance": "On-time Service",
+  "findWorkBannerTitle": "Find Nearby Jobs",
+  "findWorkBannerSub": "12 new jobs available around Mirpur",
+  "exploreAction": "Explore",
+
+  "searchServiceLabel": "Search Service",
+  "searchServiceHint": "Search electrician, plumber, etc.",
+  "radiusPillText": "Mirpur & Dhanmondi (4.5 km radius)",
+  "changeAreaAction": "Change",
+  "filterVerifiedOnly": "Verified Only ✓",
+  "filterRatingHigh": "Rating 4.5+ ★",
+  "filterAvailableToday": "Available Today",
+  "filterMaxRate": "Max ৳400/hr",
+  "filterUrgent": "Urgent Service",
+  "verifiedWorkersFound": "{count} verified workers found",
+  "@verifiedWorkersFound": {
+    "placeholders": {
+      "count": { "type": "String" }
+    }
+  },
+  "onlineBadge": "Online",
+  "sortPopular": "Sort: Popular ▾",
+  "successRate": "{rate}% job success",
+  "@successRate": {
+    "placeholders": {
+      "rate": { "type": "String" }
+    }
+  },
+  "bookNowAction": "Book Now",
+  "resetFilters": "Reset Filters",
+  "noWorkersFoundSub": "Reset filters to see all 38 available workers",
+  "filterModalTitle": "Smart Filters & Budget",
+  "maxHourlyRate": "Max Hourly Rate",
+  "trustLevelsTitle": "Trust Levels",
+  "tradeLicenseCertified": "Trade License / Certified",
+  "tradeLicenseCertifiedSub": "Govt/TTC certified technical credentials",
+  "resetAllAction": "Reset",
+  "applyFiltersAction": "Apply Filters",
+  "previewOnlyMessage": "This feature will be available in future phases (Preview Only)",
+
+  "navHome": "Home",
+  "navSearch": "Search",
+  "navBookings": "Bookings",
+  "navMessages": "Messages",
+  "navProfile": "Profile"
 }

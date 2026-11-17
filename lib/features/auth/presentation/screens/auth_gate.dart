@@ -4,10 +4,11 @@ import '../../../../core/config/env_config.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../customer/presentation/screens/customer_home_screen.dart';
+import '../../../labour/presentation/screens/labour_home_screen.dart';
 import '../../../preview/presentation/screens/design_preview_hub_screen.dart';
 import '../auth_providers.dart';
 import 'account_status_screen.dart';
-import 'home_screen_placeholder.dart';
 import 'phone_login_screen.dart';
 import 'role_selection_screen.dart';
 import 'splash_screen.dart';
@@ -86,7 +87,10 @@ class AuthGate extends ConsumerWidget {
 
         // Account Status Gates
         if (profile.accountStatus == AccountStatus.approved) {
-          return HomeScreenPlaceholder(profile: profile);
+          if (profile.role == UserRole.labour) {
+            return LabourHomeScreen(profile: profile);
+          }
+          return CustomerHomeScreen(profile: profile);
         } else {
           return AccountStatusScreen(status: profile.accountStatus);
         }

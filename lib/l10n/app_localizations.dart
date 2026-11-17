@@ -1519,6 +1519,588 @@ abstract class AppLocalizations {
   /// In bn, this message translates to:
   /// **'প্রোফাইল ও সেটিংস'**
   String get profileAndSettings;
+
+  /// No description provided for @locationMirpur.
+  ///
+  /// In bn, this message translates to:
+  /// **'মিরপুর ১০, ঢাকা'**
+  String get locationMirpur;
+
+  /// No description provided for @goodMorningUser.
+  ///
+  /// In bn, this message translates to:
+  /// **'শুভ সকাল, {name}! 👋'**
+  String goodMorningUser(String name);
+
+  /// No description provided for @customerSearchHint.
+  ///
+  /// In bn, this message translates to:
+  /// **'আজ কী ধরনের সাহায্য দরকার?'**
+  String get customerSearchHint;
+
+  /// No description provided for @nidAssuranceTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'১০০% জাতীয় পরিচয়পত্র (NID) যাচাইকৃত'**
+  String get nidAssuranceTitle;
+
+  /// No description provided for @nidAssuranceSubtitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'বিশ্বস্ত ও স্থানীয় কারিগরদের সাথে নিরাপদ সেবা নিশ্চয়তা'**
+  String get nidAssuranceSubtitle;
+
+  /// No description provided for @workerEnRoute.
+  ///
+  /// In bn, this message translates to:
+  /// **'কর্মী পথে আছেন (En Route)'**
+  String get workerEnRoute;
+
+  /// No description provided for @withinMinutes.
+  ///
+  /// In bn, this message translates to:
+  /// **'⏱ {minutes} মিনিটের মধ্যে'**
+  String withinMinutes(String minutes);
+
+  /// No description provided for @electricWiringFix.
+  ///
+  /// In bn, this message translates to:
+  /// **'ইলেকট্রিক ওয়্যারিং ও শর্ট সার্কিট ফিক্স'**
+  String get electricWiringFix;
+
+  /// No description provided for @workerBranchMirpur.
+  ///
+  /// In bn, this message translates to:
+  /// **'আইডি: #KL-88219 • মিরপুর শাখা'**
+  String get workerBranchMirpur;
+
+  /// No description provided for @liveTracking.
+  ///
+  /// In bn, this message translates to:
+  /// **'লাইভ ট্র্যাকিং'**
+  String get liveTracking;
+
+  /// No description provided for @callAction.
+  ///
+  /// In bn, this message translates to:
+  /// **'কল করুন'**
+  String get callAction;
+
+  /// No description provided for @emergencyDailyServices.
+  ///
+  /// In bn, this message translates to:
+  /// **'জরুরি ও দৈনন্দিন সেবা'**
+  String get emergencyDailyServices;
+
+  /// No description provided for @callWorkerInMinutes.
+  ///
+  /// In bn, this message translates to:
+  /// **'ক্লিক করে কয়েক মিনিটে বিশ্বস্ত কর্মী ডাকুন'**
+  String get callWorkerInMinutes;
+
+  /// No description provided for @viewAll.
+  ///
+  /// In bn, this message translates to:
+  /// **'সব দেখুন'**
+  String get viewAll;
+
+  /// No description provided for @skillElectrician.
+  ///
+  /// In bn, this message translates to:
+  /// **'ইলেকট্রিশিয়ান'**
+  String get skillElectrician;
+
+  /// No description provided for @skillPlumber.
+  ///
+  /// In bn, this message translates to:
+  /// **'প্লাম্বিং'**
+  String get skillPlumber;
+
+  /// No description provided for @skillCleaner.
+  ///
+  /// In bn, this message translates to:
+  /// **'বাসা পরিষ্কার'**
+  String get skillCleaner;
+
+  /// No description provided for @skillAppliance.
+  ///
+  /// In bn, this message translates to:
+  /// **'এসি ও ফ্রিজ'**
+  String get skillAppliance;
+
+  /// No description provided for @skillMoving.
+  ///
+  /// In bn, this message translates to:
+  /// **'বাসা বদল'**
+  String get skillMoving;
+
+  /// No description provided for @skillPainter.
+  ///
+  /// In bn, this message translates to:
+  /// **'রং মিস্ত্রি'**
+  String get skillPainter;
+
+  /// No description provided for @skillCarpenter.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাঠমিস্ত্রি'**
+  String get skillCarpenter;
+
+  /// No description provided for @skillGeneralHelper.
+  ///
+  /// In bn, this message translates to:
+  /// **'দৈনিক সাহায্য'**
+  String get skillGeneralHelper;
+
+  /// No description provided for @promoBannerTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'যেকোনো মেরামতে ৫০৳ ছাড়!'**
+  String get promoBannerTitle;
+
+  /// No description provided for @promoBannerCode.
+  ///
+  /// In bn, this message translates to:
+  /// **'কোড ব্যবহার করুন: {code}'**
+  String promoBannerCode(String code);
+
+  /// No description provided for @promoOfferBadge.
+  ///
+  /// In bn, this message translates to:
+  /// **'অফার • প্রথম অর্ডার'**
+  String get promoOfferBadge;
+
+  /// No description provided for @topRatedWorkers.
+  ///
+  /// In bn, this message translates to:
+  /// **'জনপ্রিয় কর্মী'**
+  String get topRatedWorkers;
+
+  /// No description provided for @topRatedWorkersSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'গ্রাহকদের সর্বোচ্চ রেটিং প্রাপ্ত নির্ভরযোগ্য কর্মী'**
+  String get topRatedWorkersSub;
+
+  /// No description provided for @availableIn30Mins.
+  ///
+  /// In bn, this message translates to:
+  /// **'৩০ মিনিটে এভেইলএবল'**
+  String get availableIn30Mins;
+
+  /// No description provided for @availableToday.
+  ///
+  /// In bn, this message translates to:
+  /// **'আজই সম্ভব'**
+  String get availableToday;
+
+  /// No description provided for @perHour.
+  ///
+  /// In bn, this message translates to:
+  /// **'/ঘণ্টা'**
+  String get perHour;
+
+  /// No description provided for @viewProfileAndBook.
+  ///
+  /// In bn, this message translates to:
+  /// **'প্রোফাইল দেখুন ও বুক করুন'**
+  String get viewProfileAndBook;
+
+  /// No description provided for @kaajLagbeSafetyTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজলাগবে সুরক্ষা নিশ্চয়তা'**
+  String get kaajLagbeSafetyTitle;
+
+  /// No description provided for @safetyNidVerified.
+  ///
+  /// In bn, this message translates to:
+  /// **'NID ভেরিফাইড'**
+  String get safetyNidVerified;
+
+  /// No description provided for @safetyNidVerifiedSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'প্রত্যেক কর্মীর আসল বায়োমেট্রিক ও জাতীয় পরিচয়পত্র পরীক্ষিত।'**
+  String get safetyNidVerifiedSub;
+
+  /// No description provided for @safetyTransparentRates.
+  ///
+  /// In bn, this message translates to:
+  /// **'স্বচ্ছ রেট কার্ড'**
+  String get safetyTransparentRates;
+
+  /// No description provided for @safetyTransparentRatesSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'কোনো গোপন চার্জ নেই, ন্যায্য মজুরি ও নির্ধারিত রেটে সরাসরি বুকিং।'**
+  String get safetyTransparentRatesSub;
+
+  /// No description provided for @safetyDisputeResolution.
+  ///
+  /// In bn, this message translates to:
+  /// **'দ্রুত বিরোধ নিষ্পত্তি'**
+  String get safetyDisputeResolution;
+
+  /// No description provided for @safetyDisputeResolutionSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'সেবায় কোনো অসন্তোষ হলে ২৪/৭ ডেডিকেটেড সাপোর্ট টিম সাথে আছে।'**
+  String get safetyDisputeResolutionSub;
+
+  /// No description provided for @safetyEasyRebooking.
+  ///
+  /// In bn, this message translates to:
+  /// **'সহজ রি-বুকিং'**
+  String get safetyEasyRebooking;
+
+  /// No description provided for @safetyEasyRebookingSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'পছন্দের কর্মী পুনরায় নির্বাচন করুন মাত্র ১ ট্যাপে।'**
+  String get safetyEasyRebookingSub;
+
+  /// No description provided for @labourPanelTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'শ্রমিক প্যানেল'**
+  String get labourPanelTitle;
+
+  /// No description provided for @statusOnline.
+  ///
+  /// In bn, this message translates to:
+  /// **'অনলাইন'**
+  String get statusOnline;
+
+  /// No description provided for @statusOffline.
+  ///
+  /// In bn, this message translates to:
+  /// **'অফলাইন'**
+  String get statusOffline;
+
+  /// No description provided for @radarActiveBanner.
+  ///
+  /// In bn, this message translates to:
+  /// **'বর্তমানে সক্রিয় (Online & Ready for Jobs) • রাডার চালু'**
+  String get radarActiveBanner;
+
+  /// No description provided for @newJobRequestAlert.
+  ///
+  /// In bn, this message translates to:
+  /// **'নতুন কাজের অনুরোধ!'**
+  String get newJobRequestAlert;
+
+  /// No description provided for @distanceAway.
+  ///
+  /// In bn, this message translates to:
+  /// **'{distance} কিমি দূরে'**
+  String distanceAway(String distance);
+
+  /// No description provided for @plusTipsOption.
+  ///
+  /// In bn, this message translates to:
+  /// **'+ টিপস সুবিধা'**
+  String get plusTipsOption;
+
+  /// No description provided for @proposedTime.
+  ///
+  /// In bn, this message translates to:
+  /// **'প্রস্তাবিত সময়'**
+  String get proposedTime;
+
+  /// No description provided for @estimatedDuration.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজের সময়সীমা'**
+  String get estimatedDuration;
+
+  /// No description provided for @declineAction.
+  ///
+  /// In bn, this message translates to:
+  /// **'প্রত্যাখ্যান'**
+  String get declineAction;
+
+  /// No description provided for @acceptAction.
+  ///
+  /// In bn, this message translates to:
+  /// **'গ্রহণ করুন'**
+  String get acceptAction;
+
+  /// No description provided for @jobAcceptedMessage.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজটি গ্রহণ করা হয়েছে! গ্রাহককে নোটিফিকেশন পাঠানো হয়েছে।'**
+  String get jobAcceptedMessage;
+
+  /// No description provided for @todaysEarnings.
+  ///
+  /// In bn, this message translates to:
+  /// **'আজকের আয়'**
+  String get todaysEarnings;
+
+  /// No description provided for @jobsCompletedCount.
+  ///
+  /// In bn, this message translates to:
+  /// **'{count}টি কাজ সম্পন্ন'**
+  String jobsCompletedCount(String count);
+
+  /// No description provided for @pendingPayout.
+  ///
+  /// In bn, this message translates to:
+  /// **'পেন্ডিং পেআউট'**
+  String get pendingPayout;
+
+  /// No description provided for @payoutProcessing.
+  ///
+  /// In bn, this message translates to:
+  /// **'বিকাশ প্রসেসিং'**
+  String get payoutProcessing;
+
+  /// No description provided for @weeklyTarget.
+  ///
+  /// In bn, this message translates to:
+  /// **'সাপ্তাহিক টার্গেট'**
+  String get weeklyTarget;
+
+  /// No description provided for @targetGoal.
+  ///
+  /// In bn, this message translates to:
+  /// **'৳১০,০০০ লক্ষ্য'**
+  String get targetGoal;
+
+  /// No description provided for @upcomingSchedule.
+  ///
+  /// In bn, this message translates to:
+  /// **'আসন্ন শিডিউল'**
+  String get upcomingSchedule;
+
+  /// No description provided for @tomorrowSchedule.
+  ///
+  /// In bn, this message translates to:
+  /// **'আগামীকাল ১০:০০'**
+  String get tomorrowSchedule;
+
+  /// No description provided for @cashPayment.
+  ///
+  /// In bn, this message translates to:
+  /// **'নগদ প্রদান'**
+  String get cashPayment;
+
+  /// No description provided for @reputationBadgesTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'দক্ষতা ও রেটিং ব্যাজ'**
+  String get reputationBadgesTitle;
+
+  /// No description provided for @masterTier.
+  ///
+  /// In bn, this message translates to:
+  /// **'মাস্টার টিয়ার'**
+  String get masterTier;
+
+  /// No description provided for @wiringSafetyScore.
+  ///
+  /// In bn, this message translates to:
+  /// **'ওয়ারিং সেফটি'**
+  String get wiringSafetyScore;
+
+  /// No description provided for @onTimePerformance.
+  ///
+  /// In bn, this message translates to:
+  /// **'অন-টাইম সেবা'**
+  String get onTimePerformance;
+
+  /// No description provided for @findWorkBannerTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজ খুঁজুন'**
+  String get findWorkBannerTitle;
+
+  /// No description provided for @findWorkBannerSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'মিরপুর এলাকায় ১২টি নতুন কাজ উপলব্ধ'**
+  String get findWorkBannerSub;
+
+  /// No description provided for @exploreAction.
+  ///
+  /// In bn, this message translates to:
+  /// **'দেখুন'**
+  String get exploreAction;
+
+  /// No description provided for @searchServiceLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'ট্রেড বা সেবা খুঁজুন'**
+  String get searchServiceLabel;
+
+  /// No description provided for @searchServiceHint.
+  ///
+  /// In bn, this message translates to:
+  /// **'ইলেকট্রিশিয়ান, প্লাম্বার ইত্যাদি খুঁজুন'**
+  String get searchServiceHint;
+
+  /// No description provided for @radiusPillText.
+  ///
+  /// In bn, this message translates to:
+  /// **'মিরপুর ও ধানমণ্ডি (৪.৫ কিমি ব্যাসার্ধ)'**
+  String get radiusPillText;
+
+  /// No description provided for @changeAreaAction.
+  ///
+  /// In bn, this message translates to:
+  /// **'পরিবর্তন'**
+  String get changeAreaAction;
+
+  /// No description provided for @filterVerifiedOnly.
+  ///
+  /// In bn, this message translates to:
+  /// **'যাচাইকৃত শুধু ✓'**
+  String get filterVerifiedOnly;
+
+  /// No description provided for @filterRatingHigh.
+  ///
+  /// In bn, this message translates to:
+  /// **'রেটিং ৪.৫+ ★'**
+  String get filterRatingHigh;
+
+  /// No description provided for @filterAvailableToday.
+  ///
+  /// In bn, this message translates to:
+  /// **'আজই সম্ভব'**
+  String get filterAvailableToday;
+
+  /// No description provided for @filterMaxRate.
+  ///
+  /// In bn, this message translates to:
+  /// **'সর্বোচ্চ ৳৪০০/ঘণ্টা'**
+  String get filterMaxRate;
+
+  /// No description provided for @filterUrgent.
+  ///
+  /// In bn, this message translates to:
+  /// **'জরুরি সেবা (Urgent)'**
+  String get filterUrgent;
+
+  /// No description provided for @verifiedWorkersFound.
+  ///
+  /// In bn, this message translates to:
+  /// **'{count} জন যাচাইকৃত কর্মী পাওয়া গেছে'**
+  String verifiedWorkersFound(String count);
+
+  /// No description provided for @onlineBadge.
+  ///
+  /// In bn, this message translates to:
+  /// **'অনলাইনে'**
+  String get onlineBadge;
+
+  /// No description provided for @sortPopular.
+  ///
+  /// In bn, this message translates to:
+  /// **'সর্ট: জনপ্রিয় ▾'**
+  String get sortPopular;
+
+  /// No description provided for @successRate.
+  ///
+  /// In bn, this message translates to:
+  /// **'{rate}% সফল কাজ'**
+  String successRate(String rate);
+
+  /// No description provided for @bookNowAction.
+  ///
+  /// In bn, this message translates to:
+  /// **'বুকিং করুন'**
+  String get bookNowAction;
+
+  /// No description provided for @resetFilters.
+  ///
+  /// In bn, this message translates to:
+  /// **'ফিল্টার রিসেট'**
+  String get resetFilters;
+
+  /// No description provided for @noWorkersFoundSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'ফিল্টার রিসেট করে আরো ৩২ জন কর্মী দেখুন'**
+  String get noWorkersFoundSub;
+
+  /// No description provided for @filterModalTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'স্মার্ট ফিল্টার ও বাজেট'**
+  String get filterModalTitle;
+
+  /// No description provided for @maxHourlyRate.
+  ///
+  /// In bn, this message translates to:
+  /// **'সর্বোচ্চ ঘণ্টার রেট'**
+  String get maxHourlyRate;
+
+  /// No description provided for @trustLevelsTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'যাচাইকরণ মাত্রা'**
+  String get trustLevelsTitle;
+
+  /// No description provided for @tradeLicenseCertified.
+  ///
+  /// In bn, this message translates to:
+  /// **'ট্রেড লাইসেন্স বা কারিগরি সনদপ্রাপ্ত'**
+  String get tradeLicenseCertified;
+
+  /// No description provided for @tradeLicenseCertifiedSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'ভিটিটিসি বা সরকার অনুমোদিত প্রশিক্ষণ সনদ'**
+  String get tradeLicenseCertifiedSub;
+
+  /// No description provided for @resetAllAction.
+  ///
+  /// In bn, this message translates to:
+  /// **'মুছে ফেলুন (Reset)'**
+  String get resetAllAction;
+
+  /// No description provided for @applyFiltersAction.
+  ///
+  /// In bn, this message translates to:
+  /// **'ফলাফল দেখুন'**
+  String get applyFiltersAction;
+
+  /// No description provided for @previewOnlyMessage.
+  ///
+  /// In bn, this message translates to:
+  /// **'এই ফিচারটি পরবর্তী ফেজে কার্যকর হবে (প্রিভিউ মোড)'**
+  String get previewOnlyMessage;
+
+  /// No description provided for @navHome.
+  ///
+  /// In bn, this message translates to:
+  /// **'হোম'**
+  String get navHome;
+
+  /// No description provided for @navSearch.
+  ///
+  /// In bn, this message translates to:
+  /// **'অনুসন্ধান'**
+  String get navSearch;
+
+  /// No description provided for @navBookings.
+  ///
+  /// In bn, this message translates to:
+  /// **'বুকিং'**
+  String get navBookings;
+
+  /// No description provided for @navMessages.
+  ///
+  /// In bn, this message translates to:
+  /// **'মেসেজ'**
+  String get navMessages;
+
+  /// No description provided for @navProfile.
+  ///
+  /// In bn, this message translates to:
+  /// **'প্রোফাইল'**
+  String get navProfile;
 }
 
 class _AppLocalizationsDelegate
