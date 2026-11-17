@@ -16,6 +16,7 @@ import '../../../auth/presentation/screens/profile_setup_screen.dart';
 import '../../../auth/presentation/screens/role_selection_screen.dart';
 import '../../../auth/presentation/screens/splash_screen.dart';
 import '../../../booking/presentation/screens/booking_request_screen.dart';
+import '../../../chat/presentation/screens/chat_agreement_screen.dart';
 import '../../../customer/presentation/screens/customer_home_screen.dart';
 import '../../../customer/presentation/screens/worker_search_screen.dart';
 import '../../../labour/presentation/labour_providers.dart';
@@ -480,11 +481,15 @@ class DesignPreviewHubScreen extends ConsumerWidget {
                 ),
                 _PreviewCardItem(
                   title: isBangla ? 'লাইভ চ্যাট' : 'Direct Labour Chat',
-                  subtitle: isBangla ? 'ফেজ ৫-এ আসছে' : 'Coming in Phase 5',
+                  subtitle: isBangla ? 'সরাসরি চ্যাট ও কাজের চুক্তিপত্র' : 'Direct chat & scope agreement',
                   icon: Icons.chat_rounded,
-                  iconColor: AppColors.textMuted,
-                  isComingSoon: true,
-                  onTap: () => _showComingSoonSnackBar(context, 'Direct Chat (Phase 5)'),
+                  iconColor: AppColors.secondary,
+                  isComingSoon: false,
+                  onTap: () => _openScreen(
+                    context,
+                    const ChatAgreementScreen(),
+                    overrides: commonOverrides,
+                  ),
                 ),
                 _PreviewCardItem(
                   title: isBangla ? 'চেক-ইন ও কিউআর' : 'QR / GPS Check-in',
