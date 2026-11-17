@@ -46,9 +46,10 @@ void main() {
       expect(find.textContaining('স্যান্ডবক্স মোড'), findsOneWidget);
 
       // Trust steps
-      expect(find.text('১. নিরাপদ জমা'), findsOneWidget);
-      expect(find.text('২. কাজ পর্যবেক্ষণ'), findsOneWidget);
-      expect(find.text('৩. ওটিপি খালাস'), findsOneWidget);
+      expect(find.text('১. পেমেন্ট (সিমুলেটেড)'), findsOneWidget);
+      expect(find.text('২. কাজ সম্পন্ন'), findsOneWidget);
+      expect(find.text('৩. পে-আউট (সিমুলেটেড)'), findsOneWidget);
+      expect(find.textContaining('এই ডেমোতে কোন আসল টাকা জমা বা লেনদেন হয় না'), findsWidgets);
 
       // Order Summary
       expect(find.text('অর্ডার বিবরণ'), findsOneWidget);

@@ -189,7 +189,7 @@ class _SecurePaymentScreenState extends ConsumerState<SecurePaymentScreen> {
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
                         Text(
-                          isBangla ? 'কাজলাগবে ১০০% নিরাপদ ডিজিটাল পেমেন্ট' : 'KaajLagbe 100% Protected Payment',
+                          isBangla ? 'কাজলাগবে নিরাপদ পেমেন্ট (স্যান্ডবক্স সিমুলেশন)' : 'KaajLagbe Secure Payment (Sandbox Simulation)',
                           style: AppTextStyles.titleMedium.copyWith(
                             fontWeight: FontWeight.bold,
                             color: AppColors.onSurface,
@@ -202,7 +202,7 @@ class _SecurePaymentScreenState extends ConsumerState<SecurePaymentScreen> {
                             borderRadius: BorderRadius.circular(6),
                           ),
                           child: Text(
-                            isBangla ? 'সুরক্ষিত' : 'Protected',
+                            isBangla ? 'সিমুলেশন' : 'Simulation',
                             style: AppTextStyles.labelSmall.copyWith(
                               color: AppColors.secondary,
                               fontWeight: FontWeight.bold,
@@ -214,8 +214,8 @@ class _SecurePaymentScreenState extends ConsumerState<SecurePaymentScreen> {
                     const SizedBox(height: 4),
                     Text(
                       isBangla
-                          ? 'আপনার অর্থ কাজ শেষ হওয়া এবং আপনি সন্তুষ্ট হওয়া পর্যন্ত কাজলাগবে নিরাপদ ডিজিটাল ভল্টে সম্পূর্ণ সুরক্ষিত থাকবে।'
-                          : 'Your funds remain strictly protected in the KaajLagbe vault until you verify complete satisfaction.',
+                          ? 'এই ডেমোতে কোন আসল টাকা জমা বা লেনদেন হয় না। কাজ সম্পন্ন হওয়া সাপেক্ষে সিমুলেটেড পে-আউট যাচাই করুন।'
+                          : 'No real money is held or moved in this demo. Experience the simulated payment and payout flow.',
                       style: AppTextStyles.bodySmall.copyWith(
                         color: AppColors.onSurfaceVariant,
                       ),
@@ -236,24 +236,24 @@ class _SecurePaymentScreenState extends ConsumerState<SecurePaymentScreen> {
               children: [
                 Expanded(
                   child: _buildTrustStep(
-                    Icons.lock_rounded,
-                    isBangla ? '১. নিরাপদ জমা' : '1. Vault Deposit',
+                    Icons.payment_rounded,
+                    isBangla ? '১. পেমেন্ট (সিমুলেটেড)' : '1. Pay (simulated)',
                     AppColors.secondary,
                   ),
                 ),
                 Container(width: 1, height: 24, color: AppColors.divider),
                 Expanded(
                   child: _buildTrustStep(
-                    Icons.handyman_rounded,
-                    isBangla ? '২. কাজ পর্যবেক্ষণ' : '2. Supervision',
+                    Icons.task_alt_rounded,
+                    isBangla ? '২. কাজ সম্পন্ন' : '2. Work completed',
                     AppColors.tertiary,
                   ),
                 ),
                 Container(width: 1, height: 24, color: AppColors.divider),
                 Expanded(
                   child: _buildTrustStep(
-                    Icons.check_circle_rounded,
-                    isBangla ? '৩. ওটিপি খালাস' : '3. OTP Release',
+                    Icons.account_balance_wallet_rounded,
+                    isBangla ? '৩. পে-আউট (সিমুলেটেড)' : '3. Payout (simulated)',
                     AppColors.secondary,
                   ),
                 ),
@@ -561,7 +561,7 @@ class _SecurePaymentScreenState extends ConsumerState<SecurePaymentScreen> {
             keyId: 'bkash',
             title: l10n.bkashPayment,
             badge: isBangla ? '৳২৫ ক্যাশব্যাক' : '৳25 Cashback',
-            subtitle: isBangla ? 'ইনস্ট্যান্ট ভল্ট ডিপোজিট ও ওটিপি ভেরিফিকেশন' : 'Instant vault deposit & OTP verification',
+            subtitle: isBangla ? 'ইনস্ট্যান্ট সিমুলেটেড ডিপোজিট ও ওটিপি ভেরিফিকেশন' : 'Instant simulated deposit & OTP verification',
             icon: Icons.account_balance_wallet_rounded,
             iconColor: const Color(0xFFD12053),
           ),
@@ -720,8 +720,8 @@ class _SecurePaymentScreenState extends ConsumerState<SecurePaymentScreen> {
           Expanded(
             child: Text(
               isBangla
-                  ? 'আমি কাজলাগবে সেবা নীতি ও নিরাপদ ডিজিটাল পেমেন্ট রিফান্ড পলিসি মেনে নিচ্ছি। কাজে অসন্তোষ বা বিরোধ দেখা দিলে দ্রুত তদন্ত ও ১০০% অর্থ ফেরত নিশ্চয়তা রয়েছে।'
-                  : 'I agree to the KaajLagbe Service Policy and Secure Payment Protection terms. Full refund assurance applies in case of verified dispute.',
+                  ? 'আমি কাজলাগবে সেবা নীতি ও নিরাপদ পেমেন্ট শর্ত মেনে নিচ্ছি। এই ডেমোতে কোন আসল টাকা জমা বা লেনদেন হয় না।'
+                  : 'I agree to the KaajLagbe Service Policy and Secure Payment terms. No real money is held or moved in this demo.',
               style: AppTextStyles.bodySmall.copyWith(
                 color: AppColors.onSurface,
               ),
@@ -749,7 +749,7 @@ class _SecurePaymentScreenState extends ConsumerState<SecurePaymentScreen> {
           children: [
             const Icon(Icons.shield_rounded, color: AppColors.secondary, size: 14),
             Text(
-              isBangla ? 'সুরক্ষিত ডিজিটাল ভল্ট • ১০০% রিফান্ড গ্যারান্টি' : 'Secure Digital Vault • 100% Refund Assurance',
+              isBangla ? 'নিরাপদ পেমেন্ট (স্যান্ডবক্স) • ডেমো মোড' : 'Secure Payment (Sandbox) • Demo Simulation',
               style: AppTextStyles.labelSmall.copyWith(
                 color: AppColors.secondary,
                 fontWeight: FontWeight.bold,

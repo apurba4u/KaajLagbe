@@ -562,7 +562,7 @@ class _CustomerBookingsScreenState extends ConsumerState<CustomerBookingsScreen>
 
           const SizedBox(height: 10),
 
-          // Bill & Protection Banner (NO ESCROW)
+          // Bill & Protection Banner (Secure Payment Protected)
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
             decoration: BoxDecoration(

@@ -337,7 +337,7 @@ class _OnSiteCheckinTimerScreenState extends ConsumerState<OnSiteCheckinTimerScr
                         crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
                           Text(
-                            'NID Match OK',
+                            isBangla ? 'পরিচয় যাচাই (QR/OTP)' : 'Identity check (QR/OTP)',
                             style: AppTextStyles.bodySmall.copyWith(
                               color: AppColors.secondary,
                               fontWeight: FontWeight.bold,

@@ -827,7 +827,7 @@ abstract class AppLocalizations {
   /// No description provided for @safetyGuaranteeTitle.
   ///
   /// In bn, this message translates to:
-  /// **'কাজলাগবে শতভাগ নিরাপত্তা গ্যারান্টি'**
+  /// **'কাজলাগবে নিরাপত্তা ও সুরক্ষা ব্যবস্থা'**
   String get safetyGuaranteeTitle;
 
   /// No description provided for @safetyGuaranteeDesc.
@@ -1721,7 +1721,7 @@ abstract class AppLocalizations {
   /// No description provided for @safetyNidVerifiedSub.
   ///
   /// In bn, this message translates to:
-  /// **'প্রত্যেক কর্মীর আসল বায়োমেট্রিক ও জাতীয় পরিচয়পত্র পরীক্ষিত।'**
+  /// **'প্রত্যেক কর্মীর জাতীয় পরিচয়পত্র ও তথ্য পরীক্ষিত।'**
   String get safetyNidVerifiedSub;
 
   /// No description provided for @safetyTransparentRates.
@@ -2261,7 +2261,7 @@ abstract class AppLocalizations {
   /// No description provided for @safetyGuaranteeBullets.
   ///
   /// In bn, this message translates to:
-  /// **'• কাজ শুরুর ২ ঘণ্টা আগে পর্যন্ত সম্পূর্ণ বিনামূল্যে বাতিল করতে পারবেন।\n• কোনো প্রকার অগ্রিম অর্থ প্রদান করতে হবে না।\n• কাজ সন্তোষজনক না হলে ৭ দিনের ফ্রি রি-ওয়ার্ক গ্যারান্টি।'**
+  /// **'• কাজ শুরুর ২ ঘণ্টা আগে পর্যন্ত সম্পূর্ণ বিনামূল্যে বাতিল করতে পারবেন।\n• কোনো প্রকার অগ্রিম অর্থ প্রদান করতে হবে না।\n• কাজ সন্তোষজনক না হলে ৭ দিনের ফ্রি রি-ওয়ার্ক সাপোর্ট।'**
   String get safetyGuaranteeBullets;
 
   /// No description provided for @bookingTermsAgreement.
@@ -2555,7 +2555,7 @@ abstract class AppLocalizations {
   /// No description provided for @fraudPreventionNotice.
   ///
   /// In bn, this message translates to:
-  /// **'নিরাপত্তা ও স্বচ্ছতার জন্য কাজ শুরুর আগে পরিচয় ও তথ্য নিশ্চিত করা হয়েছে।'**
+  /// **'কাজ শুরুর পূর্বে বুকিং-নির্দিষ্ট কিউআর ও সিকিউরিটি পিন দ্বারা পরিচয় নিশ্চিত করা হয়।'**
   String get fraudPreventionNotice;
 
   /// No description provided for @checkInPinTitle.

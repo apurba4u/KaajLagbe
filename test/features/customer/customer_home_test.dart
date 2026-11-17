@@ -49,7 +49,7 @@ void main() {
       expect(find.text('100% National ID (NID) Verified'), findsOneWidget);
       expect(find.text('Worker is en route'), findsOneWidget);
       expect(find.text('Emergency & Daily Services'), findsOneWidget);
-      expect(find.text('KaajLagbe Safety Guarantee'), findsOneWidget);
+      expect(find.text('KaajLagbe Safety Protection'), findsOneWidget);
 
       expect(tester.takeException(), isNull);
     });

@@ -52,6 +52,7 @@ void main() {
       expect(find.text('কর্মী পরিচয় যাচাইকরণ'), findsOneWidget);
       expect(find.text('যাচাইকৃত ✓'), findsOneWidget);
       expect(find.text('রফিকুল ইসলাম'), findsOneWidget);
+      expect(find.text('পরিচয় যাচাই (QR/OTP)'), findsOneWidget);
       expect(find.text('চেক-ইন সিকিউরিটি পিন'), findsOneWidget);
       expect(find.text('৭'), findsOneWidget);
       expect(find.text('৩'), findsOneWidget);

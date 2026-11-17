@@ -393,7 +393,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reviewsTitle => 'Customer Reviews';
 
   @override
-  String get safetyGuaranteeTitle => 'KaajLagbe 100% Safety Guarantee';
+  String get safetyGuaranteeTitle => 'KaajLagbe Safety Protection';
 
   @override
   String get safetyGuaranteeDesc =>
@@ -779,7 +779,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get nidAssuranceSubtitle =>
-      'Safe service guarantee with trusted local workers';
+      'Safe service experience with verified local workers';
 
   @override
   String get workerEnRoute => 'Worker is en route';
@@ -864,14 +864,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get viewProfileAndBook => 'View Profile & Book';
 
   @override
-  String get kaajLagbeSafetyTitle => 'KaajLagbe Safety Guarantee';
+  String get kaajLagbeSafetyTitle => 'KaajLagbe Safety Protection';
 
   @override
   String get safetyNidVerified => 'NID Verified';
 
   @override
   String get safetyNidVerifiedSub =>
-      'Biometrics and national ID checked for every worker';
+      'Identity and credentials checked for every worker';
 
   @override
   String get safetyTransparentRates => 'Transparent Rates';
@@ -1155,11 +1155,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get payableAfterInspection => 'Payable after work inspection';
 
   @override
-  String get kaajlagbeSafetyGuarantee => 'KaajLagbe Safety Guarantee';
+  String get kaajlagbeSafetyGuarantee => 'KaajLagbe Safety Protection';
 
   @override
   String get safetyGuaranteeBullets =>
-      '• 100% free cancellation up to 2 hrs before work.\n• No advance payment required.\n• 7-day free re-work guarantee if unsatisfied.';
+      '• 100% free cancellation up to 2 hrs before work.\n• No advance payment required.\n• 7-day free re-work support if unsatisfied.';
 
   @override
   String get bookingTermsAgreement =>
@@ -1321,7 +1321,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get fraudPreventionNotice =>
-      'Real identity and credentials confirmed before service start to prevent fraud.';
+      'Identity confirmed via booking-specific QR and security PIN before service start.';
 
   @override
   String get checkInPinTitle => 'Check-In Security PIN';
