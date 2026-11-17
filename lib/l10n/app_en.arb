@@ -498,5 +498,60 @@
     }
   },
   "viewDetailsAction": "View Details",
-  "rescheduleAction": "Reschedule"
+  "rescheduleAction": "Reschedule",
+
+  "activeTrackingTitle": "Active Service Tracking",
+  "workerOnSiteRibbon": "Worker On-Site",
+  "onSiteBadge": "On-Site",
+  "workerArrivedVerified": "{name} has arrived • Verified",
+  "@workerArrivedVerified": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "workerIdVerification": "Worker Identity Verification",
+  "verificationComplete": "Verified ✓",
+  "fraudPreventionNotice": "Real identity and credentials confirmed before service start to prevent fraud.",
+  "checkInPinTitle": "Check-In Security PIN",
+  "activeCodeLabel": "Active Code",
+  "workerScanLabel": "Worker Scan",
+  "liveSessionTracker": "Live Session Tracker",
+  "liveSessionSub": "Live Session Tracker",
+  "workInProgressBadge": "In Progress",
+  "elapsedTimeHeader": "Elapsed Time",
+  "scheduledWindow": "Scheduled Window",
+  "allocatedDuration": "Allocated Duration",
+  "allocatedDurationValue": "2 Hours (120 min)",
+  "overrunAlertTitle": "Overrun Policy Notice",
+  "overrunAlertDesc": "Extra work beyond session will be billed at ৳175 per 30 minutes.",
+  "takeBreakAction": "Take 15m Break",
+  "endBreakAction": "End Break",
+  "completeJobAction": "Complete Job",
+  "helpDisputeAction": "Help & Complaint",
+  "liveGeoFenceActive": "Live Geo-fence Active",
+  "workerInsideBoundary": "Worker is within the service boundary",
+
+  "securePaymentTitle": "Secure Payment (Sandbox)",
+  "securePaymentSub": "Protected by KaajLagbe Secure Payment",
+  "sandboxNotice": "Sandbox Mode: No real money is charged. Use test credentials to simulate payment.",
+  "selectPaymentMethod": "Select Payment Method",
+  "bkashPayment": "bKash",
+  "nagadPayment": "Nagad",
+  "cardPayment": "Credit / Debit Card",
+  "cashOnCompletion": "Cash on Completion",
+  "paySecurelyCta": "Pay Securely (Sandbox)",
+
+  "disputeTitle": "Complaint & Dispute Submission",
+  "disputeSubtitle": "Resolution Desk & Protection",
+  "disputeReasonLabel": "Dispute Reason",
+  "selectReasonPlaceholder": "Select a dispute category",
+  "reasonQuality": "Unsatisfactory Work Quality",
+  "reasonOvercharge": "Overcharging / Price Mismatch",
+  "reasonNoShow": "Worker Left Early / Incomplete",
+  "reasonDamage": "Property Damage / Carelessness",
+  "descriptionLabel": "Detailed Description",
+  "descriptionPlaceholder": "Explain what went wrong in detail...",
+  "uploadEvidenceLabel": "Attach Photos / Evidence",
+  "submitDisputeCta": "Submit Complaint",
+  "disputeSubmittedMessage": "Complaint received. Admin mediation team will review within 2 hours."
 }

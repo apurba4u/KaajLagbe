@@ -2515,6 +2515,288 @@ abstract class AppLocalizations {
   /// In bn, this message translates to:
   /// **'রিসিডিউল'**
   String get rescheduleAction;
+
+  /// No description provided for @activeTrackingTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'সরাসরি কাজ ট্র্যাকিং'**
+  String get activeTrackingTitle;
+
+  /// No description provided for @workerOnSiteRibbon.
+  ///
+  /// In bn, this message translates to:
+  /// **'কর্মী উপস্থিত'**
+  String get workerOnSiteRibbon;
+
+  /// No description provided for @onSiteBadge.
+  ///
+  /// In bn, this message translates to:
+  /// **'অন-সাইট'**
+  String get onSiteBadge;
+
+  /// No description provided for @workerArrivedVerified.
+  ///
+  /// In bn, this message translates to:
+  /// **'{name} উপস্থিত হয়েছেন • ভেরিফাইড'**
+  String workerArrivedVerified(String name);
+
+  /// No description provided for @workerIdVerification.
+  ///
+  /// In bn, this message translates to:
+  /// **'কর্মী পরিচয় যাচাইকরণ'**
+  String get workerIdVerification;
+
+  /// No description provided for @verificationComplete.
+  ///
+  /// In bn, this message translates to:
+  /// **'যাচাইকৃত ✓'**
+  String get verificationComplete;
+
+  /// No description provided for @fraudPreventionNotice.
+  ///
+  /// In bn, this message translates to:
+  /// **'নিরাপত্তা ও স্বচ্ছতার জন্য কাজ শুরুর আগে পরিচয় ও তথ্য নিশ্চিত করা হয়েছে।'**
+  String get fraudPreventionNotice;
+
+  /// No description provided for @checkInPinTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'চেক-ইন সিকিউরিটি পিন'**
+  String get checkInPinTitle;
+
+  /// No description provided for @activeCodeLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'অ্যাক্টিভ কোড'**
+  String get activeCodeLabel;
+
+  /// No description provided for @workerScanLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'কর্মী স্ক্যান'**
+  String get workerScanLabel;
+
+  /// No description provided for @liveSessionTracker.
+  ///
+  /// In bn, this message translates to:
+  /// **'লাইভ সেশন ট্র্যাকার'**
+  String get liveSessionTracker;
+
+  /// No description provided for @liveSessionSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজের চলমান সময় ও স্থিতি'**
+  String get liveSessionSub;
+
+  /// No description provided for @workInProgressBadge.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজ চলমান'**
+  String get workInProgressBadge;
+
+  /// No description provided for @elapsedTimeHeader.
+  ///
+  /// In bn, this message translates to:
+  /// **'অতিক্রান্ত সময়'**
+  String get elapsedTimeHeader;
+
+  /// No description provided for @scheduledWindow.
+  ///
+  /// In bn, this message translates to:
+  /// **'নির্ধারিত সময়সূচী'**
+  String get scheduledWindow;
+
+  /// No description provided for @allocatedDuration.
+  ///
+  /// In bn, this message translates to:
+  /// **'বরাদ্দকৃত সময়'**
+  String get allocatedDuration;
+
+  /// No description provided for @allocatedDurationValue.
+  ///
+  /// In bn, this message translates to:
+  /// **'২ ঘণ্টা (১২০ মিনিট)'**
+  String get allocatedDurationValue;
+
+  /// No description provided for @overrunAlertTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'অতিরিক্ত সময়ের নীতি'**
+  String get overrunAlertTitle;
+
+  /// No description provided for @overrunAlertDesc.
+  ///
+  /// In bn, this message translates to:
+  /// **'বরাদ্দকৃত সময়ের বেশি কাজ হলে প্রতি ৩০ মিনিটে ৳১৭৫ প্রযোজ্য হবে।'**
+  String get overrunAlertDesc;
+
+  /// No description provided for @takeBreakAction.
+  ///
+  /// In bn, this message translates to:
+  /// **'১৫ মিনিট বিরতি নিন'**
+  String get takeBreakAction;
+
+  /// No description provided for @endBreakAction.
+  ///
+  /// In bn, this message translates to:
+  /// **'বিরতি শেষ করুন'**
+  String get endBreakAction;
+
+  /// No description provided for @completeJobAction.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজ সম্পন্ন করুন'**
+  String get completeJobAction;
+
+  /// No description provided for @helpDisputeAction.
+  ///
+  /// In bn, this message translates to:
+  /// **'অভিযোগ ও সহায়তা'**
+  String get helpDisputeAction;
+
+  /// No description provided for @liveGeoFenceActive.
+  ///
+  /// In bn, this message translates to:
+  /// **'লাইভ জিও-ফেন্স সক্রিয়'**
+  String get liveGeoFenceActive;
+
+  /// No description provided for @workerInsideBoundary.
+  ///
+  /// In bn, this message translates to:
+  /// **'কর্মী কাজের নির্ধারিত এলাকার ভিতরে রয়েছেন'**
+  String get workerInsideBoundary;
+
+  /// No description provided for @securePaymentTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'নিরাপদ পেমেন্ট (স্যান্ডবক্স)'**
+  String get securePaymentTitle;
+
+  /// No description provided for @securePaymentSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজলাগবে সুরক্ষিত ডিজিটাল পেমেন্ট'**
+  String get securePaymentSub;
+
+  /// No description provided for @sandboxNotice.
+  ///
+  /// In bn, this message translates to:
+  /// **'স্যান্ডবক্স মোড: কোন আসল টাকা কাটা হবে না। টেস্ট পেমেন্ট যাচাই করুন।'**
+  String get sandboxNotice;
+
+  /// No description provided for @selectPaymentMethod.
+  ///
+  /// In bn, this message translates to:
+  /// **'পেমেন্ট মাধ্যম বেছে নিন'**
+  String get selectPaymentMethod;
+
+  /// No description provided for @bkashPayment.
+  ///
+  /// In bn, this message translates to:
+  /// **'বিকাশ'**
+  String get bkashPayment;
+
+  /// No description provided for @nagadPayment.
+  ///
+  /// In bn, this message translates to:
+  /// **'নগদ'**
+  String get nagadPayment;
+
+  /// No description provided for @cardPayment.
+  ///
+  /// In bn, this message translates to:
+  /// **'ক্রেডিট / ডেবিট কার্ড'**
+  String get cardPayment;
+
+  /// No description provided for @cashOnCompletion.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজ শেষে নগদ'**
+  String get cashOnCompletion;
+
+  /// No description provided for @paySecurelyCta.
+  ///
+  /// In bn, this message translates to:
+  /// **'নিরাপদে পেমেন্ট করুন (স্যান্ডবক্স)'**
+  String get paySecurelyCta;
+
+  /// No description provided for @disputeTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'অভিযোগ ও বিরোধ নিষ্পত্তি'**
+  String get disputeTitle;
+
+  /// No description provided for @disputeSubtitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'সুরক্ষা ডেস্ক ও গ্রাহক সেবা'**
+  String get disputeSubtitle;
+
+  /// No description provided for @disputeReasonLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'অভিযোগের কারণ'**
+  String get disputeReasonLabel;
+
+  /// No description provided for @selectReasonPlaceholder.
+  ///
+  /// In bn, this message translates to:
+  /// **'অভিযোগের ধরণ নির্বাচন করুন'**
+  String get selectReasonPlaceholder;
+
+  /// No description provided for @reasonQuality.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজের মান সন্তোষজনক নয়'**
+  String get reasonQuality;
+
+  /// No description provided for @reasonOvercharge.
+  ///
+  /// In bn, this message translates to:
+  /// **'অতিরিক্ত টাকা দাবি বা অমিল'**
+  String get reasonOvercharge;
+
+  /// No description provided for @reasonNoShow.
+  ///
+  /// In bn, this message translates to:
+  /// **'কর্মী কাজ অসমাপ্ত রেখে চলে গেছেন'**
+  String get reasonNoShow;
+
+  /// No description provided for @reasonDamage.
+  ///
+  /// In bn, this message translates to:
+  /// **'সম্পদের ক্ষতি বা অসতর্কতা'**
+  String get reasonDamage;
+
+  /// No description provided for @descriptionLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'বিস্তারিত বিবরণ'**
+  String get descriptionLabel;
+
+  /// No description provided for @descriptionPlaceholder.
+  ///
+  /// In bn, this message translates to:
+  /// **'কী সমস্যা হয়েছে বিস্তারিত লিখুন...'**
+  String get descriptionPlaceholder;
+
+  /// No description provided for @uploadEvidenceLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'ছবি বা প্রমাণ সংযুক্ত করুন'**
+  String get uploadEvidenceLabel;
+
+  /// No description provided for @submitDisputeCta.
+  ///
+  /// In bn, this message translates to:
+  /// **'অভিযোগ জমা দিন'**
+  String get submitDisputeCta;
+
+  /// No description provided for @disputeSubmittedMessage.
+  ///
+  /// In bn, this message translates to:
+  /// **'অভিযোগ গৃহীত হয়েছে। কাজলাগবে মধ্যস্থতাকারী দল ২ ঘণ্টার মধ্যে পর্যালোচনা করবে।'**
+  String get disputeSubmittedMessage;
 }
 
 class _AppLocalizationsDelegate

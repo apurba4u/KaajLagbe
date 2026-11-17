@@ -1298,4 +1298,151 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get rescheduleAction => 'Reschedule';
+
+  @override
+  String get activeTrackingTitle => 'Active Service Tracking';
+
+  @override
+  String get workerOnSiteRibbon => 'Worker On-Site';
+
+  @override
+  String get onSiteBadge => 'On-Site';
+
+  @override
+  String workerArrivedVerified(String name) {
+    return '$name has arrived • Verified';
+  }
+
+  @override
+  String get workerIdVerification => 'Worker Identity Verification';
+
+  @override
+  String get verificationComplete => 'Verified ✓';
+
+  @override
+  String get fraudPreventionNotice =>
+      'Real identity and credentials confirmed before service start to prevent fraud.';
+
+  @override
+  String get checkInPinTitle => 'Check-In Security PIN';
+
+  @override
+  String get activeCodeLabel => 'Active Code';
+
+  @override
+  String get workerScanLabel => 'Worker Scan';
+
+  @override
+  String get liveSessionTracker => 'Live Session Tracker';
+
+  @override
+  String get liveSessionSub => 'Live Session Tracker';
+
+  @override
+  String get workInProgressBadge => 'In Progress';
+
+  @override
+  String get elapsedTimeHeader => 'Elapsed Time';
+
+  @override
+  String get scheduledWindow => 'Scheduled Window';
+
+  @override
+  String get allocatedDuration => 'Allocated Duration';
+
+  @override
+  String get allocatedDurationValue => '2 Hours (120 min)';
+
+  @override
+  String get overrunAlertTitle => 'Overrun Policy Notice';
+
+  @override
+  String get overrunAlertDesc =>
+      'Extra work beyond session will be billed at ৳175 per 30 minutes.';
+
+  @override
+  String get takeBreakAction => 'Take 15m Break';
+
+  @override
+  String get endBreakAction => 'End Break';
+
+  @override
+  String get completeJobAction => 'Complete Job';
+
+  @override
+  String get helpDisputeAction => 'Help & Complaint';
+
+  @override
+  String get liveGeoFenceActive => 'Live Geo-fence Active';
+
+  @override
+  String get workerInsideBoundary => 'Worker is within the service boundary';
+
+  @override
+  String get securePaymentTitle => 'Secure Payment (Sandbox)';
+
+  @override
+  String get securePaymentSub => 'Protected by KaajLagbe Secure Payment';
+
+  @override
+  String get sandboxNotice =>
+      'Sandbox Mode: No real money is charged. Use test credentials to simulate payment.';
+
+  @override
+  String get selectPaymentMethod => 'Select Payment Method';
+
+  @override
+  String get bkashPayment => 'bKash';
+
+  @override
+  String get nagadPayment => 'Nagad';
+
+  @override
+  String get cardPayment => 'Credit / Debit Card';
+
+  @override
+  String get cashOnCompletion => 'Cash on Completion';
+
+  @override
+  String get paySecurelyCta => 'Pay Securely (Sandbox)';
+
+  @override
+  String get disputeTitle => 'Complaint & Dispute Submission';
+
+  @override
+  String get disputeSubtitle => 'Resolution Desk & Protection';
+
+  @override
+  String get disputeReasonLabel => 'Dispute Reason';
+
+  @override
+  String get selectReasonPlaceholder => 'Select a dispute category';
+
+  @override
+  String get reasonQuality => 'Unsatisfactory Work Quality';
+
+  @override
+  String get reasonOvercharge => 'Overcharging / Price Mismatch';
+
+  @override
+  String get reasonNoShow => 'Worker Left Early / Incomplete';
+
+  @override
+  String get reasonDamage => 'Property Damage / Carelessness';
+
+  @override
+  String get descriptionLabel => 'Detailed Description';
+
+  @override
+  String get descriptionPlaceholder => 'Explain what went wrong in detail...';
+
+  @override
+  String get uploadEvidenceLabel => 'Attach Photos / Evidence';
+
+  @override
+  String get submitDisputeCta => 'Submit Complaint';
+
+  @override
+  String get disputeSubmittedMessage =>
+      'Complaint received. Admin mediation team will review within 2 hours.';
 }

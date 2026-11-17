@@ -1300,4 +1300,152 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get rescheduleAction => 'রিসিডিউল';
+
+  @override
+  String get activeTrackingTitle => 'সরাসরি কাজ ট্র্যাকিং';
+
+  @override
+  String get workerOnSiteRibbon => 'কর্মী উপস্থিত';
+
+  @override
+  String get onSiteBadge => 'অন-সাইট';
+
+  @override
+  String workerArrivedVerified(String name) {
+    return '$name উপস্থিত হয়েছেন • ভেরিফাইড';
+  }
+
+  @override
+  String get workerIdVerification => 'কর্মী পরিচয় যাচাইকরণ';
+
+  @override
+  String get verificationComplete => 'যাচাইকৃত ✓';
+
+  @override
+  String get fraudPreventionNotice =>
+      'নিরাপত্তা ও স্বচ্ছতার জন্য কাজ শুরুর আগে পরিচয় ও তথ্য নিশ্চিত করা হয়েছে।';
+
+  @override
+  String get checkInPinTitle => 'চেক-ইন সিকিউরিটি পিন';
+
+  @override
+  String get activeCodeLabel => 'অ্যাক্টিভ কোড';
+
+  @override
+  String get workerScanLabel => 'কর্মী স্ক্যান';
+
+  @override
+  String get liveSessionTracker => 'লাইভ সেশন ট্র্যাকার';
+
+  @override
+  String get liveSessionSub => 'কাজের চলমান সময় ও স্থিতি';
+
+  @override
+  String get workInProgressBadge => 'কাজ চলমান';
+
+  @override
+  String get elapsedTimeHeader => 'অতিক্রান্ত সময়';
+
+  @override
+  String get scheduledWindow => 'নির্ধারিত সময়সূচী';
+
+  @override
+  String get allocatedDuration => 'বরাদ্দকৃত সময়';
+
+  @override
+  String get allocatedDurationValue => '২ ঘণ্টা (১২০ মিনিট)';
+
+  @override
+  String get overrunAlertTitle => 'অতিরিক্ত সময়ের নীতি';
+
+  @override
+  String get overrunAlertDesc =>
+      'বরাদ্দকৃত সময়ের বেশি কাজ হলে প্রতি ৩০ মিনিটে ৳১৭৫ প্রযোজ্য হবে।';
+
+  @override
+  String get takeBreakAction => '১৫ মিনিট বিরতি নিন';
+
+  @override
+  String get endBreakAction => 'বিরতি শেষ করুন';
+
+  @override
+  String get completeJobAction => 'কাজ সম্পন্ন করুন';
+
+  @override
+  String get helpDisputeAction => 'অভিযোগ ও সহায়তা';
+
+  @override
+  String get liveGeoFenceActive => 'লাইভ জিও-ফেন্স সক্রিয়';
+
+  @override
+  String get workerInsideBoundary =>
+      'কর্মী কাজের নির্ধারিত এলাকার ভিতরে রয়েছেন';
+
+  @override
+  String get securePaymentTitle => 'নিরাপদ পেমেন্ট (স্যান্ডবক্স)';
+
+  @override
+  String get securePaymentSub => 'কাজলাগবে সুরক্ষিত ডিজিটাল পেমেন্ট';
+
+  @override
+  String get sandboxNotice =>
+      'স্যান্ডবক্স মোড: কোন আসল টাকা কাটা হবে না। টেস্ট পেমেন্ট যাচাই করুন।';
+
+  @override
+  String get selectPaymentMethod => 'পেমেন্ট মাধ্যম বেছে নিন';
+
+  @override
+  String get bkashPayment => 'বিকাশ';
+
+  @override
+  String get nagadPayment => 'নগদ';
+
+  @override
+  String get cardPayment => 'ক্রেডিট / ডেবিট কার্ড';
+
+  @override
+  String get cashOnCompletion => 'কাজ শেষে নগদ';
+
+  @override
+  String get paySecurelyCta => 'নিরাপদে পেমেন্ট করুন (স্যান্ডবক্স)';
+
+  @override
+  String get disputeTitle => 'অভিযোগ ও বিরোধ নিষ্পত্তি';
+
+  @override
+  String get disputeSubtitle => 'সুরক্ষা ডেস্ক ও গ্রাহক সেবা';
+
+  @override
+  String get disputeReasonLabel => 'অভিযোগের কারণ';
+
+  @override
+  String get selectReasonPlaceholder => 'অভিযোগের ধরণ নির্বাচন করুন';
+
+  @override
+  String get reasonQuality => 'কাজের মান সন্তোষজনক নয়';
+
+  @override
+  String get reasonOvercharge => 'অতিরিক্ত টাকা দাবি বা অমিল';
+
+  @override
+  String get reasonNoShow => 'কর্মী কাজ অসমাপ্ত রেখে চলে গেছেন';
+
+  @override
+  String get reasonDamage => 'সম্পদের ক্ষতি বা অসতর্কতা';
+
+  @override
+  String get descriptionLabel => 'বিস্তারিত বিবরণ';
+
+  @override
+  String get descriptionPlaceholder => 'কী সমস্যা হয়েছে বিস্তারিত লিখুন...';
+
+  @override
+  String get uploadEvidenceLabel => 'ছবি বা প্রমাণ সংযুক্ত করুন';
+
+  @override
+  String get submitDisputeCta => 'অভিযোগ জমা দিন';
+
+  @override
+  String get disputeSubmittedMessage =>
+      'অভিযোগ গৃহীত হয়েছে। কাজলাগবে মধ্যস্থতাকারী দল ২ ঘণ্টার মধ্যে পর্যালোচনা করবে।';
 }

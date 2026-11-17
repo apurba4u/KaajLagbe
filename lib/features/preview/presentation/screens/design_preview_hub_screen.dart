@@ -20,6 +20,7 @@ import '../../../chat/presentation/screens/chat_agreement_screen.dart';
 import '../../../customer/presentation/screens/customer_bookings_screen.dart';
 import '../../../customer/presentation/screens/customer_home_screen.dart';
 import '../../../customer/presentation/screens/worker_search_screen.dart';
+import '../../../job/presentation/screens/on_site_checkin_timer_screen.dart';
 import '../../../labour/presentation/labour_providers.dart';
 import '../../../labour/presentation/screens/labour_home_screen.dart';
 import '../../../labour/presentation/screens/labour_profile_setup_screen.dart';
@@ -505,11 +506,14 @@ class DesignPreviewHubScreen extends ConsumerWidget {
                 ),
                 _PreviewCardItem(
                   title: isBangla ? 'চেক-ইন ও কিউআর' : 'QR / GPS Check-in',
-                  subtitle: isBangla ? 'ফেজ ৫-এ আসছে' : 'Coming in Phase 5',
+                  subtitle: isBangla ? 'রিয়েলটাইম প্রিভিউ' : 'Live design preview',
                   icon: Icons.qr_code_scanner_rounded,
-                  iconColor: AppColors.textMuted,
-                  isComingSoon: true,
-                  onTap: () => _showComingSoonSnackBar(context, 'Check-in (Phase 5)'),
+                  iconColor: AppColors.secondary,
+                  onTap: () => _openScreen(
+                    context,
+                    const OnSiteCheckinTimerScreen(),
+                    overrides: commonOverrides,
+                  ),
                 ),
                 _PreviewCardItem(
                   title: isBangla ? 'ডিজিটাল পেমেন্ট সুরক্ষা' : 'Payment Protection',

@@ -498,5 +498,60 @@
     }
   },
   "viewDetailsAction": "বিস্তারিত দেখুন",
-  "rescheduleAction": "রিসিডিউল"
+  "rescheduleAction": "রিসিডিউল",
+
+  "activeTrackingTitle": "সরাসরি কাজ ট্র্যাকিং",
+  "workerOnSiteRibbon": "কর্মী উপস্থিত",
+  "onSiteBadge": "অন-সাইট",
+  "workerArrivedVerified": "{name} উপস্থিত হয়েছেন • ভেরিফাইড",
+  "@workerArrivedVerified": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "workerIdVerification": "কর্মী পরিচয় যাচাইকরণ",
+  "verificationComplete": "যাচাইকৃত ✓",
+  "fraudPreventionNotice": "নিরাপত্তা ও স্বচ্ছতার জন্য কাজ শুরুর আগে পরিচয় ও তথ্য নিশ্চিত করা হয়েছে।",
+  "checkInPinTitle": "চেক-ইন সিকিউরিটি পিন",
+  "activeCodeLabel": "অ্যাক্টিভ কোড",
+  "workerScanLabel": "কর্মী স্ক্যান",
+  "liveSessionTracker": "লাইভ সেশন ট্র্যাকার",
+  "liveSessionSub": "কাজের চলমান সময় ও স্থিতি",
+  "workInProgressBadge": "কাজ চলমান",
+  "elapsedTimeHeader": "অতিক্রান্ত সময়",
+  "scheduledWindow": "নির্ধারিত সময়সূচী",
+  "allocatedDuration": "বরাদ্দকৃত সময়",
+  "allocatedDurationValue": "২ ঘণ্টা (১২০ মিনিট)",
+  "overrunAlertTitle": "অতিরিক্ত সময়ের নীতি",
+  "overrunAlertDesc": "বরাদ্দকৃত সময়ের বেশি কাজ হলে প্রতি ৩০ মিনিটে ৳১৭৫ প্রযোজ্য হবে।",
+  "takeBreakAction": "১৫ মিনিট বিরতি নিন",
+  "endBreakAction": "বিরতি শেষ করুন",
+  "completeJobAction": "কাজ সম্পন্ন করুন",
+  "helpDisputeAction": "অভিযোগ ও সহায়তা",
+  "liveGeoFenceActive": "লাইভ জিও-ফেন্স সক্রিয়",
+  "workerInsideBoundary": "কর্মী কাজের নির্ধারিত এলাকার ভিতরে রয়েছেন",
+
+  "securePaymentTitle": "নিরাপদ পেমেন্ট (স্যান্ডবক্স)",
+  "securePaymentSub": "কাজলাগবে সুরক্ষিত ডিজিটাল পেমেন্ট",
+  "sandboxNotice": "স্যান্ডবক্স মোড: কোন আসল টাকা কাটা হবে না। টেস্ট পেমেন্ট যাচাই করুন।",
+  "selectPaymentMethod": "পেমেন্ট মাধ্যম বেছে নিন",
+  "bkashPayment": "বিকাশ",
+  "nagadPayment": "নগদ",
+  "cardPayment": "ক্রেডিট / ডেবিট কার্ড",
+  "cashOnCompletion": "কাজ শেষে নগদ",
+  "paySecurelyCta": "নিরাপদে পেমেন্ট করুন (স্যান্ডবক্স)",
+
+  "disputeTitle": "অভিযোগ ও বিরোধ নিষ্পত্তি",
+  "disputeSubtitle": "সুরক্ষা ডেস্ক ও গ্রাহক সেবা",
+  "disputeReasonLabel": "অভিযোগের কারণ",
+  "selectReasonPlaceholder": "অভিযোগের ধরণ নির্বাচন করুন",
+  "reasonQuality": "কাজের মান সন্তোষজনক নয়",
+  "reasonOvercharge": "অতিরিক্ত টাকা দাবি বা অমিল",
+  "reasonNoShow": "কর্মী কাজ অসমাপ্ত রেখে চলে গেছেন",
+  "reasonDamage": "সম্পদের ক্ষতি বা অসতর্কতা",
+  "descriptionLabel": "বিস্তারিত বিবরণ",
+  "descriptionPlaceholder": "কী সমস্যা হয়েছে বিস্তারিত লিখুন...",
+  "uploadEvidenceLabel": "ছবি বা প্রমাণ সংযুক্ত করুন",
+  "submitDisputeCta": "অভিযোগ জমা দিন",
+  "disputeSubmittedMessage": "অভিযোগ গৃহীত হয়েছে। কাজলাগবে মধ্যস্থতাকারী দল ২ ঘণ্টার মধ্যে পর্যালোচনা করবে।"
 }
