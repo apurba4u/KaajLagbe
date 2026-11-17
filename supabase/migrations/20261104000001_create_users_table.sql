@@ -145,6 +145,7 @@ create trigger on_auth_user_created
 alter table public.users enable row level security;
 
 -- Policy: Users can view their own profile; Admins can view all profiles
+drop policy if exists "Users can view own profile or admins can view all" on public.users;
 create policy "Users can view own profile or admins can view all"
   on public.users
   for select
@@ -157,6 +158,7 @@ create policy "Users can view own profile or admins can view all"
   );
 
 -- Policy: Users can update their own profile (name, avatar, etc.)
+drop policy if exists "Users can update own profile" on public.users;
 create policy "Users can update own profile"
   on public.users
   for update

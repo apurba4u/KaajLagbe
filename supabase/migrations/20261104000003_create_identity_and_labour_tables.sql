@@ -31,10 +31,12 @@ create index if not exists idx_skills_name on public.skills(name);
 -- Enable RLS for skills
 alter table public.skills enable row level security;
 
+drop policy if exists "Anyone can read skills directory" on public.skills;
 create policy "Anyone can read skills directory"
   on public.skills for select
   using (true);
 
+drop policy if exists "Only admin can insert or modify skills" on public.skills;
 create policy "Only admin can insert or modify skills"
   on public.skills for all
   using (
@@ -66,10 +68,12 @@ create index if not exists idx_id_verifications_status on public.identity_verifi
 -- Enable RLS for identity_verifications
 alter table public.identity_verifications enable row level security;
 
+drop policy if exists "Users can view their own identity verifications" on public.identity_verifications;
 create policy "Users can view their own identity verifications"
   on public.identity_verifications for select
   using (user_id = auth.uid());
 
+drop policy if exists "Admins can view all identity verifications" on public.identity_verifications;
 create policy "Admins can view all identity verifications"
   on public.identity_verifications for select
   using (
@@ -79,6 +83,7 @@ create policy "Admins can view all identity verifications"
     )
   );
 
+drop policy if exists "Users can submit their own identity verification" on public.identity_verifications;
 create policy "Users can submit their own identity verification"
   on public.identity_verifications for insert
   with check (
@@ -89,6 +94,7 @@ create policy "Users can submit their own identity verification"
   );
 
 -- Direct client updates/deletes on verification records are disabled (admin reviews via RPC)
+drop policy if exists "Only admin can update identity verifications" on public.identity_verifications;
 create policy "Only admin can update identity verifications"
   on public.identity_verifications for update
   using (
@@ -122,14 +128,17 @@ create trigger set_labour_profiles_updated_at
 -- Enable RLS for labour_profiles
 alter table public.labour_profiles enable row level security;
 
+drop policy if exists "Anyone can read labour profiles" on public.labour_profiles;
 create policy "Anyone can read labour profiles"
   on public.labour_profiles for select
   using (true);
 
+drop policy if exists "Labours can insert their own profile" on public.labour_profiles;
 create policy "Labours can insert their own profile"
   on public.labour_profiles for insert
   with check (user_id = auth.uid());
 
+drop policy if exists "Labours can update their own profile" on public.labour_profiles;
 create policy "Labours can update their own profile"
   on public.labour_profiles for update
   using (user_id = auth.uid())
@@ -184,10 +193,12 @@ create trigger protect_labour_skills_fields
 -- Enable RLS for labour_skills
 alter table public.labour_skills enable row level security;
 
+drop policy if exists "Anyone can view labour skills" on public.labour_skills;
 create policy "Anyone can view labour skills"
   on public.labour_skills for select
   using (true);
 
+drop policy if exists "Labours can add skills to their profile" on public.labour_skills;
 create policy "Labours can add skills to their profile"
   on public.labour_skills for insert
   with check (
@@ -196,6 +207,7 @@ create policy "Labours can add skills to their profile"
     and badge_active = false
   );
 
+drop policy if exists "Labours can remove skills from their profile" on public.labour_skills;
 create policy "Labours can remove skills from their profile"
   on public.labour_skills for delete
   using (labour_id = auth.uid());
@@ -216,6 +228,7 @@ create index if not exists idx_audit_logs_target on public.audit_logs(target_typ
 
 alter table public.audit_logs enable row level security;
 
+drop policy if exists "Admins can view audit logs" on public.audit_logs;
 create policy "Admins can view audit logs"
   on public.audit_logs for select
   using (
@@ -242,10 +255,12 @@ create index if not exists idx_notifications_unread on public.notifications(user
 
 alter table public.notifications enable row level security;
 
+drop policy if exists "Users can view their own notifications" on public.notifications;
 create policy "Users can view their own notifications"
   on public.notifications for select
   using (user_id = auth.uid());
 
+drop policy if exists "Users can update read status of their notifications" on public.notifications;
 create policy "Users can update read status of their notifications"
   on public.notifications for update
   using (user_id = auth.uid())
