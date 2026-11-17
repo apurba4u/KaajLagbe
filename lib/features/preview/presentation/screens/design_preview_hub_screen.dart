@@ -17,6 +17,7 @@ import '../../../auth/presentation/screens/role_selection_screen.dart';
 import '../../../auth/presentation/screens/splash_screen.dart';
 import '../../../booking/presentation/screens/booking_request_screen.dart';
 import '../../../chat/presentation/screens/chat_agreement_screen.dart';
+import '../../../customer/presentation/screens/customer_bookings_screen.dart';
 import '../../../customer/presentation/screens/customer_home_screen.dart';
 import '../../../customer/presentation/screens/worker_search_screen.dart';
 import '../../../labour/presentation/labour_providers.dart';
@@ -234,6 +235,17 @@ class DesignPreviewHubScreen extends ConsumerWidget {
                   onTap: () => _openScreen(
                     context,
                     const WorkerSearchScreen(),
+                    overrides: commonOverrides,
+                  ),
+                ),
+                _PreviewCardItem(
+                  title: isBangla ? 'আমার বুকিংস ও ট্র্যাকিং' : 'Customer Bookings & Tracking',
+                  subtitle: isBangla ? 'লাইভ বুকিং ট্র্যাকার ও হিস্ট্রি' : 'Live tracking, tabs & history',
+                  icon: Icons.receipt_long_rounded,
+                  iconColor: AppColors.secondary,
+                  onTap: () => _openScreen(
+                    context,
+                    const CustomerBookingsScreen(),
                     overrides: commonOverrides,
                   ),
                 ),
