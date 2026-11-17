@@ -110,20 +110,56 @@ where id = '00000000-0000-0000-0000-000000000001';
 
 ---
 
-## Supabase Manual Configuration Steps
+## Quick Setup After Restoring Supabase
 
-To connect your local app with your live Supabase project, follow these manual steps in the Supabase Dashboard:
+Follow this concise, numbered checklist whenever you restore or connect a fresh Supabase project:
 
-1. **Apply Database Migrations** (in Supabase Dashboard -> SQL Editor):
-   - Run `supabase/migrations/20261104000001_create_users_table.sql`
-   - Run `supabase/migrations/20261104000002_create_avatars_storage_bucket.sql`
-2. **Enable Phone Authentication**:
-   - Go to **Authentication** -> **Providers** -> **Phone**.
-   - Enable Phone provider (e.g. via Twilio, MessageBird, or SMS Sandbox).
-3. **Add Test Phone Numbers** (for testing without spending SMS credits):
-   - Under **Authentication** -> **Providers** -> **Phone** -> **Test phone numbers**:
-   - Add e.g. `+8801700000000` with OTP `123456`.
-   - Add e.g. `+8801800000000` with OTP `123456`.
+1. **Run Database Bootstrap**:
+   - Open Supabase Dashboard -> **SQL Editor**.
+   - Paste and run the entire contents of `supabase/dev_setup_all.sql`.
+   - This idempotent script creates all schemas, triggers, RLS policies, storage buckets (`avatars` public and `identity-documents` private), skills, and pre-seeds the 6 demo accounts. Check the verification output at the bottom.
+
+2. **Enable Phone Authentication & Test Numbers**:
+   - Navigate to **Authentication** -> **Providers** -> **Phone**.
+   - Toggle **Enable Phone provider** to ON.
+   - Under **Test phone numbers**, paste:
+     ```text
+     8801700000001=123456,8801700000002=123456,8801800000001=123456,8801800000002=123456,8801800000003=123456,8801900000001=123456
+     ```
+   - Click **Save**. (Test OTP for all accounts is `123456`).
+
+3. **Enable Email Provider (for Dev Fast-Login)**:
+   - Navigate to **Authentication** -> **Providers** -> **Email**.
+   - Toggle **Enable Email provider** to ON.
+   - Toggle **Confirm email** to OFF.
+   - Click **Save**.
+
+4. **Set Local `.env` Configuration**:
+   - In your local `.env` file, configure your Supabase project credentials:
+     ```env
+     SUPABASE_URL=https://<your-project-ref>.supabase.co
+     SUPABASE_ANON_KEY=<your-anon-key>
+     OTP_REQUIRED=true
+     DESIGN_PREVIEW=false
+     ```
+
+5. **Perform Full Restart**:
+   - Stop any currently running instance and launch the app:
+     ```bash
+     flutter run
+     ```
+   - Observe the startup self-check banner on the phone login screen (it should show `OK`).
+
+6. **Demo Accounts Matrix (Phone to Type in App)**:
+
+| Role | Phone (Type in App) | Full Phone | Name | What to Demo |
+| :--- | :--- | :--- | :--- | :--- |
+| **Customer** | `1700000001` | `+8801700000001` | Rahim Uddin | Approved Customer, booking workers, posting jobs, reviews. |
+| **Customer #2** | `1700000002` | `+8801700000002` | Sadia Akter | Approved Customer #2, multi-user bookings and chat simulation. |
+| **Labour #1** | `1800000001` | `+8801800000001` | Karim Mia | Master Electrician, Plumber, Painter. Mirpur service area, ৳600/hr. |
+| **Labour #2** | `1800000002` | `+8801800000002` | Jamal Hossain | Cleaner, Gardener. Dhanmondi area, ৳400/hr. |
+| **Labour #3** | `1800000003` | `+8801800000003` | Nasir Ahmed | **Pending Verification Demo**: Shows pending verification status screen. |
+| **Admin** | `1900000001` | `+8801900000001` | KaajLagbe Admin | **Admin Web Portal**: Dedicated admin account for Flutter Web Admin Panel (`lib/admin_main.dart`). |
 ---
 
 ## Re-enabling OTP & Dev Mode Fast Login
