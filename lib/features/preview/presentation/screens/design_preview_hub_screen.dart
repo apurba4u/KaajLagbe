@@ -21,6 +21,7 @@ import '../../../customer/presentation/screens/customer_bookings_screen.dart';
 import '../../../customer/presentation/screens/customer_home_screen.dart';
 import '../../../customer/presentation/screens/worker_search_screen.dart';
 import '../../../job/presentation/screens/on_site_checkin_timer_screen.dart';
+import '../../../payment/presentation/screens/secure_payment_screen.dart';
 import '../../../labour/presentation/labour_providers.dart';
 import '../../../labour/presentation/screens/labour_home_screen.dart';
 import '../../../labour/presentation/screens/labour_profile_setup_screen.dart';
@@ -516,12 +517,15 @@ class DesignPreviewHubScreen extends ConsumerWidget {
                   ),
                 ),
                 _PreviewCardItem(
-                  title: isBangla ? 'ডিজিটাল পেমেন্ট সুরক্ষা' : 'Payment Protection',
-                  subtitle: isBangla ? 'ফেজ ৬-এ আসছে' : 'Coming in Phase 6',
+                  title: isBangla ? 'ডিজিটাল পেমেন্ট সুরক্ষা' : 'Secure Payment (Sandbox)',
+                  subtitle: isBangla ? 'রিয়েলটাইম প্রিভিউ' : 'Live design preview',
                   icon: Icons.account_balance_wallet_rounded,
-                  iconColor: AppColors.textMuted,
-                  isComingSoon: true,
-                  onTap: () => _showComingSoonSnackBar(context, 'Payment Protection (Phase 6)'),
+                  iconColor: AppColors.secondary,
+                  onTap: () => _openScreen(
+                    context,
+                    const SecurePaymentScreen(),
+                    overrides: commonOverrides,
+                  ),
                 ),
                 _PreviewCardItem(
                   title: isBangla ? 'অভিযোগ ও নিষ্পত্তি' : 'Dispute & Complaint',
