@@ -162,7 +162,27 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get authErrorNetworkOffline =>
-      'No internet connection detected. Please check your network and try again.';
+      'No internet connection detected or Supabase is unreachable. Please check your network and try again.';
+
+  @override
+  String get authErrorValidationFailed =>
+      'Validation failed. Please verify your phone number and input values.';
+
+  @override
+  String get authErrorInvalidCredentials =>
+      'Invalid credentials or token. Please check and try again.';
+
+  @override
+  String get authErrorEmailProviderDisabled =>
+      'Email provider is disabled. Please enable Email provider in the Supabase Dashboard.';
+
+  @override
+  String get authErrorSignupDisabled =>
+      'Signups are disabled for this project in Supabase configuration.';
+
+  @override
+  String get authErrorInvalidApiKey =>
+      'Invalid Supabase API key. Please check SUPABASE_ANON_KEY in your .env configuration.';
 
   @override
   String get demoQuickFillTitle => 'Demo Accounts Quick-Fill';

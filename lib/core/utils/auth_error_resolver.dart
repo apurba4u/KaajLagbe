@@ -8,7 +8,18 @@ import '../../l10n/app_localizations.dart';
 class AuthErrorResolver {
   AuthErrorResolver._();
 
-  /// Resolves an error encountered during the OTP send flow.
+  /// Formats raw error details for selectable display in debug mode.
+  static String? getDebugDetails(Object? error) {
+    if (error == null) return null;
+    if (error is AuthException) {
+      final codePart = error.code != null ? '[code: ${error.code}] ' : '';
+      final statusPart = error.statusCode != null ? 'HTTP ${error.statusCode}: ' : '';
+      return '$statusPart$codePart${error.message}';
+    }
+    return error.toString();
+  }
+
+  /// Resolves an error encountered during auth flows (OTP, sign-in, etc.).
   static String resolveOtpErrorMessage(Object error, AppLocalizations l10n) {
     if (kDebugMode) {
       if (error is AuthException) {
@@ -23,7 +34,7 @@ class AuthErrorResolver {
 
     final rawString = error.toString().toLowerCase();
 
-    // 1. Network / Offline check
+    // 1. Network / Offline / Unreachable check
     if (error is SocketException ||
         rawString.contains('socketexception') ||
         rawString.contains('clientexception') ||
@@ -32,14 +43,26 @@ class AuthErrorResolver {
         rawString.contains('connection refused') ||
         rawString.contains('connection timed out') ||
         rawString.contains('network error') ||
-        rawString.contains('handshakeexception')) {
+        rawString.contains('handshakeexception') ||
+        rawString.contains('supabase unreachable')) {
       return l10n.authErrorNetworkOffline;
     }
 
-    // 2. AuthException / AuthApiException or message inspection
+    // 2. AuthException inspection
     final code = error is AuthException ? (error.code?.toLowerCase() ?? '') : '';
     final msg = error is AuthException ? error.message.toLowerCase() : '';
     final statusCode = error is AuthException ? (error.statusCode?.toString() ?? '') : '';
+
+    // Invalid API Key (wrong anon key)
+    if (code == 'invalid_api_key' ||
+        code == 'invalid_token' ||
+        msg.contains('invalid api key') ||
+        msg.contains('invalid api_key') ||
+        msg.contains('invalid anon key') ||
+        msg.contains('api key not found') ||
+        rawString.contains('invalid api key')) {
+      return l10n.authErrorInvalidApiKey;
+    }
 
     // Phone Provider Disabled
     if (code == 'phone_provider_disabled' ||
@@ -50,6 +73,23 @@ class AuthErrorResolver {
         rawString.contains('phone_provider_disabled') ||
         rawString.contains('phone provider is disabled')) {
       return l10n.authErrorPhoneProviderDisabled;
+    }
+
+    // Email Provider Disabled
+    if (code == 'email_provider_disabled' ||
+        msg.contains('email provider is disabled') ||
+        msg.contains('email provider disabled') ||
+        rawString.contains('email_provider_disabled')) {
+      return l10n.authErrorEmailProviderDisabled;
+    }
+
+    // Signup Disabled
+    if (code == 'signup_disabled' ||
+        msg.contains('signups not allowed') ||
+        msg.contains('signups are disabled') ||
+        msg.contains('signup disabled') ||
+        rawString.contains('signup_disabled')) {
+      return l10n.authErrorSignupDisabled;
     }
 
     // SMS Send Failure
@@ -63,7 +103,7 @@ class AuthErrorResolver {
       return l10n.authErrorSmsSendFailed;
     }
 
-    // Rate Limiting
+    // Rate Limiting (429 / over_sms_send_rate_limit)
     if (statusCode == '429' ||
         code == 'over_sms_send_rate_limit' ||
         code == 'over_email_send_rate_limit' ||
@@ -78,9 +118,24 @@ class AuthErrorResolver {
       return l10n.authErrorRateLimit;
     }
 
+    // Invalid Credentials
+    if (code == 'invalid_credentials' ||
+        code == 'invalid_grant' ||
+        msg.contains('invalid login credentials') ||
+        msg.contains('invalid credentials') ||
+        rawString.contains('invalid_credentials')) {
+      return l10n.authErrorInvalidCredentials;
+    }
+
+    // Validation Failed
+    if (code == 'validation_failed' ||
+        msg.contains('validation failed') ||
+        rawString.contains('validation_failed')) {
+      return l10n.authErrorValidationFailed;
+    }
+
     // Invalid Phone Format
     if (code == 'invalid_phone_number' ||
-        code == 'validation_failed' ||
         msg.contains('invalid phone') ||
         msg.contains('phone number format') ||
         msg.contains('unsupported phone') ||
@@ -93,4 +148,3 @@ class AuthErrorResolver {
     return l10n.otpSendError;
   }
 }
-

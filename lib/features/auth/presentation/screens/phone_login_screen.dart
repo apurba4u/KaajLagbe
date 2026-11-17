@@ -2,7 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../../core/config/env_config.dart';
+import '../../../../core/config/supabase_config.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/presentation/widgets/language_toggle_button.dart';
 import '../../../../core/theme/app_colors.dart';
@@ -27,6 +29,8 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
   final FocusNode _focusNode = FocusNode();
 
   String? _errorMessage;
+  String? _debugErrorDetails;
+  String? _selfCheckStatus;
   bool _isWorkerIntent = false;
 
   @override
@@ -34,11 +38,56 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
     super.initState();
     _phoneController.addListener(() {
       setState(() {
-        if (_errorMessage != null) {
+        if (_errorMessage != null || _debugErrorDetails != null) {
           _errorMessage = null;
+          _debugErrorDetails = null;
         }
       });
     });
+    if (kDebugMode) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _runDevSelfCheck();
+      });
+    }
+  }
+
+  Future<void> _runDevSelfCheck() async {
+    if (!kDebugMode || !mounted) return;
+    try {
+      if (!EnvConfig.hasValidSupabaseCredentials) {
+        setState(() {
+          _selfCheckStatus = 'Supabase unreachable';
+        });
+        return;
+      }
+      final client = ref.read(supabaseClientProvider);
+      await client.from('users').select('id').limit(1);
+      if (mounted) {
+        setState(() {
+          _selfCheckStatus = 'OK';
+        });
+      }
+    } on PostgrestException catch (e) {
+      if (mounted) {
+        if (e.code == '42P01' ||
+            e.message.toLowerCase().contains('relation') ||
+            e.message.toLowerCase().contains('does not exist')) {
+          setState(() {
+            _selfCheckStatus = 'Tables missing: run supabase/dev_setup_all.sql';
+          });
+        } else {
+          setState(() {
+            _selfCheckStatus = 'Supabase unreachable';
+          });
+        }
+      }
+    } catch (_) {
+      if (mounted) {
+        setState(() {
+          _selfCheckStatus = 'Supabase unreachable';
+        });
+      }
+    }
   }
 
   @override
@@ -90,6 +139,7 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
 
     setState(() {
       _errorMessage = null;
+      _debugErrorDetails = null;
     });
 
     final authController = ref.read(authControllerProvider.notifier);
@@ -112,6 +162,9 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
         _errorMessage = authError != null
             ? AuthErrorResolver.resolveOtpErrorMessage(authError, l10n)
             : l10n.otpSendError;
+        _debugErrorDetails = authError != null
+            ? AuthErrorResolver.getDebugDetails(authError)
+            : null;
       });
     }
   }
@@ -133,6 +186,7 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
 
     setState(() {
       _errorMessage = null;
+      _debugErrorDetails = null;
     });
 
     final authController = ref.read(authControllerProvider.notifier);
@@ -144,8 +198,14 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
     if (!mounted) return;
 
     if (response == null) {
+      final authError = ref.read(authControllerProvider).error;
       setState(() {
-        _errorMessage = l10n.devLoginError;
+        _errorMessage = authError != null
+            ? AuthErrorResolver.resolveOtpErrorMessage(authError, l10n)
+            : l10n.devLoginError;
+        _debugErrorDetails = authError != null
+            ? AuthErrorResolver.getDebugDetails(authError)
+            : null;
       });
     }
   }
@@ -219,7 +279,49 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                 ],
               ),
 
-              const SizedBox(height: 24),
+              // Dev Mode Startup Self-Check Banner
+              if (kDebugMode && _selfCheckStatus != null) ...[
+                const SizedBox(height: 8),
+                Container(
+                  key: const Key('dev_self_check_banner'),
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: _selfCheckStatus == 'OK'
+                        ? AppColors.secondaryContainer.withValues(alpha: 0.35)
+                        : AppColors.errorContainer.withValues(alpha: 0.25),
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                      color: _selfCheckStatus == 'OK' ? AppColors.secondary : AppColors.error,
+                      width: 1.0,
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(
+                        _selfCheckStatus == 'OK'
+                            ? Icons.check_circle_outline_rounded
+                            : Icons.warning_amber_rounded,
+                        size: 14,
+                        color: _selfCheckStatus == 'OK' ? AppColors.secondary : AppColors.error,
+                      ),
+                      const SizedBox(width: 6),
+                      Expanded(
+                        child: SelectableText(
+                          _selfCheckStatus!,
+                          style: AppTextStyles.labelSmall.copyWith(
+                            color: _selfCheckStatus == 'OK' ? AppColors.secondary : AppColors.error,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 11,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+
+              const SizedBox(height: 16),
 
               // 2. Brand Identity Lockup
               Container(
@@ -320,7 +422,7 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                 textAlign: TextAlign.center,
               ),
 
-              const SizedBox(height: 24),
+              const SizedBox(height: 16),
 
               // 3. Main Phone Input Card
               Container(
@@ -480,16 +582,36 @@ class _PhoneLoginScreenState extends ConsumerState<PhoneLoginScreen> {
                     if (_errorMessage != null) ...[
                       const SizedBox(height: 8),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Icon(Icons.error_outline_rounded, size: 14, color: AppColors.error),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 2),
+                            child: Icon(Icons.error_outline_rounded, size: 14, color: AppColors.error),
+                          ),
                           const SizedBox(width: 4),
                           Expanded(
-                            child: Text(
-                              _errorMessage!,
-                              style: AppTextStyles.bodySmall.copyWith(
-                                color: AppColors.error,
-                                fontWeight: FontWeight.w600,
-                              ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  _errorMessage!,
+                                  style: AppTextStyles.bodySmall.copyWith(
+                                    color: AppColors.error,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                if (kDebugMode && _debugErrorDetails != null) ...[
+                                  const SizedBox(height: 4),
+                                  SelectableText(
+                                    _debugErrorDetails!,
+                                    style: AppTextStyles.labelSmall.copyWith(
+                                      color: AppColors.error.withValues(alpha: 0.85),
+                                      fontSize: 10,
+                                      fontFamily: 'monospace',
+                                    ),
+                                  ),
+                                ],
+                              ],
                             ),
                           ),
                         ],

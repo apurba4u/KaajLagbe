@@ -161,7 +161,27 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get authErrorNetworkOffline =>
-      'ইন্টারনেট সংযোগ পাওয়া যায়নি। আপনার মোবাইল ডাটা বা ওয়াই-ফাই সংযোগ পরীক্ষা করুন।';
+      'ইন্টারনেট সংযোগ পাওয়া যায়নি অথবা Supabase সার্ভারে যোগাযোগ করা যাচ্ছে না। আপনার সংযোগ পরীক্ষা করে পুনরায় চেষ্টা করুন।';
+
+  @override
+  String get authErrorValidationFailed =>
+      'তথ্য যাচাইকরণ ব্যর্থ হয়েছে। মোবাইল নম্বর ও অন্যান্য তথ্য যাচাই করুন।';
+
+  @override
+  String get authErrorInvalidCredentials =>
+      'ভুল লগইন তথ্য বা ওটিপি কোড। অনুগ্রহ করে যাচাই করে পুনরায় চেষ্টা করুন।';
+
+  @override
+  String get authErrorEmailProviderDisabled =>
+      'ইমেইল প্রোভাইডার নিষ্ক্রিয়। Supabase ড্যাশবোর্ডে Email প্রোভাইডার চালু করুন।';
+
+  @override
+  String get authErrorSignupDisabled =>
+      'এই প্রজেক্টে নতুন ব্যবহারকারী সাইন আপ নিষ্ক্রিয় করা আছে।';
+
+  @override
+  String get authErrorInvalidApiKey =>
+      'অবৈধ Supabase API key। আপনার .env ফাইলে SUPABASE_ANON_KEY যাচাই করুন।';
 
   @override
   String get demoQuickFillTitle => 'ডেমো অ্যাকাউন্ট কুইক-ফিল';

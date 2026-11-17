@@ -260,6 +260,32 @@ void main() {
 
       expect(find.textContaining('ফোন ওটিপি প্রোভাইডার নিষ্ক্রিয়'), findsOneWidget);
     });
+
+    testWidgets('Renders selectable debug error text under localized message in kDebugMode', (tester) async {
+      when(() => mockAuthRepository.signInWithOtp(
+            phone: any(named: 'phone'),
+            data: any(named: 'data'),
+          )).thenThrow(
+        const AuthException('Custom server reason', statusCode: '400', code: 'custom_debug_code'),
+      );
+
+      await tester.pumpWidget(createTestWidget(const PhoneLoginScreen()));
+      await tester.pumpAndSettle();
+
+      await tester.enterText(find.byType(TextField), '1712345678');
+      await tester.tap(find.text('ওটিপি পাঠান'));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(SelectableText), findsWidgets);
+      expect(find.textContaining('[code: custom_debug_code] Custom server reason'), findsOneWidget);
+    });
+
+    testWidgets('Renders startup self-check banner in debug mode', (tester) async {
+      await tester.pumpWidget(createTestWidget(const PhoneLoginScreen()));
+      await tester.pumpAndSettle();
+
+      expect(find.byKey(const Key('dev_self_check_banner')), findsOneWidget);
+    });
   });
 
   group('OtpVerificationScreen Tests', () {

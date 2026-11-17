@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -34,6 +35,7 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
   int _secondsRemaining = 60;
   bool _canResend = false;
   String? _errorMessage;
+  String? _debugErrorDetails;
 
   @override
   void initState() {
@@ -92,6 +94,7 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
 
     setState(() {
       _errorMessage = null;
+      _debugErrorDetails = null;
     });
 
     final authController = ref.read(authControllerProvider.notifier);
@@ -103,8 +106,14 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
     if (!mounted) return;
 
     if (response == null) {
+      final authError = ref.read(authControllerProvider).error;
       setState(() {
-        _errorMessage = l10n.otpVerificationError;
+        _errorMessage = authError != null
+            ? AuthErrorResolver.resolveOtpErrorMessage(authError, l10n)
+            : l10n.otpVerificationError;
+        _debugErrorDetails = authError != null
+            ? AuthErrorResolver.getDebugDetails(authError)
+            : null;
       });
     } else {
       // Successfully authenticated.
@@ -119,6 +128,7 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
 
     setState(() {
       _errorMessage = null;
+      _debugErrorDetails = null;
     });
 
     final success = await ref
@@ -141,6 +151,9 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
         _errorMessage = authError != null
             ? AuthErrorResolver.resolveOtpErrorMessage(authError, l10n)
             : l10n.otpResendFailed;
+        _debugErrorDetails = authError != null
+            ? AuthErrorResolver.getDebugDetails(authError)
+            : null;
       });
     }
   }
@@ -409,16 +422,36 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
                     border: Border.all(color: AppColors.error.withValues(alpha: 0.4)),
                   ),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Icon(Icons.error_outline_rounded, size: 18, color: AppColors.error),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 2),
+                        child: Icon(Icons.error_outline_rounded, size: 18, color: AppColors.error),
+                      ),
                       const SizedBox(width: 8),
                       Expanded(
-                        child: Text(
-                          _errorMessage!,
-                          style: AppTextStyles.bodySmall.copyWith(
-                            color: AppColors.error,
-                            fontWeight: FontWeight.w600,
-                          ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              _errorMessage!,
+                              style: AppTextStyles.bodySmall.copyWith(
+                                color: AppColors.error,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            if (kDebugMode && _debugErrorDetails != null) ...[
+                              const SizedBox(height: 4),
+                              SelectableText(
+                                _debugErrorDetails!,
+                                style: AppTextStyles.labelSmall.copyWith(
+                                  color: AppColors.error.withValues(alpha: 0.85),
+                                  fontSize: 10,
+                                  fontFamily: 'monospace',
+                                ),
+                              ),
+                            ],
+                          ],
                         ),
                       ),
                     ],

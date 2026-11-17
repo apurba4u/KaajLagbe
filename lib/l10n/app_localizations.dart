@@ -383,8 +383,38 @@ abstract class AppLocalizations {
   /// No description provided for @authErrorNetworkOffline.
   ///
   /// In bn, this message translates to:
-  /// **'ইন্টারনেট সংযোগ পাওয়া যায়নি। আপনার মোবাইল ডাটা বা ওয়াই-ফাই সংযোগ পরীক্ষা করুন।'**
+  /// **'ইন্টারনেট সংযোগ পাওয়া যায়নি অথবা Supabase সার্ভারে যোগাযোগ করা যাচ্ছে না। আপনার সংযোগ পরীক্ষা করে পুনরায় চেষ্টা করুন।'**
   String get authErrorNetworkOffline;
+
+  /// No description provided for @authErrorValidationFailed.
+  ///
+  /// In bn, this message translates to:
+  /// **'তথ্য যাচাইকরণ ব্যর্থ হয়েছে। মোবাইল নম্বর ও অন্যান্য তথ্য যাচাই করুন।'**
+  String get authErrorValidationFailed;
+
+  /// No description provided for @authErrorInvalidCredentials.
+  ///
+  /// In bn, this message translates to:
+  /// **'ভুল লগইন তথ্য বা ওটিপি কোড। অনুগ্রহ করে যাচাই করে পুনরায় চেষ্টা করুন।'**
+  String get authErrorInvalidCredentials;
+
+  /// No description provided for @authErrorEmailProviderDisabled.
+  ///
+  /// In bn, this message translates to:
+  /// **'ইমেইল প্রোভাইডার নিষ্ক্রিয়। Supabase ড্যাশবোর্ডে Email প্রোভাইডার চালু করুন।'**
+  String get authErrorEmailProviderDisabled;
+
+  /// No description provided for @authErrorSignupDisabled.
+  ///
+  /// In bn, this message translates to:
+  /// **'এই প্রজেক্টে নতুন ব্যবহারকারী সাইন আপ নিষ্ক্রিয় করা আছে।'**
+  String get authErrorSignupDisabled;
+
+  /// No description provided for @authErrorInvalidApiKey.
+  ///
+  /// In bn, this message translates to:
+  /// **'অবৈধ Supabase API key। আপনার .env ফাইলে SUPABASE_ANON_KEY যাচাই করুন।'**
+  String get authErrorInvalidApiKey;
 
   /// No description provided for @demoQuickFillTitle.
   ///
