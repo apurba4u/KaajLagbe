@@ -671,7 +671,7 @@ abstract class AppLocalizations {
   /// No description provided for @startTimeLabel.
   ///
   /// In bn, this message translates to:
-  /// **'শুরু'**
+  /// **'শুরুর সময়'**
   String get startTimeLabel;
 
   /// No description provided for @endTimeLabel.
@@ -2101,6 +2101,420 @@ abstract class AppLocalizations {
   /// In bn, this message translates to:
   /// **'প্রোফাইল'**
   String get navProfile;
+
+  /// No description provided for @instantBookingTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'তাৎক্ষণিক বুকিং'**
+  String get instantBookingTitle;
+
+  /// No description provided for @bookingStepWork.
+  ///
+  /// In bn, this message translates to:
+  /// **'১. কাজ'**
+  String get bookingStepWork;
+
+  /// No description provided for @bookingStepTimeBreak.
+  ///
+  /// In bn, this message translates to:
+  /// **'২. সময় ও বিরতি'**
+  String get bookingStepTimeBreak;
+
+  /// No description provided for @bookingStepConfirmation.
+  ///
+  /// In bn, this message translates to:
+  /// **'৩. নিশ্চিতকরণ'**
+  String get bookingStepConfirmation;
+
+  /// No description provided for @selectedServiceLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'নির্বাচিত সেবা'**
+  String get selectedServiceLabel;
+
+  /// No description provided for @serviceAddressLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজের ঠিকানা'**
+  String get serviceAddressLabel;
+
+  /// No description provided for @selectDateTimeTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'তারিখ ও সময় নির্বাচন'**
+  String get selectDateTimeTitle;
+
+  /// No description provided for @realtimeSlotBadge.
+  ///
+  /// In bn, this message translates to:
+  /// **'রিয়েলটাইম স্লট'**
+  String get realtimeSlotBadge;
+
+  /// No description provided for @todayLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'আজ'**
+  String get todayLabel;
+
+  /// No description provided for @tomorrowLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'আগামীকাল'**
+  String get tomorrowLabel;
+
+  /// No description provided for @dayAfterLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'পরশু'**
+  String get dayAfterLabel;
+
+  /// No description provided for @workerAvailableFrom.
+  ///
+  /// In bn, this message translates to:
+  /// **'কর্মী উপলব্ধ {time} থেকে'**
+  String workerAvailableFrom(String time);
+
+  /// No description provided for @durationLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'আনুমানিক সময়কাল'**
+  String get durationLabel;
+
+  /// No description provided for @teaBreakIncluded.
+  ///
+  /// In bn, this message translates to:
+  /// **'১৫ মিনিট চা বিরতি অন্তর্ভুক্ত'**
+  String get teaBreakIncluded;
+
+  /// No description provided for @teaBreakSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'কঠোর পরিশ্রমের স্বীকৃতি, পারিশ্রমিক অপরিবর্তিত থাকবে'**
+  String get teaBreakSub;
+
+  /// No description provided for @overlapGuardTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'সময়সূচী উপলব্ধ (No Conflict Guard ✓)'**
+  String get overlapGuardTitle;
+
+  /// No description provided for @overlapGuardDesc.
+  ///
+  /// In bn, this message translates to:
+  /// **'কর্মী দুপুর ২:৩০ পর্যন্ত মিরপুর ২ এ অন্য কাজে ব্যস্ত থাকবেন। আপনি ৩:০০ টায় শিডিউল করায় ৩০ মিনিট নিরাপদ ট্রানজিট বাফার রয়েছে।'**
+  String get overlapGuardDesc;
+
+  /// No description provided for @costBreakdownTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'খরচের বিস্তারিত বিবরণ'**
+  String get costBreakdownTitle;
+
+  /// No description provided for @transparentBilling.
+  ///
+  /// In bn, this message translates to:
+  /// **'স্বচ্ছ বিলিং'**
+  String get transparentBilling;
+
+  /// No description provided for @workWageItem.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজের মজুরি (২ ঘণ্টা × ৳৩৫০)'**
+  String get workWageItem;
+
+  /// No description provided for @platformSafetyFee.
+  ///
+  /// In bn, this message translates to:
+  /// **'প্ল্যাটফর্ম সুরক্ষা ও ইন্স্যুরেন্স ফি (৫%)'**
+  String get platformSafetyFee;
+
+  /// No description provided for @teaBreakFee.
+  ///
+  /// In bn, this message translates to:
+  /// **'চা বিরতি ফি'**
+  String get teaBreakFee;
+
+  /// No description provided for @freeLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'বিনামূল্যে'**
+  String get freeLabel;
+
+  /// No description provided for @totalPayable.
+  ///
+  /// In bn, this message translates to:
+  /// **'সর্বমোট প্রদেয়'**
+  String get totalPayable;
+
+  /// No description provided for @payableAfterInspection.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজের পর যাচাই করে পরিশোধযোগ্য'**
+  String get payableAfterInspection;
+
+  /// No description provided for @kaajlagbeSafetyGuarantee.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজলাগবে সুরক্ষা নিশ্চয়তা'**
+  String get kaajlagbeSafetyGuarantee;
+
+  /// No description provided for @safetyGuaranteeBullets.
+  ///
+  /// In bn, this message translates to:
+  /// **'• কাজ শুরুর ২ ঘণ্টা আগে পর্যন্ত সম্পূর্ণ বিনামূল্যে বাতিল করতে পারবেন।\n• কোনো প্রকার অগ্রিম অর্থ প্রদান করতে হবে না।\n• কাজ সন্তোষজনক না হলে ৭ দিনের ফ্রি রি-ওয়ার্ক গ্যারান্টি।'**
+  String get safetyGuaranteeBullets;
+
+  /// No description provided for @bookingTermsAgreement.
+  ///
+  /// In bn, this message translates to:
+  /// **'আমি কাজলাগবের সেবা নীতি এবং নিরাপত্তা প্রটোকল মেনে কর্মী বুকিং করছি।'**
+  String get bookingTermsAgreement;
+
+  /// No description provided for @confirmableBill.
+  ///
+  /// In bn, this message translates to:
+  /// **'নিশ্চিতকরণযোগ্য বিল'**
+  String get confirmableBill;
+
+  /// No description provided for @cashOrBkash.
+  ///
+  /// In bn, this message translates to:
+  /// **'নগদ/বিকাশ'**
+  String get cashOrBkash;
+
+  /// No description provided for @confirmBookingCta.
+  ///
+  /// In bn, this message translates to:
+  /// **'বুকিং নিশ্চিত করুন'**
+  String get confirmBookingCta;
+
+  /// No description provided for @directChatTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'সরাসরি চ্যাট'**
+  String get directChatTitle;
+
+  /// No description provided for @bookingCodeLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'বুকিং #{code}'**
+  String bookingCodeLabel(String code);
+
+  /// No description provided for @confirmedStatus.
+  ///
+  /// In bn, this message translates to:
+  /// **'নিশ্চিতকৃত'**
+  String get confirmedStatus;
+
+  /// No description provided for @totalRateHourly.
+  ///
+  /// In bn, this message translates to:
+  /// **'মোট (৳{rate}/ঘণ্টা)'**
+  String totalRateHourly(String rate);
+
+  /// No description provided for @safetyNoticeTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'নিরাপত্তা বার্তা'**
+  String get safetyNoticeTitle;
+
+  /// No description provided for @safetyNoticeDesc.
+  ///
+  /// In bn, this message translates to:
+  /// **'প্ল্যাটফর্মের বাইরে ব্যক্তিগত ফোন নম্বর বা ওটিপি (OTP) শেয়ার করবেন না। সমস্ত লেনদেন কাজলাগবে ডিজিটাল পেমেন্ট সুরক্ষিত।'**
+  String get safetyNoticeDesc;
+
+  /// No description provided for @digitalAgreementTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'ডিজিটাল চুক্তিপত্র'**
+  String get digitalAgreementTitle;
+
+  /// No description provided for @scopeConfirmationSubtitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজের পরিধি ও সময়সূচী নিশ্চিতকরণ'**
+  String get scopeConfirmationSubtitle;
+
+  /// No description provided for @agreedBadge.
+  ///
+  /// In bn, this message translates to:
+  /// **'সম্মত ✓'**
+  String get agreedBadge;
+
+  /// No description provided for @workDurationLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজের সময়সীমা'**
+  String get workDurationLabel;
+
+  /// No description provided for @breakAndPerksLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'বিরতি ও সুবিধা'**
+  String get breakAndPerksLabel;
+
+  /// No description provided for @totalRemunerationLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'মোট পারিশ্রমিক'**
+  String get totalRemunerationLabel;
+
+  /// No description provided for @noHiddenCharges.
+  ///
+  /// In bn, this message translates to:
+  /// **'কোনো গোপন চার্জ নেই'**
+  String get noHiddenCharges;
+
+  /// No description provided for @securedByKaajlagbe.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজলাগবে ডিজিটাল পেমেন্টে সংরক্ষিত'**
+  String get securedByKaajlagbe;
+
+  /// No description provided for @viewFullTerms.
+  ///
+  /// In bn, this message translates to:
+  /// **'বিস্তারিত শর্তাবলী'**
+  String get viewFullTerms;
+
+  /// No description provided for @quickExtendDuration.
+  ///
+  /// In bn, this message translates to:
+  /// **'সময়সীমা বৃদ্ধি'**
+  String get quickExtendDuration;
+
+  /// No description provided for @quickMaterialsCost.
+  ///
+  /// In bn, this message translates to:
+  /// **'অতিরিক্ত মালামাল খরচ'**
+  String get quickMaterialsCost;
+
+  /// No description provided for @quickShareAddress.
+  ///
+  /// In bn, this message translates to:
+  /// **'ঠিকানা শেয়ার'**
+  String get quickShareAddress;
+
+  /// No description provided for @quickSendPhoto.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজের ছবি পাঠান'**
+  String get quickSendPhoto;
+
+  /// No description provided for @typeMessagePlaceholder.
+  ///
+  /// In bn, this message translates to:
+  /// **'মেসেজ লিখুন...'**
+  String get typeMessagePlaceholder;
+
+  /// No description provided for @callDirectlyAction.
+  ///
+  /// In bn, this message translates to:
+  /// **'সরাসরি কল'**
+  String get callDirectlyAction;
+
+  /// No description provided for @myBookingsTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'আমার বুকিংসমূহ'**
+  String get myBookingsTitle;
+
+  /// No description provided for @myBookingsSub.
+  ///
+  /// In bn, this message translates to:
+  /// **'বুকিংস ও সেবার ইতিহাস'**
+  String get myBookingsSub;
+
+  /// No description provided for @totalBookingsCount.
+  ///
+  /// In bn, this message translates to:
+  /// **'{count}টি মোট'**
+  String totalBookingsCount(String count);
+
+  /// No description provided for @tabUpcoming.
+  ///
+  /// In bn, this message translates to:
+  /// **'আসন্ন'**
+  String get tabUpcoming;
+
+  /// No description provided for @tabInProgress.
+  ///
+  /// In bn, this message translates to:
+  /// **'চলমান'**
+  String get tabInProgress;
+
+  /// No description provided for @tabCompleted.
+  ///
+  /// In bn, this message translates to:
+  /// **'সম্পন্ন'**
+  String get tabCompleted;
+
+  /// No description provided for @tabCancelled.
+  ///
+  /// In bn, this message translates to:
+  /// **'বাতিল ও বিরোধ'**
+  String get tabCancelled;
+
+  /// No description provided for @inProgressBadge.
+  ///
+  /// In bn, this message translates to:
+  /// **'কাজ চলছে'**
+  String get inProgressBadge;
+
+  /// No description provided for @elapsedTimeLabel.
+  ///
+  /// In bn, this message translates to:
+  /// **'{time} অতিক্রান্ত'**
+  String elapsedTimeLabel(String time);
+
+  /// No description provided for @fixedRateBadge.
+  ///
+  /// In bn, this message translates to:
+  /// **'ফিক্সড রেট'**
+  String get fixedRateBadge;
+
+  /// No description provided for @securePaymentProtected.
+  ///
+  /// In bn, this message translates to:
+  /// **'ডিজিটাল পেমেন্ট সুরক্ষিত'**
+  String get securePaymentProtected;
+
+  /// No description provided for @liveTrackingAction.
+  ///
+  /// In bn, this message translates to:
+  /// **'লাইভ ট্র্যাকিং ও টাইমার'**
+  String get liveTrackingAction;
+
+  /// No description provided for @chatCallAction.
+  ///
+  /// In bn, this message translates to:
+  /// **'মেসেজ / সরাসরি কথা'**
+  String get chatCallAction;
+
+  /// No description provided for @nextScheduledWorkTitle.
+  ///
+  /// In bn, this message translates to:
+  /// **'পরবর্তী নির্ধারিত কাজ'**
+  String get nextScheduledWorkTitle;
+
+  /// No description provided for @viewAllBookings.
+  ///
+  /// In bn, this message translates to:
+  /// **'সবগুলো দেখুন ({count})'**
+  String viewAllBookings(String count);
+
+  /// No description provided for @viewDetailsAction.
+  ///
+  /// In bn, this message translates to:
+  /// **'বিস্তারিত দেখুন'**
+  String get viewDetailsAction;
+
+  /// No description provided for @rescheduleAction.
+  ///
+  /// In bn, this message translates to:
+  /// **'রিসিডিউল'**
+  String get rescheduleAction;
 }
 
 class _AppLocalizationsDelegate

@@ -395,5 +395,108 @@
   "navSearch": "Search",
   "navBookings": "Bookings",
   "navMessages": "Messages",
-  "navProfile": "Profile"
+  "navProfile": "Profile",
+
+  "instantBookingTitle": "Instant Booking Flow",
+  "bookingStepWork": "1. Work",
+  "bookingStepTimeBreak": "2. Time & Break",
+  "bookingStepConfirmation": "3. Confirmation",
+  "selectedServiceLabel": "Selected Service",
+  "serviceAddressLabel": "Work Address",
+  "selectDateTimeTitle": "Select Date & Time",
+  "realtimeSlotBadge": "Realtime Slot",
+  "todayLabel": "Today",
+  "tomorrowLabel": "Tomorrow",
+  "dayAfterLabel": "Day After",
+  "startTimeLabel": "Start Time",
+  "workerAvailableFrom": "Worker available from {time}",
+  "@workerAvailableFrom": {
+    "placeholders": {
+      "time": { "type": "String" }
+    }
+  },
+  "durationLabel": "Estimated Duration",
+  "teaBreakIncluded": "15 min Tea Break included",
+  "teaBreakSub": "Recognition of hard work, wage remains unchanged",
+  "overlapGuardTitle": "Schedule Available (No Conflict Guard ✓)",
+  "overlapGuardDesc": "Worker is busy in Mirpur 2 until 2:30 PM. Scheduling at 3:00 PM provides a safe 30-minute transit buffer.",
+  "costBreakdownTitle": "Cost Breakdown",
+  "transparentBilling": "Transparent Billing",
+  "workWageItem": "Labour Wage (2 hrs × ৳350)",
+  "platformSafetyFee": "Platform Safety & Insurance (5%)",
+  "teaBreakFee": "Tea Break Fee",
+  "freeLabel": "FREE",
+  "totalPayable": "Total Payable",
+  "payableAfterInspection": "Payable after work inspection",
+  "kaajlagbeSafetyGuarantee": "KaajLagbe Safety Guarantee",
+  "safetyGuaranteeBullets": "• 100% free cancellation up to 2 hrs before work.\n• No advance payment required.\n• 7-day free re-work guarantee if unsatisfied.",
+  "bookingTermsAgreement": "I agree to KaajLagbe service policy and safety protocols when booking workers.",
+  "confirmableBill": "Payable Bill",
+  "cashOrBkash": "Cash / bKash",
+  "confirmBookingCta": "Confirm Booking",
+
+  "directChatTitle": "Direct Chat",
+  "bookingCodeLabel": "Booking #{code}",
+  "@bookingCodeLabel": {
+    "placeholders": {
+      "code": { "type": "String" }
+    }
+  },
+  "confirmedStatus": "Confirmed",
+  "totalRateHourly": "Total (৳{rate}/hr)",
+  "@totalRateHourly": {
+    "placeholders": {
+      "rate": { "type": "String" }
+    }
+  },
+  "safetyNoticeTitle": "Security Notice",
+  "safetyNoticeDesc": "Do not share personal phone numbers or OTP outside the platform. All transactions are protected by KaajLagbe Secure Payment.",
+  "digitalAgreementTitle": "Digital Agreement",
+  "scopeConfirmationSubtitle": "Scope & Schedule Confirmation",
+  "agreedBadge": "Agreed ✓",
+  "workDurationLabel": "Work Duration",
+  "breakAndPerksLabel": "Break & Facilities",
+  "totalRemunerationLabel": "Total Remuneration",
+  "noHiddenCharges": "No hidden charges",
+  "securedByKaajlagbe": "Protected by KaajLagbe Secure Payment",
+  "viewFullTerms": "View Detailed Terms",
+  "quickExtendDuration": "Extend Duration",
+  "quickMaterialsCost": "Materials Cost",
+  "quickShareAddress": "Share Address",
+  "quickSendPhoto": "Send Work Photo",
+  "typeMessagePlaceholder": "Type a message...",
+  "callDirectlyAction": "Call Directly",
+
+  "myBookingsTitle": "My Bookings",
+  "myBookingsSub": "My Bookings & Service History",
+  "totalBookingsCount": "{count} Total",
+  "@totalBookingsCount": {
+    "placeholders": {
+      "count": { "type": "String" }
+    }
+  },
+  "tabUpcoming": "Upcoming",
+  "tabInProgress": "In Progress",
+  "tabCompleted": "Completed",
+  "tabCancelled": "Cancelled & Disputes",
+  "inProgressBadge": "In Progress",
+  "elapsedTimeLabel": "{time} elapsed",
+  "@elapsedTimeLabel": {
+    "placeholders": {
+      "time": { "type": "String" }
+    }
+  },
+  "fixedRateBadge": "Fixed Rate",
+  "securePaymentProtected": "Secure Payment Protected",
+  "liveTrackingAction": "Live Tracking & Timer",
+  "chatCallAction": "Message / Call",
+  "nextScheduledWorkTitle": "Next Scheduled Service",
+  "viewAllBookings": "View All ({count})",
+  "@viewAllBookings": {
+    "placeholders": {
+      "count": { "type": "String" }
+    }
+  },
+  "viewDetailsAction": "View Details",
+  "rescheduleAction": "Reschedule"
 }

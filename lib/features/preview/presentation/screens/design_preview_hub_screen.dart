@@ -15,6 +15,7 @@ import '../../../auth/presentation/screens/profile_settings_screen.dart';
 import '../../../auth/presentation/screens/profile_setup_screen.dart';
 import '../../../auth/presentation/screens/role_selection_screen.dart';
 import '../../../auth/presentation/screens/splash_screen.dart';
+import '../../../booking/presentation/screens/booking_request_screen.dart';
 import '../../../customer/presentation/screens/customer_home_screen.dart';
 import '../../../customer/presentation/screens/worker_search_screen.dart';
 import '../../../labour/presentation/labour_providers.dart';
@@ -467,11 +468,15 @@ class DesignPreviewHubScreen extends ConsumerWidget {
                 ),
                 _PreviewCardItem(
                   title: isBangla ? 'বুকিং ওয়ার্কফ্লো' : 'Booking Workflow',
-                  subtitle: isBangla ? 'ফেজ ৫-এ আসছে' : 'Coming in Phase 5',
+                  subtitle: isBangla ? 'তাৎক্ষণিক বুকিং ও ওভারল্যাপ চেক' : 'Instant booking & overlap check',
                   icon: Icons.calendar_month_rounded,
-                  iconColor: AppColors.textMuted,
-                  isComingSoon: true,
-                  onTap: () => _showComingSoonSnackBar(context, 'Booking Flow (Phase 5)'),
+                  iconColor: AppColors.primary,
+                  isComingSoon: false,
+                  onTap: () => _openScreen(
+                    context,
+                    const BookingRequestScreen(),
+                    overrides: commonOverrides,
+                  ),
                 ),
                 _PreviewCardItem(
                   title: isBangla ? 'লাইভ চ্যাট' : 'Direct Labour Chat',

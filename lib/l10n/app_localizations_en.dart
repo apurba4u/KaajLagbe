@@ -315,7 +315,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get workingHoursTitle => 'Working Hours';
 
   @override
-  String get startTimeLabel => 'Start';
+  String get startTimeLabel => 'Start Time';
 
   @override
   String get endTimeLabel => 'End';
@@ -1075,4 +1075,227 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get navProfile => 'Profile';
+
+  @override
+  String get instantBookingTitle => 'Instant Booking Flow';
+
+  @override
+  String get bookingStepWork => '1. Work';
+
+  @override
+  String get bookingStepTimeBreak => '2. Time & Break';
+
+  @override
+  String get bookingStepConfirmation => '3. Confirmation';
+
+  @override
+  String get selectedServiceLabel => 'Selected Service';
+
+  @override
+  String get serviceAddressLabel => 'Work Address';
+
+  @override
+  String get selectDateTimeTitle => 'Select Date & Time';
+
+  @override
+  String get realtimeSlotBadge => 'Realtime Slot';
+
+  @override
+  String get todayLabel => 'Today';
+
+  @override
+  String get tomorrowLabel => 'Tomorrow';
+
+  @override
+  String get dayAfterLabel => 'Day After';
+
+  @override
+  String workerAvailableFrom(String time) {
+    return 'Worker available from $time';
+  }
+
+  @override
+  String get durationLabel => 'Estimated Duration';
+
+  @override
+  String get teaBreakIncluded => '15 min Tea Break included';
+
+  @override
+  String get teaBreakSub => 'Recognition of hard work, wage remains unchanged';
+
+  @override
+  String get overlapGuardTitle => 'Schedule Available (No Conflict Guard ✓)';
+
+  @override
+  String get overlapGuardDesc =>
+      'Worker is busy in Mirpur 2 until 2:30 PM. Scheduling at 3:00 PM provides a safe 30-minute transit buffer.';
+
+  @override
+  String get costBreakdownTitle => 'Cost Breakdown';
+
+  @override
+  String get transparentBilling => 'Transparent Billing';
+
+  @override
+  String get workWageItem => 'Labour Wage (2 hrs × ৳350)';
+
+  @override
+  String get platformSafetyFee => 'Platform Safety & Insurance (5%)';
+
+  @override
+  String get teaBreakFee => 'Tea Break Fee';
+
+  @override
+  String get freeLabel => 'FREE';
+
+  @override
+  String get totalPayable => 'Total Payable';
+
+  @override
+  String get payableAfterInspection => 'Payable after work inspection';
+
+  @override
+  String get kaajlagbeSafetyGuarantee => 'KaajLagbe Safety Guarantee';
+
+  @override
+  String get safetyGuaranteeBullets =>
+      '• 100% free cancellation up to 2 hrs before work.\n• No advance payment required.\n• 7-day free re-work guarantee if unsatisfied.';
+
+  @override
+  String get bookingTermsAgreement =>
+      'I agree to KaajLagbe service policy and safety protocols when booking workers.';
+
+  @override
+  String get confirmableBill => 'Payable Bill';
+
+  @override
+  String get cashOrBkash => 'Cash / bKash';
+
+  @override
+  String get confirmBookingCta => 'Confirm Booking';
+
+  @override
+  String get directChatTitle => 'Direct Chat';
+
+  @override
+  String bookingCodeLabel(String code) {
+    return 'Booking #$code';
+  }
+
+  @override
+  String get confirmedStatus => 'Confirmed';
+
+  @override
+  String totalRateHourly(String rate) {
+    return 'Total (৳$rate/hr)';
+  }
+
+  @override
+  String get safetyNoticeTitle => 'Security Notice';
+
+  @override
+  String get safetyNoticeDesc =>
+      'Do not share personal phone numbers or OTP outside the platform. All transactions are protected by KaajLagbe Secure Payment.';
+
+  @override
+  String get digitalAgreementTitle => 'Digital Agreement';
+
+  @override
+  String get scopeConfirmationSubtitle => 'Scope & Schedule Confirmation';
+
+  @override
+  String get agreedBadge => 'Agreed ✓';
+
+  @override
+  String get workDurationLabel => 'Work Duration';
+
+  @override
+  String get breakAndPerksLabel => 'Break & Facilities';
+
+  @override
+  String get totalRemunerationLabel => 'Total Remuneration';
+
+  @override
+  String get noHiddenCharges => 'No hidden charges';
+
+  @override
+  String get securedByKaajlagbe => 'Protected by KaajLagbe Secure Payment';
+
+  @override
+  String get viewFullTerms => 'View Detailed Terms';
+
+  @override
+  String get quickExtendDuration => 'Extend Duration';
+
+  @override
+  String get quickMaterialsCost => 'Materials Cost';
+
+  @override
+  String get quickShareAddress => 'Share Address';
+
+  @override
+  String get quickSendPhoto => 'Send Work Photo';
+
+  @override
+  String get typeMessagePlaceholder => 'Type a message...';
+
+  @override
+  String get callDirectlyAction => 'Call Directly';
+
+  @override
+  String get myBookingsTitle => 'My Bookings';
+
+  @override
+  String get myBookingsSub => 'My Bookings & Service History';
+
+  @override
+  String totalBookingsCount(String count) {
+    return '$count Total';
+  }
+
+  @override
+  String get tabUpcoming => 'Upcoming';
+
+  @override
+  String get tabInProgress => 'In Progress';
+
+  @override
+  String get tabCompleted => 'Completed';
+
+  @override
+  String get tabCancelled => 'Cancelled & Disputes';
+
+  @override
+  String get inProgressBadge => 'In Progress';
+
+  @override
+  String elapsedTimeLabel(String time) {
+    return '$time elapsed';
+  }
+
+  @override
+  String get fixedRateBadge => 'Fixed Rate';
+
+  @override
+  String get securePaymentProtected => 'Secure Payment Protected';
+
+  @override
+  String get liveTrackingAction => 'Live Tracking & Timer';
+
+  @override
+  String get chatCallAction => 'Message / Call';
+
+  @override
+  String get nextScheduledWorkTitle => 'Next Scheduled Service';
+
+  @override
+  String viewAllBookings(String count) {
+    return 'View All ($count)';
+  }
+
+  @override
+  String get viewDetailsAction => 'View Details';
+
+  @override
+  String get rescheduleAction => 'Reschedule';
 }

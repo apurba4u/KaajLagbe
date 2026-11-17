@@ -311,7 +311,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get workingHoursTitle => 'কাজের সময়সূচি';
 
   @override
-  String get startTimeLabel => 'শুরু';
+  String get startTimeLabel => 'শুরুর সময়';
 
   @override
   String get endTimeLabel => 'শেষ';
@@ -1076,4 +1076,228 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get navProfile => 'প্রোফাইল';
+
+  @override
+  String get instantBookingTitle => 'তাৎক্ষণিক বুকিং';
+
+  @override
+  String get bookingStepWork => '১. কাজ';
+
+  @override
+  String get bookingStepTimeBreak => '২. সময় ও বিরতি';
+
+  @override
+  String get bookingStepConfirmation => '৩. নিশ্চিতকরণ';
+
+  @override
+  String get selectedServiceLabel => 'নির্বাচিত সেবা';
+
+  @override
+  String get serviceAddressLabel => 'কাজের ঠিকানা';
+
+  @override
+  String get selectDateTimeTitle => 'তারিখ ও সময় নির্বাচন';
+
+  @override
+  String get realtimeSlotBadge => 'রিয়েলটাইম স্লট';
+
+  @override
+  String get todayLabel => 'আজ';
+
+  @override
+  String get tomorrowLabel => 'আগামীকাল';
+
+  @override
+  String get dayAfterLabel => 'পরশু';
+
+  @override
+  String workerAvailableFrom(String time) {
+    return 'কর্মী উপলব্ধ $time থেকে';
+  }
+
+  @override
+  String get durationLabel => 'আনুমানিক সময়কাল';
+
+  @override
+  String get teaBreakIncluded => '১৫ মিনিট চা বিরতি অন্তর্ভুক্ত';
+
+  @override
+  String get teaBreakSub =>
+      'কঠোর পরিশ্রমের স্বীকৃতি, পারিশ্রমিক অপরিবর্তিত থাকবে';
+
+  @override
+  String get overlapGuardTitle => 'সময়সূচী উপলব্ধ (No Conflict Guard ✓)';
+
+  @override
+  String get overlapGuardDesc =>
+      'কর্মী দুপুর ২:৩০ পর্যন্ত মিরপুর ২ এ অন্য কাজে ব্যস্ত থাকবেন। আপনি ৩:০০ টায় শিডিউল করায় ৩০ মিনিট নিরাপদ ট্রানজিট বাফার রয়েছে।';
+
+  @override
+  String get costBreakdownTitle => 'খরচের বিস্তারিত বিবরণ';
+
+  @override
+  String get transparentBilling => 'স্বচ্ছ বিলিং';
+
+  @override
+  String get workWageItem => 'কাজের মজুরি (২ ঘণ্টা × ৳৩৫০)';
+
+  @override
+  String get platformSafetyFee => 'প্ল্যাটফর্ম সুরক্ষা ও ইন্স্যুরেন্স ফি (৫%)';
+
+  @override
+  String get teaBreakFee => 'চা বিরতি ফি';
+
+  @override
+  String get freeLabel => 'বিনামূল্যে';
+
+  @override
+  String get totalPayable => 'সর্বমোট প্রদেয়';
+
+  @override
+  String get payableAfterInspection => 'কাজের পর যাচাই করে পরিশোধযোগ্য';
+
+  @override
+  String get kaajlagbeSafetyGuarantee => 'কাজলাগবে সুরক্ষা নিশ্চয়তা';
+
+  @override
+  String get safetyGuaranteeBullets =>
+      '• কাজ শুরুর ২ ঘণ্টা আগে পর্যন্ত সম্পূর্ণ বিনামূল্যে বাতিল করতে পারবেন।\n• কোনো প্রকার অগ্রিম অর্থ প্রদান করতে হবে না।\n• কাজ সন্তোষজনক না হলে ৭ দিনের ফ্রি রি-ওয়ার্ক গ্যারান্টি।';
+
+  @override
+  String get bookingTermsAgreement =>
+      'আমি কাজলাগবের সেবা নীতি এবং নিরাপত্তা প্রটোকল মেনে কর্মী বুকিং করছি।';
+
+  @override
+  String get confirmableBill => 'নিশ্চিতকরণযোগ্য বিল';
+
+  @override
+  String get cashOrBkash => 'নগদ/বিকাশ';
+
+  @override
+  String get confirmBookingCta => 'বুকিং নিশ্চিত করুন';
+
+  @override
+  String get directChatTitle => 'সরাসরি চ্যাট';
+
+  @override
+  String bookingCodeLabel(String code) {
+    return 'বুকিং #$code';
+  }
+
+  @override
+  String get confirmedStatus => 'নিশ্চিতকৃত';
+
+  @override
+  String totalRateHourly(String rate) {
+    return 'মোট (৳$rate/ঘণ্টা)';
+  }
+
+  @override
+  String get safetyNoticeTitle => 'নিরাপত্তা বার্তা';
+
+  @override
+  String get safetyNoticeDesc =>
+      'প্ল্যাটফর্মের বাইরে ব্যক্তিগত ফোন নম্বর বা ওটিপি (OTP) শেয়ার করবেন না। সমস্ত লেনদেন কাজলাগবে ডিজিটাল পেমেন্ট সুরক্ষিত।';
+
+  @override
+  String get digitalAgreementTitle => 'ডিজিটাল চুক্তিপত্র';
+
+  @override
+  String get scopeConfirmationSubtitle => 'কাজের পরিধি ও সময়সূচী নিশ্চিতকরণ';
+
+  @override
+  String get agreedBadge => 'সম্মত ✓';
+
+  @override
+  String get workDurationLabel => 'কাজের সময়সীমা';
+
+  @override
+  String get breakAndPerksLabel => 'বিরতি ও সুবিধা';
+
+  @override
+  String get totalRemunerationLabel => 'মোট পারিশ্রমিক';
+
+  @override
+  String get noHiddenCharges => 'কোনো গোপন চার্জ নেই';
+
+  @override
+  String get securedByKaajlagbe => 'কাজলাগবে ডিজিটাল পেমেন্টে সংরক্ষিত';
+
+  @override
+  String get viewFullTerms => 'বিস্তারিত শর্তাবলী';
+
+  @override
+  String get quickExtendDuration => 'সময়সীমা বৃদ্ধি';
+
+  @override
+  String get quickMaterialsCost => 'অতিরিক্ত মালামাল খরচ';
+
+  @override
+  String get quickShareAddress => 'ঠিকানা শেয়ার';
+
+  @override
+  String get quickSendPhoto => 'কাজের ছবি পাঠান';
+
+  @override
+  String get typeMessagePlaceholder => 'মেসেজ লিখুন...';
+
+  @override
+  String get callDirectlyAction => 'সরাসরি কল';
+
+  @override
+  String get myBookingsTitle => 'আমার বুকিংসমূহ';
+
+  @override
+  String get myBookingsSub => 'বুকিংস ও সেবার ইতিহাস';
+
+  @override
+  String totalBookingsCount(String count) {
+    return '$countটি মোট';
+  }
+
+  @override
+  String get tabUpcoming => 'আসন্ন';
+
+  @override
+  String get tabInProgress => 'চলমান';
+
+  @override
+  String get tabCompleted => 'সম্পন্ন';
+
+  @override
+  String get tabCancelled => 'বাতিল ও বিরোধ';
+
+  @override
+  String get inProgressBadge => 'কাজ চলছে';
+
+  @override
+  String elapsedTimeLabel(String time) {
+    return '$time অতিক্রান্ত';
+  }
+
+  @override
+  String get fixedRateBadge => 'ফিক্সড রেট';
+
+  @override
+  String get securePaymentProtected => 'ডিজিটাল পেমেন্ট সুরক্ষিত';
+
+  @override
+  String get liveTrackingAction => 'লাইভ ট্র্যাকিং ও টাইমার';
+
+  @override
+  String get chatCallAction => 'মেসেজ / সরাসরি কথা';
+
+  @override
+  String get nextScheduledWorkTitle => 'পরবর্তী নির্ধারিত কাজ';
+
+  @override
+  String viewAllBookings(String count) {
+    return 'সবগুলো দেখুন ($count)';
+  }
+
+  @override
+  String get viewDetailsAction => 'বিস্তারিত দেখুন';
+
+  @override
+  String get rescheduleAction => 'রিসিডিউল';
 }

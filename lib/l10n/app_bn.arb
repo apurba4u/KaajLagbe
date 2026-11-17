@@ -395,5 +395,108 @@
   "navSearch": "অনুসন্ধান",
   "navBookings": "বুকিং",
   "navMessages": "মেসেজ",
-  "navProfile": "প্রোফাইল"
+  "navProfile": "প্রোফাইল",
+
+  "instantBookingTitle": "তাৎক্ষণিক বুকিং",
+  "bookingStepWork": "১. কাজ",
+  "bookingStepTimeBreak": "২. সময় ও বিরতি",
+  "bookingStepConfirmation": "৩. নিশ্চিতকরণ",
+  "selectedServiceLabel": "নির্বাচিত সেবা",
+  "serviceAddressLabel": "কাজের ঠিকানা",
+  "selectDateTimeTitle": "তারিখ ও সময় নির্বাচন",
+  "realtimeSlotBadge": "রিয়েলটাইম স্লট",
+  "todayLabel": "আজ",
+  "tomorrowLabel": "আগামীকাল",
+  "dayAfterLabel": "পরশু",
+  "startTimeLabel": "শুরুর সময়",
+  "workerAvailableFrom": "কর্মী উপলব্ধ {time} থেকে",
+  "@workerAvailableFrom": {
+    "placeholders": {
+      "time": { "type": "String" }
+    }
+  },
+  "durationLabel": "আনুমানিক সময়কাল",
+  "teaBreakIncluded": "১৫ মিনিট চা বিরতি অন্তর্ভুক্ত",
+  "teaBreakSub": "কঠোর পরিশ্রমের স্বীকৃতি, পারিশ্রমিক অপরিবর্তিত থাকবে",
+  "overlapGuardTitle": "সময়সূচী উপলব্ধ (No Conflict Guard ✓)",
+  "overlapGuardDesc": "কর্মী দুপুর ২:৩০ পর্যন্ত মিরপুর ২ এ অন্য কাজে ব্যস্ত থাকবেন। আপনি ৩:০০ টায় শিডিউল করায় ৩০ মিনিট নিরাপদ ট্রানজিট বাফার রয়েছে।",
+  "costBreakdownTitle": "খরচের বিস্তারিত বিবরণ",
+  "transparentBilling": "স্বচ্ছ বিলিং",
+  "workWageItem": "কাজের মজুরি (২ ঘণ্টা × ৳৩৫০)",
+  "platformSafetyFee": "প্ল্যাটফর্ম সুরক্ষা ও ইন্স্যুরেন্স ফি (৫%)",
+  "teaBreakFee": "চা বিরতি ফি",
+  "freeLabel": "বিনামূল্যে",
+  "totalPayable": "সর্বমোট প্রদেয়",
+  "payableAfterInspection": "কাজের পর যাচাই করে পরিশোধযোগ্য",
+  "kaajlagbeSafetyGuarantee": "কাজলাগবে সুরক্ষা নিশ্চয়তা",
+  "safetyGuaranteeBullets": "• কাজ শুরুর ২ ঘণ্টা আগে পর্যন্ত সম্পূর্ণ বিনামূল্যে বাতিল করতে পারবেন।\n• কোনো প্রকার অগ্রিম অর্থ প্রদান করতে হবে না।\n• কাজ সন্তোষজনক না হলে ৭ দিনের ফ্রি রি-ওয়ার্ক গ্যারান্টি।",
+  "bookingTermsAgreement": "আমি কাজলাগবের সেবা নীতি এবং নিরাপত্তা প্রটোকল মেনে কর্মী বুকিং করছি।",
+  "confirmableBill": "নিশ্চিতকরণযোগ্য বিল",
+  "cashOrBkash": "নগদ/বিকাশ",
+  "confirmBookingCta": "বুকিং নিশ্চিত করুন",
+
+  "directChatTitle": "সরাসরি চ্যাট",
+  "bookingCodeLabel": "বুকিং #{code}",
+  "@bookingCodeLabel": {
+    "placeholders": {
+      "code": { "type": "String" }
+    }
+  },
+  "confirmedStatus": "নিশ্চিতকৃত",
+  "totalRateHourly": "মোট (৳{rate}/ঘণ্টা)",
+  "@totalRateHourly": {
+    "placeholders": {
+      "rate": { "type": "String" }
+    }
+  },
+  "safetyNoticeTitle": "নিরাপত্তা বার্তা",
+  "safetyNoticeDesc": "প্ল্যাটফর্মের বাইরে ব্যক্তিগত ফোন নম্বর বা ওটিপি (OTP) শেয়ার করবেন না। সমস্ত লেনদেন কাজলাগবে ডিজিটাল পেমেন্ট সুরক্ষিত।",
+  "digitalAgreementTitle": "ডিজিটাল চুক্তিপত্র",
+  "scopeConfirmationSubtitle": "কাজের পরিধি ও সময়সূচী নিশ্চিতকরণ",
+  "agreedBadge": "সম্মত ✓",
+  "workDurationLabel": "কাজের সময়সীমা",
+  "breakAndPerksLabel": "বিরতি ও সুবিধা",
+  "totalRemunerationLabel": "মোট পারিশ্রমিক",
+  "noHiddenCharges": "কোনো গোপন চার্জ নেই",
+  "securedByKaajlagbe": "কাজলাগবে ডিজিটাল পেমেন্টে সংরক্ষিত",
+  "viewFullTerms": "বিস্তারিত শর্তাবলী",
+  "quickExtendDuration": "সময়সীমা বৃদ্ধি",
+  "quickMaterialsCost": "অতিরিক্ত মালামাল খরচ",
+  "quickShareAddress": "ঠিকানা শেয়ার",
+  "quickSendPhoto": "কাজের ছবি পাঠান",
+  "typeMessagePlaceholder": "মেসেজ লিখুন...",
+  "callDirectlyAction": "সরাসরি কল",
+
+  "myBookingsTitle": "আমার বুকিংসমূহ",
+  "myBookingsSub": "বুকিংস ও সেবার ইতিহাস",
+  "totalBookingsCount": "{count}টি মোট",
+  "@totalBookingsCount": {
+    "placeholders": {
+      "count": { "type": "String" }
+    }
+  },
+  "tabUpcoming": "আসন্ন",
+  "tabInProgress": "চলমান",
+  "tabCompleted": "সম্পন্ন",
+  "tabCancelled": "বাতিল ও বিরোধ",
+  "inProgressBadge": "কাজ চলছে",
+  "elapsedTimeLabel": "{time} অতিক্রান্ত",
+  "@elapsedTimeLabel": {
+    "placeholders": {
+      "time": { "type": "String" }
+    }
+  },
+  "fixedRateBadge": "ফিক্সড রেট",
+  "securePaymentProtected": "ডিজিটাল পেমেন্ট সুরক্ষিত",
+  "liveTrackingAction": "লাইভ ট্র্যাকিং ও টাইমার",
+  "chatCallAction": "মেসেজ / সরাসরি কথা",
+  "nextScheduledWorkTitle": "পরবর্তী নির্ধারিত কাজ",
+  "viewAllBookings": "সবগুলো দেখুন ({count})",
+  "@viewAllBookings": {
+    "placeholders": {
+      "count": { "type": "String" }
+    }
+  },
+  "viewDetailsAction": "বিস্তারিত দেখুন",
+  "rescheduleAction": "রিসিডিউল"
 }
